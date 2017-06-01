@@ -6,7 +6,7 @@
     "paths": {
       "wed/*": ["../node_modules/wed/standalone/lib/wed/*"],
       "dashboard/*": ["../node_modules/wed-demo/dev/lib/dashboard/*"],
-      "salve": ["../node_modules/wed-demo/node_modules/salve"]
+      "salve": ["../node_modules/wed/node_modules/salve"]
     },
     "declaration": true
   },
