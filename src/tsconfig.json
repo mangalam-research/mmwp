@@ -1,33 +1,16 @@
 {
+  "extends": "../tsconfig-common.json",
   "compilerOptions": {
     "rootDir": ".",
     "baseUrl": ".",
     "paths": {
-      "wed/*": ["../build/standalone/lib/wed/*"]
-    },
-    "module": "amd",
-    "moduleResolution": "node",
-    "noEmitOnError": true,
-    "noImplicitAny": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "skipDefaultLibCheck": true,
-    "noUnusedParameters": true,
-    "noUnusedLocals": true,
-    "skipLibCheck": true,
-    "outDir": "",
-    "sourceMap": true,
-    "strictNullChecks": true,
-    "target": "es5",
-    "lib": ["dom", "es2015"]
+      "wed/*": ["../node_modules/wed/standalone/lib/wed/*"],
+      "dashboard/*": ["../node_modules/wed-demo/dev/lib/dashboard/*"],
+      "salve": ["../node_modules/wed-demo/node_modules/salve"]
+    }
   },
   "include": [
     "**/*.ts",
     "**/*.d.ts"
-  ],
-  "exclude": [
-    "test/**/*.ts"
   ]
 }
