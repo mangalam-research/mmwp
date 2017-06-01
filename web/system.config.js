@@ -45,18 +45,21 @@ window.systemJSConfig = {
     "mmwp/internal-schemas/*": {
       loader: "json",
     },
+    "npm:bootbox/*": {
+      // We must add bootstrap here because bootbox does not list
+      // it as a dependency.
+      deps: ["bootstrap"],
+    },
+    "npm:bootstrap/bootstrap/*.js": {
+      format: "global",
+      deps: ["jquery"],
+      exports: "$",
+    },
   },
   packages: {
-    "": {
-      defaultExtension: "js",
-      meta: {
-        "npm:bootstrap/bootstrap/*.js": {
-          format: "global",
-          deps: ["jquery"],
-          exports: "$",
-        },
-      },
-    },
+    // We use this to specify a default extension of ".js". Yep, this is enough
+    // because if `defaultExtension` is not explicitly set it default to ".js"!
+    "": {},
   },
   packageConfigPaths: [
     "npm:@angular/*/package.json",
