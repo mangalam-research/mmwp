@@ -10,8 +10,8 @@ import { ErrorData } from "salve-dom";
 
 import { ModeValidator } from "wed/validator";
 // tslint:disable-next-line:no-require-imports
-import concordance = require("../../mmwp/internal-schemas/concordance");
-import { validate } from "../../mmwp/util";
+import concordance = require("mmwp/internal-schemas/concordance");
+import { validate } from "mmwp/util";
 
 // tslint:disable-next-line:mocha-no-side-effect-code
 const modeError = [{
@@ -34,7 +34,7 @@ describe("util", () => {
   before(() => {
     badDoc = new DOMParser().parseFromString("<div/>", "text/xml");
     grammar = constructTree(JSON.parse(JSON.stringify(concordance)));
-    return ajax("/base/web/test/mmwp-data/sample-concordance-1.xml")
+    return ajax("/base/test/data/sample-concordance-1.xml")
       .then((newDoc) => doc = newDoc);
   });
 

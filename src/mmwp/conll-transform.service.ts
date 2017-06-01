@@ -2,10 +2,10 @@ import { Injectable } from "@angular/core";
 import { alert } from "bootbox";
 import { constructTree, Grammar } from "salve";
 
-import { ProcessingService } from "../dashboard/processing.service";
-import { fixPrototype, triggerDownload } from "../dashboard/util";
-import { XMLFile } from "../dashboard/xml-file";
-import { XMLTransformService } from "../dashboard/xml-transform.service";
+import { ProcessingService } from "dashboard/processing.service";
+import { fixPrototype, triggerDownload } from "dashboard/util";
+import { XMLFile } from "dashboard/xml-file";
+import { XMLTransformService } from "dashboard/xml-transform.service";
 // tslint:disable-next-line:no-require-imports
 import docAnnotated = require("./internal-schemas/doc-annotated");
 import { MMWPAValidator } from "./mmwpa-mode/mmwpa-validator";

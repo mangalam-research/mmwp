@@ -4,14 +4,14 @@ import "mocha";
 
 const expect = chai.expect;
 
-import { ChunksService } from "../../dashboard/chunks.service";
-import { ProcessingService } from "../../dashboard/processing.service";
-import { db } from "../../dashboard/store";
-import { XMLFile } from "../../dashboard/xml-file";
-import { XMLFilesService } from "../../dashboard/xml-files.service";
+import { ChunksService } from "dashboard/chunks.service";
+import { ProcessingService } from "dashboard/processing.service";
+import { db } from "dashboard/store";
+import { XMLFile } from "dashboard/xml-file";
+import { XMLFilesService } from "dashboard/xml-files.service";
 import { CoNLLTransformService,
-         ProcessingError } from "../../mmwp/conll-transform.service";
-import { DataProvider } from "../util";
+         ProcessingError } from "mmwp/conll-transform.service";
+import { DataProvider } from "./util";
 
 // Interface that shows the private members of ConcordanceTransformService.  We
 // cannot link it directly to ConcordanceTransformService because revealing
@@ -35,7 +35,7 @@ describe("CoNLLTransformService", () => {
   let bad: XMLFile;
 
   before(() => {
-    provider = new DataProvider("/base/web/test/mmwp-data/");
+    provider = new DataProvider("/base/test/data/");
     xmlFilesService = new XMLFilesService(new ChunksService());
     service = new CoNLLTransformService(new ProcessingService());
     rservice = revealService(service);

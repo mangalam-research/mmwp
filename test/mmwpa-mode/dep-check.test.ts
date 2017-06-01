@@ -6,7 +6,7 @@ const expect = chai.expect;
 
 import { ValidationError } from "salve";
 
-import { DepCheck } from "../../../mmwp/mmwpa-mode/dep-check";
+import { DepCheck } from "mmwp/mmwpa-mode/dep-check";
 
 // We use innerHTML a lot for testing purposes.
 // tslint:disable:no-inner-html

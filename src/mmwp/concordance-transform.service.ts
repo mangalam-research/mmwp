@@ -3,11 +3,11 @@ import { alert } from "bootbox";
 import { constructTree, Grammar } from "salve";
 import * as slug from "slug";
 
-import { ProcessingService } from "../dashboard/processing.service";
-import { fixPrototype } from "../dashboard/util";
-import { XMLFile } from "../dashboard/xml-file";
-import { XMLFilesService } from "../dashboard/xml-files.service";
-import { XMLTransformService } from "../dashboard/xml-transform.service";
+import { ProcessingService } from "dashboard/processing.service";
+import { fixPrototype } from "dashboard/util";
+import { XMLFile } from "dashboard/xml-file";
+import { XMLFilesService } from "dashboard/xml-files.service";
+import { XMLTransformService } from "dashboard/xml-transform.service";
 // tslint:disable-next-line:no-require-imports
 import concordance = require("./internal-schemas/concordance");
 // tslint:disable-next-line:no-require-imports

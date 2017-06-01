@@ -4,14 +4,14 @@ import "mocha";
 
 const expect = chai.expect;
 
-import { ChunksService } from "../../dashboard/chunks.service";
-import { ProcessingService } from "../../dashboard/processing.service";
-import { db } from "../../dashboard/store";
-import { XMLFile } from "../../dashboard/xml-file";
-import { XMLFilesService } from "../../dashboard/xml-files.service";
+import { ChunksService } from "dashboard/chunks.service";
+import { ProcessingService } from "dashboard/processing.service";
+import { db } from "dashboard/store";
+import { XMLFile } from "dashboard/xml-file";
+import { XMLFilesService } from "dashboard/xml-files.service";
 import { ConcordanceTransformService,
-         ProcessingError } from "../../mmwp/concordance-transform.service";
-import { DataProvider } from "../util";
+         ProcessingError } from "mmwp/concordance-transform.service";
+import { DataProvider } from "./util";
 
 // We use innerHTML a lot for testing purposes.
 // tslint:disable:no-inner-html
@@ -57,7 +57,7 @@ describe("ConcordanceTransformService", () => {
   let rservice: RevealedService;
 
   before(() => {
-    provider = new DataProvider("/base/web/test/mmwp-data/");
+    provider = new DataProvider("/base/test/data/");
     xmlFilesService = new XMLFilesService(new ChunksService());
     service = new ConcordanceTransformService(new ProcessingService(),
                                               xmlFilesService);

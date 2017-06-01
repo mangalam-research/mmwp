@@ -6,8 +6,8 @@ const expect = chai.expect;
 
 import { ValidationError } from "salve";
 
-import { MMWPAValidator } from "../../../mmwp/mmwpa-mode/mmwpa-validator";
-import { DataProvider } from "../../util";
+import { MMWPAValidator } from "mmwp/mmwpa-mode/mmwpa-validator";
+import { DataProvider } from "../util";
 
 describe("MMWPAValidator", () => {
   let provider: DataProvider;
@@ -15,7 +15,7 @@ describe("MMWPAValidator", () => {
 
   before(() => {
     parser = new DOMParser();
-    provider = new DataProvider("/base/web/test/mmwp-data/");
+    provider = new DataProvider("/base/test/data/");
   });
 
   it("reports a compounded bit requiring an absent next sibling", () => {
