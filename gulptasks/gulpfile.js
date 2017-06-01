@@ -117,7 +117,8 @@ gulp.task("copy-package-info", () => {
 });
 
 gulp.task("copy-other",
-          () => gulp.src(["web/**/*.{js,html,css}", "src/**/*.{js,html,css}"])
+          () => gulp.src(["web/**/*.{js,html,css}",
+                          "src/**/*.{js,html,css,d.ts}"])
           .pipe(gulp.dest("build/dev/lib/")));
 
 gulp.task("build-dev", ["tsc", "copy-other", "copy-package-info"]);
@@ -159,8 +160,8 @@ function runTslint(tsconfig, tslintConfig) {
 
 gulp.task("tslint-src", () => runTslint("src/tsconfig.json", "src/tslint.json"));
 
-gulp.task("tslint-test", ["tsc"],
-          () => runTslint("test/tsconfig.json", "src/tslint.json"));
+gulp.task("tslint-test", ["tsc", "copy-other"],
+          () => runTslint("test/tsconfig.json", "test/tslint.json"));
 
 gulp.task("tslint", ["tslint-src", "tslint-test"]);
 

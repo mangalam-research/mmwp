@@ -1,6 +1,8 @@
 {
   "extends": "tslint-config-lddubeau",
   "rules": {
+    "no-unused-variable": [false, "We use the compiler options ",
+                           "noUnusedParameters/noUnusedLocals"],
     "missing-jsdoc": [false, "Experimental code."],
     "completed-docs": [false, "Experimental code."],
     "promise-function-async": [false, "Need to investigate the impact of the async/await",
@@ -10,6 +12,7 @@
     "no-reference": false,
     "no-string-literal": [false,
                           "off because of ",
-                          "https://github.com/palantir/tslint/issues/1257"]
+                          "https://github.com/palantir/tslint/issues/1257"],
+    "newline-before-return": [false, "Not for this project."]
   }
 }

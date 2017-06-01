@@ -113,8 +113,8 @@ describe("ConcordanceTransformService", () => {
        expect(service.perform(bad))
        .to.eventually.be.rejectedWith(
          ProcessingError,
-         "<p>tag not allowed here: {\"ns\":\"\",\"name\":\"div\"}<\/p>\n" +
-           "<p>tag required: {\"ns\":\"\",\"name\":\"concordance\"}</p>"));
+         `<p>tag not allowed here: {\"ns\":\"\",\"name\":\"div\"}<\/p>
+<p>tag required: {\"ns\":\"\",\"name\":\"concordance\"}</p>`));
   });
 
   describe("#gatherTitles", () => {
@@ -167,7 +167,7 @@ describe("ConcordanceTransformService", () => {
         const fieldName = fieldNames[ix];
         const corrupt = parts.slice();
         corrupt[ix] = "bad";
-        ref.textContent = "ignored," + corrupt.join(",");
+        ref.textContent = `ignored,${corrupt.join(",")}`;
 
         const titles: Record<string, Title> = Object.create(null);
         const titleToLines: Record<string, Element[]> = Object.create(null);

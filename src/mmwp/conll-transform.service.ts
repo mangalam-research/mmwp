@@ -35,11 +35,13 @@ export class Word {
   link(map: Record<string, Word>): void {
     const prev = this.el.previousElementSibling;
     if (prev !== null) {
+      // tslint:disable-next-line:no-non-null-assertion
       this.prev = map[prev.getAttribute("id")!];
     }
 
     const next = this.el.nextElementSibling;
     if (next !== null) {
+      // tslint:disable-next-line:no-non-null-assertion
       this.next = map[next.getAttribute("id")!];
     }
   }
@@ -60,6 +62,7 @@ export class Word {
   get nextRaw(): string {
     const text = this.text;
     if (text[text.length - 1] === "-") {
+      // tslint:disable-next-line:no-non-null-assertion
       return text.slice(0, text.length - 1) + this.next!.nextRaw;
     }
 
@@ -69,6 +72,7 @@ export class Word {
   get prevRaw(): string {
     const text = this.text;
     if (text[0] === "-") {
+      // tslint:disable-next-line:no-non-null-assertion
       return this.prev!.prevRaw + text.slice(1);
     }
 
@@ -87,7 +91,9 @@ export class Word {
         return this.nextRaw;
       }
       else {
+        // tslint:disable-next-line:no-non-null-assertion
         return this.prev!.prevRaw + text.slice(1, text.length - 1) +
+          // tslint:disable-next-line:no-non-null-assertion
           this.next!.nextRaw;
       }
     }

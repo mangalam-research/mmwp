@@ -8,7 +8,7 @@ import { AbortTransformationException } from "wed/exceptions";
 import { TransformationData } from "wed/transformation";
 
 // tslint:disable:no-any
-type Editor = any;
+export type Editor = any;
 
 const NUMBER_SENTENCE_MODAL_KEY = "btw_mode.btw_tr.number_sentence_modal";
 function getNumberSentenceModal(editor: Editor): any {

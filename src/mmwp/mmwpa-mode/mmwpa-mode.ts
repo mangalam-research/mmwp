@@ -10,7 +10,6 @@ import { MMWPAValidator } from "./mmwpa-validator";
 // which is not a typescript project, so...
 
 // tslint:disable:no-any
-
 type Editor = any;
 
 class MMWPAMode extends generic.Mode {
@@ -71,7 +70,7 @@ class MMWPAMode extends generic.Mode {
     const el = attribute.ownerElement;
     if ((el.tagName === "word") &&
         ["conc.head", "dep.head"].indexOf(attribute.name) !== -1) {
-      const s = el.parentNode! as Element;
+      const s = el.parentNode as Element;
       const ids = [];
       let child = s.firstElementChild;
       while (child !== null) {
@@ -97,4 +96,4 @@ class MMWPAMode extends generic.Mode {
 }
 
 // tslint:disable-next-line:variable-name
-export const Mode = MMWPAMode;
+export const Mode: typeof generic.Mode = MMWPAMode;

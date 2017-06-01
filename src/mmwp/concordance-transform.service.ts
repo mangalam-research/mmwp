@@ -51,7 +51,7 @@ class Title {
               readonly period: string) {}
 
   static fromCSV(text: string): Title {
-    const parts = text!.split(",");
+    const parts = text.split(",");
     if (parts.length !== 7) {
       throw new ProcessingError("Invalid Ref",
                                 `ref does not contain 7 parts: ${text}`);
@@ -152,8 +152,10 @@ export class ConcordanceTransformService extends XMLTransformService {
       return safeValidate(this.concordanceGrammar, doc)
         .then(() => {
           this.gatherTitles(doc, titles, titleToLines);
+          // tslint:disable-next-line:no-non-null-assertion
           const query = doc.querySelector("concordance>heading>query")!
             .textContent!;
+          // tslint:disable-next-line:no-non-null-assertion
           const path = doc.querySelector("concordance>heading>corpus")!
             .textContent!;
           const pathParts = path.split("/");
@@ -233,6 +235,7 @@ export class ConcordanceTransformService extends XMLTransformService {
         throw new ProcessingError("Invalid Line",
                                   `line without a ref: ${line.outerHTML}`);
       }
+      // tslint:disable-next-line:no-non-null-assertion
       const refText = ref.textContent!;
       const newTitle = Title.fromCSV(refText);
       const title = newTitle.title;
@@ -259,7 +262,10 @@ export class ConcordanceTransformService extends XMLTransformService {
     const doc = this.parser.parseFromString(
       "<doc xmlns='http://mangalamresearch.org/ns/mmwp/doc'/>",
       "text/xml");
-    const docEl = doc.firstElementChild!;
+    const docEl = doc.firstElementChild;
+    if (docEl === null) {
+      throw new Error("no child in the document");
+    }
     docEl.setAttribute("version", "1");
     docEl.setAttribute("title", title);
     docEl.setAttribute("genre", titleInfo.genre);
@@ -295,6 +301,7 @@ export class ConcordanceTransformService extends XMLTransformService {
     cit.setAttribute("id", String(citId));
     const pageNumber = line.querySelector("page\\.number");
     if (pageNumber !== null) {
+      // tslint:disable-next-line:no-non-null-assertion
       cit.setAttribute("ref", pageNumber.textContent!);
     }
     let child = line.firstChild;
@@ -339,10 +346,11 @@ export class ConcordanceTransformService extends XMLTransformService {
   }
 
   private checkCit(cit: Element): CheckError[] {
+    // tslint:disable-next-line:no-non-null-assertion
     const text = cit.textContent!;
     const ret: CheckError[] = [];
     if (/'\s/.test(text)) {
-      ret.push(new CheckError("errant avagraha in: " + cit.innerHTML));
+      ret.push(new CheckError(`errant avagraha in: ${cit.innerHTML}`));
     }
 
     return ret;
@@ -357,12 +365,14 @@ export class ConcordanceTransformService extends XMLTransformService {
       if (tagName === "notvariant") {
         const word = doc.createElement("word");
         word.textContent = elChild.textContent;
+        // tslint:disable-next-line:no-non-null-assertion
         word.setAttribute("lem", elChild.textContent!);
         cit.insertBefore(word, elChild);
       }
       else if (tagName === "normalised") {
         const word = doc.createElement("word");
         word.textContent = elChild.getAttribute("orig");
+        // tslint:disable-next-line:no-non-null-assertion
         word.setAttribute("lem", elChild.textContent!);
         cit.insertBefore(word, elChild);
       }
@@ -394,6 +404,7 @@ export class ConcordanceTransformService extends XMLTransformService {
       const next = child.nextSibling;
       switch (child.nodeType) {
       case Node.TEXT_NODE:
+        // tslint:disable-next-line:no-non-null-assertion
         child.textContent = child.textContent!.replace(/\//g, "|");
         child.textContent = child.textContent.replace(/\*\*/g, "");
         child.textContent = child.textContent.replace(/\s*-[-\s]*/g, "-");
@@ -421,11 +432,13 @@ export class ConcordanceTransformService extends XMLTransformService {
       const next = child.nextSibling;
       if (child.nodeType === Node.TEXT_NODE) {
         // Node containing only spaces, skip.
+        // tslint:disable-next-line:no-non-null-assertion
         if (/^\s+$/.test(child.textContent!)) {
           child = next;
           continue;
         }
 
+        // tslint:disable-next-line:no-non-null-assertion
         const parts = child.textContent!.split(/( )/);
         for (const part of parts) {
           if (part === "") {
@@ -490,6 +503,7 @@ export class ConcordanceTransformService extends XMLTransformService {
         throw new Error(`unexpected element: ${tagName}`);
       }
 
+      // tslint:disable-next-line:no-non-null-assertion
       const text = elChild.textContent!;
       if (text[text.length - 1] === "-") {
         if (next === null) {
@@ -498,11 +512,13 @@ export class ConcordanceTransformService extends XMLTransformService {
 ${line.innerHTML}`);
         }
 
+        // tslint:disable-next-line:no-non-null-assertion
         if (next.textContent![0] !== "-") {
           next.textContent = `-${next.textContent}`;
         }
       }
       else if (next !== null) {
+        // tslint:disable-next-line:no-non-null-assertion
         if (next.textContent![0] === "-") {
           elChild.textContent = `${elChild.textContent}-`;
         }

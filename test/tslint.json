@@ -1,0 +1,11 @@
+{
+  "extends": "../src/tslint.json",
+  "rules": {
+    "no-import-side-effect": [true,
+                              { "ignore-pattern": "^chai$" }],
+    "no-unused-expression": [false, "Chai's expect raises a lot of false ",
+                             "positives."],
+    "no-non-null-assertion": [false, "A wrongly used assertion will cause a ",
+                              "crash and the test to fail."]
+  }
+}

@@ -61,7 +61,7 @@ class DepNode {
   }
 
   get offset(): number {
-    return indexOf(this.element.parentNode!.childNodes, this.element);
+    return indexOf(this.parent.childNodes, this.element);
   }
 
   makeError(message: string): ErrorData {
