@@ -11,7 +11,8 @@ window.systemJSConfig = {
   baseURL: "lib/",
   pluginFirst: true,
   paths: {
-    "npm:": "../../../node_modules/",
+    "npm:": "/node_modules/",
+    "wed-external:": "npm:wed/standalone/lib/external/",
   },
   map: {
     "@angular/core": "npm:@angular/core",
@@ -36,7 +37,9 @@ window.systemJSConfig = {
     slug: "npm:slug",
     bluejax: "npm:bluejax",
     "bluejax.try": "npm:bluejax.try",
-    rangy: "npm:rangy",
+    rangy: "wed-external:rangy/rangy-core",
+    dashboard: "npm:wed-demo/dev/lib/dashboard",
+    wed: "npm:wed/standalone/lib/wed",
   },
   meta: {
     "mmwp/internal-schemas/*": {
