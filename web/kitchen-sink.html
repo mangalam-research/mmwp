@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/xhtml; charset=utf-8"/>
+    <link href="/node_modules/font-awesome/css/font-awesome.min.css"
+          type="text/css" media="screen" rel="stylesheet"/>
+    <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css"
+          type="text/css" media="screen" rel="stylesheet"/>
+    <link href="/node_modules/wed/standalone/lib/wed/wed.css" type="text/css"
+          media="screen"
+          rel="stylesheet" />
+    <script type="text/javascript" src="/node_modules/wed/standalone/lib/external/classList.js"></script>
+    <script type="text/javascript" src="/node_modules/wed/standalone/lib/wed/polyfills/contains.js"></script>
+    <script type="text/javascript" src="/node_modules/wed/standalone/lib/wed/polyfills/matches.js"></script>
+    <script type="text/javascript" src="/node_modules/wed/standalone/lib/wed/polyfills/innerHTML_for_XML.js"></script>
+    <script type="text/javascript" src="/node_modules/wed/standalone/lib/wed/polyfills/closest.js"></script>
+    <script type="text/javascript" src="/node_modules/wed/standalone/lib/wed/polyfills/firstElementChild_etc.js"></script>
+    <script type="text/javascript" src="/node_modules/wed/standalone/lib/wed/polyfills/normalize.js"></script>
+    <script type="text/javascript" src="/node_modules/wed/standalone/lib/wed/polyfills/stringRepeat.js"></script>
+    <script type="text/javascript" src="/node_modules/wed/standalone/lib/requirejs/require.js"></script>
+    <script type="text/javascript" src="/node_modules/wed/standalone/requirejs-config.js"></script>
+    <script>
+      require.config({
+        baseUrl: "/node_modules/wed/standalone/lib",
+        paths: {
+          "dashboard": "/node_modules/wed-demo/dev/lib/dashboard",
+          "blueimp-md5": "/node_modules/blueimp-md5/js/md5.min",
+          "wed-store": "/node_modules/wed-demo/dev/lib/wed-store",
+          "kitchen-sink": "/node_modules/wed-demo/dev/lib/kitchen-sink",
+          "mmwp": "/build/dev/lib/mmwp",
+        },
+      });
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <a id="fm-link" class="btn btn-default" href="dashboard/index.html" style="display: none;">Go to File Management</a>
+      <div class="wed-widget" id="widget"></div>
+    </div>
+    <script>
+      require(["kitchen-sink"]);
+    </script>
+  </body>
+</html>
