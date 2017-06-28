@@ -1,8 +1,10 @@
 import { Action } from "wed/action";
 import { isText } from "wed/domtypeguards";
 import * as generic from "wed/modes/generic/generic";
+import * as objectCheck from "wed/object-check";
 import { Transformation, TransformationData } from "wed/transformation";
 import { ModeValidator } from "wed/validator";
+import { MMWPAMetadata } from "./mmwpa-metadata";
 import * as mmwpaTr from "./mmwpa-tr";
 import { MMWPAValidator } from "./mmwpa-validator";
 
@@ -19,6 +21,10 @@ class MMWPAMode extends generic.Mode {
   private readonly numberSentencesTr: Transformation<TransformationData>;
   private readonly numberWordsTr: Transformation<TransformationData>;
   private readonly unnumberWordsTr: Transformation<TransformationData>;
+
+  readonly optionTemplate: objectCheck.Template = {
+    autoinsert: false,
+  };
 
   constructor(editor: Editor, options: any) {
     super(editor, options);
@@ -40,6 +46,10 @@ class MMWPAMode extends generic.Mode {
       editor, "transform", "Number the words", mmwpaTr.numberWords);
     this.unnumberWordsTr = new Transformation(
       editor, "transform", "Unnumber the words", mmwpaTr.unnumberWords);
+  }
+
+  makeMetadata(): Promise<MMWPAMetadata> {
+    return Promise.resolve(new MMWPAMetadata());
   }
 
   getContextualActions(transformationType: string | string[], tag: string,
