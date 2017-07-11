@@ -6,6 +6,7 @@
 import { isElement, isText } from "wed/domtypeguards";
 import { AbortTransformationException } from "wed/exceptions";
 import { TransformationData } from "wed/transformation";
+import { textToHTML } from "wed/domutil";
 
 // tslint:disable:no-any
 export type Editor = any;
@@ -39,7 +40,8 @@ export function numberSentences(editor: Editor,
     }
     else if (isElement(child)) {
       if (child.tagName !== "s") {
-        error = `there is an element outside of a sentence: ${child.outerHTML}`;
+        error = `there is an element outside of a sentence: \
+${textToHTML(child.outerHTML)}`;
         break;
       }
     }
@@ -52,6 +54,7 @@ export function numberSentences(editor: Editor,
   if (error !== null) {
     const modal = getNumberSentenceModal(editor);
     modal.setBody(`<p>The sentences cannot be numbered because ${error}.</p>`);
+    modal.modal();
     throw new AbortTransformationException("cit content is invalid");
   }
 
@@ -79,7 +82,7 @@ export function numberWords(editor: Editor, data: TransformationData): void {
     }
     else if (isElement(child)) {
       if (child.tagName !== "word") {
-        error = `there is a foreign element: ${child.outerHTML}`;
+        error = `there is a foreign element: ${textToHTML(child.outerHTML)}`;
         break;
       }
       else if (child.getAttribute("id") !== null) {
@@ -95,6 +98,7 @@ export function numberWords(editor: Editor, data: TransformationData): void {
   if (error !== null) {
     const modal = getNumberSentenceModal(editor);
     modal.setBody(`<p>The words cannot be numbered because ${error}.</p>`);
+    modal.modal();
     throw new AbortTransformationException("sentence content is invalid");
   }
 
@@ -104,6 +108,21 @@ export function numberWords(editor: Editor, data: TransformationData): void {
     if (isElement(child)) {
       editor.data_updater.setAttribute(child, "id", id++);
     }
+    child = child.nextSibling;
+  }
+}
+
+export function numberSentencesAndWords(editor: Editor,
+                                        data: TransformationData): void {
+  numberSentences(editor, data);
+  const node = data.node as Element;
+  let child = node.firstChild;
+  while (child !== null) {
+    if (!isElement(child) || child.tagName !== "s") {
+      throw new Error(
+        "unexpected state; numberSentences should not allow this");
+    }
+    numberWords(editor, { name: "s", node: child });
     child = child.nextSibling;
   }
 }

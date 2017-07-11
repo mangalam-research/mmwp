@@ -20,6 +20,8 @@ class MMWPAMode extends generic.Mode {
 
   private readonly numberSentencesTr: Transformation<TransformationData>;
   private readonly numberWordsTr: Transformation<TransformationData>;
+  private readonly numberSentencesAndWordsTr:
+  Transformation<TransformationData>;
   private readonly unnumberWordsTr: Transformation<TransformationData>;
 
   readonly optionTemplate: objectCheck.Template = {
@@ -55,6 +57,9 @@ class MMWPAMode extends generic.Mode {
       editor, "transform", "Number the sentences", mmwpaTr.numberSentences);
     this.numberWordsTr = new Transformation(
       editor, "transform", "Number the words", mmwpaTr.numberWords);
+    this.numberSentencesAndWordsTr = new Transformation(
+      editor, "transform", "Number sentences and words",
+      mmwpaTr.numberSentencesAndWords);
     this.unnumberWordsTr = new Transformation(
       editor, "transform", "Unnumber the words", mmwpaTr.unnumberWords);
   }
@@ -76,7 +81,7 @@ class MMWPAMode extends generic.Mode {
                                            offset);
     if (transformationType.indexOf("wrap-content") !== -1 &&
         el.tagName === "cit") {
-      ret.push(this.numberSentencesTr);
+      ret.push(this.numberSentencesAndWordsTr, this.numberSentencesTr);
     }
 
     if (transformationType.indexOf("wrap-content") !== -1 &&
