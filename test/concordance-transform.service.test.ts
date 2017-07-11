@@ -29,12 +29,13 @@ interface RevealedService {
                titleToLines: Record<string, Element[]>): void;
   transformTitle(titleInfo: Title, lines: Element[]): Document | CheckError[];
   checkCit(cit: Element): CheckError[];
-  makeCitFromLine(doc: Document, line: Element,
+  makeCitFromLine(pageVerse: string | undefined, doc: Document, line: Element,
                   citId: number): Element;
   convertMarkedToWord(doc: Document, cit: Element): void;
   cleanText(node: Node): void;
   breakIntoWords(doc: Document, cit: Element): void;
   cleanDashes(cit: Element, line: Element): void;
+  extractRef(text: string): string | null;
 }
 
 function revealService(s: ConcordanceTransformService): RevealedService {
@@ -132,7 +133,7 @@ describe("ConcordanceTransformService", () => {
       expect(titleToLines).to.have.keys(["Abhidharmakośabhāṣya", "Moo"]);
       expect(titleToLines).to.have.property("Abhidharmakośabhāṣya")
         .with.lengthOf(2);
-      expect(titleToLines).to.have.property("Moo").with.lengthOf(2);
+      expect(titleToLines).to.have.property("Moo").with.lengthOf(3);
 
       const akb = titles["Abhidharmakośabhāṣya"];
       expect(akb.title).to.equal("Abhidharmakośabhāṣya");
@@ -226,7 +227,7 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
                                          "pasteurized");
       expect(root).to.have.deep.property("attributes.period.value", "old");
 
-      expect(root).to.have.property("childNodes").with.lengthOf(2);
+      expect(root).to.have.property("childNodes").with.lengthOf(3);
       const first = root.firstElementChild!;
       expect(first).to.have.deep.property("attributes.id.value", "1");
 
@@ -259,8 +260,11 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
 <word lem="tu">tu</word> `;
       expect(first).to.have.deep.property("innerHTML").equal(firstExpected);
 
-      const second = first.nextElementSibling;
+      const second = first.nextElementSibling!;
       expect(second).to.have.deep.property("attributes.id.value", "2");
+
+      const third = second.nextElementSibling;
+      expect(third).to.have.deep.property("attributes.ref.value", "12.34");
     });
 
     it("errors on errant avagraha", () => {
@@ -278,40 +282,83 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
     });
   });
 
+  describe("#extractRef", () => {
+    for (const str of ["moo",
+                       "4-5 something",
+                       "4,5 something",
+                       "Verse 5 something",
+                       "Verse 5. something",
+                       "Verse 5.b something"]) {
+      it(`does not match ${str}`, () => {
+        expect(rservice.extractRef(str)).to.be.null;
+      });
+    }
+
+    for (const [result, str] of [
+      ["1.2", "Verse_1.2 something something"],
+      ["3.390", "something 3.390 something else"],
+      ["4.5", "a4.5bcd something"],
+      ["4.5", "4.5.6 something"],
+      ["0.0", "blah 0.0 blah"],
+      ["5.67", "something 5.6 7"],
+    ]) {
+      it(`matches ${str}`, () => {
+        expect(rservice.extractRef(str)!).to.equal(result);
+      });
+    }
+  });
+
   describe("#makeCitFromLine", () => {
     let doc: Document;
     beforeEach(() => provider.getDoc("multiple-titles-1.xml").then((newDoc) => {
       doc = newDoc;
     }));
 
-    it("does not create @ref when page.number is absent", () => {
+    it("does not create when we cannot find a number", () => {
       const line = doc.getElementsByTagName("line")[0];
       expect(line.querySelector("page.number")).to.be.null;
-      const cit = rservice.makeCitFromLine(doc, line, 1);
+      const cit = rservice.makeCitFromLine(undefined, doc, line, 1);
       expect(cit.getAttribute("ref")).to.be.null;
     });
 
-    it("creates @ref when page.number is present", () => {
+    it("creates @ref when the <ref> element had a pageVerse number", () => {
       const line = doc.getElementsByTagName("line")[0];
       expect(line.querySelector("page\\.number")).to.be.null;
-      const pn = doc.createElement("page.number");
-      pn.textContent = "999";
-      line.appendChild(pn);
-      expect(line.querySelector("page\\.number")).to.not.be.null;
-      const cit = rservice.makeCitFromLine(doc, line, 1);
-      expect(cit).to.have.deep.property("attributes.ref.value", "999");
+      const cit = rservice.makeCitFromLine("x", doc, line, 1);
+      expect(cit).to.have.deep.property("attributes.ref.value", "x");
     });
+
+    it("creates @ref when there is no pageVerse number but page.number " +
+       "is present", () => {
+         const line = doc.getElementsByTagName("line")[0];
+         expect(line.querySelector("page\\.number")).to.be.null;
+         const pn = doc.createElement("page.number");
+         pn.textContent = "999";
+         line.appendChild(pn);
+         expect(line.querySelector("page\\.number")).to.not.be.null;
+         const cit = rservice.makeCitFromLine(undefined, doc, line, 1);
+         expect(cit).to.have.deep.property("attributes.ref.value", "999");
+       });
+
+    it("creates @ref when there is no pageVerse number or page.number " +
+       "but there is a number pattern in the text", () => {
+         const line = doc.getElementsByTagName("line")[4];
+         expect(line.querySelector("page\\.number")).to.be.null;
+
+         const cit = rservice.makeCitFromLine(undefined, doc, line, 1);
+         expect(cit).to.have.deep.property("attributes.ref.value", "12.34");
+       });
 
     it("sets @id to the value passed", () => {
       const line = doc.getElementsByTagName("line")[0];
-      const cit = rservice.makeCitFromLine(doc, line, 222);
+      const cit = rservice.makeCitFromLine(undefined, doc, line, 222);
       expect(cit).to.have.deep.property("attributes.id.value", "222");
     });
 
     it("preserves text", () => {
       const line = doc.createElement("line");
       line.textContent = "something";
-      const cit = rservice.makeCitFromLine(doc, line, 222);
+      const cit = rservice.makeCitFromLine(undefined, doc, line, 222);
       expect(cit).to.have.property("textContent", "something");
     });
 
@@ -320,7 +367,7 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
       line.innerHTML = `a<ref>something</ref>\
 <page.number>something</page.number>b<ref>something else</ref>\
 <page.number>foo</page.number>c`;
-      const cit = rservice.makeCitFromLine(doc, line, 222);
+      const cit = rservice.makeCitFromLine(undefined, doc, line, 222);
       expect(cit).to.have.property("textContent", "abc");
       expect(cit).to.have.property("firstElementChild").be.null;
     });
@@ -330,14 +377,14 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
       line.innerHTML = `a<notvariant>something</notvariant>\
 <normalised>something</normalised>b<notvariant>something else</notvariant>\
 <normalised>foo</normalised>c`;
-      const cit = rservice.makeCitFromLine(doc, line, 222);
+      const cit = rservice.makeCitFromLine(undefined, doc, line, 222);
       expect(cit).to.have.property("innerHTML", line.innerHTML);
     });
 
     it("unwraps other elements", () => {
       const line = doc.createElement("line");
       line.innerHTML = `a<foo>b</foo>c<bar>d</bar>e`;
-      const cit = rservice.makeCitFromLine(doc, line, 222);
+      const cit = rservice.makeCitFromLine(undefined, doc, line, 222);
       expect(cit).to.have.property("innerHTML", "abcde");
     });
   });
@@ -354,7 +401,7 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
 <normalised orig="a">something</normalised>b\
 <notvariant>something else</notvariant>\
 <normalised orig="b">foo</normalised>c`;
-      const cit = rservice.makeCitFromLine(doc, line, 222);
+      const cit = rservice.makeCitFromLine(undefined, doc, line, 222);
       rservice.convertMarkedToWord(doc, cit);
       const expected = `a<word lem="something">something</word>\
 <word lem="something">a</word>b\

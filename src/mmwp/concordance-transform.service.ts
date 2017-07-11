@@ -43,7 +43,8 @@ function assertEqual(name: string, one: any, other: any): void {
 }
 
 class Title {
-  constructor(readonly title: string,
+  constructor(readonly pageVerse: string | undefined,
+              readonly title: string,
               readonly genre: string,
               readonly author: string,
               readonly tradition: string,
@@ -61,15 +62,21 @@ class Title {
       parts[ix] = parts[ix].trim();
     }
 
+    let pageVerse;
     if (parts.length === 7) {
-      parts.shift();
+      pageVerse = parts.shift();
     }
 
     // Apparently we cannot use new Title(...parts);
     const [title, genre, author, tradition, school, period] = parts;
-    return new Title(title, genre, author, tradition, school, period);
+    return new Title(pageVerse, title, genre, author, tradition, school,
+                     period);
   }
 
+  /**
+   * Assert that two titles are equal. They are equal if all their fields are
+   * equal, except for ``pageVerse``.
+   */
   assertEqual(other: Title): void {
     try {
       assertEqual("titles", this.title, other.title);
@@ -280,7 +287,7 @@ export class ConcordanceTransformService extends XMLTransformService {
     docEl.setAttribute("period", titleInfo.period);
     const errors: CheckError[] = [];
     for (const line of lines) {
-      const cit = this.makeCitFromLine(doc, line, citId++);
+      const cit = this.makeCitFromLine(titleInfo.pageVerse, doc, line, citId++);
       // A few checks that validation cannot catch.
       errors.push(...this.checkCit(cit));
       if (errors.length === 0) {
@@ -300,15 +307,48 @@ export class ConcordanceTransformService extends XMLTransformService {
     return doc;
   }
 
-  private makeCitFromLine(doc: Document, line: Element,
-                          citId: number): Element {
+  private extractRef(text: string): string | null {
+    const match = text.match(/\d(?:\d|\s)*\.\s*\d(?:\d|\s)*/);
+    return match !== null ? match[0].replace(/\s+/g, "") : null;
+  }
+
+  private makeCitFromLine(pageVerse: string | undefined, doc: Document,
+                          line: Element, citId: number): Element {
     const cit = doc.createElement("cit");
     cit.setAttribute("id", String(citId));
-    const pageNumber = line.querySelector("page\\.number");
-    if (pageNumber !== null) {
-      // tslint:disable-next-line:no-non-null-assertion
-      cit.setAttribute("ref", pageNumber.textContent!);
+    let refValue: string | undefined = pageVerse;
+
+    // If we did not get a pageVerse value from the <ref> element, then we
+    // look for a <page.number> element and take that.
+    if (refValue === undefined) {
+      const pageNumber = line.querySelector("page\\.number");
+      if (pageNumber !== null) {
+        // tslint:disable-next-line:no-non-null-assertion
+        refValue = pageNumber.textContent!;
+      }
     }
+
+    // If we still have not found a value, we search for a number pattern.
+    if (refValue === undefined) {
+      // We clone the line and remove <ref>.
+      const clone = line.cloneNode(true) as Element;
+      // tslint:disable-next-line:no-non-null-assertion
+      const ref = clone.querySelector("ref");
+      if (ref !== null) {
+        clone.removeChild(ref);
+      }
+      // tslint:disable-next-line:no-non-null-assertion
+      const text = clone.textContent!;
+      const match = this.extractRef(text);
+      if (match !== null) {
+        refValue = match;
+      }
+    }
+
+    if (refValue !== undefined) {
+      cit.setAttribute("ref", refValue);
+    }
+
     let child = line.firstChild;
 
     // Convert <line> to <cit>. Remove <ref> and <page.number> and drop all
