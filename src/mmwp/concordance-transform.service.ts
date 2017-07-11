@@ -52,16 +52,21 @@ class Title {
 
   static fromCSV(text: string): Title {
     const parts = text.split(",");
-    if (parts.length !== 7) {
+    if (parts.length !== 7 && parts.length !== 6) {
       throw new ProcessingError("Invalid Ref",
-                                `ref does not contain 7 parts: ${text}`);
+                                `ref does not contain 6 or 7 parts: ${text}`);
     }
 
     for (let ix = 0; ix < parts.length; ++ix) {
       parts[ix] = parts[ix].trim();
     }
 
-    const [, title, genre, author, tradition, school, period] = parts;
+    if (parts.length === 7) {
+      parts.shift();
+    }
+
+    // Apparently we cannot use new Title(...parts);
+    const [title, genre, author, tradition, school, period] = parts;
     return new Title(title, genre, author, tradition, school, period);
   }
 

@@ -197,7 +197,7 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
       const titleToLines: Record<string, Element[]> = Object.create(null);
       expect(() => {
         rservice.gatherTitles(doc, titles, titleToLines);
-      }).to.throw(ProcessingError, `ref does not contain 7 parts: `);
+      }).to.throw(ProcessingError, `ref does not contain 6 or 7 parts: `);
     });
   });
 
