@@ -38,7 +38,18 @@ class MMWPAMode extends generic.Mode {
     };
 
     this.wedOptions.label_levels.max = 2;
-    this.wedOptions.attributes = "edit";
+    this.wedOptions.attributes = {
+      handling: "edit",
+      autohide: {
+        method: "selector",
+        elements: [{
+          selector: "word",
+          attributes: ["*", {
+            except: ["id"],
+          }],
+        }],
+      },
+    };
 
     this.numberSentencesTr = new Transformation(
       editor, "transform", "Number the sentences", mmwpaTr.numberSentences);
