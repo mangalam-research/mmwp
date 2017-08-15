@@ -4,24 +4,23 @@ import { ErrorData, WorkingState as WS,
 
 import { ModeValidator, Validator } from "wed/validator";
 
-export function validate(grammar: Grammar,
-                         doc: Document,
-                         modeValidator?: ModeValidator): Promise<ErrorData[]> {
-  return Promise.resolve().then(() => {
-    const validator = new Validator(grammar, doc, modeValidator);
-    const errors: ErrorData[] = [];
-    return new Promise((resolve) => {
-      validator.events.addEventListener(
-        "state-update",
-        (state: WorkingStateData) => {
-          if (!(state.state === WS.VALID || state.state === WS.INVALID)) {
-            return;
-          }
+export async function validate(grammar: Grammar,
+                               doc: Document,
+                               modeValidator?: ModeValidator):
+Promise<ErrorData[]> {
+  const validator = new Validator(grammar, doc, modeValidator);
+  const errors: ErrorData[] = [];
+  return new Promise<ErrorData[]>((resolve) => {
+    validator.events.addEventListener(
+      "state-update",
+      (state: WorkingStateData) => {
+        if (!(state.state === WS.VALID || state.state === WS.INVALID)) {
+          return;
+        }
 
-          resolve(errors);
-        });
-      validator.events.addEventListener("error", errors.push.bind(errors));
-      validator.start();
-    });
+        resolve(errors);
+      });
+    validator.events.addEventListener("error", errors.push.bind(errors));
+    validator.start();
   });
 }

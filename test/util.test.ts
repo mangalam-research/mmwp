@@ -8,10 +8,10 @@ import { ajax } from "bluejax";
 import { constructTree, Grammar, ValidationError } from "salve";
 import { ErrorData } from "salve-dom";
 
-import { ModeValidator } from "wed/validator";
 // tslint:disable-next-line:no-require-imports
 import concordance = require("mmwp/internal-schemas/concordance");
 import { validate } from "mmwp/util";
+import { ModeValidator } from "wed/validator";
 
 // tslint:disable-next-line:mocha-no-side-effect-code
 const modeError = [{

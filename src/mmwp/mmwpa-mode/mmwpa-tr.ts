@@ -4,9 +4,9 @@
  */
 
 import { isElement, isText } from "wed/domtypeguards";
+import { textToHTML } from "wed/domutil";
 import { AbortTransformationException } from "wed/exceptions";
 import { TransformationData } from "wed/transformation";
-import { textToHTML } from "wed/domutil";
 
 // tslint:disable:no-any
 export type Editor = any;
