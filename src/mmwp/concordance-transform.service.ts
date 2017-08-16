@@ -107,14 +107,14 @@ class CheckError {
   }
 }
 
-function safeValidate(grammar: Grammar, document: Document): Promise<void> {
-  return validate(grammar, document).then((errors) => {
-    if (errors.length !== 0) {
-      throw new ProcessingError(
-        "Validation Error",
-        errors.map((x) => `<p>${x.error.toString()}</p>`).join("\n"));
-    }
-  });
+async function safeValidate(grammar: Grammar,
+                            document: Document): Promise<void> {
+  const errors = await validate(grammar, document);
+  if (errors.length !== 0) {
+    throw new ProcessingError(
+      "Validation Error",
+      errors.map((x) => `<p>${x.error.toString()}</p>`).join("\n"));
+  }
 }
 
 @Injectable()
@@ -134,8 +134,7 @@ export class ConcordanceTransformService extends XMLTransformService {
   private get concordanceGrammar(): Grammar {
     if (ConcordanceTransformService._concordanceGrammar === undefined) {
       const clone = JSON.parse(JSON.stringify(concordance));
-      ConcordanceTransformService._concordanceGrammar =
-        constructTree(clone);
+      ConcordanceTransformService._concordanceGrammar = constructTree(clone);
     }
 
     return ConcordanceTransformService._concordanceGrammar;
@@ -144,16 +143,16 @@ export class ConcordanceTransformService extends XMLTransformService {
   private get unannotatedGrammar(): Grammar {
     if (ConcordanceTransformService._unannotatedGrammar === undefined) {
       const clone = JSON.parse(JSON.stringify(docUnannotated));
-      ConcordanceTransformService._unannotatedGrammar =
-        constructTree(clone);
+      ConcordanceTransformService._unannotatedGrammar = constructTree(clone);
     }
 
     return ConcordanceTransformService._unannotatedGrammar;
   }
 
-  perform(input: XMLFile): Promise<XMLFile[]> {
+  async perform(input: XMLFile): Promise<XMLFile[]> {
     this.processing.start(1);
-    return input.getData().then((data) => {
+    try {
+      const data = await input.getData();
       const doc = this.parser.parseFromString(data, "text/xml");
       if (doc.documentElement.tagName === "parseerror") {
         throw new Error(`could not parse ${input.name}`);
@@ -161,73 +160,65 @@ export class ConcordanceTransformService extends XMLTransformService {
 
       const titles: Record<string, Title> = Object.create(null);
       const titleToLines: Record<string, Element[]> = Object.create(null);
-      return safeValidate(this.concordanceGrammar, doc)
-        .then(() => {
-          this.gatherTitles(doc, titles, titleToLines);
-          // tslint:disable-next-line:no-non-null-assertion
-          const query = doc.querySelector("concordance>heading>query")!
-            .textContent!;
-          // tslint:disable-next-line:no-non-null-assertion
-          const path = doc.querySelector("concordance>heading>corpus")!
-            .textContent!;
-          const pathParts = path.split("/");
-          const base = pathParts[pathParts.length - 1];
-          const transformed: { outputName: string, doc: Document }[] = [];
-          const errors: CheckError[] = [];
-          for (const title of Object.keys(titles)) {
-            const titleInfo = titles[title];
-            const lines = titleToLines[title];
-            const outputName =
-              `${title}_${slug(query, "_")}_${slug(base, "_")}.xml`;
-            const result = this.transformTitle(titleInfo, lines);
-            if (!(result instanceof Document)) {
-              errors.push(...result);
+      await safeValidate(this.concordanceGrammar, doc);
+
+      this.gatherTitles(doc, titles, titleToLines);
+      // tslint:disable-next-line:no-non-null-assertion
+      const query = doc.querySelector("concordance>heading>query")!
+        .textContent!;
+      // tslint:disable-next-line:no-non-null-assertion
+      const path = doc.querySelector("concordance>heading>corpus")!
+        .textContent!;
+      const pathParts = path.split("/");
+      const base = pathParts[pathParts.length - 1];
+      const transformed: { outputName: string, doc: Document }[] = [];
+      const errors: CheckError[] = [];
+      for (const title of Object.keys(titles)) {
+        const titleInfo = titles[title];
+        const lines = titleToLines[title];
+        const outputName =
+          `${title}_${slug(query, "_")}_${slug(base, "_")}.xml`;
+        const result = this.transformTitle(titleInfo, lines);
+        if (!(result instanceof Document)) {
+          errors.push(...result);
+        }
+        else {
+          transformed.push({ outputName, doc: result });
+        }
+      }
+
+      // If there are any errors we don't want to move forward.
+      if (errors.length !== 0) {
+        throw new ProcessingError(
+          "Invalid data",
+          errors.map((x) => `<p>${x.toString()}</p>`).join("\n"));
+      }
+
+      const promises: Promise<{titleDoc: Document,
+                               outputName: string}>[] = [];
+      for (const { outputName, doc: titleDoc } of transformed) {
+        promises.push(
+          (async () => {
+            const record = await this.xmlFiles.getRecordByName(outputName);
+            if (record !== undefined) {
+              throw new ProcessingError(
+                "File Name Error", `This would overwrite: ${outputName}`);
             }
-            else {
-              transformed.push({ outputName, doc: result });
-            }
-          }
+            await safeValidate(this.unannotatedGrammar, titleDoc);
+            return { titleDoc, outputName };
+          })());
+      }
 
-          // If there are any errors we don't want to move forward.
-          if (errors.length !== 0) {
-            throw new ProcessingError(
-              "Invalid data",
-              errors.map((x) => `<p>${x.toString()}</p>`).join("\n"));
-          }
-
-          const promises: Promise<{titleDoc: Document,
-                                   outputName: string}>[] = [];
-          for (const { outputName, doc: titleDoc } of transformed) {
-            promises.push(
-              this.xmlFiles.getRecordByName(outputName)
-                .then((record) => {
-                  if (record !== undefined) {
-                    throw new ProcessingError(
-                      "File Name Error", `This would overwrite: ${outputName}`);
-                  }
-                })
-                .then(() => safeValidate(this.unannotatedGrammar, titleDoc))
-                .then(() => ({ titleDoc, outputName })));
-          }
-
-          return Promise.all(promises);
-        })
-        .then((results) => {
-          return Promise.all(
-            results.map(({ outputName, titleDoc }) =>
-                        this.xmlFiles.makeRecord(
-                          outputName,
-                          titleDoc.documentElement.outerHTML)
-                        .then((record) => this.xmlFiles.updateRecord(record))));
-
-        });
-    }).then((files) => {
-      this.processing.increment();
-      this.processing.stop();
-      return files;
-    }).catch((err) => {
-      this.processing.increment();
-      this.processing.stop();
+      const results = await Promise.all(promises);
+      return await Promise.all(
+        results.map(async ({ outputName, titleDoc }) => {
+          return this.xmlFiles.updateRecord(
+            await this.xmlFiles.makeRecord(
+              outputName,
+              titleDoc.documentElement.outerHTML));
+        }));
+    }
+    catch (err) {
       if (err instanceof ProcessingError) {
         this.reportFailure(err.title !== undefined ? err.title : "Error",
                            err.message);
@@ -236,7 +227,11 @@ export class ConcordanceTransformService extends XMLTransformService {
 
       this.reportFailure("Internal failure", err.toString());
       throw err;
-    });
+    }
+    finally {
+      this.processing.increment();
+      this.processing.stop();
+    }
   }
 
   private gatherTitles(doc: Document, titles: Record<string, Title>,
