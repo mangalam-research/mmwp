@@ -42,6 +42,14 @@ function assertEqual(name: string, one: any, other: any): void {
   }
 }
 
+class CheckError {
+  constructor(public readonly message: string) {}
+
+  toString(): string {
+    return this.message;
+  }
+}
+
 class Title {
   constructor(readonly pageVerse: string | undefined,
               readonly title: string,
@@ -51,11 +59,11 @@ class Title {
               readonly school: string,
               readonly period: string) {}
 
-  static fromCSV(text: string): Title {
+  static fromCSV(text: string): Title | CheckError {
     const parts = text.split(",");
     if (parts.length !== 7 && parts.length !== 6) {
-      throw new ProcessingError("Invalid Ref",
-                                `ref does not contain 6 or 7 parts: ${text}`);
+      return new CheckError(
+        `invalid ref: ref does not contain 6 or 7 parts: ${text}`);
     }
 
     for (let ix = 0; ix < parts.length; ++ix) {
@@ -96,14 +104,6 @@ values: ${ex.message}`);
 
       throw ex;
     }
-  }
-}
-
-class CheckError {
-  constructor(public readonly message: string) {}
-
-  toString(): string {
-    return this.message;
   }
 }
 
@@ -162,7 +162,8 @@ export class ConcordanceTransformService extends XMLTransformService {
       const titleToLines: Record<string, Element[]> = Object.create(null);
       await safeValidate(this.concordanceGrammar, doc);
 
-      this.gatherTitles(doc, titles, titleToLines);
+      const errors: CheckError[] = [];
+      this.gatherTitles(doc, titles, titleToLines, errors);
       // tslint:disable-next-line:no-non-null-assertion
       const query = doc.querySelector("concordance>heading>query")!
         .textContent!;
@@ -172,7 +173,6 @@ export class ConcordanceTransformService extends XMLTransformService {
       const pathParts = path.split("/");
       const base = pathParts[pathParts.length - 1];
       const transformed: { outputName: string, doc: Document }[] = [];
-      const errors: CheckError[] = [];
       for (const title of Object.keys(titles)) {
         const titleInfo = titles[title];
         const lines = titleToLines[title];
@@ -235,30 +235,38 @@ export class ConcordanceTransformService extends XMLTransformService {
   }
 
   private gatherTitles(doc: Document, titles: Record<string, Title>,
-                       titleToLines: Record<string, Element[]>): void {
+                       titleToLines: Record<string, Element[]>,
+                       errors: CheckError[]): void {
     for (const line of Array.from(doc.getElementsByTagName("line"))) {
       const ref = line.querySelector("ref");
       if (ref === null) {
-        throw new ProcessingError("Invalid Line",
-                                  `line without a ref: ${line.outerHTML}`);
-      }
-      // tslint:disable-next-line:no-non-null-assertion
-      const refText = ref.textContent!;
-      const newTitle = Title.fromCSV(refText);
-      const title = newTitle.title;
-      if (!(title in titles)) {
-        titles[title] = newTitle;
+        errors.push(new CheckError(`invalid line: line without a \
+ref: ${line.outerHTML}`));
       }
       else {
-        titles[title].assertEqual(newTitle);
-      }
+        // tslint:disable-next-line:no-non-null-assertion
+        const refText = ref.textContent!;
+        const newTitle = Title.fromCSV(refText);
+        if (newTitle instanceof CheckError) {
+          errors.push(newTitle);
+        }
+        else {
+          const title = newTitle.title;
+          if (!(title in titles)) {
+            titles[title] = newTitle;
+          }
+          else {
+            titles[title].assertEqual(newTitle);
+          }
 
-      let lines: Element[] = titleToLines[title];
-      if (lines === undefined) {
-        lines = titleToLines[title] = [];
-      }
+          let lines: Element[] = titleToLines[title];
+          if (lines === undefined) {
+            lines = titleToLines[title] = [];
+          }
 
-      lines.push(line);
+          lines.push(line);
+        }
+      }
     }
   }
 

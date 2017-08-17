@@ -11,7 +11,7 @@ import { XMLFile } from "dashboard/xml-file";
 import { XMLFilesService } from "dashboard/xml-files.service";
 import { ConcordanceTransformService,
          ProcessingError } from "mmwp/concordance-transform.service";
-import { DataProvider } from "./util";
+import { DataProvider, expectReject } from "./util";
 
 // We use innerHTML a lot for testing purposes.
 // tslint:disable:no-inner-html
@@ -26,7 +26,8 @@ type CheckError = any;
 // private fields is not allowed by TS.
 interface RevealedService {
   gatherTitles(doc: Document, titles: Record<string, Title>,
-               titleToLines: Record<string, Element[]>): void;
+               titleToLines: Record<string, Element[]>,
+               errors: CheckError[]): void;
   transformTitle(titleInfo: Title, lines: Element[]): Document | CheckError[];
   checkCit(cit: Element): CheckError[];
   makeCitFromLine(pageVerse: string | undefined, doc: Document, line: Element,
@@ -55,6 +56,7 @@ describe("ConcordanceTransformService", () => {
   let service: ConcordanceTransformService;
   let file: XMLFile;
   let bad: XMLFile;
+  let refErrorDocument: XMLFile;
   let rservice: RevealedService;
 
   before(() => {
@@ -80,12 +82,17 @@ describe("ConcordanceTransformService", () => {
         resultNames.map((name) => xmlFilesService.getRecordByName(name)));
     }
 
-    beforeEach(() =>
-      provider.getText("multiple-titles-1.xml")
-      .then((data) => xmlFilesService.makeRecord("foo", data))
-      .then((newFile) => file = newFile)
-      .then(() => xmlFilesService.makeRecord("foo", "<div/>"))
-      .then((newFile) => bad = newFile));
+    beforeEach(async () => {
+      file = await xmlFilesService.makeRecord(
+        "foo",
+        provider.getText("multiple-titles-1.xml"));
+
+      refErrorDocument = await xmlFilesService.makeRecord(
+        "foo",
+        provider.getText("ref-errors.xml"));
+
+      bad = await xmlFilesService.makeRecord("foo", "<div/>");
+    });
 
     // We need to reset after each test because otherwise
     // we get overwrite errors.
@@ -110,12 +117,19 @@ describe("ConcordanceTransformService", () => {
              .to.eventually.be.rejectedWith(ProcessingError,
                                             /^This would overwrite: /)));
 
-    it("errors if the file is incorrect", () =>
+    it("rejects if the file is incorrect", () =>
        expect(service.perform(bad))
        .to.eventually.be.rejectedWith(
          ProcessingError,
          `<p>tag not allowed here: {\"ns\":\"\",\"name\":\"div\"}<\/p>
 <p>tag required: {\"ns\":\"\",\"name\":\"concordance\"}</p>`));
+
+    it("reports ref errors", () =>
+       expectReject(service.perform(refErrorDocument),
+                    ProcessingError,
+                    new RegExp(`^<p>invalid line: line without a ref: <line>
+      <left_context><normalised a_id="lugli" orig="yāvan" auto="false">(.|\n)*
+<p>invalid ref:`)));
   });
 
   describe("#gatherTitles", () => {
@@ -127,8 +141,10 @@ describe("ConcordanceTransformService", () => {
     it("gathers titles", () => {
       const titles: Record<string, Title> = Object.create(null);
       const titleToLines: Record<string, Element[]> = Object.create(null);
+      const errors: CheckError[] = [];
 
-      rservice.gatherTitles(doc, titles, titleToLines);
+      rservice.gatherTitles(doc, titles, titleToLines, errors);
+      expect(errors).to.have.lengthOf(0);
       expect(titles).to.have.keys(["Abhidharmakośabhāṣya", "Moo"]);
       expect(titleToLines).to.have.keys(["Abhidharmakośabhāṣya", "Moo"]);
       expect(titleToLines).to.have.property("Abhidharmakośabhāṣya")
@@ -172,33 +188,38 @@ describe("ConcordanceTransformService", () => {
 
         const titles: Record<string, Title> = Object.create(null);
         const titleToLines: Record<string, Element[]> = Object.create(null);
+        const errors: CheckError[] = [];
         expect(() => {
-          rservice.gatherTitles(doc, titles, titleToLines);
+          rservice.gatherTitles(doc, titles, titleToLines, errors);
         }).to.throw(ProcessingError,
                     `the title Abhidharmakośabhāṣya appears more than once, \
 with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
       }
     });
 
-    it("throws a processing error if a line is missing a ref", () => {
+    it("reports an error if a line is missing a ref", () => {
       const ref = doc.getElementsByTagName("ref")[0];
       const line = ref.parentNode! as HTMLElement;
       line.removeChild(ref);
       const titles: Record<string, Title> = Object.create(null);
       const titleToLines: Record<string, Element[]> = Object.create(null);
-      expect(() => {
-        rservice.gatherTitles(doc, titles, titleToLines);
-      }).to.throw(ProcessingError, `line without a ref: ${line.outerHTML}`);
+      const errors: CheckError[] = [];
+      rservice.gatherTitles(doc, titles, titleToLines, errors);
+      expect(errors).to.have.lengthOf(1);
+      expect(errors[0]).to.have.property("message")
+        .equal(`invalid line: line without a ref: ${line.outerHTML}`);
     });
 
-    it("throws a processing error if a ref lacks expected parts", () => {
+    it("reports an error if a ref lacks expected parts", () => {
       const ref = doc.getElementsByTagName("ref")[0];
       ref.textContent = "";
       const titles: Record<string, Title> = Object.create(null);
       const titleToLines: Record<string, Element[]> = Object.create(null);
-      expect(() => {
-        rservice.gatherTitles(doc, titles, titleToLines);
-      }).to.throw(ProcessingError, `ref does not contain 6 or 7 parts: `);
+      const errors: CheckError[] = [];
+      rservice.gatherTitles(doc, titles, titleToLines, errors);
+      expect(errors).to.have.lengthOf(1);
+      expect(errors[0]).to.have.property("message")
+        .equal(`invalid ref: ref does not contain 6 or 7 parts: `);
     });
   });
 
@@ -211,7 +232,9 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
     it("converts a title", () => {
       const titles: Record<string, Title> = Object.create(null);
       const titleToLines: Record<string, Element[]> = Object.create(null);
-      rservice.gatherTitles(doc, titles, titleToLines);
+      const errors: CheckError[] = [];
+      rservice.gatherTitles(doc, titles, titleToLines, errors);
+      expect(errors).to.have.lengthOf(0);
       const result =
         rservice.transformTitle(titles["Moo"], titleToLines["Moo"]) as Document;
       expect(result).to.be.instanceof(Document);
@@ -271,7 +294,9 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
       addErrantAvagraha(doc);
       const titles: Record<string, Title> = Object.create(null);
       const titleToLines: Record<string, Element[]> = Object.create(null);
-      rservice.gatherTitles(doc, titles, titleToLines);
+      const errors: CheckError[] = [];
+      rservice.gatherTitles(doc, titles, titleToLines, errors);
+      expect(errors).to.have.lengthOf(0);
       const result =
         rservice.transformTitle(
           titles["Abhidharmakośabhāṣya"],
