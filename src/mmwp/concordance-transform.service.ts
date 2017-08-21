@@ -42,7 +42,7 @@ function assertEqual(name: string, one: any, other: any): void {
   }
 }
 
-class CheckError {
+export class CheckError {
   constructor(public readonly message: string) {}
 
   toString(): string {
@@ -50,7 +50,49 @@ class CheckError {
   }
 }
 
-class Title {
+export class Warning {
+  constructor(public readonly message: string) {}
+
+  toString(): string {
+    return this.message;
+  }
+}
+
+export class Logger {
+  private readonly _errors: CheckError[] = [];
+  private readonly _warnings: Warning[] = [];
+
+  warn(message: string): void {
+    this._warnings.push(new Warning(message));
+  }
+
+  error(...messages: (string | CheckError)[]): void {
+    for (let message of messages) {
+      if (typeof message === "string") {
+        message = new CheckError(message);
+      }
+      this._errors.push(message);
+    }
+  }
+
+  get hasErrors(): boolean {
+    return this._errors.length > 0;
+  }
+
+  get hasWarnings(): boolean {
+    return this._warnings.length > 0;
+  }
+
+  get errors(): ReadonlyArray<CheckError> {
+    return this._errors;
+  }
+
+  get warnings(): ReadonlyArray<Warning> {
+    return this._warnings;
+  }
+}
+
+class ParsedRef{
   constructor(readonly pageVerse: string | undefined,
               readonly title: string,
               readonly genre: string,
@@ -59,15 +101,17 @@ class Title {
               readonly school: string,
               readonly period: string) {}
 
-  static fromCSV(text: string): Title | CheckError {
+  static fromCSV(text: string, logger?: Logger): ParsedRef | null {
     const parts = text.split(",");
     if (parts.length !== 7 && parts.length !== 6) {
-      return new CheckError(
-        `invalid ref: ref does not contain 6 or 7 parts: ${text}`);
+      if (logger !== undefined) {
+        logger.error(`invalid ref: ref does not contain 6 or 7 parts: ${text}`);
+      }
+      return null;
     }
 
     for (let ix = 0; ix < parts.length; ++ix) {
-      parts[ix] = parts[ix].trim();
+    parts[ix] = parts[ix].trim();
     }
 
     let pageVerse;
@@ -77,13 +121,32 @@ class Title {
 
     // Apparently we cannot use new Title(...parts);
     const [title, genre, author, tradition, school, period] = parts;
-    return new Title(pageVerse, title, genre, author, tradition, school,
-                     period);
+    return new ParsedRef(pageVerse, title, genre, author, tradition, school,
+                         period);
+  }
+}
+
+class Title {
+  constructor(readonly title: string,
+              readonly genre: string,
+              readonly author: string,
+              readonly tradition: string,
+              readonly school: string,
+              readonly period: string) {}
+
+  static fromCSV(text: string, logger: Logger): Title | null {
+    const ref = ParsedRef.fromCSV(text, logger);
+    if (ref !== null) {
+      return new Title(ref.title, ref.genre, ref.author, ref.tradition,
+                       ref.school, ref.period);
+    }
+
+    return null;
   }
 
   /**
    * Assert that two titles are equal. They are equal if all their fields are
-   * equal, except for ``pageVerse``.
+   * equal.
    */
   assertEqual(other: Title): void {
     try {
@@ -104,6 +167,11 @@ values: ${ex.message}`);
 
       throw ex;
     }
+  }
+
+  toString(): string {
+    return `${this.title}, ${this.genre}, ${this.author}, ${this.tradition},
+${this.school}, ${this.period}`;
   }
 }
 
@@ -151,6 +219,7 @@ export class ConcordanceTransformService extends XMLTransformService {
 
   async perform(input: XMLFile): Promise<XMLFile[]> {
     this.processing.start(1);
+    let ret: XMLFile[];
     try {
       const data = await input.getData();
       const doc = this.parser.parseFromString(data, "text/xml");
@@ -162,8 +231,8 @@ export class ConcordanceTransformService extends XMLTransformService {
       const titleToLines: Record<string, Element[]> = Object.create(null);
       await safeValidate(this.concordanceGrammar, doc);
 
-      const errors: CheckError[] = [];
-      this.gatherTitles(doc, titles, titleToLines, errors);
+      const logger = new Logger();
+      this.gatherTitles(doc, titles, titleToLines, logger);
       // tslint:disable-next-line:no-non-null-assertion
       const query = doc.querySelector("concordance>heading>query")!
         .textContent!;
@@ -178,20 +247,17 @@ export class ConcordanceTransformService extends XMLTransformService {
         const lines = titleToLines[title];
         const outputName =
           `${title}_${slug(query, "_")}_${slug(base, "_")}.xml`;
-        const result = this.transformTitle(titleInfo, lines);
-        if (!(result instanceof Document)) {
-          errors.push(...result);
-        }
-        else {
+        const result = this.transformTitle(titleInfo, lines, logger);
+        if (result !== null) {
           transformed.push({ outputName, doc: result });
         }
       }
 
       // If there are any errors we don't want to move forward.
-      if (errors.length !== 0) {
+      if (logger.hasErrors) {
         throw new ProcessingError(
           "Invalid data",
-          errors.map((x) => `<p>${x.toString()}</p>`).join("\n"));
+          logger.errors.map((x) => `<p>${x}</p>`).join("\n"));
       }
 
       const promises: Promise<{titleDoc: Document,
@@ -210,7 +276,13 @@ export class ConcordanceTransformService extends XMLTransformService {
       }
 
       const results = await Promise.all(promises);
-      return await Promise.all(
+
+      if (logger.hasWarnings) {
+        this.reportWarnings(
+          logger.warnings.map((x) => `<p>${x}</p>`).join("\n"));
+      }
+
+      ret = await Promise.all(
         results.map(async ({ outputName, titleDoc }) => {
           return this.xmlFiles.updateRecord(
             await this.xmlFiles.makeRecord(
@@ -232,25 +304,24 @@ export class ConcordanceTransformService extends XMLTransformService {
       this.processing.increment();
       this.processing.stop();
     }
+
+    return ret;
   }
 
   private gatherTitles(doc: Document, titles: Record<string, Title>,
                        titleToLines: Record<string, Element[]>,
-                       errors: CheckError[]): void {
+                       logger: Logger): void {
     for (const line of Array.from(doc.getElementsByTagName("line"))) {
       const ref = line.querySelector("ref");
       if (ref === null) {
-        errors.push(new CheckError(`invalid line: line without a \
-ref: ${line.outerHTML}`));
+        logger.error(`invalid line: line without a \
+ref: ${line.outerHTML}`);
       }
       else {
         // tslint:disable-next-line:no-non-null-assertion
         const refText = ref.textContent!;
-        const newTitle = Title.fromCSV(refText);
-        if (newTitle instanceof CheckError) {
-          errors.push(newTitle);
-        }
-        else {
+        const newTitle = Title.fromCSV(refText, logger);
+        if (newTitle !== null) {
           const title = newTitle.title;
           if (!(title in titles)) {
             titles[title] = newTitle;
@@ -270,8 +341,8 @@ ref: ${line.outerHTML}`));
     }
   }
 
-  private transformTitle(titleInfo: Title,
-                         lines: Element[]): Document | CheckError[] {
+  private transformTitle(titleInfo: Title, lines: Element[],
+                         logger: Logger): Document | null {
     const title = titleInfo.title;
     let citId = 1;
     const doc = this.parser.parseFromString(
@@ -288,12 +359,11 @@ ref: ${line.outerHTML}`));
     docEl.setAttribute("tradition", titleInfo.tradition);
     docEl.setAttribute("school", titleInfo.school);
     docEl.setAttribute("period", titleInfo.period);
-    const errors: CheckError[] = [];
     for (const line of lines) {
-      const cit = this.makeCitFromLine(titleInfo.pageVerse, doc, line, citId++);
+      const cit = this.makeCitFromLine(titleInfo, doc, line, citId++, logger);
       // A few checks that validation cannot catch.
-      errors.push(...this.checkCit(cit));
-      if (errors.length === 0) {
+      this.checkCit(cit, logger);
+      if (!logger.hasErrors) {
         this.convertMarkedToWord(doc, cit);
         // Clean the text.
         this.cleanText(cit);
@@ -303,11 +373,7 @@ ref: ${line.outerHTML}`));
       }
     }
 
-    if (errors.length !== 0) {
-      return errors;
-    }
-
-    return doc;
+    return logger.hasErrors ? null : doc;
   }
 
   private extractRef(text: string): string | null {
@@ -315,41 +381,52 @@ ref: ${line.outerHTML}`));
     return match !== null ? match[0].replace(/\s+/g, "") : null;
   }
 
-  private makeCitFromLine(pageVerse: string | undefined, doc: Document,
-                          line: Element, citId: number): Element {
+  private makeCitFromLine(title: Title, doc: Document, line: Element,
+                          citId: number, logger: Logger): Element {
     const cit = doc.createElement("cit");
-    cit.setAttribute("id", String(citId));
-    let refValue: string | undefined = pageVerse;
+    const ref = line.querySelector("ref");
+    // tslint:disable-next-line:no-non-null-assertion
+    const parsedRef = ref === null ? null : ParsedRef.fromCSV(ref.textContent!);
+    // A ref or parsedRef which is null has been reported earlier as an error.
+    if (parsedRef !== null) {
+      // tslint:disable-next-line:no-non-null-assertion
+      const pageVerse = parsedRef!.pageVerse;
+      cit.setAttribute("id", String(citId));
+      let refValue: string | undefined = pageVerse;
 
-    // If we did not get a pageVerse value from the <ref> element, then we
-    // look for a <page.number> element and take that.
-    if (refValue === undefined) {
-      const pageNumber = line.querySelector("page\\.number");
-      if (pageNumber !== null) {
+      // If we did not get a pageVerse value from the <ref> element, then we
+      // look for a <page.number> element and take that.
+      if (refValue === undefined) {
+        const pageNumber = line.querySelector("page\\.number");
+        if (pageNumber !== null) {
+          // tslint:disable-next-line:no-non-null-assertion
+          refValue = pageNumber.textContent!;
+        }
+      }
+
+      // If we still have not found a value, we search for a number pattern.
+      if (refValue === undefined) {
+        // We clone the line and remove <ref>.
+        const clone = line.cloneNode(true) as Element;
         // tslint:disable-next-line:no-non-null-assertion
-        refValue = pageNumber.textContent!;
+        const clonedRef = clone.querySelector("ref");
+        if (clonedRef !== null) {
+          clone.removeChild(clonedRef);
+        }
+        // tslint:disable-next-line:no-non-null-assertion
+        const text = clone.textContent!;
+        const match = this.extractRef(text);
+        if (match !== null) {
+          refValue = match;
+        }
       }
-    }
 
-    // If we still have not found a value, we search for a number pattern.
-    if (refValue === undefined) {
-      // We clone the line and remove <ref>.
-      const clone = line.cloneNode(true) as Element;
-      // tslint:disable-next-line:no-non-null-assertion
-      const ref = clone.querySelector("ref");
-      if (ref !== null) {
-        clone.removeChild(ref);
+      if (refValue !== undefined) {
+        cit.setAttribute("ref", refValue);
       }
-      // tslint:disable-next-line:no-non-null-assertion
-      const text = clone.textContent!;
-      const match = this.extractRef(text);
-      if (match !== null) {
-        refValue = match;
+      else {
+        logger.warn(`no value for cit/@ref in title: ${title}`);
       }
-    }
-
-    if (refValue !== undefined) {
-      cit.setAttribute("ref", refValue);
     }
 
     let child = line.firstChild;
@@ -393,15 +470,12 @@ ref: ${line.outerHTML}`));
     return cit;
   }
 
-  private checkCit(cit: Element): CheckError[] {
+  private checkCit(cit: Element, logger: Logger): void {
     // tslint:disable-next-line:no-non-null-assertion
     const text = cit.textContent!;
-    const ret: CheckError[] = [];
     if (/'\s/.test(text)) {
-      ret.push(new CheckError(`errant avagraha in: ${cit.innerHTML}`));
+      logger.error(`errant avagraha in: ${cit.innerHTML}`);
     }
-
-    return ret;
   }
 
   private convertMarkedToWord(doc: Document, cit: Element): void {
@@ -587,6 +661,13 @@ ${line.innerHTML}`);
   reportFailure(title: string, message: string): void {
     alert({
       title,
+      message,
+    });
+  }
+
+  private reportWarnings(message: string): void {
+    alert({
+      title: "Warning",
       message,
     });
   }

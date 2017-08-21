@@ -1,6 +1,9 @@
 import "chai";
 import "chai-as-promised";
 import "mocha";
+import * as sinon from "sinon";
+import * as sinonChai from "sinon-chai";
+chai.use(sinonChai);
 
 const expect = chai.expect;
 
@@ -9,7 +12,7 @@ import { ProcessingService } from "dashboard/processing.service";
 import { db } from "dashboard/store";
 import { XMLFile } from "dashboard/xml-file";
 import { XMLFilesService } from "dashboard/xml-files.service";
-import { ConcordanceTransformService,
+import { ConcordanceTransformService, Logger,
          ProcessingError } from "mmwp/concordance-transform.service";
 import { DataProvider, expectReject } from "./util";
 
@@ -18,7 +21,6 @@ import { DataProvider, expectReject } from "./util";
 
 // tslint:disable:no-any
 type Title = any;
-type CheckError = any;
 // tslint:enable:no-any
 
 // Interface that shows the private members of ConcordanceTransformService.  We
@@ -27,11 +29,12 @@ type CheckError = any;
 interface RevealedService {
   gatherTitles(doc: Document, titles: Record<string, Title>,
                titleToLines: Record<string, Element[]>,
-               errors: CheckError[]): void;
-  transformTitle(titleInfo: Title, lines: Element[]): Document | CheckError[];
-  checkCit(cit: Element): CheckError[];
-  makeCitFromLine(pageVerse: string | undefined, doc: Document, line: Element,
-                  citId: number): Element;
+               logger: Logger): void;
+  transformTitle(titleInfo: Title, lines: Element[],
+                 logger: Logger): Document | null;
+  checkCit(cit: Element, logger: Logger): void;
+  makeCitFromLine(title: Title, doc: Document, line: Element, citId: number,
+                  logger: Logger): Element;
   convertMarkedToWord(doc: Document, cit: Element): void;
   cleanText(node: Node): void;
   breakIntoWords(doc: Document, cit: Element): void;
@@ -70,6 +73,7 @@ describe("ConcordanceTransformService", () => {
   after(() => db.delete().then(() => db.open()));
 
   describe("#perform", () => {
+    let sandbox: sinon.SinonSandbox;
     const resultNames = [
       // tslint:disable-next-line:max-line-length
       "Abhidharmakośabhāṣya_word_sajn_and_word_sajni_and_word_sajnak_1029_0_0_1_within_lessdoc_titleAbhidharmakosabhaya_greater_154_51_51_buddhsktnewton_2.xml",
@@ -81,6 +85,10 @@ describe("ConcordanceTransformService", () => {
       return Promise.all(
         resultNames.map((name) => xmlFilesService.getRecordByName(name)));
     }
+
+    before(() => {
+      sandbox = sinon.sandbox.create();
+    });
 
     beforeEach(async () => {
       file = await xmlFilesService.makeRecord(
@@ -98,7 +106,35 @@ describe("ConcordanceTransformService", () => {
     // we get overwrite errors.
     afterEach(() => db.delete().then(() => db.open()));
 
-    it("runs without error", () => service.perform(file));
+    afterEach(() => {
+      const modals = Array.from(document.querySelectorAll(".modal.in"));
+      for (const modal of modals) {
+        $(modal).modal("hide");
+      }
+
+      const openModal = document.querySelector(".modal.in");
+      expect(openModal).to.be.null;
+
+      sandbox.restore();
+    });
+
+    it("runs without error", async () => {
+      await service.perform(file);
+      const files = await getAllFiles();
+
+      const datas = await Promise.all(files.map((x) => x!.getData()));
+
+      // We check the cit/@ref of in all files due to the complexity of the code
+      // that generates them.
+      const refRegExp = /<cit .*?>/g;
+      expect(datas[0].match(refRegExp)).to.deep.equal(
+        ["<cit id=\"1\" ref=\"010|18\">",
+         "<cit id=\"2\">"]);
+      expect(datas[1].match(refRegExp)).to.deep.equal(
+        ["<cit id=\"1\">",
+         "<cit id=\"2\" ref=\"010|20\">",
+         "<cit id=\"3\" ref=\"12.34\">"]);
+    });
 
     it("names the resulting files properly", () =>
       service.perform(file).then((results) => {
@@ -124,27 +160,44 @@ describe("ConcordanceTransformService", () => {
          `<p>tag not allowed here: {\"ns\":\"\",\"name\":\"div\"}<\/p>
 <p>tag required: {\"ns\":\"\",\"name\":\"concordance\"}</p>`));
 
-    it("reports ref errors", () =>
-       expectReject(service.perform(refErrorDocument),
-                    ProcessingError,
-                    new RegExp(`^<p>invalid line: line without a ref: <line>
+    it("reports ref errors", async () => {
+      await expectReject(service.perform(refErrorDocument),
+                         ProcessingError,
+                         new RegExp(
+                           `^<p>invalid line: line without a ref: <line>
       <left_context><normalised a_id="lugli" orig="yāvan" auto="false">(.|\n)*
-<p>invalid ref:`)));
+<p>invalid ref:`));
+      const title = document.querySelector(".modal.in .modal-title");
+      expect(title).to.have.property("textContent").equal("Invalid data");
+    });
+
+    it("shows warnings", async () => {
+      sandbox.spy(service, "reportWarnings");
+      await service.perform(file);
+      const title = document.querySelector(".modal.in .modal-title");
+      expect(title).to.have.property("textContent").equal("Warning");
+      const warnings = document.querySelector(".modal-body");
+      expect(warnings).to.have.property("textContent")
+        .matches(/no value for cit\/@ref in title: Moo,/);
+      // tslint:disable-next-line:no-any
+      expect((service as any).reportWarnings).to.have.been.calledOnce;
+    });
   });
 
   describe("#gatherTitles", () => {
     let doc: Document;
+    let logger: Logger;
     beforeEach(() => provider.getDoc("multiple-titles-1.xml").then((newDoc) => {
       doc = newDoc;
+      logger = new Logger();
     }));
 
     it("gathers titles", () => {
       const titles: Record<string, Title> = Object.create(null);
       const titleToLines: Record<string, Element[]> = Object.create(null);
-      const errors: CheckError[] = [];
 
-      rservice.gatherTitles(doc, titles, titleToLines, errors);
-      expect(errors).to.have.lengthOf(0);
+      rservice.gatherTitles(doc, titles, titleToLines, logger);
+      expect(logger).to.have.property("hasErrors").false;
       expect(titles).to.have.keys(["Abhidharmakośabhāṣya", "Moo"]);
       expect(titleToLines).to.have.keys(["Abhidharmakośabhāṣya", "Moo"]);
       expect(titleToLines).to.have.property("Abhidharmakośabhāṣya")
@@ -188,9 +241,8 @@ describe("ConcordanceTransformService", () => {
 
         const titles: Record<string, Title> = Object.create(null);
         const titleToLines: Record<string, Element[]> = Object.create(null);
-        const errors: CheckError[] = [];
         expect(() => {
-          rservice.gatherTitles(doc, titles, titleToLines, errors);
+          rservice.gatherTitles(doc, titles, titleToLines, logger);
         }).to.throw(ProcessingError,
                     `the title Abhidharmakośabhāṣya appears more than once, \
 with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
@@ -203,10 +255,9 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
       line.removeChild(ref);
       const titles: Record<string, Title> = Object.create(null);
       const titleToLines: Record<string, Element[]> = Object.create(null);
-      const errors: CheckError[] = [];
-      rservice.gatherTitles(doc, titles, titleToLines, errors);
-      expect(errors).to.have.lengthOf(1);
-      expect(errors[0]).to.have.property("message")
+      rservice.gatherTitles(doc, titles, titleToLines, logger);
+      expect(logger.errors).to.have.lengthOf(1);
+      expect(logger.errors[0]).to.have.property("message")
         .equal(`invalid line: line without a ref: ${line.outerHTML}`);
     });
 
@@ -215,31 +266,32 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
       ref.textContent = "";
       const titles: Record<string, Title> = Object.create(null);
       const titleToLines: Record<string, Element[]> = Object.create(null);
-      const errors: CheckError[] = [];
-      rservice.gatherTitles(doc, titles, titleToLines, errors);
-      expect(errors).to.have.lengthOf(1);
-      expect(errors[0]).to.have.property("message")
+      rservice.gatherTitles(doc, titles, titleToLines, logger);
+      expect(logger.errors).to.have.lengthOf(1);
+      expect(logger.errors[0]).to.have.property("message")
         .equal(`invalid ref: ref does not contain 6 or 7 parts: `);
     });
   });
 
   describe("#transformTitle", () => {
     let doc: Document;
+    let logger: Logger;
     beforeEach(() => provider.getDoc("multiple-titles-1.xml").then((newDoc) => {
       doc = newDoc;
+      logger = new Logger();
     }));
 
     it("converts a title", () => {
       const titles: Record<string, Title> = Object.create(null);
       const titleToLines: Record<string, Element[]> = Object.create(null);
-      const errors: CheckError[] = [];
-      rservice.gatherTitles(doc, titles, titleToLines, errors);
-      expect(errors).to.have.lengthOf(0);
+      rservice.gatherTitles(doc, titles, titleToLines, logger);
+      expect(logger).to.have.property("hasErrors").false;
       const result =
-        rservice.transformTitle(titles["Moo"], titleToLines["Moo"]) as Document;
+        rservice.transformTitle(titles["Moo"], titleToLines["Moo"], logger);
       expect(result).to.be.instanceof(Document);
+      expect(logger).to.have.property("hasErrors").false;
 
-      const root = result.documentElement;
+      const root = result!.documentElement;
       expect(root).to.have.property("tagName", "doc");
       expect(root).to.have.deep.property("attributes.version.value", "1");
       expect(root).to.have.deep.property("attributes.title.value", "Moo");
@@ -294,16 +346,16 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
       addErrantAvagraha(doc);
       const titles: Record<string, Title> = Object.create(null);
       const titleToLines: Record<string, Element[]> = Object.create(null);
-      const errors: CheckError[] = [];
-      rservice.gatherTitles(doc, titles, titleToLines, errors);
-      expect(errors).to.have.lengthOf(0);
+      rservice.gatherTitles(doc, titles, titleToLines, logger);
+      expect(logger).to.have.property("hasErrors").false;
       const result =
         rservice.transformTitle(
           titles["Abhidharmakośabhāṣya"],
-          titleToLines["Abhidharmakośabhāṣya"]) as CheckError;
-      expect(result).to.have.lengthOf(1);
-      expect(result[0])
-        .to.have.property("message").matches(/^errant avagraha in:/);
+          titleToLines["Abhidharmakośabhāṣya"], logger);
+      expect(result).to.be.null;
+      expect(logger).to.have.property("errors").with.lengthOf(1);
+      expect(logger).to.have.deep.property("errors[0].message")
+        .matches(/^errant avagraha in:/);
     });
   });
 
@@ -335,33 +387,43 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
 
   describe("#makeCitFromLine", () => {
     let doc: Document;
+    let logger: Logger;
+    let title: Title;
     beforeEach(() => provider.getDoc("multiple-titles-1.xml").then((newDoc) => {
       doc = newDoc;
+      logger = new Logger();
+      const titles: Record<string, Title> = Object.create(null);
+      const titleToLines: Record<string, Element[]> = Object.create(null);
+      rservice.gatherTitles(doc, titles, titleToLines, logger);
+      title = titles["Moo"];
     }));
 
-    it("does not create when we cannot find a number", () => {
-      const line = doc.getElementsByTagName("line")[0];
+    it("does not create @ref when we cannot find a number", () => {
+      const line = doc.getElementsByTagName("line")[1];
       expect(line.querySelector("page.number")).to.be.null;
-      const cit = rservice.makeCitFromLine(undefined, doc, line, 1);
+      const cit = rservice.makeCitFromLine(title, doc, line, 1, logger);
       expect(cit.getAttribute("ref")).to.be.null;
+      expect(logger).to.have.property("hasWarnings").true;
+      expect(logger).to.have.deep.property("warnings[0].message")
+        .match(/^no value for cit\/@ref in title: Moo,/);
     });
 
     it("creates @ref when the <ref> element had a pageVerse number", () => {
       const line = doc.getElementsByTagName("line")[0];
       expect(line.querySelector("page\\.number")).to.be.null;
-      const cit = rservice.makeCitFromLine("x", doc, line, 1);
-      expect(cit).to.have.deep.property("attributes.ref.value", "x");
+      const cit = rservice.makeCitFromLine(title, doc, line, 1, logger);
+      expect(cit).to.have.deep.property("attributes.ref.value", "010|18");
     });
 
     it("creates @ref when there is no pageVerse number but page.number " +
        "is present", () => {
-         const line = doc.getElementsByTagName("line")[0];
+         const line = doc.getElementsByTagName("line")[1];
          expect(line.querySelector("page\\.number")).to.be.null;
          const pn = doc.createElement("page.number");
          pn.textContent = "999";
          line.appendChild(pn);
          expect(line.querySelector("page\\.number")).to.not.be.null;
-         const cit = rservice.makeCitFromLine(undefined, doc, line, 1);
+         const cit = rservice.makeCitFromLine(title, doc, line, 1, logger);
          expect(cit).to.have.deep.property("attributes.ref.value", "999");
        });
 
@@ -370,20 +432,20 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
          const line = doc.getElementsByTagName("line")[4];
          expect(line.querySelector("page\\.number")).to.be.null;
 
-         const cit = rservice.makeCitFromLine(undefined, doc, line, 1);
+         const cit = rservice.makeCitFromLine(title, doc, line, 1, logger);
          expect(cit).to.have.deep.property("attributes.ref.value", "12.34");
        });
 
     it("sets @id to the value passed", () => {
       const line = doc.getElementsByTagName("line")[0];
-      const cit = rservice.makeCitFromLine(undefined, doc, line, 222);
+      const cit = rservice.makeCitFromLine(title, doc, line, 222, logger);
       expect(cit).to.have.deep.property("attributes.id.value", "222");
     });
 
     it("preserves text", () => {
       const line = doc.createElement("line");
       line.textContent = "something";
-      const cit = rservice.makeCitFromLine(undefined, doc, line, 222);
+      const cit = rservice.makeCitFromLine(title, doc, line, 222, logger);
       expect(cit).to.have.property("textContent", "something");
     });
 
@@ -392,7 +454,7 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
       line.innerHTML = `a<ref>something</ref>\
 <page.number>something</page.number>b<ref>something else</ref>\
 <page.number>foo</page.number>c`;
-      const cit = rservice.makeCitFromLine(undefined, doc, line, 222);
+      const cit = rservice.makeCitFromLine(title, doc, line, 222, logger);
       expect(cit).to.have.property("textContent", "abc");
       expect(cit).to.have.property("firstElementChild").be.null;
     });
@@ -402,22 +464,29 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
       line.innerHTML = `a<notvariant>something</notvariant>\
 <normalised>something</normalised>b<notvariant>something else</notvariant>\
 <normalised>foo</normalised>c`;
-      const cit = rservice.makeCitFromLine(undefined, doc, line, 222);
+      const cit = rservice.makeCitFromLine(title, doc, line, 222, logger);
       expect(cit).to.have.property("innerHTML", line.innerHTML);
     });
 
     it("unwraps other elements", () => {
       const line = doc.createElement("line");
       line.innerHTML = `a<foo>b</foo>c<bar>d</bar>e`;
-      const cit = rservice.makeCitFromLine(undefined, doc, line, 222);
+      const cit = rservice.makeCitFromLine(title, doc, line, 222, logger);
       expect(cit).to.have.property("innerHTML", "abcde");
     });
   });
 
   describe("#convertMarkedToWord", () => {
     let doc: Document;
+    let logger: Logger;
+    let title: Title;
     beforeEach(() => provider.getDoc("multiple-titles-1.xml").then((newDoc) => {
       doc = newDoc;
+      logger = new Logger();
+      const titles: Record<string, Title> = Object.create(null);
+      const titleToLines: Record<string, Element[]> = Object.create(null);
+      rservice.gatherTitles(doc, titles, titleToLines, logger);
+      title = titles["Moo"];
     }));
 
     it("converts marked words to word elements", () => {
@@ -426,7 +495,7 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
 <normalised orig="a">something</normalised>b\
 <notvariant>something else</notvariant>\
 <normalised orig="b">foo</normalised>c`;
-      const cit = rservice.makeCitFromLine(undefined, doc, line, 222);
+      const cit = rservice.makeCitFromLine(title, doc, line, 222, logger);
       rservice.convertMarkedToWord(doc, cit);
       const expected = `a<word lem="something">something</word>\
 <word lem="something">a</word>b\
@@ -577,8 +646,10 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
 
   describe("#checkCit", () => {
     let doc: Document;
+    let logger: Logger;
     beforeEach(() => provider.getDoc("multiple-titles-1.xml").then((newDoc) => {
       doc = newDoc;
+      logger = new Logger();
     }));
 
     it("reports errant avagrahas", () => {
@@ -586,18 +657,18 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
       // We pass a line element rather than a cit element. By the time checkCit
       // is called in the service, it gets a cit element but passing a line does
       // not matter.
-      const result = rservice.checkCit(doc.getElementsByTagName("line")[0]);
-      expect(result).to.have.lengthOf(1);
-      expect(result[0])
-        .to.have.property("message").matches(/^errant avagraha in:/);
+      rservice.checkCit(doc.getElementsByTagName("line")[0], logger);
+      expect(logger.errors).to.have.lengthOf(1);
+      expect(logger).to.have.deep.property("errors[0].message")
+        .matches(/^errant avagraha in:/);
     });
 
     it("reports no error if the input is fine", () => {
       // We pass a line element rather than a cit element. By the time checkCit
       // is called in the service, it gets a cit element but passing a line does
       // not matter.
-      const result = rservice.checkCit(doc.getElementsByTagName("line")[0]);
-      expect(result).to.have.lengthOf(0);
+      rservice.checkCit(doc.getElementsByTagName("line")[0], logger);
+      expect(logger).to.have.property("hasErrors").false;
     });
   });
 
