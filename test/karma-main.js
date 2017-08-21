@@ -60,12 +60,17 @@
         }
       };
 
-    return Promise.all(["@angular/core/testing",
+    return Promise.all(["bootbox",
+                        "@angular/core/testing",
                         "@angular/platform-browser-dynamic/testing"]
                        .map(importIt));
   }).then(function loaded(deps) {
-    var testing = deps[0];
-    var browser = deps[1];
+    var bootbox = deps[0];
+    var testing = deps[1];
+    var browser = deps[2];
+
+    // Disable animations to help simplify tests.
+    bootbox.setDefaults({ animate: false });
 
     // This is needed so that the testbed is properly initialized.
     testing.TestBed.initTestEnvironment(browser.BrowserDynamicTestingModule,
