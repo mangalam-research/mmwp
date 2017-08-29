@@ -6,33 +6,7 @@
  */
 import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
 
-import { AppModule } from "dashboard/app.module";
-import { ChunksService } from "dashboard/chunks.service";
-import { ProcessingService } from "dashboard/processing.service";
-import { XMLFilesService } from "dashboard/xml-files.service";
-import { XMLTransformService } from "dashboard/xml-transform.service";
-
-import { ConcordanceTransformService,
-       } from "./mmwp/concordance-transform.service";
-import { CoNLLTransformService } from "./mmwp/conll-transform.service";
+import { AppModule } from "mmwp/app.module";
 
 // tslint:disable-next-line:no-floating-promises
-platformBrowserDynamic([
-  ChunksService,
-  XMLFilesService,
-  ProcessingService, {
-  provide: XMLTransformService,
-  useClass: ConcordanceTransformService,
-  multi: true,
-}, {
-  provide: XMLTransformService,
-  useClass: CoNLLTransformService,
-  multi: true,
-}, {
-  provide: "Mode",
-  useValue: {
-    name: "mmwpa-mode",
-    path: "mmwp/mmwpa-mode/mmwpa-mode",
-  },
-  multi: true,
-}]).bootstrapModule(AppModule);
+platformBrowserDynamic().bootstrapModule(AppModule);
