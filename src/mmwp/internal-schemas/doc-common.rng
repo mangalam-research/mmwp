@@ -116,6 +116,7 @@
           <value>glossed.by</value>
           <value>glossing</value>
           <value>dep</value>
+          <value>parallel.to</value>
         </choice>
       </attribute>
     </optional>

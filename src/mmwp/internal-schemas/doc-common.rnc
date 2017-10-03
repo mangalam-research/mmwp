@@ -65,7 +65,8 @@ word.attrs = (
         "contrasted.with" |
         "glossed.by" |
         "glossing" |
-        "dep"
+        "dep" |
+        "parallel.to"
     }?,
     attribute dep.head { xsd:positiveInteger }?
 )
