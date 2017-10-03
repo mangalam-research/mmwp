@@ -1,8 +1,18 @@
 default namespace = "http://mangalamresearch.org/ns/mmwp/doc"
 
+wordUnnumbered = element word {
+    attribute lem { text }?,
+    text
+}
+
 include "doc-common.rnc" {
-    cit.content = (word | text)+
-    word.attrs = attribute lem { text }?
+    # We allow cit to contain a single sentence with numbered words. Or
+    # a collection of unnumbered words.
+    cit.content = (s | (wordUnnumbered | text)+)
+    word.attrs = (
+      attribute id { xsd:positiveInteger }?,
+      attribute lem { text }?
+    )
 }
 
 start = doc

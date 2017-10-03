@@ -311,33 +311,36 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
       const first = root.firstElementChild!;
       expect(first).to.have.deep.property("attributes.id.value", "1");
 
-      const firstExpected = ` \
-<word lem="yāvad">yāvan</word> \
-<word lem="nīla">nīla-</word> <word>-pīta-</word>\
-<word lem="dīrgha">-dīrgha-</word> \
-<word lem="hrasva">-hrasva-</word> \
-<word>-stri-</word><word>-puruṣa-</word><word>-mitra-</word>\
-<word lem="amitra">-amitra-</word> \
-<word lem="sukha">-sukha-</word> \
-<word lem="duḥkha">-duḥkha-</word> \
-<word lem="adi">-adi-</word> \
-<word lem="nimitta">-nimitta-</word> \
-<word lem="udgrahaṇa">-dgrahaṇam</word> \
-<word lem="adas">asau</word> \
-<word lem="saṃjñā">saṃjñā-</word> \
-<word lem="skandha">-skandhaḥ</word> \
-<word>|</word> <word>sa</word> <word lem="punar">punar</word> \
-<word lem="bhid">bhidyamānaḥ</word> \
-<word>ṣaṭsaṃjñākāyā</word> <word lem="vedanāvat">vedanāvat</word> \
-<word>||</word> \
-<word lem="catur">caturbhyo</word> \
-<word lem="'nye">'nye</word> \
-<word lem="tu">tu</word> \
-<word lem="saṃskāra">saṃskāra-</word> \
-<word lem="skandha">-skandhaḥ</word> \
-<word>rūpavedanāsaṃjñāvijñānebhyaścatubbryo</word> \
-<word lem="'nye">'nye</word> \
-<word lem="tu">tu</word> `.replace(/<word/g, `<word ${XMLNS}`);
+      const firstExpected = `<s id="1"> \
+<word lem="yāvad" id="1">yāvan</word> \
+<word lem="nīla" id="2">nīla-</word> <word id="3">-pīta-</word>\
+<word lem="dīrgha" id="4">-dīrgha-</word> \
+<word lem="hrasva" id="5">-hrasva-</word> \
+<word id="6">-stri-</word><word id="7">-puruṣa-</word>\
+<word id="8">-mitra-</word>\
+<word lem="amitra" id="9">-amitra-</word> \
+<word lem="sukha" id="10">-sukha-</word> \
+<word lem="duḥkha" id="11">-duḥkha-</word> \
+<word lem="adi" id="12">-adi-</word> \
+<word lem="nimitta" id="13">-nimitta-</word> \
+<word lem="udgrahaṇa" id="14">-dgrahaṇam</word> \
+<word lem="adas" id="15">asau</word> \
+<word lem="saṃjñā" id="16">saṃjñā-</word> \
+<word lem="skandha" id="17">-skandhaḥ</word> \
+<word id="18">|</word> <word id="19">sa</word> \
+<word lem="punar" id="20">punar</word> \
+<word lem="bhid" id="21">bhidyamānaḥ</word> \
+<word id="22">ṣaṭsaṃjñākāyā</word> \
+<word lem="vedanāvat" id="23">vedanāvat</word> \
+<word id="24">||</word> \
+<word lem="catur" id="25">caturbhyo</word> \
+<word lem="'nye" id="26">'nye</word> \
+<word lem="tu" id="27">tu</word> \
+<word lem="saṃskāra" id="28">saṃskāra-</word> \
+<word lem="skandha" id="29">-skandhaḥ</word> \
+<word id="30">rūpavedanāsaṃjñāvijñānebhyaścatubbryo</word> \
+<word lem="'nye" id="31">'nye</word> \
+<word lem="tu" id="32">tu</word> </s>`.replace(/<s (.*?)>/g, `<s ${XMLNS} $1>`);
       expect(first).to.have.deep.property("innerHTML").equal(firstExpected);
 
       const second = first.nextElementSibling!;

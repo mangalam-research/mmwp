@@ -371,6 +371,17 @@ ref: ${line.outerHTML}`);
         this.cleanText(cit);
         this.breakIntoWords(doc, cit);
         this.cleanDashes(cit, line);
+
+        // We wrap everything in a single sentence. Originally <cit> contained
+        // the words directly, and a user was responsible for grouping the words
+        // into sentences. This proved a bit onerous (and caused problems
+        // because reference had to be made across sentences but Sketch Engine
+        // does not allow it). So we decided to have a default single-sentence
+        // output and to number the sentence and the words in it. So we add the
+        // sentence after all other transformations are made. This makes it easy
+        // to rip out if we ever need it.
+        this.wrapWordsInSentenceAndNumber(cit);
+
         docEl.appendChild(cit);
       }
     }
@@ -657,6 +668,31 @@ ${line.innerHTML}`);
       }
 
       elChild = next;
+    }
+  }
+
+  private wrapWordsInSentenceAndNumber(cit: Element): void {
+    const s = cit.ownerDocument.createElementNS(MMWP_NAMESPACE, "s");
+    // We create one sentence per cit and the numbering is scoped to cit so the
+    // number is always 1.
+    s.setAttribute("id", "1");
+
+    // This wraps all children of cit in a <s>.
+    let citChild = cit.firstChild;
+    while (citChild !== null) {
+      s.appendChild(citChild);
+      citChild = cit.firstChild;
+    }
+    cit.appendChild(s);
+
+    // Number the words.
+    let id = 1;
+    let word = s.firstElementChild;
+    while (word !== null) {
+      if (word.tagName === "word") {
+        word.setAttribute("id", String(id++));
+      }
+      word = word.nextElementSibling;
     }
   }
 
