@@ -4,7 +4,6 @@ const Promise = require("bluebird");
 const path = require("path");
 const es = require("event-stream");
 const requireDir = require("require-dir");
-const eslint = require("gulp-eslint");
 const replace = require("gulp-replace");
 // const webpack = require("webpack");
 const argparse = require("argparse");
@@ -150,29 +149,6 @@ htmlTask("");
 htmlTask("-optimized");
 
 gulp.task("default", ["build"]);
-
-function runTslint(tsconfig, tslintConfig) {
-  return spawn(
-    "./node_modules/.bin/tslint",
-    ["--type-check", "--project", tsconfig, "-c", tslintConfig],
-    { stdio: "inherit" });
-}
-
-gulp.task("tslint-src", () => runTslint("src/tsconfig.json", "src/tslint.json"));
-
-gulp.task("tslint-test", ["tsc", "copy-other"],
-          () => runTslint("test/tsconfig.json", "test/tslint.json"));
-
-gulp.task("tslint", ["tslint-src", "tslint-test"]);
-
-gulp.task("eslint", () =>
-          gulp.src(["lib/**/*.js", "*.js", "bin/**", "config/**/*.js",
-                    "gulptasks/**/*.js", "misc/**/*.js", "test/**/*.js"])
-          .pipe(eslint())
-          .pipe(eslint.format())
-          .pipe(eslint.failAfterError()));
-
-gulp.task("lint", ["eslint", "tslint"]);
 
 //
 // Spawning a process due to this:
