@@ -76,6 +76,9 @@
       <attribute name="sem.field"/>
     </optional>
     <optional>
+      <attribute name="sem.role"/>
+    </optional>
+    <optional>
       <attribute name="uncertainty">
         <choice>
           <value>na</value>

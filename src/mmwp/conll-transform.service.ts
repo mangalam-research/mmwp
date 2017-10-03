@@ -205,6 +205,7 @@ export class CoNLLTransformService extends XMLTransformService {
                  word.getAttribute("uncertainty"), "\t",
                  word.getAttribute("conc.rel"), "\t",
                  word.getAttribute("conc.head"), "\t",
+                 word.getAttribute("sem.role"), "\t",
                  word.getAttribute("dep.rel"), "\t",
                  word.getAttribute("dep.head"), "\n");
       }

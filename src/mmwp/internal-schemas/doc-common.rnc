@@ -39,6 +39,7 @@ word.attrs = (
     }?,
     attribute sem.type { text }?,
     attribute sem.field { text }?,
+    attribute sem.role { text }?,
     attribute uncertainty {
         "na" |
         "philological" |
