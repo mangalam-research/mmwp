@@ -1,4 +1,5 @@
 /* global module */
+"use strict";
 module.exports = {
   port: 8888,
   files: ["./build/**/*.{html,htm,css,js}"],
