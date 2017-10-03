@@ -91,7 +91,10 @@ module.exports = function configure(config) {
       },
       // transformPath: (path) => path.replace(/\.ts$/, ".js"),
     },
-    reporters: ["progress", "coverage", "remap-coverage"],
+    reporters: ["mocha", "coverage", "remap-coverage"],
+    mochaReporter: {
+      showDiff: true,
+    },
     coverageReporter: {
       type: "in-memory",
     },
