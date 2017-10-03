@@ -273,6 +273,11 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
     });
   });
 
+  // tslint:disable-next-line:no-http-string
+  const MMWP_NAMESPACE = "http://mangalamresearch.org/ns/mmwp/doc";
+  // tslint:disable-next-line:mocha-no-side-effect-code
+  const XMLNS = `xmlns="${MMWP_NAMESPACE}"`;
+
   describe("#transformTitle", () => {
     let doc: Document;
     let logger: Logger;
@@ -332,7 +337,7 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
 <word lem="skandha">-skandhaḥ</word> \
 <word>rūpavedanāsaṃjñāvijñānebhyaścatubbryo</word> \
 <word lem="'nye">'nye</word> \
-<word lem="tu">tu</word> `;
+<word lem="tu">tu</word> `.replace(/<word/g, `<word ${XMLNS}`);
       expect(first).to.have.deep.property("innerHTML").equal(firstExpected);
 
       const second = first.nextElementSibling!;
@@ -500,7 +505,7 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
       const expected = `a<word lem="something">something</word>\
 <word lem="something">a</word>b\
 <word lem="something else">something else</word>\
-<word lem="foo">b</word>c`;
+<word lem="foo">b</word>c`.replace(/<word/g, `<word ${XMLNS}`);
       expect(cit).to.have.property("innerHTML", expected);
     });
   });
@@ -582,7 +587,7 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
     }));
 
     it("breaks the citation into words", () => {
-      const cit = doc.createElement("cit");
+      const cit = doc.createElementNS(MMWP_NAMESPACE, "cit");
       cit.innerHTML =
         ` something-else-s <word>or </word> <word>other</word> words \
 <word>foo-</word><word>-bar</word> and more `;
@@ -592,7 +597,8 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
       const expected =
         ` <word>something-</word><word>-else-</word><word>-s</word> \
 <word>or </word> <word>other</word> <word>words</word> \
-<word>foo-</word><word>-bar</word> <word>and</word> <word>more</word> `;
+<word>foo-</word><word>-bar</word> <word>and</word> <word>more</word> `
+        .replace(/<word\b/g, `<word ${XMLNS}`);
       expect(cit).to.have.property("innerHTML").equal(expected);
     });
   });

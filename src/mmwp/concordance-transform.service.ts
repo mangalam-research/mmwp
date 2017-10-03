@@ -14,6 +14,9 @@ import concordance = require("./internal-schemas/concordance");
 import docUnannotated = require("./internal-schemas/doc-unannotated");
 import { validate } from "./util";
 
+// tslint:disable-next-line:no-http-string
+const MMWP_NAMESPACE = "http://mangalamresearch.org/ns/mmwp/doc";
+
 export class TitleEqualityError extends Error {
   constructor(message: string) {
     super();
@@ -345,9 +348,8 @@ ref: ${line.outerHTML}`);
                          logger: Logger): Document | null {
     const title = titleInfo.title;
     let citId = 1;
-    const doc = this.parser.parseFromString(
-      "<doc xmlns='http://mangalamresearch.org/ns/mmwp/doc'/>",
-      "text/xml");
+    const doc = this.parser.parseFromString(`<doc xmlns='${MMWP_NAMESPACE}'/>`,
+                                            "text/xml");
     const docEl = doc.firstElementChild;
     if (docEl === null) {
       throw new Error("no child in the document");
@@ -383,7 +385,7 @@ ref: ${line.outerHTML}`);
 
   private makeCitFromLine(title: Title, doc: Document, line: Element,
                           citId: number, logger: Logger): Element {
-    const cit = doc.createElement("cit");
+    const cit = doc.createElementNS(MMWP_NAMESPACE, "cit");
     const ref = line.querySelector("ref");
     // tslint:disable-next-line:no-non-null-assertion
     const parsedRef = ref === null ? null : ParsedRef.fromCSV(ref.textContent!);
@@ -485,14 +487,14 @@ ref: ${line.outerHTML}`);
       const next = elChild.nextElementSibling;
       const tagName = elChild.tagName;
       if (tagName === "notvariant") {
-        const word = doc.createElement("word");
+        const word = doc.createElementNS(MMWP_NAMESPACE, "word");
         word.textContent = elChild.textContent;
         // tslint:disable-next-line:no-non-null-assertion
         word.setAttribute("lem", elChild.textContent!);
         cit.insertBefore(word, elChild);
       }
       else if (tagName === "normalised") {
-        const word = doc.createElement("word");
+        const word = doc.createElementNS(MMWP_NAMESPACE, "word");
         word.textContent = elChild.getAttribute("orig");
         // tslint:disable-next-line:no-non-null-assertion
         word.setAttribute("lem", elChild.textContent!);
@@ -573,7 +575,7 @@ ref: ${line.outerHTML}`);
           else {
             const compoundParts = part.split("-");
             if (compoundParts.length === 1) {
-              const word = doc.createElement("word");
+              const word = doc.createElementNS(MMWP_NAMESPACE, "word");
               word.textContent = part;
               cit.insertBefore(word, child);
             }
@@ -590,7 +592,7 @@ ref: ${line.outerHTML}`);
                 if (compoundPart === "") {
                   continue;
                 }
-                const word = doc.createElement("word");
+                const word = doc.createElementNS(MMWP_NAMESPACE, "word");
                 const text: string[] = [];
                 if (compoundPartsIx !== 0) {
                   text.push("-");
