@@ -5,8 +5,8 @@
     "baseUrl": ".",
     "paths": {
       "wed": ["../node_modules/wed/standalone/lib/wed"],
-      "wed/*": ["../node_modules/wed/standalone/lib/wed/*"],
-      "dashboard/*": ["../node_modules/wed-demo/dev/lib/dashboard/*"]
+      "wed/modes/*": ["../node_modules/wed/standalone/lib/wed/modes/*"],
+      "dashboard/*": ["../node_modules/wed-demo/aot-compiled/dashboard/*"]
     },
     "declaration": true
   },

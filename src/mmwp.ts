@@ -6,7 +6,7 @@
  */
 import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
 
-import { AppModule } from "mmwp/app.module";
+import { AppModule } from "./mmwp/app.module";
 
 // tslint:disable-next-line:no-floating-promises
 platformBrowserDynamic().bootstrapModule(AppModule);

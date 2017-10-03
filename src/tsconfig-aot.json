@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../build/aot/",
+    "noUnusedParameters": false,
+    "declaration": false
+  },
+  "angularCompilerOptions": {
+    "genDir": "../build/aot/",
+    "entryModule": "mmwp/app.module#AppModule",
+    "skipMetadataEmit": true
+  }
+}

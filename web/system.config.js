@@ -7,6 +7,7 @@
 // can be modified before actually configuring SystemJS. The fact is that
 // SystemJS (contrarily to RequireJS) does not handle changing the baseURL.
 // See: https://github.com/systemjs/systemjs/issues/1208#issuecomment-215707469
+/* global process */
 window.systemJSConfig = {
   baseURL: "lib/",
   pluginFirst: true,
@@ -24,6 +25,7 @@ window.systemJSConfig = {
     "@angular/http": "npm:@angular/http/bundles/http.umd.js",
     "@angular/router": "npm:@angular/router/bundles/router.umd.js",
     "@angular/forms": "npm:@angular/forms/bundles/forms.umd.js",
+    "ng-loader": "npm:wed-demo/dev/lib/systemjs-angular-loader.js",
     rxjs: "npm:rxjs",
     jquery: "npm:jquery",
     bootstrap: "npm:bootstrap/dist/js/bootstrap.js",
@@ -37,14 +39,19 @@ window.systemJSConfig = {
     slug: "npm:slug",
     bluejax: "npm:bluejax",
     "bluejax.try": "npm:bluejax.try",
+    dashboard: "npm:wed-demo/prod/lib/dashboard",
+    wed: "npm:wed/packed/lib/wed",
     rangy: "wed-external:rangy/rangy-core",
-    dashboard: "npm:wed-demo/dev/lib/dashboard",
-    wed: "npm:wed/standalone/lib/wed",
+    log4javascript: "wed-external:log4javascript",
+    "merge-options": "wed-external:merge-options",
+    "is-plain-obj": "wed-external:is-plain-obj",
+    ajv: "wed-external:ajv.min",
+    interact: "wed-external:interact.min",
+    interactjs: "wed-external:interact.min",
+    "bootstrap-notify": "wed-external:bootstrap-notify",
+    typeahead: "wed-external:typeahead.bundle.min",
   },
   meta: {
-    "mmwp/internal-schemas/*": {
-      loader: "json",
-    },
     "npm:bootbox/*": {
       // We must add bootstrap here because bootbox does not list
       // it as a dependency.
@@ -68,5 +75,24 @@ window.systemJSConfig = {
   ],
 };
 
+//
+// For better or for worse, pooling process.env.NODE_ENV is the default. :-/
+//
+// Our default is to assume a production environment. So check whether we are
+// in development mode.
+if (typeof process !== "undefined" &&
+    typeof process.env !== "undefined" &&
+    process.env.NODE_ENV === "development") {
+  var systemJSConfig = window.systemJSConfig;
+  systemJSConfig.meta["dashboard/*"] = systemJSConfig.meta["dashboard/*/*"] = {
+    loader: "ng-loader",
+  };
+
+  systemJSConfig.meta["mmwp/internal-schemas/*"] = {
+    loader: "json",
+  };
+
+  systemJSConfig.map.dashboard = "npm:wed-demo/dev/lib/dashboard";
+}
 //  LocalWords:  popup onerror findandself jQuery Dubeau MPL Mangalam
 //  LocalWords:  txt tei ajax jquery
