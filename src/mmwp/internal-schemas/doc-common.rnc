@@ -11,7 +11,16 @@ doc = element doc {
     cit+
 }
 
-cit.content = s+
+## A translation.
+tr = element tr {
+    ## The translator.
+    attribute tr { text }?,
+    ## The page number.
+    attribute p { text }?,
+    text
+}
+
+cit.content = (s+, tr?)
 cit = element cit {
     attribute id { xsd:positiveInteger },
     attribute ref { text }?,

@@ -23,6 +23,9 @@
           </choice>
         </oneOrMore>
       </choice>
+      <optional>
+        <ref name="tr"/>
+      </optional>
     </define>
     <define name="word.attrs">
       <optional>

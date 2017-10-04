@@ -8,7 +8,7 @@ wordUnnumbered = element word {
 include "doc-common.rnc" {
     # We allow cit to contain a single sentence with numbered words. Or
     # a collection of unnumbered words.
-    cit.content = (s | (wordUnnumbered | text)+)
+    cit.content = ((s | (wordUnnumbered | text)+), tr?)
     word.attrs = (
       attribute id { xsd:positiveInteger }?,
       attribute lem { text }?

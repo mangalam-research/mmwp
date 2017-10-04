@@ -11,10 +11,19 @@ query = element query { text }
 vard.elements = notvariant | normalised
 vard.and.text = vard.elements | text
 
+## A translation.
+tr = element tr {
+    ## The translator.
+    attribute tr { text }?,
+    ## The page number.
+    attribute p { text }?,
+    text
+}
+
 lines = element lines { line+ }
 line = element line {
-    (ref | left_context | kwic | right_context | page.number |
-     vard.and.text)*
+    ((ref | left_context | kwic | right_context | page.number |
+    vard.and.text)*, tr?)
 }
 
 ref = element ref { vard.and.text* }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<grammar xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+<grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema-datatypes" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
   <define name="doc">
     <element name="doc">
       <attribute name="version">
@@ -16,10 +16,29 @@
       </oneOrMore>
     </element>
   </define>
+  <define name="tr">
+    <a:documentation>A translation.</a:documentation>
+    <element name="tr">
+      <optional>
+        <attribute name="tr">
+          <a:documentation>The translator.</a:documentation>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="p">
+          <a:documentation>The page number.</a:documentation>
+        </attribute>
+      </optional>
+      <text/>
+    </element>
+  </define>
   <define name="cit.content">
     <oneOrMore>
       <ref name="s"/>
     </oneOrMore>
+    <optional>
+      <ref name="tr"/>
+    </optional>
   </define>
   <define name="cit">
     <element name="cit">

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<grammar xmlns="http://relaxng.org/ns/structure/1.0">
+<grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://relaxng.org/ns/structure/1.0">
   <start>
     <ref name="concordance"/>
   </start>
@@ -43,6 +43,22 @@
       <text/>
     </choice>
   </define>
+  <define name="tr">
+    <a:documentation>A translation.</a:documentation>
+    <element name="tr">
+      <optional>
+        <attribute name="tr">
+          <a:documentation>The translator.</a:documentation>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="p">
+          <a:documentation>The page number.</a:documentation>
+        </attribute>
+      </optional>
+      <text/>
+    </element>
+  </define>
   <define name="lines">
     <element name="lines">
       <oneOrMore>
@@ -62,6 +78,9 @@
           <ref name="vard.and.text"/>
         </choice>
       </zeroOrMore>
+      <optional>
+        <ref name="tr"/>
+      </optional>
     </element>
   </define>
   <define name="ref">

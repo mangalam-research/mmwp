@@ -362,7 +362,11 @@ ref: ${line.outerHTML}`);
     docEl.setAttribute("school", titleInfo.school);
     docEl.setAttribute("period", titleInfo.period);
     for (const line of lines) {
-      const cit = this.makeCitFromLine(titleInfo, doc, line, citId++, logger);
+      // We save tr separately from cit so that we can keep it out of the other
+      // processing. We just integrate it after cit is completely processed.
+      const { cit, tr } = this.makeCitFromLine(titleInfo, doc, line, citId++,
+                                               logger);
+
       // A few checks that validation cannot catch.
       this.checkCit(cit, logger);
       if (!logger.hasErrors) {
@@ -382,6 +386,11 @@ ref: ${line.outerHTML}`);
         // to rip out if we ever need it.
         this.wrapWordsInSentenceAndNumber(cit);
 
+        // Integrate tr if needed.
+        if (tr !== null) {
+          cit.appendChild(tr);
+        }
+
         docEl.appendChild(cit);
       }
     }
@@ -394,9 +403,86 @@ ref: ${line.outerHTML}`);
     return match !== null ? match[0].replace(/\s+/g, "") : null;
   }
 
+  /**
+   * @returns An object on which ``cit`` is the citation element and ``tr`` is
+   * the translation element that should be added after all sentences. ``tr`` is
+   * ``null`` if there is no such element.
+   */
   private makeCitFromLine(title: Title, doc: Document, line: Element,
-                          citId: number, logger: Logger): Element {
+                          citId: number,
+                          logger: Logger): { cit: Element,
+                                             tr: Element | null } {
     const cit = doc.createElementNS(MMWP_NAMESPACE, "cit");
+    cit.setAttribute("id", String(citId));
+    const refValue = this.getRefValue(line);
+
+    if (refValue !== undefined) {
+      cit.setAttribute("ref", refValue);
+    }
+    else {
+      logger.warn(`no value for cit/@ref in title: ${title}`);
+    }
+
+    let child = line.firstChild;
+
+    // Convert <line> to <cit>. Remove <ref> and <page.number> and drop all
+    // other tags (but keep their contents), except for the cases below.
+    //
+    // We cannot immediately convert notvariant and normalised to word because
+    // some of these elements may be part of the content unwrapped.
+    //
+    // tr is converted to an element in our namespace.
+    //
+    let tr: Element | null = null;
+    while (child !== null) {
+      switch (child.nodeType) {
+      case Node.TEXT_NODE:
+        cit.appendChild(child.cloneNode(true));
+        break;
+      case Node.ELEMENT_NODE:
+        const tagName = (child as Element).tagName;
+        if (["ref", "page.number"].indexOf(tagName) !== -1) {
+          // Do nothing: this effectively strips these elements and what they
+          // contain.
+        }
+        else if (["notvariant", "normalised"].indexOf(tagName) !== -1) {
+          cit.appendChild(child.cloneNode(true));
+        }
+        else if (tagName === "tr") {
+          // We have to create a new element to bring it into our namespace.
+          tr = cit.ownerDocument.createElementNS(MMWP_NAMESPACE, "tr");
+
+          // tslint:disable-next-line:prefer-for-of
+          for (let ix = 0; ix < child.attributes.length; ++ix) {
+            const { namespaceURI: ns, name, value } = child.attributes[ix];
+            tr.setAttributeNS(ns === null ? "" : ns, name, value);
+          }
+
+          tr.textContent = child.textContent;
+
+          // We do not append tr but return it.
+        }
+        else {
+          // This effectively unwraps the children.
+          let grandChild = child.firstChild;
+          while (grandChild !== null) {
+            cit.appendChild(grandChild.cloneNode(true));
+            grandChild = grandChild.nextSibling;
+          }
+        }
+        break;
+      default:
+        break;
+      }
+
+      child = child.nextSibling;
+    }
+
+    return { cit, tr };
+  }
+
+  private getRefValue(line: Element): string | undefined {
+    let refValue: string | undefined;
     const ref = line.querySelector("ref");
     // tslint:disable-next-line:no-non-null-assertion
     const parsedRef = ref === null ? null : ParsedRef.fromCSV(ref.textContent!);
@@ -404,8 +490,7 @@ ref: ${line.outerHTML}`);
     if (parsedRef !== null) {
       // tslint:disable-next-line:no-non-null-assertion
       const pageVerse = parsedRef!.pageVerse;
-      cit.setAttribute("id", String(citId));
-      let refValue: string | undefined = pageVerse;
+      refValue = pageVerse;
 
       // If we did not get a pageVerse value from the <ref> element, then we
       // look for a <page.number> element and take that.
@@ -433,54 +518,9 @@ ref: ${line.outerHTML}`);
           refValue = match;
         }
       }
-
-      if (refValue !== undefined) {
-        cit.setAttribute("ref", refValue);
-      }
-      else {
-        logger.warn(`no value for cit/@ref in title: ${title}`);
-      }
     }
 
-    let child = line.firstChild;
-
-    // Convert <line> to <cit>. Remove <ref> and <page.number> and drop all
-    // other tags (but keep their contents).
-    //
-    // We cannot immediately convert notvariant and normalised to word because
-    // some of these elements may be part of the content unwrapped.
-    //
-    while (child !== null) {
-      switch (child.nodeType) {
-      case Node.TEXT_NODE:
-        cit.appendChild(child.cloneNode(true));
-        break;
-      case Node.ELEMENT_NODE:
-        const tagName = (child as Element).tagName;
-        if (["ref", "page.number"].indexOf(tagName) !== -1) {
-          // Do nothing: this effectively strips these elements and what they
-          // contain.
-        }
-        else if (["notvariant", "normalised"].indexOf(tagName) !== -1) {
-          cit.appendChild(child.cloneNode(true));
-        }
-        else {
-          // This effectively unwraps the children.
-          let grandChild = child.firstChild;
-          while (grandChild !== null) {
-            cit.appendChild(grandChild.cloneNode(true));
-            grandChild = grandChild.nextSibling;
-          }
-        }
-        break;
-      default:
-        break;
-      }
-
-      child = child.nextSibling;
-    }
-
-    return cit;
+    return refValue;
   }
 
   private checkCit(cit: Element, logger: Logger): void {
