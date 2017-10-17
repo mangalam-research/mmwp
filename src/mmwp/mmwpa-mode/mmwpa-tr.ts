@@ -7,12 +7,12 @@ import { isElement, isText } from "wed/domtypeguards";
 import { textToHTML } from "wed/domutil";
 import { AbortTransformationException } from "wed/exceptions";
 import { TransformationData } from "wed/transformation";
-
-// tslint:disable:no-any
-export type Editor = any;
+import { Editor } from "wed/wed";
 
 const NUMBER_SENTENCE_MODAL_KEY = "btw_mode.btw_tr.number_sentence_modal";
+// tslint:disable-next-line:no-any
 function getNumberSentenceModal(editor: Editor): any {
+// tslint:disable-next-line:no-any
   let removeMixedModal: any = editor.getModeData(NUMBER_SENTENCE_MODAL_KEY);
   if (removeMixedModal != null) {
     return removeMixedModal;
@@ -62,7 +62,7 @@ ${textToHTML(child.outerHTML)}`;
   child = node.firstChild;
   while (child !== null) {
     if (isElement(child)) {
-      editor.data_updater.setAttribute(child, "id", id++);
+      editor.dataUpdater.setAttribute(child, "id", String(id++));
     }
     child = child.nextSibling;
   }
@@ -106,7 +106,7 @@ export function numberWords(editor: Editor, data: TransformationData): void {
   child = node.firstChild;
   while (child !== null) {
     if (isElement(child)) {
-      editor.data_updater.setAttribute(child, "id", id++);
+      editor.dataUpdater.setAttribute(child, "id", String(id++));
     }
     child = child.nextSibling;
   }
@@ -134,7 +134,7 @@ export function unnumberWords(editor: Editor, data: TransformationData): void {
   child = node.firstChild;
   while (child !== null) {
     if (isElement(child) && child.tagName === "word") {
-      editor.data_updater.setAttribute(child, "id", null);
+      editor.dataUpdater.setAttribute(child, "id", null);
     }
     child = child.nextSibling;
   }

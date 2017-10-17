@@ -4,20 +4,12 @@ import * as generic from "wed/modes/generic/generic";
 import * as objectCheck from "wed/object-check";
 import { Transformation, TransformationData } from "wed/transformation";
 import { ModeValidator } from "wed/validator";
+import { Editor } from "wed/wed";
 import { MMWPAMetadata } from "./mmwpa-metadata";
 import * as mmwpaTr from "./mmwpa-tr";
 import { MMWPAValidator } from "./mmwpa-validator";
 
-// We're going to be using any a lot here because we are interfacing with wed,
-// which is not a typescript project, so...
-
-// tslint:disable:no-any
-type Editor = any;
-
-class MMWPAMode extends generic.Mode {
-  // tslint:disable-next-line:variable-name
-  protected wedOptions: any;
-
+class MMWPAMode extends generic.Mode<generic.GenericModeOptions> {
   private readonly numberSentencesTr: Transformation<TransformationData>;
   private readonly numberWordsTr: Transformation<TransformationData>;
   private readonly numberSentencesAndWordsTr:
@@ -28,7 +20,7 @@ class MMWPAMode extends generic.Mode {
     autoinsert: false,
   };
 
-  constructor(editor: Editor, options: any) {
+  constructor(editor: Editor, options: generic.GenericModeOptions) {
     super(editor, options);
 
     this.wedOptions.metadata = {
@@ -116,10 +108,9 @@ class MMWPAMode extends generic.Mode {
   }
 
   getValidator(): ModeValidator {
-    return new MMWPAValidator(this.editor.data_root);
+    return new MMWPAValidator(this.editor.dataRoot);
   }
 
 }
 
-// tslint:disable-next-line:variable-name
-export const Mode: typeof generic.Mode = MMWPAMode;
+export { MMWPAMode as Mode };

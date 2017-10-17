@@ -8,7 +8,9 @@ export async function validate(grammar: Grammar,
                                doc: Document,
                                modeValidator?: ModeValidator):
 Promise<ErrorData[]> {
-  const validator = new Validator(grammar, doc, modeValidator);
+  const validator =
+    new Validator(grammar, doc,
+                  modeValidator !== undefined ? [modeValidator] : []);
   const errors: ErrorData[] = [];
   return new Promise<ErrorData[]>((resolve) => {
     validator.events.addEventListener(

@@ -1,5 +1,10 @@
+import { EName } from "salve";
+
 import { Metadata } from "wed/modes/generic/metadata";
 import { getOriginalName } from "wed/util";
+
+// tslint:disable-next-line:no-http-string
+const MY_NAMESPACE = "http://mangalamresearch.org/ns/mmwp/doc";
 
 export class MMWPAMetadata implements Metadata {
   readonly version: "2";
@@ -7,7 +12,7 @@ export class MMWPAMetadata implements Metadata {
   getNamespaceMappings(): Record<string, string> {
     return {
       // tslint:disable-next-line:no-http-string
-      "": "http://mangalamresearch.org/ns/mmwp/doc",
+      "": MY_NAMESPACE,
     };
   }
 
@@ -24,6 +29,14 @@ export class MMWPAMetadata implements Metadata {
   }
 
   documentationLinkFor(): undefined {
+    return undefined;
+  }
+
+  unresolveName(name: EName): string | undefined {
+    if (name.ns === MY_NAMESPACE) {
+      return name.name;
+    }
+
     return undefined;
   }
 }
