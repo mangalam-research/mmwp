@@ -4,9 +4,9 @@
     "rootDir": ".",
     "baseUrl": ".",
     "paths": {
+      "wed": ["../node_modules/wed/standalone/lib/wed"],
       "wed/*": ["../node_modules/wed/standalone/lib/wed/*"],
-      "dashboard/*": ["../node_modules/wed-demo/dev/lib/dashboard/*"],
-      "salve": ["../node_modules/wed/node_modules/salve"]
+      "dashboard/*": ["../node_modules/wed-demo/dev/lib/dashboard/*"]
     },
     "declaration": true
   },

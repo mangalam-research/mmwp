@@ -11,7 +11,7 @@ import { ErrorData } from "salve-dom";
 // tslint:disable-next-line:no-require-imports
 import concordance = require("mmwp/internal-schemas/concordance");
 import { validate } from "mmwp/util";
-import { ModeValidator } from "wed/validator";
+import { ModeValidator } from "wed";
 
 // tslint:disable-next-line:mocha-no-side-effect-code
 const modeError = [{

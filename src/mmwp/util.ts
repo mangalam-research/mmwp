@@ -2,7 +2,7 @@ import { Grammar } from "salve";
 import { ErrorData, WorkingState as WS,
          WorkingStateData } from "salve-dom";
 
-import { ModeValidator, Validator } from "wed/validator";
+import { ModeValidator, Validator } from "wed";
 
 export async function validate(grammar: Grammar,
                                doc: Document,

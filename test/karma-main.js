@@ -25,6 +25,16 @@
   config.map["check-error"] = "npm:check-error/check-error.js";
   config.map.dashboard = "npm:wed-demo/dev/lib/dashboard";
   config.map.mmwp = "/base/build/dev/lib/mmwp";
+  var external = "npm:wed/packed/lib/external/";
+  ["merge-options",
+   "bootstrap-notify",
+   "is-plain-obj",
+   "log4javascript"].forEach(function each(x) {
+     config.map[x] = external + x + ".js";
+   });
+  config.map.interactjs = external + "interact.min.js";
+  config.map.ajv = external + "ajv.min.js";
+  config.map.typeahead = external + "typeahead.bundle.min.js";
   SystemJS.config(config);
 
   // These are preloaded by Karma as scripts that leak into the global space.

@@ -1,7 +1,7 @@
 import { EName } from "salve";
 
+import { util } from "wed";
 import { Metadata } from "wed/modes/generic/metadata";
-import { getOriginalName } from "wed/util";
 
 // tslint:disable-next-line:no-http-string
 const MY_NAMESPACE = "http://mangalamresearch.org/ns/mmwp/doc";
@@ -17,7 +17,7 @@ export class MMWPAMetadata implements Metadata {
   }
 
   isInline(node: Element): boolean {
-    const originalName = getOriginalName(node);
+    const originalName = util.getOriginalName(node);
     const parts = originalName.split(":");
     const local = (parts.length === 1) ? parts[0] : parts[1];
 

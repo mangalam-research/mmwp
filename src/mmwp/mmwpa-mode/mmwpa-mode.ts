@@ -1,10 +1,11 @@
-import { Action } from "wed/action";
-import { isText } from "wed/domtypeguards";
+import { Action, domtypeguards, EditorAPI, ModeValidator, objectCheck,
+         transformation } from "wed";
+import isText = domtypeguards.isText;
+import Transformation = transformation.Transformation;
+import TransformationData = transformation.TransformationData;
+
 import * as generic from "wed/modes/generic/generic";
-import * as objectCheck from "wed/object-check";
-import { Transformation, TransformationData } from "wed/transformation";
-import { ModeValidator } from "wed/validator";
-import { Editor } from "wed/wed";
+
 import { MMWPAMetadata } from "./mmwpa-metadata";
 import * as mmwpaTr from "./mmwpa-tr";
 import { MMWPAValidator } from "./mmwpa-validator";
@@ -20,7 +21,7 @@ class MMWPAMode extends generic.Mode<generic.GenericModeOptions> {
     autoinsert: false,
   };
 
-  constructor(editor: Editor, options: generic.GenericModeOptions) {
+  constructor(editor: EditorAPI, options: generic.GenericModeOptions) {
     super(editor, options);
 
     this.wedOptions.metadata = {

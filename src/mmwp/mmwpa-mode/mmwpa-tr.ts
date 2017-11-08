@@ -3,15 +3,17 @@
  * @author Louis-Dominique Dubeau
  */
 
-import { isElement, isText } from "wed/domtypeguards";
-import { textToHTML } from "wed/domutil";
-import { AbortTransformationException } from "wed/exceptions";
-import { TransformationData } from "wed/transformation";
-import { Editor } from "wed/wed";
+import { domtypeguards, domutil, EditorAPI, exceptions,
+         transformation } from "wed";
+import isElement = domtypeguards.isElement;
+import isText = domtypeguards.isText;
+import textToHTML = domutil.textToHTML;
+import AbortTransformationException = exceptions.AbortTransformationException;
+import TransformationData = transformation.TransformationData;
 
 const NUMBER_SENTENCE_MODAL_KEY = "btw_mode.btw_tr.number_sentence_modal";
 // tslint:disable-next-line:no-any
-function getNumberSentenceModal(editor: Editor): any {
+function getNumberSentenceModal(editor: EditorAPI): any {
 // tslint:disable-next-line:no-any
   let removeMixedModal: any = editor.getModeData(NUMBER_SENTENCE_MODAL_KEY);
   if (removeMixedModal != null) {
@@ -26,7 +28,7 @@ function getNumberSentenceModal(editor: Editor): any {
   return removeMixedModal;
 }
 
-export function numberSentences(editor: Editor,
+export function numberSentences(editor: EditorAPI,
                                 data: TransformationData): void {
   const node = data.node as Element;
   let child = node.firstChild;
@@ -68,7 +70,7 @@ ${textToHTML(child.outerHTML)}`;
   }
 }
 
-export function numberWords(editor: Editor, data: TransformationData): void {
+export function numberWords(editor: EditorAPI, data: TransformationData): void {
   const node = data.node as Element;
   let child = node.firstChild;
   let error = null;
@@ -112,7 +114,7 @@ export function numberWords(editor: Editor, data: TransformationData): void {
   }
 }
 
-export function numberSentencesAndWords(editor: Editor,
+export function numberSentencesAndWords(editor: EditorAPI,
                                         data: TransformationData): void {
   numberSentences(editor, data);
   const node = data.node as Element;
@@ -127,7 +129,8 @@ export function numberSentencesAndWords(editor: Editor,
   }
 }
 
-export function unnumberWords(editor: Editor, data: TransformationData): void {
+export function unnumberWords(editor: EditorAPI,
+                              data: TransformationData): void {
   const node = data.node as Element;
   let child = node.firstChild;
 

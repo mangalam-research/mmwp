@@ -59,25 +59,28 @@ module.exports = function configure(config) {
       // from a pattern are ordered alphabetically but the order here matters
       // (and is not alphabetical).
       //
-      ["zone", "long-stack-trace-zone", "proxy", "sync-test",
-       "async-test", "fake-async-test", "mocha-patch"].map(
-                    x => `node_modules/zone.js/dist/${x}.js`),
-      "node_modules/wed/standalone/lib/external/classList.js",
-      "node_modules/wed/standalone/lib/wed/polyfills/contains.js",
-      "node_modules/wed/standalone/lib/wed/polyfills/matches.js",
-      "node_modules/wed/standalone/lib/wed/polyfills/innerHTML_for_XML.js",
+      ...["zone", "long-stack-trace-zone", "proxy", "sync-test",
+          "async-test", "fake-async-test", "mocha-patch"].map(
+            x => `node_modules/zone.js/dist/${x}.js`),
+      "node_modules/wed/packed/lib/external/classList.js",
+      "node_modules/wed/packed/lib/wed/polyfills/contains.js",
+      "node_modules/wed/packed/lib/wed/polyfills/matches.js",
+      "node_modules/wed/packed/lib/wed/polyfills/innerHTML_for_XML.js",
       "node_modules/systemjs/dist/system.src.js",
+      "test/karma-env.js",
       "web/system.config.js",
       "test/karma-main.js",
+      { pattern: "node_modules/wed/packed/lib/external/**/*",
+        included: false },
       { pattern: "test/**/*.ts", included: false },
       { pattern: "test/data/**/*", included: false },
       { pattern: "build/**/*.@(js|html|map|css)", included: false },
-    ].reduce((acc, x) => acc.concat(x), []),
+    ],
     exclude: [],
     preprocessors: {
       "test/**/*.ts": ["typescript"],
-      "build/standalone/lib/dashboard.js": coverage,
-      "build/standalone/lib/dashboard/**/!(*.map).js": coverage,
+      "build/dev/lib/dashboard.js": coverage,
+      "build/dev/lib/dashboard/**/!(*.map).js": coverage,
     },
     typescriptPreprocessor: {
       tsconfigPath: "./test/tsconfig.json",

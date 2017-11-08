@@ -1,7 +1,7 @@
 import { ValidationError } from "salve";
 import { ErrorData } from "salve-dom";
 
-import { ModeValidator } from "wed/validator";
+import { ModeValidator } from "wed";
 
 import { DepCheck } from "./dep-check";
 import { getText } from "./util";
