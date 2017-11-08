@@ -135,18 +135,6 @@ gulp.task("build-info", Promise.coroutine(function *task() {
              `--module > ${dest}`);
 }));
 
-function htmlTask(suffix) {
-  gulp.task(`build-html${suffix}`, () => {
-    const dest = `build/dev${suffix}`;
-    return gulp.src(["web/*.html", "web/mmwp/index.html"],
-                    { base: "web" })
-      .pipe(gulpNewer(dest))
-      .pipe(gulp.dest(dest));
-  });
-}
-
-htmlTask("");
-htmlTask("-optimized");
 
 gulp.task("default", ["build"]);
 
