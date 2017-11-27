@@ -118,6 +118,8 @@
           <value>belonging.to</value>
           <value>locus.of</value>
           <value>located.in</value>
+          <value>by.means.of</value>
+          <value>achieved.through</value>
         </choice>
       </attribute>
     </optional>

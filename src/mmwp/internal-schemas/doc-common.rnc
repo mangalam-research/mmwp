@@ -63,7 +63,9 @@ word.attrs = (
         "possessing" |
         "belonging.to" |
         "locus.of" |
-        "located.in"
+        "located.in" |
+        "by.means.of" |
+        "achieved.through"
     }?,
     attribute conc.head { xsd:positiveInteger }?,
     attribute dep.rel {
