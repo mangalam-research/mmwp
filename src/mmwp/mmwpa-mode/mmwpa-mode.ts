@@ -1,5 +1,5 @@
 import { Action, domtypeguards, EditorAPI, ModeValidator, objectCheck,
-         transformation } from "wed";
+         transformation, util } from "wed";
 import isText = domtypeguards.isText;
 import Transformation = transformation.Transformation;
 import TransformationData = transformation.TransformationData;
@@ -55,6 +55,56 @@ class MMWPAMode extends generic.Mode<generic.GenericModeOptions> {
       mmwpaTr.numberSentencesAndWords);
     this.unnumberWordsTr = new Transformation(
       editor, "transform", "Unnumber the words", mmwpaTr.unnumberWords);
+  }
+
+  async init(): Promise<void> {
+    await super.init();
+
+    const wordClass =
+      util.classFromOriginalName("word", this.metadata.getNamespaceMappings());
+    const editor = this.editor;
+    const dl = editor.domlistener;
+
+    let sentences: Element[] = [];
+    const wordAddedRemoved =
+      (root: Node, _parent: Node, _prev: Node | null, _next: Node | null,
+       el: Element) => {
+         // Skip elements which would already have been removed from the
+         // tree. Unlikely but...
+         if (!root.contains(el)) {
+           return;
+         }
+
+         const dataEl = $.data(el, "wed_mirror_node");
+         const sentence = dataEl.parentNode;
+         // We only act if the word was a direct child of a sentence.
+         if ((sentence.tagName === "s") &&
+             (sentences.indexOf(sentence) === -1)) {
+           sentences.push(sentence);
+         }
+       };
+
+    dl.addHandler("added-element", wordClass, wordAddedRemoved);
+    dl.addHandler("removing-element", wordClass, wordAddedRemoved);
+
+    editor.transformations.subscribe((ev) => {
+      if (ev.name === "EndTransformation") {
+        if (sentences.length > 0) {
+          for (const sentence of sentences) {
+            mmwpaTr.renumberWords(editor, sentence);
+          }
+          sentences = [];
+        }
+      }
+    });
+
+    // We check for the mark that ``mmwpaTr.renumberWords`` left among the undos
+    // to bring up a warning for the user.
+    editor.undoEvents.subscribe((ev) => {
+      if (ev.undo instanceof mmwpaTr.WordNumberingMarker) {
+        mmwpaTr.getRenumberModal(editor).modal();
+      }
+    });
   }
 
   makeMetadata(): Promise<MMWPAMetadata> {

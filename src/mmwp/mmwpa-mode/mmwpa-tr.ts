@@ -4,28 +4,56 @@
  */
 
 import { domtypeguards, domutil, EditorAPI, exceptions,
-         transformation } from "wed";
+         transformation, UndoMarker } from "wed";
 import isElement = domtypeguards.isElement;
 import isText = domtypeguards.isText;
 import textToHTML = domutil.textToHTML;
 import AbortTransformationException = exceptions.AbortTransformationException;
 import TransformationData = transformation.TransformationData;
 
-const NUMBER_SENTENCE_MODAL_KEY = "btw_mode.btw_tr.number_sentence_modal";
+export class WordNumberingMarker extends UndoMarker {
+  constructor() {
+    super("WordNumberingMarker");
+  }
+}
+
+const MODE_KEY = "mmwpa-mode";
+
+const NUMBER_SENTENCE_MODAL_KEY = `${MODE_KEY}.number-sentence-modal`;
 // tslint:disable-next-line:no-any
 function getNumberSentenceModal(editor: EditorAPI): any {
 // tslint:disable-next-line:no-any
-  let removeMixedModal: any = editor.getModeData(NUMBER_SENTENCE_MODAL_KEY);
-  if (removeMixedModal != null) {
-    return removeMixedModal;
+  let modal: any = editor.getModeData(NUMBER_SENTENCE_MODAL_KEY);
+  if (modal != null) {
+    return modal;
   }
 
-  removeMixedModal = editor.makeModal();
-  removeMixedModal.setTitle("Invalid");
-  removeMixedModal.addButton("Ok", true);
-  editor.setModeData(NUMBER_SENTENCE_MODAL_KEY, removeMixedModal);
+  modal = editor.makeModal();
+  modal.setTitle("Invalid");
+  modal.addButton("Ok", true);
+  editor.setModeData(NUMBER_SENTENCE_MODAL_KEY, modal);
 
-  return removeMixedModal;
+  return modal;
+}
+
+const RENUMBER_MODAL_KEY = `${MODE_KEY}.renumber-modal`;
+// tslint:disable-next-line:no-any
+export function getRenumberModal(editor: EditorAPI): any {
+// tslint:disable-next-line:no-any
+  let modal: any = editor.getModeData(RENUMBER_MODAL_KEY);
+  if (modal != null) {
+    return modal;
+  }
+
+  modal = editor.makeModal();
+  modal.setTitle("Check references");
+  modal.setBody(`The words of the sentence in which the caret is located were \
+renumbered. Check @dep.head and @conc.head for correctness on each word of \
+this sentence.`);
+  modal.addButton("Ok", true);
+  editor.setModeData(RENUMBER_MODAL_KEY, modal);
+
+  return modal;
 }
 
 export function numberSentences(editor: EditorAPI,
@@ -70,9 +98,9 @@ ${textToHTML(child.outerHTML)}`;
   }
 }
 
-export function numberWords(editor: EditorAPI, data: TransformationData): void {
-  const node = data.node as Element;
-  let child = node.firstChild;
+function checkForNumbering(editor: EditorAPI, sentence: Element,
+                           disallowID: boolean): void {
+  let child = sentence.firstChild;
   let error = null;
 
   while (child !== null) {
@@ -87,7 +115,7 @@ export function numberWords(editor: EditorAPI, data: TransformationData): void {
         error = `there is a foreign element: ${textToHTML(child.outerHTML)}`;
         break;
       }
-      else if (child.getAttribute("id") !== null) {
+      else if (disallowID && (child.getAttribute("id") !== null)) {
         error = `there is a word with number ${child.getAttribute("id")}`;
       }
     }
@@ -103,14 +131,54 @@ export function numberWords(editor: EditorAPI, data: TransformationData): void {
     modal.modal();
     throw new AbortTransformationException("sentence content is invalid");
   }
+}
+
+export function numberWords(editor: EditorAPI, data: TransformationData): void {
+  const sentence = data.node as Element;
+  checkForNumbering(editor, sentence, true);
 
   let id = 1;
-  child = node.firstChild;
+  let child = sentence.firstChild;
   while (child !== null) {
     if (isElement(child)) {
       editor.dataUpdater.setAttribute(child, "id", String(id++));
     }
     child = child.nextSibling;
+  }
+}
+
+// The code here does not keep track of changes made and automatically renumber
+// conc.head and dep.head. This is a choice we made to minimize code complexity.
+export function renumberWords(editor: EditorAPI, sentence: Element): void {
+  checkForNumbering(editor, sentence, false);
+
+  let id = 1;
+  let child = sentence.firstChild;
+  let changed = false;
+  let headAttributesPresent = false;
+  while (child !== null) {
+    if (isElement(child)) {
+      const newId = String(id++);
+      // We do not want to trigger a change if the values are the same.
+      if (newId !== child.getAttribute("id")) {
+        changed = true;
+        editor.dataUpdater.setAttribute(child, "id", newId);
+      }
+
+      if (child.hasAttribute("conc.head") || child.hasAttribute("dep.head")) {
+        headAttributesPresent = true;
+      }
+    }
+    child = child.nextSibling;
+  }
+
+  // We don't bring up the modal in cases where it would be spurious.
+  if (changed && headAttributesPresent) {
+    // We drop a marker into the list of undo objects so that we can later
+    // bring up the same modal if the user undoes/redoes the change we just
+    // made.
+    editor.recordUndo(new WordNumberingMarker());
+    getRenumberModal(editor).modal();
   }
 }
 
