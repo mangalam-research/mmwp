@@ -59,6 +59,7 @@ describe("ConcordanceTransformService", () => {
   let service: ConcordanceTransformService;
   let file: XMLFile;
   let bad: XMLFile;
+  let malformed: XMLFile;
   let refErrorDocument: XMLFile;
   let rservice: RevealedService;
 
@@ -100,6 +101,8 @@ describe("ConcordanceTransformService", () => {
         provider.getText("ref-errors.xml"));
 
       bad = await xmlFilesService.makeRecord("foo", "<div/>");
+
+      malformed = await xmlFilesService.makeRecord("moo", "");
     });
 
     // We need to reset after each test because otherwise
@@ -159,6 +162,14 @@ describe("ConcordanceTransformService", () => {
          ProcessingError,
          `<p>tag not allowed here: {\"ns\":\"\",\"name\":\"div\"}<\/p>
 <p>tag required: {\"ns\":\"\",\"name\":\"concordance\"}</p>`));
+
+    it("rejects if the file is malformed", () =>
+       expect(service.perform(malformed))
+       .to.eventually.be.rejectedWith(
+         ProcessingError,
+         "The document cannot be parsed. It is probably due to a \
+well-formedness error. Please check the file for well-formedness outside of \
+this application and fix any errors before uploading again."));
 
     it("reports ref errors", async () => {
       await expectReject(service.perform(refErrorDocument),

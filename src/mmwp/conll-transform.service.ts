@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { alert } from "bootbox";
 import { constructTree, Grammar } from "salve";
+import { ParsingError, safeParse } from "salve-dom";
 
 import { ProcessingService } from "dashboard/processing.service";
 import { fixPrototype, triggerDownload } from "dashboard/util";
@@ -108,8 +109,6 @@ export class Word {
 
 @Injectable()
 export class CoNLLTransformService extends XMLTransformService {
-  private readonly parser: DOMParser = new DOMParser();
-
   // Caches for the grammars. We do this at the class level because these
   // objects are immutable.
   private static _annotatedGrammar: Grammar | undefined;
@@ -130,9 +129,20 @@ export class CoNLLTransformService extends XMLTransformService {
   perform(input: XMLFile): Promise<string> {
     this.processing.start(1);
     return input.getData().then((data) => {
-      const doc = this.parser.parseFromString(data, "text/xml");
-      if (doc.documentElement.tagName === "parseerror") {
-        throw new Error(`could not parse ${input.name}`);
+      let doc: Document;
+      try {
+        doc = safeParse(data);
+      }
+      catch (ex) {
+        if (!(ex instanceof ParsingError)) {
+          throw ex;
+        }
+
+        throw new ProcessingError(
+          "Parsing Error",
+          "The document cannot be parsed. It is probably due to a \
+well-formedness error. Please check the file for well-formedness outside of \
+this application and fix any errors before uploading again.");
       }
 
       return validate(this.annotatedGrammar, doc, new MMWPAValidator(doc))
@@ -152,20 +162,20 @@ export class CoNLLTransformService extends XMLTransformService {
           this.processing.increment();
           this.processing.stop();
           return transformed;
-        })
-        .catch((err) => {
-          this.processing.increment();
-          this.processing.stop();
-          if (err instanceof ProcessingError) {
-            this.reportFailure(err.title !== undefined ? err.title : "Error",
-                               err.message);
-            throw err;
-          }
-
-          this.reportFailure("Internal failure", err.toString());
-          throw err;
         });
-    });
+    })
+      .catch((err) => {
+        this.processing.increment();
+        this.processing.stop();
+        if (err instanceof ProcessingError) {
+          this.reportFailure(err.title !== undefined ? err.title : "Error",
+                             err.message);
+          throw err;
+        }
+
+        this.reportFailure("Internal failure", err.toString());
+        throw err;
+      });
   }
 
   private transform(doc: Document): string {

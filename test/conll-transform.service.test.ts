@@ -33,24 +33,24 @@ describe("CoNLLTransformService", () => {
   let rservice: RevealedService;
   let file: XMLFile;
   let bad: XMLFile;
+  let malformed: XMLFile;
 
   before(() => {
     provider = new DataProvider("/base/test/data/");
     xmlFilesService = new XMLFilesService(new ChunksService());
     service = new CoNLLTransformService(new ProcessingService());
     rservice = revealService(service);
-
   });
 
   after(() => db.delete().then(() => db.open()));
 
   describe("#perform", () => {
-    beforeEach(() =>
-               provider.getText("annotated-file-1.xml")
-               .then((data) => xmlFilesService.makeRecord("foo", data))
-               .then((newFile) => file = newFile)
-               .then(() => xmlFilesService.makeRecord("foo", "<div/>"))
-               .then((newFile) => bad = newFile));
+    beforeEach(async () => {
+      const data = await provider.getText("annotated-file-1.xml");
+      file = await xmlFilesService.makeRecord("foo", data);
+      bad = await xmlFilesService.makeRecord("foo", "<div/>");
+      malformed = await xmlFilesService.makeRecord("foo", "");
+    });
 
     it("converts a file", () => service.perform(file));
 
@@ -61,32 +61,40 @@ describe("CoNLLTransformService", () => {
          `<p>tag not allowed here: {"ns":"","name":"div"}<\/p>
 <p>tag required: {"ns":"http://mangalamresearch.org/ns/mmwp/doc",\
 "name":"doc"}</p>`));
+
+    it("errors if the file is incorrect", () =>
+       expect(service.perform(malformed))
+       .to.eventually.be.rejectedWith(
+         ProcessingError,
+         "The document cannot be parsed. It is probably due to a \
+well-formedness error. Please check the file for well-formedness outside of \
+this application and fix any errors before uploading again."));
   });
 
   describe("#transform", () => {
     let doc: Document;
-    beforeEach(() => provider.getDoc("annotated-file-1.xml").then((newDoc) => {
-      doc = newDoc;
-    }));
+    beforeEach(async () => {
+      doc = await provider.getDoc("annotated-file-1.xml");
+    });
 
-    it("transforms a document", () =>
-       provider.getText("annotated-file-1-converted.txt").then((expected) => {
-         const result = rservice.transform(doc);
+    it("transforms a document", async () => {
+      const expected = await provider.getText("annotated-file-1-converted.txt");
+      const result = rservice.transform(doc);
 
-         const lines = result.split("\n");
-         const expectedLines = expected.split("\n")
-           .filter((line) => line[0] !== "#");
+      const lines = result.split("\n");
+      const expectedLines = expected.split("\n")
+        .filter((line) => line[0] !== "#");
 
-         for (let ix = 0; ix < lines.length; ++ix) {
-           const line = lines[ix];
+      for (let ix = 0; ix < lines.length; ++ix) {
+        const line = lines[ix];
 
-           expect(ix).to.be.lessThan(expectedLines.length);
-           const expectedLine = expectedLines[ix];
+        expect(ix).to.be.lessThan(expectedLines.length);
+        const expectedLine = expectedLines[ix];
 
-           expect(line).to.equal(expectedLine);
-         }
+        expect(line).to.equal(expectedLine);
+      }
 
-         expect(lines).to.have.lengthOf(expectedLines.length);
-       }));
+      expect(lines).to.have.lengthOf(expectedLines.length);
+    });
   });
 });

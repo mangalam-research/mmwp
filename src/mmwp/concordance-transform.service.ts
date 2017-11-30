@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { alert } from "bootbox";
 import { constructTree, Grammar } from "salve";
+import { ParsingError, safeParse } from "salve-dom";
 import * as slug from "slug";
 
 import { ProcessingService } from "dashboard/processing.service";
@@ -190,8 +191,6 @@ async function safeValidate(grammar: Grammar,
 
 @Injectable()
 export class ConcordanceTransformService extends XMLTransformService {
-  private readonly parser: DOMParser = new DOMParser();
-
   // Caches for the grammars. We do this at the class level because these
   // objects are immutable.
   private static _concordanceGrammar: Grammar | undefined;
@@ -225,9 +224,20 @@ export class ConcordanceTransformService extends XMLTransformService {
     let ret: XMLFile[];
     try {
       const data = await input.getData();
-      const doc = this.parser.parseFromString(data, "text/xml");
-      if (doc.documentElement.tagName === "parseerror") {
-        throw new Error(`could not parse ${input.name}`);
+      let doc: Document;
+      try {
+        doc = safeParse(data);
+      }
+      catch (ex) {
+        if (!(ex instanceof ParsingError)) {
+          throw ex;
+        }
+
+        throw new ProcessingError(
+          "Parsing Error",
+          "The document cannot be parsed. It is probably due to a \
+well-formedness error. Please check the file for well-formedness outside of \
+this application and fix any errors before uploading again.");
       }
 
       const titles: Record<string, Title> = Object.create(null);
@@ -348,8 +358,7 @@ ref: ${line.outerHTML}`);
                          logger: Logger): Document | null {
     const title = titleInfo.title;
     let citId = 1;
-    const doc = this.parser.parseFromString(`<doc xmlns='${MMWP_NAMESPACE}'/>`,
-                                            "text/xml");
+    const doc = safeParse(`<doc xmlns='${MMWP_NAMESPACE}'/>`);
     const docEl = doc.firstElementChild;
     if (docEl === null) {
       throw new Error("no child in the document");
