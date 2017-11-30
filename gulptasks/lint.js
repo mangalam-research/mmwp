@@ -3,10 +3,9 @@ const eslint = require("gulp-eslint");
 const { spawn } = require("./util");
 
 function runTslint(tsconfig, tslintConfig) {
-  return spawn(
-    "./node_modules/.bin/tslint",
-    ["--type-check", "--project", tsconfig, "-c", tslintConfig],
-    { stdio: "inherit" });
+  return spawn("./node_modules/.bin/tslint",
+               ["--project", tsconfig, "-c", tslintConfig],
+               { stdio: "inherit" });
 }
 
 gulp.task("tslint-src", () => runTslint("src/tsconfig.json", "src/tslint.json"));
