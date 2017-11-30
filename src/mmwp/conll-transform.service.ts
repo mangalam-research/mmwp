@@ -126,9 +126,11 @@ export class CoNLLTransformService extends XMLTransformService {
     return CoNLLTransformService._annotatedGrammar;
   }
 
-  perform(input: XMLFile): Promise<string> {
-    this.processing.start(1);
-    return input.getData().then((data) => {
+  async perform(input: XMLFile): Promise<string> {
+    let transformed: string;
+    try {
+      this.processing.start(1);
+      const data = await input.getData();
       let doc: Document;
       try {
         doc = safeParse(data);
@@ -145,37 +147,33 @@ well-formedness error. Please check the file for well-formedness outside of \
 this application and fix any errors before uploading again.");
       }
 
-      return validate(this.annotatedGrammar, doc, new MMWPAValidator(doc))
-        .then((errors) => {
-          if (errors.length !== 0) {
-            throw new ProcessingError(
-              "Validation Error",
-              errors.map((x) => `<p>${x.error.toString()}</p>`).join("\n"));
-          }
+      const errors = await validate(this.annotatedGrammar, doc,
+                                    new MMWPAValidator(doc));
+      if (errors.length !== 0) {
+        throw new ProcessingError(
+          "Validation Error",
+          errors.map((x) => `<p>${x.error.toString()}</p>`).join("\n"));
+      }
 
-          const transformed = this.transform(doc);
-          const name = input.name.replace(/\.xml$/, ".txt");
-          triggerDownload(name, transformed);
-          return transformed;
-        })
-        .then((transformed) => {
-          this.processing.increment();
-          this.processing.stop();
-          return transformed;
-        });
-    })
-      .catch((err) => {
-        this.processing.increment();
-        this.processing.stop();
-        if (err instanceof ProcessingError) {
-          this.reportFailure(err.title !== undefined ? err.title : "Error",
-                             err.message);
-          throw err;
-        }
-
-        this.reportFailure("Internal failure", err.toString());
+      transformed = this.transform(doc);
+      const name = input.name.replace(/\.xml$/, ".txt");
+      triggerDownload(name, transformed);
+    }
+    catch (err) {
+      if (err instanceof ProcessingError) {
+        this.reportFailure(err.title !== undefined ? err.title : "Error",
+                           err.message);
         throw err;
-      });
+      }
+
+      this.reportFailure("Internal failure", err.toString());
+      throw err;
+    }
+    finally {
+      this.processing.increment();
+      this.processing.stop();
+    }
+    return transformed;
   }
 
   private transform(doc: Document): string {
