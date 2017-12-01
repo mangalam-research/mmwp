@@ -89,6 +89,15 @@
       </attribute>
     </optional>
     <optional>
+      <attribute name="number">
+        <choice>
+          <value>sing</value>
+          <value>plu</value>
+          <value>dual</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
       <attribute name="sem.type"/>
     </optional>
     <optional>

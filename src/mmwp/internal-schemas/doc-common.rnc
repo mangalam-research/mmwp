@@ -46,6 +46,11 @@ word.attrs = (
         "locative" |
         "vocative"
     }?,
+    attribute number {
+        "sing" |
+        "plu" |
+        "dual"
+    }?,
     attribute sem.type { text }?,
     attribute sem.field { text }?,
     attribute sem.role { text }?,

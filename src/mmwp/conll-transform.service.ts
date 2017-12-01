@@ -208,6 +208,7 @@ this application and fix any errors before uploading again.");
                  word.raw, "\t",
                  word.getAttribute("lem"), "\t",
                  word.getAttribute("case"), "\t",
+                 word.getAttribute("number"), "\t",
                  word.getAttribute("sem.type"), "\t",
                  word.getAttribute("sem.field"), "\t",
                  word.getAttribute("uncertainty"), "\t",
