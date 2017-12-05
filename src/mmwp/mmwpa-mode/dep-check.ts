@@ -2,7 +2,7 @@ import { ValidationError } from "salve";
 import { ErrorData } from "salve-dom";
 
 const _otherAttributes = ["id"];
-const _annotationAttributes = ["lem", "case", "number", "sem.type", "sem.field",
+const _annotationAttributes = ["lem", "case", "number", "sem.cat", "sem.field",
                                "sem.role", "uncertainty", "conc.rel",
                                "conc.head", "dep.rel", "dep.head"];
 

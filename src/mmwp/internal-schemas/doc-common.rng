@@ -98,7 +98,7 @@
       </attribute>
     </optional>
     <optional>
-      <attribute name="sem.type"/>
+      <attribute name="sem.cat"/>
     </optional>
     <optional>
       <attribute name="sem.field"/>

@@ -51,7 +51,7 @@ word.attrs = (
         "plu" |
         "dual"
     }?,
-    attribute sem.type { text }?,
+    attribute sem.cat { text }?,
     attribute sem.field { text }?,
     attribute sem.role { text }?,
     attribute uncertainty {

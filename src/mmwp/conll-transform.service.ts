@@ -209,7 +209,7 @@ this application and fix any errors before uploading again.");
                  word.getAttribute("lem"), "\t",
                  word.getAttribute("case"), "\t",
                  word.getAttribute("number"), "\t",
-                 word.getAttribute("sem.type"), "\t",
+                 word.getAttribute("sem.cat"), "\t",
                  word.getAttribute("sem.field"), "\t",
                  word.getAttribute("uncertainty"), "\t",
                  word.getAttribute("conc.rel"), "\t",
