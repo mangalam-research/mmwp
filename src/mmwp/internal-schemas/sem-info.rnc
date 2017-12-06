@@ -1,0 +1,15 @@
+default namespace = "http://mangalamresearch.org/ns/mmwp/sem.info"
+namespace xsd = "http://www.w3.org/2001/XMLSchema-datatypes"
+
+start = sem.info
+
+sem.info = element sem.info {
+    tuple+
+}
+
+tuple = element tuple {
+    attribute lem { text }?,
+    attribute sem.field { text }?,
+    attribute sem.cat { text }?,
+    attribute freq { xsd:positiveInteger }
+}

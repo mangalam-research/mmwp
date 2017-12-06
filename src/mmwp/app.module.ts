@@ -19,6 +19,8 @@ import { XMLTransformService } from "dashboard/xml-transform.service";
 import { AppRoutingModule } from "./app-routing.module";
 import { ConcordanceTransformService } from "./concordance-transform.service";
 import { CoNLLTransformService } from "./conll-transform.service";
+import { SemanticInformationTransformService,
+       } from "./semantic-information-transform.service";
 
 export const configuration: NgModule = {
   imports: [
@@ -50,6 +52,10 @@ export const configuration: NgModule = {
     }, {
       provide: XMLTransformService,
       useClass: CoNLLTransformService,
+      multi: true,
+    }, {
+      provide: XMLTransformService,
+      useClass: SemanticInformationTransformService,
       multi: true,
     }, {
       provide: "Mode",

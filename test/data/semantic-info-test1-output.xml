@@ -1,0 +1,8 @@
+<sem.info xmlns="http://mangalamresearch.org/ns/mmwp/sem.info">
+  <tuple lem="a" sem.field="field2" sem.cat="cat2" freq="3"/>
+  <tuple lem="a" sem.field="field1" sem.cat="cat1" freq="1"/>
+  <tuple lem="a" sem.field="field1" sem.cat="cat2" freq="1"/>
+  <tuple lem="a" sem.field="field2" sem.cat="cat1" freq="1"/>
+  <tuple lem="b" sem.field="field2" sem.cat="cat2" freq="4"/>
+  <tuple lem="b" sem.field="field1" sem.cat="cat1" freq="1"/>
+</sem.info>

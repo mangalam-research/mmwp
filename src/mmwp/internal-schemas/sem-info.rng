@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar ns="http://mangalamresearch.org/ns/mmwp/sem.info" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <start>
+    <ref name="sem.info"/>
+  </start>
+  <define name="sem.info">
+    <element name="sem.info">
+      <oneOrMore>
+        <ref name="tuple"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="tuple">
+    <element name="tuple">
+      <optional>
+        <attribute name="lem"/>
+      </optional>
+      <optional>
+        <attribute name="sem.field"/>
+      </optional>
+      <optional>
+        <attribute name="sem.cat"/>
+      </optional>
+      <attribute name="freq">
+        <data type="positiveInteger"/>
+      </attribute>
+    </element>
+  </define>
+</grammar>
