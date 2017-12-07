@@ -54,7 +54,7 @@ describe("CoNLLTransformService", () => {
 
     it("converts a file", () => service.perform(file));
 
-    it("errors if the file is incorrect", () =>
+    it("errors if the file is invalid", () =>
        expect(service.perform(bad))
        .to.eventually.be.rejectedWith(
          ProcessingError,
@@ -62,7 +62,7 @@ describe("CoNLLTransformService", () => {
 <p>tag required: {"ns":"http://mangalamresearch.org/ns/mmwp/doc",\
 "name":"doc"}</p>`));
 
-    it("errors if the file is incorrect", () =>
+    it("errors if the file is malformed", () =>
        expect(service.perform(malformed))
        .to.eventually.be.rejectedWith(
          ProcessingError,
