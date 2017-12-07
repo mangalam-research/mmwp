@@ -384,6 +384,7 @@ ref: ${line.outerHTML}`);
         this.cleanText(cit);
         this.breakIntoWords(doc, cit);
         this.cleanDashes(cit, line);
+        this.populateLem(cit);
 
         // We wrap everything in a single sentence. Originally <cit> contained
         // the words directly, and a user was responsible for grouping the words
@@ -717,6 +718,37 @@ ${line.innerHTML}`);
       }
 
       elChild = next;
+    }
+  }
+
+  /**
+   * Automatically populate ``@lem`` on those words that are part of a compound,
+   * but not the final part. If ``@lem`` has been previously set, don't set it.
+   *
+   * @param cit The citation to process.
+   */
+  private populateLem(cit: Element): void {
+    let elChild = cit.firstElementChild;
+    while (elChild !== null) {
+      const tagName = elChild.tagName;
+      if (tagName !== "word") {
+        throw new Error(`unexpected element: ${tagName}`);
+      }
+
+      // We don't set @lem, if it is already set by previous processing.
+      if (elChild.getAttribute("lem") === null) {
+        // tslint:disable-next-line:no-non-null-assertion
+        const text = elChild.textContent!;
+        // If the word ends with a dash, it is part of a compound but not the
+        // final part, which is what we want.
+        if (text.endsWith("-")) {
+          // Populate @lem, without the final dash, and without the possible
+          // initial one.
+          elChild.setAttribute("lem", text.slice(0, -1).replace(/^-/, ""));
+        }
+      }
+
+      elChild = elChild.nextElementSibling;
     }
   }
 

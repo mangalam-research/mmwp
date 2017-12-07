@@ -39,6 +39,7 @@ interface RevealedService {
   cleanText(node: Node): void;
   breakIntoWords(doc: Document, cit: Element): void;
   cleanDashes(cit: Element, line: Element): void;
+  populateLem(cit: Element): void;
   extractRef(text: string): string | null;
 }
 
@@ -324,11 +325,11 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
 
       const firstExpected = `<s id="1"> \
 <word lem="yāvad" id="1">yāvan</word> \
-<word lem="nīla" id="2">nīla-</word> <word id="3">-pīta-</word>\
+<word lem="nīla" id="2">nīla-</word> <word lem="pīta" id="3">-pīta-</word>\
 <word lem="dīrgha" id="4">-dīrgha-</word> \
 <word lem="hrasva" id="5">-hrasva-</word> \
-<word id="6">-stri-</word><word id="7">-puruṣa-</word>\
-<word id="8">-mitra-</word>\
+<word lem="stri" id="6">-stri-</word><word lem="puruṣa" id="7">-puruṣa-</word>\
+<word lem="mitra" id="8">-mitra-</word>\
 <word lem="amitra" id="9">-amitra-</word> \
 <word lem="sukha" id="10">-sukha-</word> \
 <word lem="duḥkha" id="11">-duḥkha-</word> \
@@ -620,7 +621,7 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
 
   describe("#cleanDashes", () => {
     let doc: Document;
-    beforeEach(() => provider.getDoc("multiple-titles-1.xml").then((newDoc) => {
+    before(() => provider.getDoc("multiple-titles-1.xml").then((newDoc) => {
       doc = newDoc;
     }));
 
@@ -662,6 +663,36 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
 <word>blah-</word><word>-foo-</word><word>-bar</word>\
 <word>bwip-</word><word>-fwip-</word><word>-moo</word>\
 <word>aaa-</word><word>-bbb-</word><word>-ccc</word>`);
+    });
+  });
+
+  describe("#populateLem", () => {
+    let doc: Document;
+    before(() => provider.getDoc("multiple-titles-1.xml").then((newDoc) => {
+      doc = newDoc;
+    }));
+
+    it("throws on unexpected element", () => {
+      const cit = doc.createElement("cit");
+      cit.innerHTML = "<foo/>";
+      expect(() => {
+        rservice.cleanDashes(cit, cit);
+      }).to.throw(Error, "unexpected element: foo");
+    });
+
+    it("populates @lem", () => {
+      const cit = doc.createElement("cit");
+      cit.innerHTML = `\
+<word>blah-</word><word>-foo-</word><word>-bar</word>\
+<word>bwip-</word><word>-fwip-</word><word>-moo</word>\
+<word>aaa-</word><word>-bbb-</word><word>-ccc</word>\
+<word lem="a">blah-</word><word>-q</word>`;
+      rservice.populateLem(cit);
+      expect(cit).to.have.property("innerHTML").equal(`\
+<word lem="blah">blah-</word><word lem="foo">-foo-</word><word>-bar</word>\
+<word lem="bwip">bwip-</word><word lem="fwip">-fwip-</word><word>-moo</word>\
+<word lem="aaa">aaa-</word><word lem="bbb">-bbb-</word><word>-ccc</word>\
+<word lem="a">blah-</word><word>-q</word>`);
     });
   });
 
