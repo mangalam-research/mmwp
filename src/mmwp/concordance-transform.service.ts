@@ -409,8 +409,9 @@ ref: ${line.outerHTML}`);
   }
 
   private extractRef(text: string): string | null {
-    const match = text.match(/\d(?:\d|\s)*\.\s*\d(?:\d|\s)*/);
-    return match !== null ? match[0].replace(/\s+/g, "") : null;
+    const match =
+      text.match(/_?\d(?:\d|\s)*\.\s*\d(?:\d|\s)*|_\s*\d(?:\d|\s)*/);
+    return match !== null ? match[0].replace(/[_\s]+/g, "") : null;
   }
 
   /**

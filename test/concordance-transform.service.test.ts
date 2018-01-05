@@ -399,6 +399,8 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
       ["4.5", "4.5.6 something"],
       ["0.0", "blah 0.0 blah"],
       ["5.67", "something 5.6 7"],
+      ["1", "Verse_1 something something"],
+      ["123", "Verse _ 1 2 3 something something"],
     ]) {
       it(`matches ${str}`, () => {
         expect(rservice.extractRef(str)!).to.equal(result);
