@@ -3,8 +3,8 @@ import { ErrorData } from "salve-dom";
 
 const _otherAttributes = ["id"];
 const _annotationAttributes = ["lem", "case", "number", "sem.cat", "sem.field",
-                               "sem.role", "uncertainty", "conc.rel",
-                               "conc.head", "dep.rel", "dep.head"];
+                               "sem.role", "sem.pros", "uncertainty",
+                               "conc.rel", "conc.head", "dep.rel", "dep.head"];
 
 function indexOf(something: {}, item: {}): number {
   return Array.prototype.indexOf.call(something, item);
