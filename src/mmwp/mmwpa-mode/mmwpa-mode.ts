@@ -10,6 +10,9 @@ import { MMWPAMetadata } from "./mmwpa-metadata";
 import * as mmwpaTr from "./mmwpa-tr";
 import { MMWPAValidator } from "./mmwpa-validator";
 
+// tslint:disable-next-line: no-any
+declare var require: any;
+
 class MMWPAMode extends generic.Mode<generic.GenericModeOptions> {
   private readonly numberSentencesTr: Transformation<TransformationData>;
   private readonly numberWordsTr: Transformation<TransformationData>;
@@ -162,6 +165,9 @@ class MMWPAMode extends generic.Mode<generic.GenericModeOptions> {
     return new MMWPAValidator(this.editor.dataRoot);
   }
 
+  getStylesheets(): string[] {
+    return [require.toUrl("./mmwpa-mode.css")];
+  }
 }
 
 export { MMWPAMode as Mode };

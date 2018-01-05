@@ -1,0 +1,8 @@
+.wed-widget .wed-validation-error {
+  opacity: 0.3;
+  color: grey;
+}
+
+.wed-frame ._gui._label {
+  opacity: 0.6;
+}

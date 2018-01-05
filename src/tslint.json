@@ -13,6 +13,7 @@
     "no-string-literal": [false,
                           "off because of ",
                           "https://github.com/palantir/tslint/issues/1257"],
-    "newline-before-return": [false, "Not for this project."]
+    "newline-before-return": [false, "Not for this project."],
+    "no-reserved-keywords": [false, "Too restrictive."]
   }
 }
