@@ -99,32 +99,24 @@ compounded: -bar`),
 
   it("checks the dependency tree", () => {
     const document = parser.parseFromString(`\
-<cit id="1"><s id="1"><word id="1" lem="blah">foo</word>\
-<word id="2" lem="q">bar</word></s></cit>\
-`,
-                                            "text/xml");
+<cit id="1"><s id="1"><word id="1" lem="blah" dep.rel="listed.with" \
+conc.rel="blah">foo</word>\
+<word id="2" lem="q" dep.rel="listed.with" \
+conc.rel="blah" dep.head="3" conc.head="3">bar</word>\
+<word id="3" lem="q">bar</word>\
+</s></cit>`, "text/xml");
     const v = new MMWPAValidator(document);
     const s = document.getElementsByTagName("s")[0];
     expect(v.validateDocument()).to.deep.equal([{
       error: new ValidationError(
-        "word 1 is annotated but not part of the conc tree"),
+        "word 1 has conc.rel but is not part of the conc tree"),
       node: s,
       index: 0,
     }, {
       error: new ValidationError(
-        "word 2 is annotated but not part of the conc tree"),
-      node: s,
-      index: 1,
-    }, {
-      error: new ValidationError(
-        "word 1 is annotated but not part of the dep tree"),
+        "word 1 has dep.rel but is not part of the dep tree"),
       node: s,
       index: 0,
-    }, {
-      error: new ValidationError(
-        "word 2 is annotated but not part of the dep tree"),
-      node: s,
-      index: 1,
     }]);
   });
 

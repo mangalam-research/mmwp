@@ -63,8 +63,8 @@ export class MMWPAValidator implements ModeValidator {
   }
 
   private validateSentence(s: Element): ErrorData[] {
-    const concCheck = new DepCheck("conc", s, "conc.head");
-    const depCheck = new DepCheck("dep", s, "dep.head");
+    const concCheck = new DepCheck("conc", s);
+    const depCheck = new DepCheck("dep", s);
     let child = s.firstElementChild;
     const ret = [];
     while (child !== null) {

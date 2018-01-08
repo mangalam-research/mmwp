@@ -1,25 +1,12 @@
 import { ValidationError } from "salve";
 import { ErrorData } from "salve-dom";
 
-const _otherAttributes = ["id"];
-const _annotationAttributes = ["lem", "case", "number", "sem.cat", "sem.field",
-                               "sem.role", "sem.pros", "uncertainty",
-                               "conc.rel", "conc.head", "dep.rel", "dep.head"];
-
 function indexOf(something: {}, item: {}): number {
   return Array.prototype.indexOf.call(something, item);
 }
 
-const allAttributes: Record<string, number> = Object.create(null);
-const annotationAttributes: Record<string, number> = Object.create(null);
-
-for (const name of _otherAttributes) {
-  allAttributes[name] = 1;
-}
-
-for (const name of _annotationAttributes) {
-  allAttributes[name] = 1;
-  annotationAttributes[name] = 1;
+function depNameToRelAttributeName(depName: string): string {
+  return `${depName}.rel`;
 }
 
 class DepNode {
@@ -27,19 +14,12 @@ class DepNode {
   public readonly dependents: DepNode[] = [];
   public readonly dep?: string;
 
-  constructor(public readonly element: Element,
+  constructor(public readonly treeName: string,
+              public readonly element: Element,
               public readonly id: string,
               dep?: string | null) {
-    for (const attribute of Array.prototype.slice.call(element.attributes)) {
-      const name = attribute.name;
-      if (!(name in allAttributes)) {
-        throw new Error(`unknown attribute: ${name}`);
-      }
-
-      if (name in annotationAttributes) {
-        this.annotated = true;
-      }
-    }
+    const depAttr = element.getAttribute(depNameToRelAttributeName(treeName));
+    this.annotated = depAttr !== null;
 
     // Dep may be null if the element does not have the necessary attribute. Or
     // it could be empty if it is not input yet or being edited. We don't raise
@@ -81,9 +61,11 @@ type IdToNode = Record<string, DepNode>;
 
 export class DepCheck {
   private idToNode: IdToNode = Object.create(null);
-  constructor(private readonly name: string,
-              private readonly container: Element,
-              private readonly depAttributeName: string) {}
+  private readonly pointerAttributeName: string;
+  constructor(private readonly treeName: string,
+              private readonly container: Element) {
+    this.pointerAttributeName = `${treeName}.head`;
+  }
 
   addNode(element: Element): ValidationError | undefined {
     const id = element.getAttribute("id");
@@ -95,8 +77,8 @@ export class DepCheck {
       return new ValidationError(`duplicate id ${id}`);
     }
 
-    const dep = element.getAttribute(this.depAttributeName);
-    this.idToNode[id] = new DepNode(element, id, dep);
+    const dep = element.getAttribute(this.pointerAttributeName);
+    this.idToNode[id] = new DepNode(this.treeName, element, id, dep);
 
     return undefined;
   }
@@ -130,8 +112,8 @@ export class DepCheck {
     for (const node of allNodes) {
       if (node.annotated && !(node.id in participating)) {
         ret.push(node.makeError(
-          `word ${node.id} is annotated but not part of the ${this.name} \
-tree`));
+          `word ${node.id} has ${depNameToRelAttributeName(this.treeName)} \
+but is not part of the ${this.treeName} tree`));
       }
     }
 
@@ -159,13 +141,13 @@ tree`));
     if (roots.length > 1) {
       for (const root of roots) {
         ret.push(root.makeError(
-          `word ${root.id} is a duplicated root in the ${this.name} tree`));
+          `word ${root.id} is a duplicated root in the ${this.treeName} tree`));
       }
 
       return ret;
     }
     else if (roots.length === 0) {
-      ret.push(this.makeError(`the ${this.name} tree has no root`));
+      ret.push(this.makeError(`the ${this.treeName} tree has no root`));
 
       return ret;
     }
@@ -183,7 +165,7 @@ tree`));
     for (const id of notSeen) {
       const node = participating[id];
       errors.push(node.makeError(`word ${id} has a dependency in the \
-${this.name} tree but is unreachable from the root`));
+${this.treeName} tree but is unreachable from the root`));
     }
   }
 
@@ -195,7 +177,7 @@ ${this.name} tree but is unreachable from the root`));
       // circular dependency will either have the wrong number of roots or will
       // have a cycle which is unreachable from the root.
       errors.push(
-        current.makeError(`${this.name} tree has a circular dependency \
+        current.makeError(`${this.treeName} tree has a circular dependency \
 ${path.join(", ")}`));
       return;
     }
@@ -206,7 +188,7 @@ ${path.join(", ")}`));
       // create a diamond, for instance.
       errors.push(
         current.makeError(
-          `seen ${id} already: tree ${this.name} is not a tree`));
+          `seen ${id} already: tree ${this.treeName} is not a tree`));
       return;
     }
 
