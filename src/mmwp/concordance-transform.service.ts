@@ -9,14 +9,12 @@ import { fixPrototype } from "dashboard/util";
 import { XMLFile } from "dashboard/xml-file";
 import { XMLFilesService } from "dashboard/xml-files.service";
 import { XMLTransformService } from "dashboard/xml-transform.service";
+import { setLemFromPart, wordsFromCompoundParts } from "./compounds";
 // tslint:disable-next-line:no-require-imports
 import concordance = require("./internal-schemas/concordance");
 // tslint:disable-next-line:no-require-imports
 import docUnannotated = require("./internal-schemas/doc-unannotated");
-import { validate } from "./util";
-
-// tslint:disable-next-line:no-http-string
-const MMWP_NAMESPACE = "http://mangalamresearch.org/ns/mmwp/doc";
+import { MMWP_NAMESPACE, validate } from "./util";
 
 export class TitleEqualityError extends Error {
   constructor(message: string) {
@@ -642,28 +640,7 @@ ref: ${line.outerHTML}`);
               cit.insertBefore(word, child);
             }
             else {
-              for (let compoundPartsIx = 0;
-                   compoundPartsIx < compoundParts.length;
-                   ++compoundPartsIx) {
-                const compoundPart = compoundParts[compoundPartsIx];
-
-                // We skip the empty parts. After the processing done by earlier
-                // steps, these may happen at the start or end of a part. It is
-                // important that we don't just filter them out because they
-                // affect the tests done on the index below.
-                if (compoundPart === "") {
-                  continue;
-                }
-                const word = doc.createElementNS(MMWP_NAMESPACE, "word");
-                const text: string[] = [];
-                if (compoundPartsIx !== 0) {
-                  text.push("-");
-                }
-                text.push(compoundPart);
-                if (compoundPartsIx !== compoundParts.length - 1) {
-                  text.push("-");
-                }
-                word.textContent = text.join("");
+              for (const word of wordsFromCompoundParts(compoundParts, doc)) {
                 cit.insertBefore(word, child);
               }
             }
@@ -736,18 +713,7 @@ ${line.innerHTML}`);
         throw new Error(`unexpected element: ${tagName}`);
       }
 
-      // We don't set @lem, if it is already set by previous processing.
-      if (elChild.getAttribute("lem") === null) {
-        // tslint:disable-next-line:no-non-null-assertion
-        const text = elChild.textContent!;
-        // If the word ends with a dash, it is part of a compound but not the
-        // final part, which is what we want.
-        if (text.endsWith("-")) {
-          // Populate @lem, without the final dash, and without the possible
-          // initial one.
-          elChild.setAttribute("lem", text.slice(0, -1).replace(/^-/, ""));
-        }
-      }
+      setLemFromPart(elChild);
 
       elChild = elChild.nextElementSibling;
     }

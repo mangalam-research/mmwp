@@ -3,13 +3,16 @@
  * @author Louis-Dominique Dubeau
  */
 
-import { domtypeguards, domutil, EditorAPI, exceptions,
+import { domtypeguards, domutil, EditorAPI, exceptions, Modal,
          transformation, UndoMarker } from "wed";
 import isElement = domtypeguards.isElement;
 import isText = domtypeguards.isText;
 import textToHTML = domutil.textToHTML;
 import AbortTransformationException = exceptions.AbortTransformationException;
 import TransformationData = transformation.TransformationData;
+
+import { isValidCompound, setLemFromPart,
+         wordsFromCompoundParts } from "../compounds";
 
 export class WordNumberingMarker extends UndoMarker {
   constructor() {
@@ -19,42 +22,38 @@ export class WordNumberingMarker extends UndoMarker {
 
 const MODE_KEY = "mmwpa-mode";
 
-const NUMBER_SENTENCE_MODAL_KEY = `${MODE_KEY}.number-sentence-modal`;
-// tslint:disable-next-line:no-any
-function getNumberSentenceModal(editor: EditorAPI): any {
-// tslint:disable-next-line:no-any
-  let modal: any = editor.getModeData(NUMBER_SENTENCE_MODAL_KEY);
-  if (modal != null) {
+function makeModalGetter(key: string, builder: (modal: Modal) => void):
+(editor: EditorAPI) => Modal {
+  const fullKey = `${MODE_KEY}.${key}`;
+  return (editor: EditorAPI) => {
+    let modal: Modal = editor.getModeData(fullKey);
+    if (modal != null) {
+      return modal;
+    }
+
+    modal = editor.makeModal();
+    builder(modal);
+    editor.setModeData(fullKey, modal);
     return modal;
-  }
-
-  modal = editor.makeModal();
-  modal.setTitle("Invalid");
-  modal.addButton("Ok", true);
-  editor.setModeData(NUMBER_SENTENCE_MODAL_KEY, modal);
-
-  return modal;
+  };
 }
 
-const RENUMBER_MODAL_KEY = `${MODE_KEY}.renumber-modal`;
-// tslint:disable-next-line:no-any
-export function getRenumberModal(editor: EditorAPI): any {
-// tslint:disable-next-line:no-any
-  let modal: any = editor.getModeData(RENUMBER_MODAL_KEY);
-  if (modal != null) {
-    return modal;
-  }
+const getNumberSentenceModal = makeModalGetter(
+  "number-sentence-modal",
+  (modal) => {
+    modal.setTitle("Invalid");
+    modal.addButton("Ok", true);
+  });
 
-  modal = editor.makeModal();
-  modal.setTitle("Check references");
-  modal.setBody(`The words of the sentence in which the caret is located were \
-renumbered. Check @dep.head and @conc.head for correctness on each word of \
-this sentence.`);
-  modal.addButton("Ok", true);
-  editor.setModeData(RENUMBER_MODAL_KEY, modal);
-
-  return modal;
-}
+export const getRenumberModal = makeModalGetter(
+  "renumber-modal",
+  (modal) => {
+    modal.setTitle("Check references");
+    modal.setBody(`The words of the sentence in which the caret is located \
+were renumbered. Check @dep.head and @conc.head for correctness on each word \
+of this sentence.`);
+    modal.addButton("Ok", true);
+  });
 
 export function numberSentences(editor: EditorAPI,
                                 data: TransformationData): void {
@@ -209,4 +208,41 @@ export function unnumberWords(editor: EditorAPI,
     }
     child = child.nextSibling;
   }
+}
+
+const getSplitCompoundModal = makeModalGetter(
+  "split-compound-modal",
+  (modal) => {
+    modal.setTitle("Split compound into parts");
+    modal.setBody(`The word is not in a correct format for splitting. \
+Make sure there are no XML elements inside the word. And that there is no \
+leading or trailing dash and that the dashes that mark part boundaries are \
+single dashes (not double or triple)`);
+    modal.addButton("Ok", true);
+  });
+
+export function splitCompoundIntoParts(editor: EditorAPI,
+                                       data: TransformationData): void {
+  const node = data.node as Element;
+  if (node.tagName !== "word") {
+    throw new Error("unexpected state: not working on a word");
+  }
+
+  if (node.firstElementChild !== null || !isValidCompound(node)) {
+    getSplitCompoundModal(editor).modal();
+    throw new AbortTransformationException("invalid word format");
+  }
+
+  // tslint:disable-next-line:no-non-null-assertion
+  const parts = node.textContent!.split("-");
+  if (parts.length === 1) {
+    return;
+  }
+
+  for (const word of wordsFromCompoundParts(parts, node.ownerDocument)) {
+    setLemFromPart(word);
+    editor.dataUpdater.insertBefore(node.parentNode as Element, word, node);
+  }
+
+  editor.dataUpdater.removeNode(node);
 }

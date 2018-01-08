@@ -4,6 +4,9 @@ import { ErrorData, WorkingState as WS,
 
 import { ModeValidator, Validator } from "wed";
 
+// tslint:disable-next-line:no-http-string
+export const MMWP_NAMESPACE = "http://mangalamresearch.org/ns/mmwp/doc";
+
 export async function validate(grammar: Grammar,
                                doc: Document,
                                modeValidator?: ModeValidator):

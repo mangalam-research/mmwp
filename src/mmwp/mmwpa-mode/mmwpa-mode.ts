@@ -19,6 +19,7 @@ class MMWPAMode extends generic.Mode<generic.GenericModeOptions> {
   private readonly numberSentencesAndWordsTr:
   Transformation<TransformationData>;
   private readonly unnumberWordsTr: Transformation<TransformationData>;
+  private readonly splitCompoundIntoPartsTr: Transformation<TransformationData>;
 
   readonly optionTemplate: objectCheck.Template = {
     autoinsert: false,
@@ -58,6 +59,9 @@ class MMWPAMode extends generic.Mode<generic.GenericModeOptions> {
       mmwpaTr.numberSentencesAndWords);
     this.unnumberWordsTr = new Transformation(
       editor, "transform", "Unnumber the words", mmwpaTr.unnumberWords);
+    this.splitCompoundIntoPartsTr = new Transformation(
+      editor, "split", "Split compound into parts",
+      mmwpaTr.splitCompoundIntoParts);
   }
 
   async init(): Promise<void> {
@@ -133,6 +137,11 @@ class MMWPAMode extends generic.Mode<generic.GenericModeOptions> {
     if (transformationType.indexOf("wrap-content") !== -1 &&
         el.tagName === "s") {
       ret.push(this.numberWordsTr, this.unnumberWordsTr);
+    }
+
+    if (transformationType.indexOf("split") !== -1 &&
+        el.tagName === "word") {
+      ret.push(this.splitCompoundIntoPartsTr);
     }
 
     return ret;
