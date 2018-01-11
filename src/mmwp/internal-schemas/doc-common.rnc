@@ -8,6 +8,7 @@ doc = element doc {
     attribute tradition { text },
     attribute school { text },
     attribute period { text },
+    attribute lem { text },
     cit+
 }
 

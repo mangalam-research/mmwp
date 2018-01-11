@@ -5,8 +5,14 @@
   </start>
   <define name="concordance">
     <element name="concordance">
+      <ref name="lemma"/>
       <ref name="heading"/>
       <ref name="lines"/>
+    </element>
+  </define>
+  <define name="lemma">
+    <element name="lemma">
+      <text/>
     </element>
   </define>
   <define name="heading">

@@ -30,7 +30,7 @@ interface RevealedService {
   gatherTitles(doc: Document, titles: Record<string, Title>,
                titleToLines: Record<string, Element[]>,
                logger: Logger): void;
-  transformTitle(titleInfo: Title, lines: Element[],
+  transformTitle(lemma: string, titleInfo: Title, lines: Element[],
                  logger: Logger): Document | null;
   checkCit(cit: Element, logger: Logger): void;
   makeCitFromLine(title: Title, doc: Document, line: Element, citId: number,
@@ -304,7 +304,8 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
       rservice.gatherTitles(doc, titles, titleToLines, logger);
       expect(logger).to.have.property("hasErrors").false;
       const result =
-        rservice.transformTitle(titles["Moo"], titleToLines["Moo"], logger);
+        rservice.transformTitle("lemValue", titles["Moo"], titleToLines["Moo"],
+                                logger);
       expect(result).to.be.instanceof(Document);
       expect(logger).to.have.property("hasErrors").false;
 
@@ -318,6 +319,7 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
       expect(root).to.have.deep.property("attributes.school.value",
                                          "pasteurized");
       expect(root).to.have.deep.property("attributes.period.value", "old");
+      expect(root).to.have.deep.property("attributes.lem.value", "lemValue");
 
       expect(root).to.have.property("childNodes").with.lengthOf(3);
       const first = root.firstElementChild!;
@@ -371,6 +373,7 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
       expect(logger).to.have.property("hasErrors").false;
       const result =
         rservice.transformTitle(
+          "lemmaValue",
           titles["Abhidharmakośabhāṣya"],
           titleToLines["Abhidharmakośabhāṣya"], logger);
       expect(result).to.be.null;

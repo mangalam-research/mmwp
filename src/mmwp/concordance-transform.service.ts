@@ -245,6 +245,8 @@ this application and fix any errors before uploading again.");
       const logger = new Logger();
       this.gatherTitles(doc, titles, titleToLines, logger);
       // tslint:disable-next-line:no-non-null-assertion
+      const lemma = doc.querySelector("concordance>lemma")!.textContent!;
+      // tslint:disable-next-line:no-non-null-assertion
       const query = doc.querySelector("concordance>heading>query")!
         .textContent!;
       // tslint:disable-next-line:no-non-null-assertion
@@ -258,7 +260,7 @@ this application and fix any errors before uploading again.");
         const lines = titleToLines[title];
         const outputName =
           `${title}_${slug(query, "_")}_${slug(base, "_")}.xml`;
-        const result = this.transformTitle(titleInfo, lines, logger);
+        const result = this.transformTitle(lemma, titleInfo, lines, logger);
         if (result !== null) {
           transformed.push({ outputName, doc: result });
         }
@@ -274,16 +276,7 @@ this application and fix any errors before uploading again.");
       const promises: Promise<{titleDoc: Document,
                                outputName: string}>[] = [];
       for (const { outputName, doc: titleDoc } of transformed) {
-        promises.push(
-          (async () => {
-            const record = await this.xmlFiles.getRecordByName(outputName);
-            if (record !== undefined) {
-              throw new ProcessingError(
-                "File Name Error", `This would overwrite: ${outputName}`);
-            }
-            await safeValidate(this.unannotatedGrammar, titleDoc);
-            return { titleDoc, outputName };
-          })());
+        promises.push(this.checkOutput(outputName, titleDoc));
       }
 
       const results = await Promise.all(promises);
@@ -296,9 +289,8 @@ this application and fix any errors before uploading again.");
       ret = await Promise.all(
         results.map(async ({ outputName, titleDoc }) => {
           return this.xmlFiles.updateRecord(
-            await this.xmlFiles.makeRecord(
-              outputName,
-              titleDoc.documentElement.outerHTML));
+            await this.xmlFiles.makeRecord(outputName,
+                                           titleDoc.documentElement.outerHTML));
         }));
     }
     catch (err) {
@@ -352,7 +344,7 @@ ref: ${line.outerHTML}`);
     }
   }
 
-  private transformTitle(titleInfo: Title, lines: Element[],
+  private transformTitle(lemma: string, titleInfo: Title, lines: Element[],
                          logger: Logger): Document | null {
     const title = titleInfo.title;
     let citId = 1;
@@ -362,6 +354,7 @@ ref: ${line.outerHTML}`);
       throw new Error("no child in the document");
     }
     docEl.setAttribute("version", "1");
+    docEl.setAttribute("lem", lemma);
     docEl.setAttribute("title", title);
     docEl.setAttribute("genre", titleInfo.genre);
     docEl.setAttribute("author", titleInfo.author);
@@ -756,5 +749,18 @@ ${line.innerHTML}`);
       title: "Warning",
       message,
     });
+  }
+
+  private async checkOutput(outputName: string, titleDoc: Document):
+  Promise<{titleDoc: Document, outputName: string}> {
+    const record = await this.xmlFiles.getRecordByName(outputName);
+    if (record !== undefined) {
+      throw new ProcessingError("File Name Error",
+                                `This would overwrite: ${outputName}`);
+    }
+
+    await safeValidate(this.unannotatedGrammar, titleDoc);
+
+    return { titleDoc, outputName };
   }
 }

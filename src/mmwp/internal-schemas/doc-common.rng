@@ -11,6 +11,7 @@
       <attribute name="tradition"/>
       <attribute name="school"/>
       <attribute name="period"/>
+      <attribute name="lem"/>
       <oneOrMore>
         <ref name="cit"/>
       </oneOrMore>

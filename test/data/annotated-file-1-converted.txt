@@ -1,4 +1,4 @@
-<doc xmlns="http://mangalamresearch.org/ns/mmwp/doc" version="1" title="Abhidharmakośabhāṣya" genre="śāstra" author="Vasubandhu" tradition="abhidharma" school="N/A" period="classical">
+<doc xmlns="http://mangalamresearch.org/ns/mmwp/doc" version="1" lem="something" title="Abhidharmakośabhāṣya" genre="śāstra" author="Vasubandhu" tradition="abhidharma" school="N/A" period="classical">
 1	yāvan		yāvad	nominative	dual	foo 	moo 	philological	leading.to	2	sem.role.value	subject.agent	4
 2	nīla-	nīla-pīta-dīrgha-hrasva-stri-puruṣa-mitra-amitra-sukha-duḥkha-adi-nimitta-dgrahaṇam	nīla							3			4
 3	-pīta-	nīla-pīta-dīrgha-hrasva-stri-puruṣa-mitra-amitra-sukha-duḥkha-adi-nimitta-dgrahaṇam	pīta										4

@@ -1,6 +1,8 @@
 start = concordance
 
-concordance = element concordance { heading, lines }
+concordance = element concordance { lemma, heading, lines }
+
+lemma = element lemma { text }
 
 heading = element heading { corpus, hits, query }
 
