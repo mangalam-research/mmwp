@@ -10,8 +10,12 @@ import { MMWPAMetadata } from "./mmwpa-metadata";
 import * as mmwpaTr from "./mmwpa-tr";
 import { MMWPAValidator } from "./mmwpa-validator";
 
+// We "hide" the require call under a different name. It prevents Webpack from
+// choking the require use we make in this mode.
+
 // tslint:disable-next-line: no-any
 declare var require: any;
+const req = require;
 
 class MMWPAMode extends generic.Mode<generic.GenericModeOptions> {
   private readonly numberSentencesTr: Transformation<TransformationData>;
@@ -175,7 +179,7 @@ class MMWPAMode extends generic.Mode<generic.GenericModeOptions> {
   }
 
   getStylesheets(): string[] {
-    return [require.toUrl("./mmwpa-mode.css")];
+    return [req.toUrl("./mmwpa-mode.css")];
   }
 }
 
