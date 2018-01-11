@@ -9,8 +9,9 @@ import { ProcessingService } from "dashboard/processing.service";
 import { db } from "dashboard/store";
 import { XMLFile } from "dashboard/xml-file";
 import { XMLFilesService } from "dashboard/xml-files.service";
-import { ProcessingError, SemanticInformationTransformService,
+import { SemanticInformationTransformService,
          Tuple } from "mmwp/semantic-information-transform.service";
+import { ProcessingError } from "mmwp/util";
 import { DataProvider } from "./util";
 
 // tslint:disable-next-line:max-func-body-length

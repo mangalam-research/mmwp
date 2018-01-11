@@ -9,15 +9,15 @@ import { ProcessingService } from "dashboard/processing.service";
 import { db } from "dashboard/store";
 import { XMLFile } from "dashboard/xml-file";
 import { XMLFilesService } from "dashboard/xml-files.service";
-import { CoNLLTransformService,
-         ProcessingError } from "mmwp/conll-transform.service";
+import { CoNLLTransformService } from "mmwp/conll-transform.service";
+import { ProcessingError } from "mmwp/util";
 import { DataProvider } from "./util";
 
 // Interface that shows the private members of ConcordanceTransformService.  We
 // cannot link it directly to ConcordanceTransformService because revealing
 // private fields is not allowed by TS.
 interface RevealedService {
-  transform(doc: Document): string;
+  transform(doc: Document): Promise<string>;
 }
 
 function revealService(s: CoNLLTransformService): RevealedService {
@@ -79,7 +79,7 @@ this application and fix any errors before uploading again."));
 
     it("transforms a document", async () => {
       const expected = await provider.getText("annotated-file-1-converted.txt");
-      const result = rservice.transform(doc);
+      const result = await rservice.transform(doc);
 
       const lines = result.split("\n");
       const expectedLines = expected.split("\n")

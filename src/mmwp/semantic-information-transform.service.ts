@@ -1,45 +1,18 @@
 import { Injectable } from "@angular/core";
-import { alert } from "bootbox";
 import { constructTree, Grammar } from "salve";
-import { ParsingError, safeParse } from "salve-dom";
-import { ModeValidator } from "wed";
+import { safeParse } from "salve-dom";
 
 import { ProcessingService } from "dashboard/processing.service";
-import { fixPrototype, triggerDownload } from "dashboard/util";
 import { XMLFile } from "dashboard/xml-file";
-import { XMLTransformService } from "dashboard/xml-transform.service";
-// tslint:disable-next-line:no-require-imports
-import docAnnotated = require("./internal-schemas/doc-annotated");
+
+import { AnnotatedDocumentTransformService,
+       } from "./annotated-document-transform.service";
 // tslint:disable-next-line:no-require-imports
 import semInfo = require("./internal-schemas/sem-info");
-import { MMWPAValidator } from "./mmwpa-mode/mmwpa-validator";
-import { validate } from "./util";
+import { safeValidate } from "./util";
 
 // tslint:disable-next-line:no-http-string
 const MMWP_NAMESPACE = "http://mangalamresearch.org/ns/mmwp/sem.info";
-
-export class ProcessingError extends Error {
-  public readonly title: string;
-
-  constructor(title: string, message: string) {
-    super();
-    this.title = "ProcessingError";
-    this.message = message;
-    this.title = title;
-    fixPrototype(this, ProcessingError);
-  }
-}
-
-async function safeValidate(grammar: Grammar,
-                            document: Document,
-                            modeValidator?: ModeValidator): Promise<void> {
-  const errors = await validate(grammar, document, modeValidator);
-  if (errors.length !== 0) {
-    throw new ProcessingError(
-      "Validation Error",
-      errors.map((x) => `<p>${x.error.toString()}</p>`).join("\n"));
-  }
-}
 
 // We export it for the sake of testing.
 export class Tuple {
@@ -86,24 +59,14 @@ export class Tuple {
 }
 
 @Injectable()
-export class SemanticInformationTransformService extends XMLTransformService {
+export class SemanticInformationTransformService
+extends AnnotatedDocumentTransformService {
   // Caches for the grammars. We do this at the class level because these
   // objects are immutable.
-  private static _annotatedGrammar: Grammar | undefined;
   private static _semInfoGrammar: Grammar | undefined;
 
-  constructor(private readonly processing: ProcessingService) {
-    super("Extract semantic information to XML");
-  }
-
-  get annotatedGrammar(): Grammar {
-    if (SemanticInformationTransformService._annotatedGrammar === undefined) {
-      const clone = JSON.parse(JSON.stringify(docAnnotated));
-      SemanticInformationTransformService._annotatedGrammar =
-        constructTree(clone);
-    }
-
-    return SemanticInformationTransformService._annotatedGrammar;
+  constructor(processing: ProcessingService) {
+    super(processing, "Extract semantic information to XML");
   }
 
   get semInfoGrammar(): Grammar {
@@ -116,49 +79,8 @@ export class SemanticInformationTransformService extends XMLTransformService {
     return SemanticInformationTransformService._semInfoGrammar;
   }
 
-  async perform(input: XMLFile): Promise<string> {
-    let transformed: string;
-    try {
-      this.processing.start(1);
-      const data = await input.getData();
-      let doc: Document;
-      try {
-        doc = safeParse(data);
-      }
-      catch (ex) {
-        if (!(ex instanceof ParsingError)) {
-          throw ex;
-        }
-
-        throw new ProcessingError(
-          "Parsing Error",
-          "The document cannot be parsed. It is probably due to a \
-well-formedness error. Please check the file for well-formedness outside of \
-this application and fix any errors before uploading again.");
-      }
-
-      await safeValidate(this.annotatedGrammar, doc,
-                         new MMWPAValidator(doc));
-
-      transformed = await this.transform(doc);
-      triggerDownload(`${input.name.replace(/\..*?$/, "")}_sem_info.xml`,
-                      transformed);
-    }
-    catch (err) {
-      if (err instanceof ProcessingError) {
-        this.reportFailure(err.title !== undefined ? err.title : "Error",
-                           err.message);
-        throw err;
-      }
-
-      this.reportFailure("Internal failure", err.toString());
-      throw err;
-    }
-    finally {
-      this.processing.increment();
-      this.processing.stop();
-    }
-    return transformed;
+  protected getOutputName(input: XMLFile): string {
+    return `${input.name.replace(/\..*?$/, "")}_sem_info.xml`;
   }
 
   async transform(doc: Document): Promise<string> {
@@ -213,12 +135,5 @@ this application and fix any errors before uploading again.");
     await safeValidate(this.semInfoGrammar, outputDoc);
 
     return `${outputDoc.documentElement.outerHTML}\n`;
-  }
-
-  reportFailure(title: string, message: string): void {
-    alert({
-      title,
-      message,
-    });
   }
 }
