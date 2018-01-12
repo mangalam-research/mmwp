@@ -95,7 +95,9 @@ word.attrs = (
         "takes.as.subject.agent" |
         "takes.as.object.patient" |
         "takes.oblique" |
-        "oblique.of"
+        "oblique.of" |
+        "manner.of" |
+        "takes.manner"
     }?,
     attribute dep.head { xsd:positiveInteger }?
 )
