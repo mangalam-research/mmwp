@@ -14,7 +14,8 @@ import { setLemFromPart, wordsFromCompoundParts } from "./compounds";
 import concordance = require("./internal-schemas/concordance");
 // tslint:disable-next-line:no-require-imports
 import docUnannotated = require("./internal-schemas/doc-unannotated");
-import { MMWP_NAMESPACE, validate } from "./util";
+import { MMWP_NAMESPACE } from "./namespaces";
+import { validate } from "./util";
 
 export class TitleEqualityError extends Error {
   constructor(message: string) {

@@ -9,10 +9,8 @@ import { AnnotatedDocumentTransformService,
        } from "./annotated-document-transform.service";
 // tslint:disable-next-line:no-require-imports
 import semInfo = require("./internal-schemas/sem-info");
+import { MMWP_SEMINFO_NAMESPACE } from "./namespaces";
 import { safeValidate } from "./util";
-
-// tslint:disable-next-line:no-http-string
-const MMWP_NAMESPACE = "http://mangalamresearch.org/ns/mmwp/sem.info";
 
 // We export it for the sake of testing.
 export class Tuple {
@@ -84,7 +82,8 @@ extends AnnotatedDocumentTransformService {
   }
 
   async transform(doc: Document): Promise<string> {
-    const outputDoc = safeParse(`<sem.info xmlns='${MMWP_NAMESPACE}'/>`);
+    const outputDoc =
+      safeParse(`<sem.info xmlns='${MMWP_SEMINFO_NAMESPACE}'/>`);
     const words = Array.from(doc.getElementsByTagName("word"));
     const seen: Map<string, Tuple> = new Map();
     for (const word of words) {
@@ -113,7 +112,8 @@ extends AnnotatedDocumentTransformService {
     const top = outputDoc.firstElementChild!;
     top.appendChild(outputDoc.createTextNode("\n"));
     for (const tuple of tuples) {
-      const tupleEl = outputDoc.createElementNS(MMWP_NAMESPACE, "tuple");
+      const tupleEl =
+        outputDoc.createElementNS(MMWP_SEMINFO_NAMESPACE, "tuple");
       if (tuple.lem !== "") {
         tupleEl.setAttribute("lem", tuple.lem);
       }

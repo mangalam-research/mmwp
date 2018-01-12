@@ -1,4 +1,4 @@
-import { MMWP_NAMESPACE } from "./util";
+import { MMWP_NAMESPACE } from "./namespaces";
 
 /**
  * Verify that a word is in the proper format for a compound. This function is

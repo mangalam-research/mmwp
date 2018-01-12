@@ -9,9 +9,6 @@ import { fixPrototype } from "dashboard/util";
 import docAnnotated = require("./internal-schemas/doc-annotated");
 import { MMWPAValidator } from "./mmwpa-mode/mmwpa-validator";
 
-// tslint:disable-next-line:no-http-string
-export const MMWP_NAMESPACE = "http://mangalamresearch.org/ns/mmwp/doc";
-
 export async function validate(grammar: Grammar,
                                doc: Document,
                                modeValidator?: ModeValidator):
