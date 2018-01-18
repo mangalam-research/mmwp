@@ -9,7 +9,7 @@
       "blueimp-md5": "/node_modules/blueimp-md5/js/md5.min",
       "wed-store": base + "wed-store",
       "kitchen-sink": base + "kitchen-sink",
-      mmwp: "/build/dev/lib/mmwp",
+      mmwp: process.env.MMWP_BASE,
     },
   });
 }());

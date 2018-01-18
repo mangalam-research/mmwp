@@ -9,6 +9,19 @@
     <link href="/node_modules/wed/standalone/lib/wed/wed.css" type="text/css"
           media="screen"
           rel="stylesheet" />
+    <script>
+      (function () {
+        var a = document.createElement("a");
+        a.href = ".";
+        var process = window.process = (window.process || {});
+        var env = process.env = (process.env || {});
+        env.MMWP_BASE = a.pathname + "mmwp/";
+        env.DASHBOARD_BASE = "/node_modules/wed-demo/dev/lib/";
+      }());
+    </script>
+    <script data-script-type="set-environment" type="text/javascript">
+      process.env.NODE_ENV = "development";
+    </script>
     <script type="text/javascript" src="/node_modules/wed/standalone/lib/external/core-js.min.js"></script>
     <script type="text/javascript" src="/node_modules/wed/standalone/lib/external/bluebird.js"></script>
     <script type="text/javascript" src="/node_modules/wed/standalone/lib/external/classList.js"></script>
@@ -20,18 +33,7 @@
     <script type="text/javascript" src="/node_modules/wed/standalone/lib/wed/polyfills/normalize.js"></script>
     <script type="text/javascript" src="/node_modules/wed/standalone/lib/requirejs/require.js"></script>
     <script type="text/javascript" src="/node_modules/wed/standalone/requirejs-config.js"></script>
-    <script>
-      require.config({
-        baseUrl: "/node_modules/wed/standalone/lib",
-        paths: {
-          "dashboard": "/node_modules/wed-demo/dev/lib/dashboard",
-          "blueimp-md5": "/node_modules/blueimp-md5/js/md5.min",
-          "wed-store": "/node_modules/wed-demo/dev/lib/wed-store",
-          "kitchen-sink": "/node_modules/wed-demo/dev/lib/kitchen-sink",
-          "mmwp": "/build/dev/lib/mmwp",
-        },
-      });
-    </script>
+    <script src="requirejs-local-config.js"></script>
   </head>
   <body>
     <div class="container">

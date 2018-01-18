@@ -138,10 +138,29 @@ requirejs-local-config}.js",
     "mmwp/mmwpa-mode/mmwpa-mode": ["mmwp/mmwpa-mode/mmwpa-mode.js"],
   },
   module: {},
-  externals: createMakeExternals(mainBundleExternals),
+  externals: (() => {
+    const fn = createMakeExternals(mainBundleExternals);
+    return (context, request, callback) => {
+      if (request === "require") {
+        callback(null, "require");
+        return;
+      }
+
+      fn(context, request, callback);
+    };
+  })(),
   plugins: [
+    new CopyWebpackPlugin([{
+      from: {
+        glob: "mmwp/mmwpa-mode/mmwpa-mode.css",
+      },
+      context: "build/dev/lib/",
+    }]),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
+    }),
+    new webpack.ProvidePlugin({
+      platformRequire: "require",
     }),
   ],
 }];

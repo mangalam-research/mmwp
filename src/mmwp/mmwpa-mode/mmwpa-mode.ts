@@ -14,8 +14,9 @@ import { MMWPAValidator } from "./mmwpa-validator";
 // choking the require use we make in this mode.
 
 // tslint:disable-next-line: no-any
-declare var require: any;
-const req = require;
+declare var platformRequire: any;
+// tslint:disable-next-line:no-typeof-undefined
+const req = typeof platformRequire !== "undefined" ? platformRequire : require;
 
 class MMWPAMode extends generic.Mode<generic.GenericModeOptions> {
   private readonly numberSentencesTr: Transformation<TransformationData>;
