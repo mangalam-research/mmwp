@@ -1,4 +1,5 @@
 <doc xmlns="http://mangalamresearch.org/ns/mmwp/doc" version="1" lem="something" title="Abhidharmakośabhāṣya" genre="śāstra" author="Vasubandhu" tradition="abhidharma" school="N/A" period="classical">
+<s>
 1	yāvan		yāvad	nominative	dual	foo 	moo 	philological	leading.to	2	sem.role.value	subject.agent	4
 2	nīla-	nīla-pīta-dīrgha-hrasva-stri-puruṣa-mitra-amitra-sukha-duḥkha-adi-nimitta-dgrahaṇam	nīla							3			4
 3	-pīta-	nīla-pīta-dīrgha-hrasva-stri-puruṣa-mitra-amitra-sukha-duḥkha-adi-nimitta-dgrahaṇam	pīta										4
@@ -17,6 +18,8 @@
 16	saṃjñā-	saṃjñā-skandhaḥ											
 17	-skandhaḥ	saṃjñā-skandhaḥ											
 18	|												
+</s>
+<s>
 1	sa												
 2	punar												
 3	bhidyamānaḥ												
@@ -31,6 +34,8 @@
 12	rūpavedanāsaṃjñāvijñānebhyaścatubbryo												
 13	'nye												
 14	tu												
+</s>
+<s>
 1	sa												
 2	punar												
 3	bhidyamānaḥ												
@@ -38,6 +43,8 @@
 5	-saṃjñākāyā	ṣaṭ-saṃjñākāyā											
 6	vedanāvat												
 7	||												
+</s>
+<s>
 1	caturbhyo												
 2	'nye												
 3	tu												
@@ -54,6 +61,8 @@
 14	saṃskāra-	saṃskāra-skandhaḥ											
 15	-skandhaḥ	saṃskāra-skandhaḥ											
 16	|												
+</s>
+<s>
 1	bhagavatā												
 2	tu												
 3	sūtre												
@@ -65,6 +74,7 @@
 9	prādhānyāt												
 10	|												
 11	sā												
+</s>
 </doc>
 # Local Variables:
 # ldd-dont-delete-trailing-whitespace-in-buffer: t

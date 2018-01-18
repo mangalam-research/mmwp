@@ -84,8 +84,9 @@ export class Word {
     return "";
   }
 
-  getAttribute(name: string): string | null {
-    return this.el.getAttribute(name);
+  getAttribute(name: string): string {
+    const ret = this.el.getAttribute(name);
+    return ret === null ? "" : ret;
   }
 }
 
@@ -100,17 +101,18 @@ export class CoNLLTransformService extends AnnotatedDocumentTransformService {
   }
 
   protected async transform(doc: Document): Promise<string> {
-    const buf = [];
+    let buf: string = "";
     const docEl = doc.getElementsByTagName("doc")[0].cloneNode() as Element;
 
     // We take advantage of the DOM's serialization machinery to produce the
     // opening tag. However, we need to drop the closing tag or transform the
     // empty tag into non-empty to serve our purpose here.
     const docXML = docEl.outerHTML.replace(/<\/doc>$/, "").replace(/\/>$/, ">");
-    buf.push(docXML, "\n");
+    buf += `${docXML}\n`;
 
     const sEls = doc.getElementsByTagName("s");
     for (const sEl of Array.prototype.slice.call(sEls)) {
+      buf += "<s>\n";
       const wordEls = sEl.getElementsByTagName("word");
       const words = [];
       const idToWord: Record<string, Word> = Object.create(null);
@@ -124,26 +126,26 @@ export class CoNLLTransformService extends AnnotatedDocumentTransformService {
         word.link(idToWord);
       }
 
-      // Recover the compound information.
       for (const word of words) {
-        buf.push(word.id, "\t",
-                 word.text, "\t",
-                 word.raw, "\t",
-                 word.getAttribute("lem"), "\t",
-                 word.getAttribute("case"), "\t",
-                 word.getAttribute("number"), "\t",
-                 word.getAttribute("sem.cat"), "\t",
-                 word.getAttribute("sem.field"), "\t",
-                 word.getAttribute("uncertainty"), "\t",
-                 word.getAttribute("conc.rel"), "\t",
-                 word.getAttribute("conc.head"), "\t",
-                 word.getAttribute("sem.role"), "\t",
-                 word.getAttribute("dep.rel"), "\t",
-                 word.getAttribute("dep.head"), "\n");
+        buf += `${word.id}\t`;
+        buf += `${word.text}\t`;
+        buf += `${word.raw}\t`;
+        buf += `${word.getAttribute("lem")}\t`;
+        buf += `${word.getAttribute("case")}\t`;
+        buf += `${word.getAttribute("number")}\t`;
+        buf += `${word.getAttribute("sem.cat")}\t`;
+        buf += `${word.getAttribute("sem.field")}\t`;
+        buf += `${word.getAttribute("uncertainty")}\t`;
+        buf += `${word.getAttribute("conc.rel")}\t`;
+        buf += `${word.getAttribute("conc.head")}\t`;
+        buf += `${word.getAttribute("sem.role")}\t`;
+        buf += `${word.getAttribute("dep.rel")}\t`;
+        buf += `${word.getAttribute("dep.head")}\n`;
       }
+      buf += "</s>\n";
     }
-    buf.push("</doc>\n");
+    buf += "</doc>\n";
 
-    return buf.join("");
+    return buf;
   }
 }
