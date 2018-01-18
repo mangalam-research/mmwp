@@ -1,0 +1,28 @@
+<doc xmlns="http://mangalamresearch.org/ns/mmwp/doc"
+     version="1"
+     lem="something"
+     title="Some, title"
+     genre="Some &quot; genre"
+     author="Some author"
+     tradition="Some tradition"
+     school="N/A"
+     period="classical">
+  <cit id="1" ref="a">
+    <s id="1">
+      <word id="1" lem="something">word1</word>
+      <word id="2" lem="something">word2</word>
+      <word id="3" lem="other">word3</word>
+      <word id="4">word4</word>
+    </s>
+  </cit>
+  <cit id="2" ref="b">
+    <s id="1">
+      <word id="1" lem="something">word5</word>
+    </s>
+  </cit>
+  <cit id="3">
+    <s id="1">
+      <word id="1" lem="something">word6</word>
+    </s>
+  </cit>
+</doc>

@@ -1,0 +1,15 @@
+<doc xmlns="http://mangalamresearch.org/ns/mmwp/doc"
+     version="1"
+     lem="something"
+     title="Some title"
+     genre="Some genre"
+     author="Some author"
+     tradition="Some tradition"
+     school="N/A"
+     period="classical">
+  <cit id="1" ref="a">
+    <s id="1">
+      <word id="1">word</word>
+    </s>
+  </cit>
+</doc>

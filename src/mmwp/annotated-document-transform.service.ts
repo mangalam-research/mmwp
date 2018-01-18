@@ -1,3 +1,5 @@
+import { alert } from "bootbox";
+
 import { ProcessingService } from "dashboard/processing.service";
 import { triggerDownload } from "dashboard/util";
 import { XMLFile } from "dashboard/xml-file";

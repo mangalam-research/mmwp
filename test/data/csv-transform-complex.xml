@@ -1,0 +1,519 @@
+<doc xmlns="http://mangalamresearch.org/ns/mmwp/doc"
+     version="1"
+     lem="lemmaValue"
+     title="Some, title"
+     genre="Some &quot; genre"
+     author="Some author"
+     tradition="Some tradition"
+     school="Some school"
+     period="classical">
+<!--
+  <cit id="${citId}" ref="refValue">
+    <s id="1">
+      <word id="1" lem="lemmaValue" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="sem field value"
+            sem.role="sem role value"
+            sem.pros="neg" uncertainty="vague" dep.rel="${forward}"
+            dep.head="2">moo</word>
+      <word id="2" lem="a" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="neg" uncertainty="vague">wordA</word>
+      <word id="3" lem="b" case="accusative" number="sing"
+            sem.cat="id 3 cat a, cat b" sem.field="id 3 semB"
+            sem.role="id 3 sem role value"
+            sem.pros="neu" uncertainty="other"
+            dep.rel="${reverse}" dep.head="1">wordB</word>
+      <word id="4" lem="a" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="${reverse}" dep.head="1">wordA</word>
+      <word id="5" lem="c" case="nominative" number="dual"
+            sem.cat="id 5 cat a, cat b" sem.field="id 5 semA"
+            sem.role="id 5 sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="${forward}" dep.head="1">wordA</word>
+      <word id="6" lem="d" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="${reverse}" dep.head="3">wordA</word>
+      </s>
+      <tr>Something or other</tr>
+   </cit>
+-->
+  <cit id="1" ref="refValueA">
+    <s id="1">
+      <word id="1" lem="lemmaValue" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="sem field value"
+            sem.role="sem role value"
+            sem.pros="neg" uncertainty="vague" dep.rel="modifies"
+            dep.head="2">moo</word>
+      <word id="2" lem="a" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="neg" uncertainty="vague">wordA</word>
+      <word id="3" lem="b" case="accusative" number="sing"
+            sem.cat="id 3 cat a, cat b" sem.field="id 3 semB"
+            sem.role="id 3 sem role value"
+            sem.pros="neu" uncertainty="other"
+            dep.rel="modified.by" dep.head="1">wordB</word>
+      <word id="4" lem="a" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="modified.by" dep.head="1">wordA</word>
+      <word id="5" lem="c" case="nominative" number="dual"
+            sem.cat="id 5 cat a, cat b" sem.field="id 5 semA"
+            sem.role="id 5 sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="modifies" dep.head="1">wordA</word>
+      <word id="6" lem="d" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="modified.by" dep.head="3">wordA</word>
+    </s>
+    <tr>Something or other</tr>
+  </cit>
+  <cit id="2" ref="refValueB">
+    <s id="1">
+      <word id="1" lem="lemmaValue" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="sem field value"
+            sem.role="sem role value"
+            sem.pros="neg" uncertainty="vague" dep.rel="modified.by"
+            dep.head="2">moo</word>
+      <word id="2" lem="a" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="neg" uncertainty="vague">wordA</word>
+      <word id="3" lem="b" case="accusative" number="sing"
+            sem.cat="id 3 cat a, cat b" sem.field="id 3 semB"
+            sem.role="id 3 sem role value"
+            sem.pros="neu" uncertainty="other"
+            dep.rel="modifies" dep.head="1">wordB</word>
+      <word id="4" lem="a" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="modifies" dep.head="1">wordA</word>
+      <word id="5" lem="c" case="nominative" number="dual"
+            sem.cat="id 5 cat a, cat b" sem.field="id 5 semA"
+            sem.role="id 5 sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="modified.by" dep.head="1">wordA</word>
+      <word id="6" lem="d" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="modifies" dep.head="3">wordA</word>
+      </s>
+      <tr>Something or other</tr>
+   </cit>
+  <cit id="3" ref="refValueC">
+    <s id="1">
+      <word id="1" lem="lemmaValue" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="sem field value"
+            sem.role="sem role value"
+            sem.pros="neg" uncertainty="vague" dep.rel="glossing"
+            dep.head="2">moo</word>
+      <word id="2" lem="a" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="neg" uncertainty="vague">wordA</word>
+      <word id="3" lem="b" case="accusative" number="sing"
+            sem.cat="id 3 cat a, cat b" sem.field="id 3 semB"
+            sem.role="id 3 sem role value"
+            sem.pros="neu" uncertainty="other"
+            dep.rel="glossed.by" dep.head="1">wordB</word>
+      <word id="4" lem="a" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="glossed.by" dep.head="1">wordA</word>
+      <word id="5" lem="c" case="nominative" number="dual"
+            sem.cat="id 5 cat a, cat b" sem.field="id 5 semA"
+            sem.role="id 5 sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="glossing" dep.head="1">wordA</word>
+      <word id="6" lem="d" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="glossed.by" dep.head="3">wordA</word>
+    </s>
+    <tr>Something or other</tr>
+  </cit>
+  <cit id="4" ref="refValueD">
+    <s id="1">
+      <word id="1" lem="lemmaValue" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="sem field value"
+            sem.role="sem role value"
+            sem.pros="neg" uncertainty="vague" dep.rel="glossed.by"
+            dep.head="2">moo</word>
+      <word id="2" lem="a" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="neg" uncertainty="vague">wordA</word>
+      <word id="3" lem="b" case="accusative" number="sing"
+            sem.cat="id 3 cat a, cat b" sem.field="id 3 semB"
+            sem.role="id 3 sem role value"
+            sem.pros="neu" uncertainty="other"
+            dep.rel="glossing" dep.head="1">wordB</word>
+      <word id="4" lem="a" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="glossing" dep.head="1">wordA</word>
+      <word id="5" lem="c" case="nominative" number="dual"
+            sem.cat="id 5 cat a, cat b" sem.field="id 5 semA"
+            sem.role="id 5 sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="glossed.by" dep.head="1">wordA</word>
+      <word id="6" lem="d" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="glossing" dep.head="3">wordA</word>
+    </s>
+    <tr>Something or other</tr>
+  </cit>
+  <cit id="5" ref="refValueE">
+    <s id="1">
+      <word id="1" lem="lemmaValue" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="sem field value"
+            sem.role="sem role value"
+            sem.pros="neg" uncertainty="vague" dep.rel="takes.oblique"
+            dep.head="2">moo</word>
+      <word id="2" lem="a" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="neg" uncertainty="vague">wordA</word>
+      <word id="3" lem="b" case="accusative" number="sing"
+            sem.cat="id 3 cat a, cat b" sem.field="id 3 semB"
+            sem.role="id 3 sem role value"
+            sem.pros="neu" uncertainty="other"
+            dep.rel="oblique.of" dep.head="1">wordB</word>
+      <word id="4" lem="a" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="oblique.of" dep.head="1">wordA</word>
+      <word id="5" lem="c" case="nominative" number="dual"
+            sem.cat="id 5 cat a, cat b" sem.field="id 5 semA"
+            sem.role="id 5 sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="takes.oblique" dep.head="1">wordA</word>
+      <word id="6" lem="d" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="oblique.of" dep.head="3">wordA</word>
+    </s>
+    <tr>Something or other</tr>
+  </cit>
+  <cit id="6" ref="refValueF">
+    <s id="1">
+      <word id="1" lem="lemmaValue" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="sem field value"
+            sem.role="sem role value"
+            sem.pros="neg" uncertainty="vague" dep.rel="oblique.of"
+            dep.head="2">moo</word>
+      <word id="2" lem="a" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="neg" uncertainty="vague">wordA</word>
+      <word id="3" lem="b" case="accusative" number="sing"
+            sem.cat="id 3 cat a, cat b" sem.field="id 3 semB"
+            sem.role="id 3 sem role value"
+            sem.pros="neu" uncertainty="other"
+            dep.rel="takes.oblique" dep.head="1">wordB</word>
+      <word id="4" lem="a" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="takes.oblique" dep.head="1">wordA</word>
+      <word id="5" lem="c" case="nominative" number="dual"
+            sem.cat="id 5 cat a, cat b" sem.field="id 5 semA"
+            sem.role="id 5 sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="oblique.of" dep.head="1">wordA</word>
+      <word id="6" lem="d" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="takes.oblique" dep.head="3">wordA</word>
+    </s>
+    <tr>Something or other</tr>
+  </cit>
+  <cit id="7" ref="refValueG">
+    <s id="1">
+      <word id="1" lem="lemmaValue" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="sem field value"
+            sem.role="sem role value"
+            sem.pros="neg" uncertainty="vague" dep.rel="takes.as.subject.agent"
+            dep.head="2">moo</word>
+      <word id="2" lem="a" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="neg" uncertainty="vague">wordA</word>
+      <word id="3" lem="b" case="accusative" number="sing"
+            sem.cat="id 3 cat a, cat b" sem.field="id 3 semB"
+            sem.role="id 3 sem role value"
+            sem.pros="neu" uncertainty="other"
+            dep.rel="subject.agent" dep.head="1">wordB</word>
+      <word id="4" lem="a" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="subject.agent" dep.head="1">wordA</word>
+      <word id="5" lem="c" case="nominative" number="dual"
+            sem.cat="id 5 cat a, cat b" sem.field="id 5 semA"
+            sem.role="id 5 sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="takes.as.subject.agent" dep.head="1">wordA</word>
+      <word id="6" lem="d" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="subject.agent" dep.head="3">wordA</word>
+    </s>
+    <tr>Something or other</tr>
+  </cit>
+  <cit id="8" ref="refValueH">
+    <s id="1">
+      <word id="1" lem="lemmaValue" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="sem field value"
+            sem.role="sem role value"
+            sem.pros="neg" uncertainty="vague" dep.rel="subject.agent"
+            dep.head="2">moo</word>
+      <word id="2" lem="a" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="neg" uncertainty="vague">wordA</word>
+      <word id="3" lem="b" case="accusative" number="sing"
+            sem.cat="id 3 cat a, cat b" sem.field="id 3 semB"
+            sem.role="id 3 sem role value"
+            sem.pros="neu" uncertainty="other"
+            dep.rel="takes.as.subject.agent" dep.head="1">wordB</word>
+      <word id="4" lem="a" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="takes.as.subject.agent" dep.head="1">wordA</word>
+      <word id="5" lem="c" case="nominative" number="dual"
+            sem.cat="id 5 cat a, cat b" sem.field="id 5 semA"
+            sem.role="id 5 sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="subject.agent" dep.head="1">wordA</word>
+      <word id="6" lem="d" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="takes.as.subject.agent" dep.head="3">wordA</word>
+    </s>
+    <tr>Something or other</tr>
+  </cit>
+  <cit id="9" ref="refValueI">
+    <s id="1">
+      <word id="1" lem="lemmaValue" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="sem field value"
+            sem.role="sem role value"
+            sem.pros="neg" uncertainty="vague" dep.rel="takes.as.object.patient"
+            dep.head="2">moo</word>
+      <word id="2" lem="a" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="neg" uncertainty="vague">wordA</word>
+      <word id="3" lem="b" case="accusative" number="sing"
+            sem.cat="id 3 cat a, cat b" sem.field="id 3 semB"
+            sem.role="id 3 sem role value"
+            sem.pros="neu" uncertainty="other"
+            dep.rel="object.patient" dep.head="1">wordB</word>
+      <word id="4" lem="a" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="object.patient" dep.head="1">wordA</word>
+      <word id="5" lem="c" case="nominative" number="dual"
+            sem.cat="id 5 cat a, cat b" sem.field="id 5 semA"
+            sem.role="id 5 sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="takes.as.object.patient" dep.head="1">wordA</word>
+      <word id="6" lem="d" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="object.patient" dep.head="3">wordA</word>
+    </s>
+    <tr>Something or other</tr>
+  </cit>
+  <cit id="10" ref="refValueJ">
+    <s id="1">
+      <word id="1" lem="lemmaValue" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="sem field value"
+            sem.role="sem role value"
+            sem.pros="neg" uncertainty="vague" dep.rel="object.patient"
+            dep.head="2">moo</word>
+      <word id="2" lem="a" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="neg" uncertainty="vague">wordA</word>
+      <word id="3" lem="b" case="accusative" number="sing"
+            sem.cat="id 3 cat a, cat b" sem.field="id 3 semB"
+            sem.role="id 3 sem role value"
+            sem.pros="neu" uncertainty="other"
+            dep.rel="takes.as.object.patient" dep.head="1">wordB</word>
+      <word id="4" lem="a" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="takes.as.object.patient" dep.head="1">wordA</word>
+      <word id="5" lem="c" case="nominative" number="dual"
+            sem.cat="id 5 cat a, cat b" sem.field="id 5 semA"
+            sem.role="id 5 sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="object.patient" dep.head="1">wordA</word>
+      <word id="6" lem="d" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="takes.as.object.patient" dep.head="3">wordA</word>
+    </s>
+    <tr>Something or other</tr>
+  </cit>
+  <cit id="11" ref="refValueK">
+    <s id="1">
+      <word id="1" lem="lemmaValue" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="sem field value"
+            sem.role="sem role value"
+            sem.pros="neg" uncertainty="vague" dep.rel="manner.of"
+            dep.head="2">moo</word>
+      <word id="2" lem="a" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="neg" uncertainty="vague">wordA</word>
+      <word id="3" lem="b" case="accusative" number="sing"
+            sem.cat="id 3 cat a, cat b" sem.field="id 3 semB"
+            sem.role="id 3 sem role value"
+            sem.pros="neu" uncertainty="other"
+            dep.rel="takes.manner" dep.head="1">wordB</word>
+      <word id="4" lem="a" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="takes.manner" dep.head="1">wordA</word>
+      <word id="5" lem="c" case="nominative" number="dual"
+            sem.cat="id 5 cat a, cat b" sem.field="id 5 semA"
+            sem.role="id 5 sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="manner.of" dep.head="1">wordA</word>
+      <word id="6" lem="d" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="takes.manner" dep.head="3">wordA</word>
+    </s>
+    <tr>Something or other</tr>
+  </cit>
+  <cit id="12" ref="refValueL">
+    <s id="1">
+      <word id="1" lem="lemmaValue" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="sem field value"
+            sem.role="sem role value"
+            sem.pros="neg" uncertainty="vague" dep.rel="takes.manner"
+            dep.head="2">moo</word>
+      <word id="2" lem="a" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="neg" uncertainty="vague">wordA</word>
+      <word id="3" lem="b" case="accusative" number="sing"
+            sem.cat="id 3 cat a, cat b" sem.field="id 3 semB"
+            sem.role="id 3 sem role value"
+            sem.pros="neu" uncertainty="other"
+            dep.rel="manner.of" dep.head="1">wordB</word>
+      <word id="4" lem="a" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="manner.of" dep.head="1">wordA</word>
+      <word id="5" lem="c" case="nominative" number="dual"
+            sem.cat="id 5 cat a, cat b" sem.field="id 5 semA"
+            sem.role="id 5 sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="takes.manner" dep.head="1">wordA</word>
+      <word id="6" lem="d" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="manner.of" dep.head="3">wordA</word>
+    </s>
+    <tr>Something or other</tr>
+  </cit>
+  <cit id="13" ref="refValueM">
+    <s id="1">
+      <word id="1" lem="lemmaValue" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="sem field value"
+            sem.role="sem role value"
+            sem.pros="neg" uncertainty="vague" dep.rel="listed.with"
+            dep.head="2">moo</word>
+      <word id="2" lem="a" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="neg" uncertainty="vague">wordA</word>
+      <word id="3" lem="b" case="accusative" number="sing"
+            sem.cat="id 3 cat a, cat b" sem.field="id 3 semB"
+            sem.role="id 3 sem role value"
+            sem.pros="neu" uncertainty="other"
+            dep.rel="listed.with" dep.head="1">wordB</word>
+      <word id="4" lem="a" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="listed.with" dep.head="1">wordA</word>
+      <word id="6" lem="d" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="listed.with" dep.head="3">wordA</word>
+    </s>
+    <tr>Something or other</tr>
+  </cit>
+  <cit id="14" ref="refValueN">
+    <s id="1">
+      <word id="1" lem="lemmaValue" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="sem field value"
+            sem.role="sem role value"
+            sem.pros="neg" uncertainty="vague" dep.rel="contrasted.with"
+            dep.head="2">moo</word>
+      <word id="2" lem="a" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="neg" uncertainty="vague">wordA</word>
+      <word id="3" lem="b" case="accusative" number="sing"
+            sem.cat="id 3 cat a, cat b" sem.field="id 3 semB"
+            sem.role="id 3 sem role value"
+            sem.pros="neu" uncertainty="other"
+            dep.rel="contrasted.with" dep.head="1">wordB</word>
+      <word id="4" lem="a" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="contrasted.with" dep.head="1">wordA</word>
+      <word id="6" lem="d" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="contrasted.with" dep.head="3">wordA</word>
+    </s>
+    <tr>Something or other</tr>
+  </cit>
+  <cit id="15" ref="refValueO">
+    <s id="1">
+      <word id="1" lem="lemmaValue" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="sem field value"
+            sem.role="sem role value"
+            sem.pros="neg" uncertainty="vague" dep.rel="dep"
+            dep.head="2">moo</word>
+      <word id="2" lem="a" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="neg" uncertainty="vague">wordA</word>
+      <word id="3" lem="b" case="accusative" number="sing"
+            sem.cat="id 3 cat a, cat b" sem.field="id 3 semB"
+            sem.role="id 3 sem role value"
+            sem.pros="neu" uncertainty="other"
+            dep.rel="dep" dep.head="1">wordB</word>
+      <word id="4" lem="a" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="dep" dep.head="1">wordA</word>
+      <word id="6" lem="d" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="dep" dep.head="3">wordA</word>
+    </s>
+    <tr>Something or other</tr>
+  </cit>
+  <cit id="16" ref="refValueP">
+    <s id="1">
+      <word id="1" lem="lemmaValue" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="sem field value"
+            sem.role="sem role value"
+            sem.pros="neg" uncertainty="vague" dep.rel="parallel.to"
+            dep.head="2">moo</word>
+      <word id="2" lem="a" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="neg" uncertainty="vague">wordA</word>
+      <word id="3" lem="b" case="accusative" number="sing"
+            sem.cat="id 3 cat a, cat b" sem.field="id 3 semB"
+            sem.role="id 3 sem role value"
+            sem.pros="neu" uncertainty="other"
+            dep.rel="parallel.to" dep.head="1">wordB</word>
+      <word id="4" lem="a" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="parallel.to" dep.head="1">wordA</word>
+      <word id="6" lem="d" case="nominative" number="dual"
+            sem.cat="cat a, cat b" sem.field="semA" sem.role="sem role value"
+            sem.pros="pos" uncertainty="vague"
+            dep.rel="parallel.to" dep.head="3">wordA</word>
+    </s>
+    <tr>Something or other</tr>
+  </cit>
+</doc>
