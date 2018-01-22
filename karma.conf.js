@@ -37,7 +37,7 @@ module.exports = function configure(config) {
   const coverage = !config.debug ? ["coverage"] : [];
   config.set({
     basePath: "",
-    frameworks: ["mocha", "chai"],
+    frameworks: ["mocha", "chai", "source-map-support"],
     middleware: ["serve-node-modules"],
     plugins: [
       "karma-*", // This is the default, which we need to keep here.
