@@ -9,7 +9,8 @@ import { ProcessingError, validateAnnotatedDocument } from "./util";
 
 export abstract class AnnotatedDocumentTransformService
 extends XMLTransformService {
-  constructor(private readonly processing: ProcessingService, name: string) {
+  constructor(private readonly processing: ProcessingService, name: string,
+              protected readonly mimeType: string) {
     super(name);
   }
 
@@ -21,7 +22,7 @@ extends XMLTransformService {
       const doc = await validateAnnotatedDocument(data);
 
       transformed = await this.transform(doc);
-      triggerDownload(this.getOutputName(input), transformed);
+      triggerDownload(this.getOutputName(input), this.mimeType, transformed);
     }
     catch (err) {
       if (err instanceof ProcessingError) {

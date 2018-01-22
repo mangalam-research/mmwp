@@ -93,7 +93,7 @@ export class Word {
 @Injectable()
 export class CoNLLTransformService extends AnnotatedDocumentTransformService {
   constructor(processing: ProcessingService) {
-    super(processing, "Annotated document to CoNLL");
+    super(processing, "Annotated document to CoNLL", "application/text");
   }
 
   protected getOutputName(input: XMLFile): string {

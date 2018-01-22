@@ -125,7 +125,7 @@ function getWithDefault<R extends Record<string, {}>>(
 @Injectable()
 export class CSVTransformService extends AnnotatedDocumentTransformService {
   constructor(processing: ProcessingService) {
-    super(processing, "Annotated document to CSV");
+    super(processing, "Annotated document to CSV", "application/text");
   }
 
   getOutputName(input: XMLFile): string {

@@ -64,7 +64,7 @@ extends AnnotatedDocumentTransformService {
   private static _semInfoGrammar: Grammar | undefined;
 
   constructor(processing: ProcessingService) {
-    super(processing, "Extract semantic information to XML");
+    super(processing, "Extract semantic information to XML", "text/xml");
   }
 
   get semInfoGrammar(): Grammar {
