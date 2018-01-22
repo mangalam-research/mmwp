@@ -98,7 +98,7 @@ const TITLE_INFO_KEYS = Object.keys(EMPTY_TITLE_INFO) as (keyof TitleInfo)[];
 
 function getAttribute(el: Element, name: string): string {
   const value = el.getAttribute(name);
-  return value === null ? "" : value;
+  return value === null ? "" : value.trim();
 }
 
 function getNecessaryAttribute(el: Element, name: string): string {
@@ -107,7 +107,7 @@ function getNecessaryAttribute(el: Element, name: string): string {
     throw new Error(`trying to get unset attribute ${name} from an element \
 with tag name ${el.tagName}`);
   }
-  return value;
+  return value.trim();
 }
 
 function getWithDefault<R extends Record<string, {}>>(
@@ -148,17 +148,20 @@ export class CSVTransformService extends AnnotatedDocumentTransformService {
     const allWords = doc.getElementsByTagName("word");
     const date = new Date();
     for (const word of Array.from(allWords)) {
-      const lem = word.getAttribute("lem");
-      if (lem === lemma) {
-        const row = csv.makeRow();
-        const cit = word.closest("cit");
-        if (cit === null) {
-          throw new Error("unexpected document structure: word not in cit");
-        }
-        const id = getNecessaryAttribute(cit, "id");
+      let lem = word.getAttribute("lem");
+      if (lem !== null) {
+        lem = lem.trim();
+        if (lem === lemma) {
+          const row = csv.makeRow();
+          const cit = word.closest("cit");
+          if (cit === null) {
+            throw new Error("unexpected document structure: word not in cit");
+          }
+          const id = getNecessaryAttribute(cit, "id");
 
-        const rowId = `${titleInfo.title}${lem}${id}`;
-        this.fillRow(date, rowId, titleInfo, cit, word, row);
+          const rowId = `${titleInfo.title}${lem}${id}`;
+          this.fillRow(date, rowId, titleInfo, cit, word, row);
+        }
       }
     }
 
@@ -197,11 +200,11 @@ export class CSVTransformService extends AnnotatedDocumentTransformService {
     for (const sibling of citationWords) {
       const lem = sibling.getAttribute("lem");
       if (lem !== null) {
-        cotext += `;;${lem}`;
+        cotext += `;;${lem.trim()}`;
       }
       const semField = sibling.getAttribute("sem.field");
       if (semField !== null) {
-        cotextSemField += `;;${semField}`;
+        cotextSemField += `;;${semField.trim()}`;
       }
     }
 
@@ -244,8 +247,9 @@ export class CSVTransformService extends AnnotatedDocumentTransformService {
     const idToWord: Record<string, Element> = Object.create(null);
 
     for (const word of sentenceWords) {
-      const depRel = word.getAttribute("dep.rel")!;
+      let depRel = word.getAttribute("dep.rel")!;
       if (depRel !== null) {
+        depRel = depRel.trim();
         if (!KNOWN_RELATIONS.has(depRel)) {
           throw new Error(`unknown relation: ${depRel}`);
         }
@@ -253,8 +257,9 @@ export class CSVTransformService extends AnnotatedDocumentTransformService {
         getWithDefault(depRelToWords, depRel, Set).add(word);
       }
 
-      const depHead = word.getAttribute("dep.head")!;
+      let depHead = word.getAttribute("dep.head")!;
       if (depHead !== null) {
+        depHead = depHead.trim();
         getWithDefault(depHeadToWords, depHead, Set).add(word);
       }
 
@@ -279,9 +284,10 @@ export class CSVTransformService extends AnnotatedDocumentTransformService {
                                               Set).has(x)));
 
       // if @dep.rel = $V, ancestor::s/word[@id=$occurrence/@dep.head]/@lem
-      const depRel = occurrence.getAttribute("dep.rel");
-      const depHead = occurrence.getAttribute("dep.head");
+      const depRel = getAttribute(occurrence, "dep.rel");
+      let depHead = occurrence.getAttribute("dep.head");
       if (depRel === relation.name && depHead !== null) {
+        depHead = depHead.trim();
         relevantWords.add(idToWord[depHead]);
       }
 
