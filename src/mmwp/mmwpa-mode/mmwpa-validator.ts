@@ -15,7 +15,7 @@ export class MMWPAValidator implements ModeValidator {
 
   validateDocument(): ErrorData[] {
     const ret = [];
-    const tree = this.dataRoot as Document;
+    const tree = this.dataRoot;
     const ss = tree.getElementsByTagName("s");
     const citIds: Record<string, boolean> = Object.create(null);
 

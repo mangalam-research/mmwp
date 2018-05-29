@@ -33,7 +33,7 @@ interface RevealedService {
                  logger: Logger): Document | null;
   checkCit(cit: Element, logger: Logger): void;
   makeCitFromLine(title: Title, doc: Document, line: Element, citId: number,
-                  logger: Logger): { cit: Element, tr: Element };
+                  logger: Logger): { cit: Element; tr: Element };
   convertMarkedToWord(doc: Document, cit: Element): void;
   cleanText(node: Node): void;
   breakIntoWords(doc: Document, cit: Element): void;

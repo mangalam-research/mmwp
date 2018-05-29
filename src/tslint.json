@@ -14,6 +14,8 @@
                           "off because of ",
                           "https://github.com/palantir/tslint/issues/1257"],
     "newline-before-return": [false, "Not for this project."],
-    "no-reserved-keywords": [false, "Too restrictive."]
+    "no-reserved-keywords": [false, "Too restrictive."],
+    "no-implicit-dependencies": [false, "Does not work well with our setup."],
+    "no-submodule-imports": [true, "wed", "dashboard", "@angular", "rxjs"]
   }
 }

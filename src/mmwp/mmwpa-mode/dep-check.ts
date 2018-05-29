@@ -25,11 +25,7 @@ class DepNode {
     // it could be empty if it is not input yet or being edited. We don't raise
     // a fuss about this because the schema is what is responsible for
     // complaining if it is not complete.
-    if (dep === null || dep === "") {
-      dep = undefined;
-    }
-
-    this.dep = dep;
+    this.dep = (dep === null || dep === "") ? undefined : dep;
   }
 
   get parent(): Node {
@@ -194,9 +190,9 @@ ${path.join(", ")}`));
 
     memo[id] = true;
 
-    path = path.concat(id);
+    const newPath = path.concat(id);
     for (const dependent of current.dependents) {
-      this._walk(dependent, memo, path, errors);
+      this._walk(dependent, memo, newPath, errors);
     }
   }
 

@@ -7,7 +7,7 @@ import { Metadata } from "wed/modes/generic/metadata";
 const MY_NAMESPACE = "http://mangalamresearch.org/ns/mmwp/doc";
 
 export class MMWPAMetadata implements Metadata {
-  readonly version: "2";
+  readonly version: "2" = "2";
 
   getNamespaceMappings(): Record<string, string> {
     return {

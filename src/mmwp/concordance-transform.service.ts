@@ -255,7 +255,7 @@ this application and fix any errors before uploading again.");
         .textContent!;
       const pathParts = path.split("/");
       const base = pathParts[pathParts.length - 1];
-      const transformed: { outputName: string, doc: Document }[] = [];
+      const transformed: { outputName: string; doc: Document }[] = [];
       for (const title of Object.keys(titles)) {
         const titleInfo = titles[title];
         const lines = titleToLines[title];
@@ -274,8 +274,8 @@ this application and fix any errors before uploading again.");
           logger.errors.map((x) => `<p>${x}</p>`).join("\n"));
       }
 
-      const promises: Promise<{titleDoc: Document,
-                               outputName: string}>[] = [];
+      const promises: Promise<{ titleDoc: Document; outputName: string }>[] =
+        [];
       for (const { outputName, doc: titleDoc } of transformed) {
         promises.push(this.checkOutput(outputName, titleDoc));
       }
@@ -413,8 +413,8 @@ ref: ${line.outerHTML}`);
    */
   private makeCitFromLine(title: Title, doc: Document, line: Element,
                           citId: number,
-                          logger: Logger): { cit: Element,
-                                             tr: Element | null } {
+                          logger: Logger):
+  { cit: Element; tr: Element | null } {
     const cit = doc.createElementNS(MMWP_NAMESPACE, "cit");
     cit.setAttribute("id", String(citId));
     const refValue = this.getRefValue(line);
@@ -456,8 +456,10 @@ ref: ${line.outerHTML}`);
           tr = cit.ownerDocument.createElementNS(MMWP_NAMESPACE, "tr");
 
           // tslint:disable-next-line:prefer-for-of
-          for (let ix = 0; ix < child.attributes.length; ++ix) {
-            const { namespaceURI: ns, name, value } = child.attributes[ix];
+          const attributes = (child as Element).attributes;
+          // tslint:disable-next-line:prefer-for-of
+          for (let ix = 0; ix < attributes.length; ++ix) {
+            const { namespaceURI: ns, name, value } = attributes[ix];
             tr.setAttributeNS(ns === null ? "" : ns, name, value);
           }
 
@@ -475,7 +477,6 @@ ref: ${line.outerHTML}`);
         }
         break;
       default:
-        break;
       }
 
       child = child.nextSibling;
@@ -491,9 +492,7 @@ ref: ${line.outerHTML}`);
     const parsedRef = ref === null ? null : ParsedRef.fromCSV(ref.textContent!);
     // A ref or parsedRef which is null has been reported earlier as an error.
     if (parsedRef !== null) {
-      // tslint:disable-next-line:no-non-null-assertion
-      const pageVerse = parsedRef!.pageVerse;
-      refValue = pageVerse;
+      refValue = parsedRef.pageVerse;
 
       // If we did not get a pageVerse value from the <ref> element, then we
       // look for a <page.number> element and take that.
@@ -753,7 +752,7 @@ ${line.innerHTML}`);
   }
 
   private async checkOutput(outputName: string, titleDoc: Document):
-  Promise<{titleDoc: Document, outputName: string}> {
+  Promise<{titleDoc: Document; outputName: string}> {
     const record = await this.xmlFiles.getRecordByName(outputName);
     if (record !== undefined) {
       throw new ProcessingError("File Name Error",

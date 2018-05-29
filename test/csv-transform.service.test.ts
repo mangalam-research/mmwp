@@ -228,8 +228,8 @@ dep.rel="${relation}" dep.head="3">wordA</word>\
 
 class CSVReader {
   readDocument(data: string): CSVDocument {
-    data = data.replace(/\s+$/, ""); // Drop trailing newlines and spaces.
-    const lines = data.split("\n");
+    // Drop trailing newlines and spaces.
+    const lines = data.replace(/\s+$/, "").split("\n");
     const headings = this.parseRow(lines[0]);
     const doc = new CSVDocument(headings);
     for (const line of lines.slice(1)) {
@@ -240,17 +240,18 @@ class CSVReader {
   }
 
   parseRow(data: string): string[] {
+    let rest = data;
     const columns: string[] = [];
-    while (data.length > 0) {
+    while (rest.length > 0) {
       // tslint:disable-next-line:strict-boolean-expressions
-      const match = data.match(/^"(.*?)"(?!")(?:,|$)/) ||
+      const match = rest.match(/^"(.*?)"(?!")(?:,|$)/) ||
         // tslint:disable-next-line:strict-boolean-expressions
-        data.match(/^(.*?)(?:,|$)/);
+        rest.match(/^(.*?)(?:,|$)/);
       if (match === null) {
-        throw new Error(`cannot extract column from: ${data}`);
+        throw new Error(`cannot extract column from: ${rest}`);
       }
       columns.push(match[1].replace("\"\"", "\""));
-      data = data.substr(match[0].length);
+      rest = rest.substr(match[0].length);
     }
 
     return columns;
