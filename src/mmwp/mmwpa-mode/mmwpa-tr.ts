@@ -3,8 +3,9 @@
  * @author Louis-Dominique Dubeau
  */
 
-import { domtypeguards, domutil, EditorAPI, exceptions, Modal,
+import { domtypeguards, domutil, EditorAPI, exceptions, gui,
          transformation, UndoMarker } from "wed";
+import Modal = gui.modal.Modal;
 import isElement = domtypeguards.isElement;
 import isText = domtypeguards.isText;
 import textToHTML = domutil.textToHTML;

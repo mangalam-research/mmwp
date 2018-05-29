@@ -34,7 +34,7 @@
    });
   config.map.interactjs = external + "interact.min.js";
   config.map.ajv = external + "ajv.min.js";
-  config.map.typeahead = external + "typeahead.bundle.min.js";
+  config.map.typeahead = external + "typeahead.jquery.min.js";
   SystemJS.config(config);
 
   // These are preloaded by Karma as scripts that leak into the global space.

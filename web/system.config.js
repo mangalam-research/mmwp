@@ -49,7 +49,7 @@ window.systemJSConfig = {
     interact: "wed-external:interact.min",
     interactjs: "wed-external:interact.min",
     "bootstrap-notify": "wed-external:bootstrap-notify",
-    typeahead: "wed-external:typeahead.bundle.min",
+    typeahead: "wed-external:typeahead.jquery.min",
   },
   meta: {
     "npm:bootbox/*": {
