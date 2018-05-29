@@ -1,13 +1,11 @@
-const Promise = require("bluebird");
 const log = require("fancy-log");
-const _fs = require("fs-extra");
+const fs = require("fs-extra");
 const del = require("del");
 const { execFile } = require("child-process-promise");
 
-const fs = Promise.promisifyAll(_fs);
 exports.fs = fs;
 
-exports.mkdirpAsync = fs.ensureDirAsync;
+exports.mkdirp = fs.ensureDir;
 exports.del = del;
 
 /**

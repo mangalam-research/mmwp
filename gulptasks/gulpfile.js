@@ -183,8 +183,8 @@ gulp.task("install-test",
                       Promise.coroutine(function *install() {
                         const testDir = "build/install_dir";
                         yield del(testDir);
-                        yield fs.mkdirAsync(testDir);
-                        yield fs.mkdirAsync(path.join(testDir, "node_modules"));
+                        yield fs.mkdir(testDir);
+                        yield fs.mkdir(path.join(testDir, "node_modules"));
                         yield execFile("npm", ["install", `../${packname}`],
                                        { cwd: testDir });
                         yield del(testDir);
