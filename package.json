@@ -52,7 +52,7 @@
     "urijs": "^1.19.1",
     "wed": "^1.0.0",
     "wed-demo": "^0.1.0",
-    "zone.js": "^0.8.10"
+    "zone.js": "^0.8.26"
   },
   "devDependencies": {
     "@angular/compiler-cli": "^4.4.6",
