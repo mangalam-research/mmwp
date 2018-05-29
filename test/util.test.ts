@@ -1,5 +1,4 @@
 import "chai";
-import "chai-as-promised";
 import "mocha";
 
 const expect = chai.expect;
@@ -39,15 +38,15 @@ describe("util", () => {
   });
 
   describe("validate", () => {
-    it("does not report errors on valid file", () =>
-       expect(validate(grammar, doc)).to.eventually.deep.equal([]));
+    it("does not report errors on valid file", async () =>
+       expect(await validate(grammar, doc)).to.deep.equal([]));
 
-    it("uses the mode validator", () =>
-       expect(validate(grammar, doc, new FakeModeValidator()))
-       .to.eventually.deep.equal(modeError));
+    it("uses the mode validator", async () =>
+       expect(await validate(grammar, doc, new FakeModeValidator()))
+       .to.deep.equal(modeError));
 
-    it("reports errors on an invalid file", () =>
-       expect(validate(grammar, badDoc))
-       .to.eventually.have.length.greaterThan(0));
+    it("reports errors on an invalid file", async () =>
+       expect(await validate(grammar, badDoc))
+       .to.have.length.greaterThan(0));
   });
 });

@@ -1,5 +1,4 @@
 import "chai";
-import "chai-as-promised";
 import "mocha";
 import * as sinon from "sinon";
 import * as sinonChai from "sinon-chai";
@@ -146,29 +145,31 @@ describe("ConcordanceTransformService", () => {
           .to.have.members(resultNames);
       }));
 
-    it("saves the files", () =>
-       expect(getAllFiles()).to.eventually.deep.equal([undefined, undefined])
-       .then(() => service.perform(file))
-       .then(() => expect(getAllFiles()).to.eventually.not.include(undefined)));
+    it("saves the files", async () => {
+      expect(await getAllFiles()).to.deep.equal([undefined, undefined]);
+      await service.perform(file);
+      expect(await getAllFiles()).to.not.include(undefined);
+    });
 
-    it("raises an error if any file is going to be overwritten", () =>
-       service.perform(file)
-       .then(() => expect(service.perform(file))
-             .to.eventually.be.rejectedWith(ProcessingError,
-                                            /^This would overwrite: /)));
+    it("raises an error if any file is going to be overwritten", async () => {
+      await service.perform(file);
+      await expectReject(service.perform(file), ProcessingError,
+                         /^This would overwrite: /);
+    });
 
-    it("rejects if the file is incorrect", () =>
-       expect(service.perform(bad))
-       .to.eventually.be.rejectedWith(
-         ProcessingError,
-         `<p>tag not allowed here: {\"ns\":\"\",\"name\":\"div\"}<\/p>
-<p>tag required: {\"ns\":\"\",\"name\":\"concordance\"}</p>`));
+    it("rejects if the file is incorrect", async () => {
+      await expectReject(
+        service.perform(bad),
+        ProcessingError,
+        `<p>tag not allowed here: {\"ns\":\"\",\"name\":\"div\"}<\/p>
+<p>tag required: {\"ns\":\"\",\"name\":\"concordance\"}</p>`);
+    });
 
     it("rejects if the file is malformed", () =>
-       expect(service.perform(malformed))
-       .to.eventually.be.rejectedWith(
-         ProcessingError,
-         "The document cannot be parsed. It is probably due to a \
+       expectReject(
+        service.perform(malformed),
+        ProcessingError,
+        "The document cannot be parsed. It is probably due to a \
 well-formedness error. Please check the file for well-formedness outside of \
 this application and fix any errors before uploading again."));
 

@@ -1,4 +1,4 @@
-/* global Promise SystemJS chai */
+/* global Promise SystemJS */
 (function main() {
   "use strict";
 
@@ -19,7 +19,6 @@
   var config = window.systemJSConfig;
   config.baseURL = "/base/build/dev/lib/";
   config.paths["npm:"] = "/base/node_modules/";
-  config.map["chai-as-promised"] = "npm:chai-as-promised/lib/chai-as-promised.js";
   config.map.sinon = "npm:sinon";
   config.map["sinon-chai"] = "npm:sinon-chai";
   config.map["check-error"] = "npm:check-error/check-error.js";
@@ -45,48 +44,23 @@
     return SystemJS.import(file);
   }
 
-  // var Promise;
-  importIt("bluebird").then(function bbLoaded(bluebird) {
-    // Promise = bluebird;
+  return Promise.all(["bootbox",
+                      "@angular/core/testing",
+                      "@angular/platform-browser-dynamic/testing"]
+                     .map(importIt))
+    .then(function loaded(deps) {
+      var bootbox = deps[0];
+      var testing = deps[1];
+      var browser = deps[2];
 
-    bluebird.config({
-      warnings: true,
-      longStackTraces: true,
-    });
+      // Disable animations to help simplify tests.
+      bootbox.setDefaults({ animate: false });
 
-    return importIt("chai-as-promised");
-  }).then(function loaded(chaiAsPromised) {
-    chai.use(chaiAsPromised);
-    chaiAsPromised.transferPromiseness =
-      function transferPromiseness(assertion, promise) {
-        assertion.then = promise.then.bind(promise);
+      // This is needed so that the testbed is properly initialized.
+      testing.TestBed.initTestEnvironment(browser.BrowserDynamicTestingModule,
+                                          browser.platformBrowserDynamicTesting());
 
-        if (promise.return) {
-          assertion.return = promise.return.bind(promise);
-        }
-
-        if (promise.catch) {
-          assertion.catch = promise.catch.bind(promise);
-        }
-      };
-
-    return Promise.all(["bootbox",
-                        "@angular/core/testing",
-                        "@angular/platform-browser-dynamic/testing"]
-                       .map(importIt));
-  }).then(function loaded(deps) {
-    var bootbox = deps[0];
-    var testing = deps[1];
-    var browser = deps[2];
-
-    // Disable animations to help simplify tests.
-    bootbox.setDefaults({ animate: false });
-
-    // This is needed so that the testbed is properly initialized.
-    testing.TestBed.initTestEnvironment(browser.BrowserDynamicTestingModule,
-                                        browser.platformBrowserDynamicTesting());
-
-    return Promise.all(allTestFiles.reverse().map(importIt));
-  })
+      return Promise.all(allTestFiles.reverse().map(importIt));
+    })
     .then(window.__karma__.start);
 }());

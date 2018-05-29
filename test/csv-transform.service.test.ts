@@ -1,5 +1,4 @@
 import "chai";
-import "chai-as-promised";
 import "mocha";
 
 const expect = chai.expect;
@@ -15,7 +14,8 @@ import { CSVDocument, CSVRow } from "mmwp/csv";
 import { COLUMN_NAMES, CSVTransformService } from "mmwp/csv-transform.service";
 import { MMWP_NAMESPACE } from "mmwp/namespaces";
 import { ProcessingError, validateAnnotatedDocument } from "mmwp/util";
-import { DataProvider } from "./util";
+
+import { DataProvider, expectReject } from "./util";
 
 const RELATION_FIELD_NAMES = [
   "modifies",
@@ -631,16 +631,16 @@ sem.pros="neg" uncertainty="vague">-moo</word> \
     it("converts a file", () => service.perform(file));
 
     it("errors if the file is invalid", () =>
-       expect(service.perform(bad))
-       .to.eventually.be.rejectedWith(
+       expectReject(
+         service.perform(bad),
          ProcessingError,
          `<p>tag not allowed here: {"ns":"","name":"div"}<\/p>
 <p>tag required: {"ns":"http://mangalamresearch.org/ns/mmwp/doc",\
 "name":"doc"}</p>`));
 
     it("errors if the file is malformed", () =>
-       expect(service.perform(malformed))
-       .to.eventually.be.rejectedWith(
+       expectReject(
+         service.perform(malformed),
          ProcessingError,
          "The document cannot be parsed. It is probably due to a \
 well-formedness error. Please check the file for well-formedness outside of \

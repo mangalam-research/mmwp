@@ -1,5 +1,4 @@
 import "chai";
-import "chai-as-promised";
 import "mocha";
 
 const expect = chai.expect;
@@ -11,7 +10,8 @@ import { XMLFile } from "dashboard/xml-file";
 import { XMLFilesService } from "dashboard/xml-files.service";
 import { CoNLLTransformService } from "mmwp/conll-transform.service";
 import { ProcessingError } from "mmwp/util";
-import { DataProvider } from "./util";
+
+import { DataProvider, expectReject } from "./util";
 
 // Interface that shows the private members of ConcordanceTransformService.  We
 // cannot link it directly to ConcordanceTransformService because revealing
@@ -55,16 +55,16 @@ describe("CoNLLTransformService", () => {
     it("converts a file", () => service.perform(file));
 
     it("errors if the file is invalid", () =>
-       expect(service.perform(bad))
-       .to.eventually.be.rejectedWith(
+       expectReject(
+         service.perform(bad),
          ProcessingError,
          `<p>tag not allowed here: {"ns":"","name":"div"}<\/p>
 <p>tag required: {"ns":"http://mangalamresearch.org/ns/mmwp/doc",\
 "name":"doc"}</p>`));
 
     it("errors if the file is malformed", () =>
-       expect(service.perform(malformed))
-       .to.eventually.be.rejectedWith(
+       expectReject(
+         service.perform(malformed),
          ProcessingError,
          "The document cannot be parsed. It is probably due to a \
 well-formedness error. Please check the file for well-formedness outside of \
