@@ -5,6 +5,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { AppComponent } from "dashboard/app.component";
 import { ChunksService } from "dashboard/chunks.service";
 import { ConfirmService } from "dashboard/confirm.service";
+import { DialogChoiceComponent } from "dashboard/dialog-choice.component";
 import { MetadataService } from "dashboard/metadata.service";
 import { ModesService } from "dashboard/modes.service";
 import { PacksService } from "dashboard/packs.service";
@@ -33,6 +34,10 @@ export const configuration: NgModule = {
   declarations: [
     AppComponent,
     ProcessingComponent,
+    DialogChoiceComponent,
+  ],
+  entryComponents: [
+    DialogChoiceComponent,
   ],
   providers: [
     ConfirmService,
