@@ -74,7 +74,6 @@ describe("ConcordanceTransformService", () => {
   after(() => db.delete().then(() => db.open()));
 
   describe("#perform", () => {
-    let sandbox: sinon.SinonSandbox;
     const resultNames = [
       // tslint:disable-next-line:max-line-length
       "Abhidharmakośabhāṣya_word_sajn_and_word_sajni_and_word_sajnak_1029_0_0_1_within_lessdoc_titleAbhidharmakosabhaya_greater_154_51_51_buddhsktnewton_2.xml",
@@ -86,10 +85,6 @@ describe("ConcordanceTransformService", () => {
       return Promise.all(
         resultNames.map((name) => xmlFilesService.getRecordByName(name)));
     }
-
-    before(() => {
-      sandbox = sinon.sandbox.create();
-    });
 
     beforeEach(async () => {
       file = await xmlFilesService.makeRecord(
@@ -118,7 +113,7 @@ describe("ConcordanceTransformService", () => {
       const openModal = document.querySelector(".modal.in");
       expect(openModal).to.be.null;
 
-      sandbox.restore();
+      sinon.restore();
     });
 
     it("runs without error", async () => {
@@ -185,7 +180,8 @@ this application and fix any errors before uploading again."));
     });
 
     it("shows warnings", async () => {
-      sandbox.spy(service, "reportWarnings");
+      // tslint:disable-next-line:no-any
+      sinon.spy(service, "reportWarnings" as any);
       await service.perform(file);
       const title = document.querySelector(".modal.in .modal-title");
       expect(title).to.have.property("textContent").equal("Warning");
