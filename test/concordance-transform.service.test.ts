@@ -312,19 +312,21 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
 
       const root = result!.documentElement;
       expect(root).to.have.property("tagName", "doc");
-      expect(root).to.have.deep.property("attributes.version.value", "1");
-      expect(root).to.have.deep.property("attributes.title.value", "Moo");
-      expect(root).to.have.deep.property("attributes.genre.value", "sūtra");
-      expect(root).to.have.deep.property("attributes.author.value", "Mooplex");
-      expect(root).to.have.deep.property("attributes.tradition.value", "milk");
-      expect(root).to.have.deep.property("attributes.school.value",
-                                         "pasteurized");
-      expect(root).to.have.deep.property("attributes.period.value", "old");
-      expect(root).to.have.deep.property("attributes.lem.value", "lemValue");
+      expect(root).to.have.nested.property("attributes.version.value", "1");
+      expect(root).to.have.nested.property("attributes.title.value", "Moo");
+      expect(root).to.have.nested.property("attributes.genre.value", "sūtra");
+      expect(root).to.have.nested.property("attributes.author.value",
+                                           "Mooplex");
+      expect(root).to.have.nested.property("attributes.tradition.value",
+                                           "milk");
+      expect(root).to.have.nested.property("attributes.school.value",
+                                           "pasteurized");
+      expect(root).to.have.nested.property("attributes.period.value", "old");
+      expect(root).to.have.nested.property("attributes.lem.value", "lemValue");
 
       expect(root).to.have.property("childNodes").with.lengthOf(3);
       const first = root.firstElementChild!;
-      expect(first).to.have.deep.property("attributes.id.value", "1");
+      expect(first).to.have.nested.property("attributes.id.value", "1");
 
       const firstExpected = `<s id="1"> \
 <word lem="yāvad" id="1">yāvan</word> \
@@ -357,13 +359,13 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
 <word lem="'nye" id="31">'nye</word> \
 <word lem="tu" id="32">tu</word> </s><tr tr="me" p="1">foo</tr>`
         .replace(/<(s|tr) (.*?)>/g, `<$1 ${XMLNS} $2>`);
-      expect(first).to.have.deep.property("innerHTML").equal(firstExpected);
+      expect(first).to.have.nested.property("innerHTML").equal(firstExpected);
 
       const second = first.nextElementSibling!;
-      expect(second).to.have.deep.property("attributes.id.value", "2");
+      expect(second).to.have.nested.property("attributes.id.value", "2");
 
       const third = second.nextElementSibling;
-      expect(third).to.have.deep.property("attributes.ref.value", "12.34");
+      expect(third).to.have.nested.property("attributes.ref.value", "12.34");
     });
 
     it("errors on errant avagraha", () => {
@@ -379,7 +381,7 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
           titleToLines["Abhidharmakośabhāṣya"], logger);
       expect(result).to.be.null;
       expect(logger).to.have.property("errors").with.lengthOf(1);
-      expect(logger).to.have.deep.property("errors[0].message")
+      expect(logger).to.have.nested.property("errors[0].message")
         .matches(/^errant avagraha in:/);
     });
   });
@@ -431,7 +433,7 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
       const { cit } = rservice.makeCitFromLine(title, doc, line, 1, logger);
       expect(cit.getAttribute("ref")).to.be.null;
       expect(logger).to.have.property("hasWarnings").true;
-      expect(logger).to.have.deep.property("warnings[0].message")
+      expect(logger).to.have.nested.property("warnings[0].message")
         .match(/^no value for cit\/@ref in title: Moo,/);
     });
 
@@ -439,7 +441,7 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
       const line = doc.getElementsByTagName("line")[0];
       expect(line.querySelector("page\\.number")).to.be.null;
       const { cit } = rservice.makeCitFromLine(title, doc, line, 1, logger);
-      expect(cit).to.have.deep.property("attributes.ref.value", "010|18");
+      expect(cit).to.have.nested.property("attributes.ref.value", "010|18");
     });
 
     it("creates @ref when there is no pageVerse number but page.number " +
@@ -451,7 +453,7 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
          line.appendChild(pn);
          expect(line.querySelector("page\\.number")).to.not.be.null;
          const { cit } = rservice.makeCitFromLine(title, doc, line, 1, logger);
-         expect(cit).to.have.deep.property("attributes.ref.value", "999");
+         expect(cit).to.have.nested.property("attributes.ref.value", "999");
        });
 
     it("creates @ref when there is no pageVerse number or page.number " +
@@ -460,13 +462,13 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
          expect(line.querySelector("page\\.number")).to.be.null;
 
          const { cit } = rservice.makeCitFromLine(title, doc, line, 1, logger);
-         expect(cit).to.have.deep.property("attributes.ref.value", "12.34");
+         expect(cit).to.have.nested.property("attributes.ref.value", "12.34");
        });
 
     it("sets @id to the value passed", () => {
       const line = doc.getElementsByTagName("line")[0];
       const { cit } = rservice.makeCitFromLine(title, doc, line, 222, logger);
-      expect(cit).to.have.deep.property("attributes.id.value", "222");
+      expect(cit).to.have.nested.property("attributes.id.value", "222");
     });
 
     it("preserves text", () => {
@@ -717,7 +719,7 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
       // not matter.
       rservice.checkCit(doc.getElementsByTagName("line")[0], logger);
       expect(logger.errors).to.have.lengthOf(1);
-      expect(logger).to.have.deep.property("errors[0].message")
+      expect(logger).to.have.nested.property("errors[0].message")
         .matches(/^errant avagraha in:/);
     });
 
