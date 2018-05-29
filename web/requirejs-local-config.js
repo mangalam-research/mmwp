@@ -1,6 +1,7 @@
 /* global process require */
 (function bootstrap() {
   "use strict";
+
   var base = process.env.DASHBOARD_BASE;
   require.config({
     baseUrl: "/node_modules/wed/packed/lib",

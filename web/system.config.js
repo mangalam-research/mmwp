@@ -83,6 +83,7 @@ window.systemJSConfig = {
 if (typeof process !== "undefined" &&
     typeof process.env !== "undefined" &&
     process.env.NODE_ENV === "development") {
+  // eslint-disable-next-line prefer-destructuring
   var systemJSConfig = window.systemJSConfig;
   systemJSConfig.meta["dashboard/*"] = systemJSConfig.meta["dashboard/*/*"] = {
     loader: "ng-loader",

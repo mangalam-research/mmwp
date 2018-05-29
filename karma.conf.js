@@ -1,4 +1,5 @@
 /* eslint-env node */
+
 "use strict";
 
 const serveStatic = require("serve-static");
@@ -70,8 +71,10 @@ module.exports = function configure(config) {
       "test/karma-env.js",
       "web/system.config.js",
       "test/karma-main.js",
-      { pattern: "node_modules/wed/packed/lib/external/**/*",
-        included: false },
+      {
+        pattern: "node_modules/wed/packed/lib/external/**/*",
+        included: false,
+      },
       { pattern: "test/**/*.ts", included: false },
       { pattern: "test/data/**/*", included: false },
       { pattern: "build/**/*.@(js|html|map|css)", included: false },

@@ -7,11 +7,11 @@ const requireDir = require("require-dir");
 const replace = require("gulp-replace");
 const argparse = require("argparse");
 const config = require("./config");
-const { del, fs, newer, exec, execFileAndReport, spawn,
-        mkdirpAsync } = require("./util");
+const { del, fs, newer, exec, execFileAndReport, spawn, mkdirpAsync } =
+      require("./util");
 const { execFile } = require("child-process-promise");
 
-const ArgumentParser = argparse.ArgumentParser;
+const { ArgumentParser } = argparse;
 
 // Try to load local configuration options.
 let localConfig = {};
