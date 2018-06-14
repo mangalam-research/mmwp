@@ -64,7 +64,7 @@
     "chai": "^4.1.2",
     "child-process-promise": "^2.2.1",
     "convert-tsconfig-paths-to-webpack-aliases": "^0.9.2",
-    "copy-webpack-plugin": "^4.2.0",
+    "copy-webpack-plugin": "^4.5.1",
     "del": "^3.0.0",
     "eslint": "^4.19.1",
     "eslint-config-lddubeau-base": "^2.0.1",
@@ -99,7 +99,7 @@
     "tslint-config-lddubeau": "^2.0.3",
     "typescript": "^2.7.2",
     "versync": "^3.1.0",
-    "webpack": "^3.8.1"
+    "webpack": "^4.12.0"
   },
   "scripts": {
     "test": "gulp test"

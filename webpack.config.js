@@ -74,6 +74,7 @@ const common = {
 
 module.exports = [{
   ...common,
+  mode: "production",
   entry: {
     mmwp: ["production.js", "mmwp-aot.js"],
   },
@@ -115,9 +116,6 @@ requirejs-local-config}.js",
              },
              context: "build/dev/lib",
            }))]),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-    }),
     new webpack.ContextReplacementPlugin(
       // The (\\|\/) piece accounts for path separators in *nix and Windows
         /angular(\\|\/)core(\\|\/)@angular/,
@@ -132,6 +130,7 @@ requirejs-local-config}.js",
   ],
 }, {
   ...common,
+  mode: "production",
   resolve: {
     modules: [sourceDir, "node_modules"],
     alias: {
@@ -162,9 +161,6 @@ requirejs-local-config}.js",
       },
       context: "build/dev/lib/",
     }]),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-    }),
     new webpack.ProvidePlugin({
       platformRequire: "require",
     }),
