@@ -6,7 +6,7 @@
     "paths": {
       "wed": ["../node_modules/wed/standalone/lib/wed"],
       "wed/modes/*": ["../node_modules/wed/standalone/lib/wed/modes/*"],
-      "dashboard/*": ["../node_modules/wed-demo/aot-compiled/dashboard/*"]
+      "dashboard/*": ["../node_modules/wed-demo/aot/dashboard/*"]
     },
     "declaration": true
   },

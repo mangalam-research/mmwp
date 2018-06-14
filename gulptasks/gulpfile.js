@@ -84,25 +84,27 @@ function runNGC() {
 }
 
 function createAOTMain() {
-  return gulp.src("src/mmwp.ts")
+  return gulp.src("build/aot/mmwp.js")
     .pipe(replace("AppModule", "AppModuleNgFactory"))
     .pipe(replace("app.module", "app.module.ngfactory"))
     .pipe(replace("bootstrapModule", "bootstrapModuleFactory"))
-    .pipe(rename("mmwp-aot.ts"))
+    .pipe(rename("mmwp-aot.js"))
     .pipe(gulp.dest("build/aot/"));
 }
 
-function tscAOT() {
-  return runTSC("tsconfig-prod.json", "build/aot-interm");
+// This is needed due to the bug reported at
+// https://github.com/angular/angular/issues/20006
+function patchPaths() {
+  return gulp.src("build/aot/**/*.js")
+    .pipe(replace("../../node_modules/", ""))
+    .pipe(gulp.dest("build/aot/"));
 }
 
 const buildAOTCompiled =
-      gulp.series(gulp.series(gulp.parallel(runNGC, createAOTMain), tscAOT),
-                  () => gulp.src(["src/**/*.{html,js,css}",
-                                  "build/aot/**/*.json",
-                                  "build/aot-interm/build/aot/**/*",
-                                  "build/aot-interm/src/**/*"])
-                  .pipe(gulp.dest("build/aot-compiled")));
+      gulp.series(runNGC,
+                  gulp.parallel(gulp.series(createAOTMain, patchPaths),
+                                () => gulp.src(["src/**/*.{html,js,css}"])
+                                .pipe(gulp.dest("build/aot"))));
 
 function runWebpack() {
   return execFileAndReport("./node_modules/.bin/webpack", ["--color"]);

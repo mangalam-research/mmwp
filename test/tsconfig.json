@@ -7,7 +7,9 @@
       "dashboard/*": ["../node_modules/wed-demo/dev/lib/dashboard/*"],
       "mmwp/*": ["../build/dev/lib/mmwp/*"],
       "wed": ["../node_modules/wed/standalone/lib/wed"],
-      "wed/*": ["../node_modules/wed/standalone/lib/wed/*"]
+      "wed/*": ["../node_modules/wed/standalone/lib/wed/*"],
+      "sinon": ["../types/sinon"],
+      "bluejax": ["../types/bluejax"]
     }
   },
   "include": [

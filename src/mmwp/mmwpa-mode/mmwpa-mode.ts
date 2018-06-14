@@ -1,6 +1,7 @@
-import { Action, domtypeguards, EditorAPI, ModeValidator, objectCheck,
-         transformation, util } from "wed";
+import { Action, domtypeguards, EditorAPI, exceptions, ModeValidator,
+         objectCheck, transformation, util } from "wed";
 import isText = domtypeguards.isText;
+import AbortTransformationException = exceptions.AbortTransformationException;
 import Transformation = transformation.Transformation;
 import TransformationData = transformation.TransformationData;
 
@@ -100,14 +101,24 @@ class MMWPAMode extends generic.Mode<generic.GenericModeOptions> {
     dl.addHandler("removing-element", wordClass, wordAddedRemoved);
 
     editor.transformations.subscribe((ev) => {
-      if (ev.name === "EndTransformation") {
-        if (sentences.length > 0) {
-          for (const sentence of sentences) {
-            mmwpaTr.renumberWords(editor, sentence);
-          }
-          sentences = [];
+      if (ev.name !== "EndTransformation" || sentences.length === 0) {
+        return;
+      }
+
+      try {
+        for (const sentence of sentences) {
+          mmwpaTr.renumberWords(editor, sentence);
         }
       }
+      catch (ex) {
+        if (!(ex instanceof AbortTransformationException)) {
+          throw ex;
+        }
+
+        ev.abort(ex.message);
+      }
+
+      sentences = [];
     });
 
     // We check for the mark that ``mmwpaTr.renumberWords`` left among the undos
@@ -154,8 +165,7 @@ class MMWPAMode extends generic.Mode<generic.GenericModeOptions> {
   }
 
   getAttributeCompletions(attribute: Attr): string[] {
-    // tslint:disable-next-line:no-non-null-assertion
-    const el = attribute.ownerElement!;
+    const el = attribute.ownerElement;
     if ((el.tagName === "word") &&
         ["conc.head", "dep.head"].indexOf(attribute.name) !== -1) {
       const s = el.parentNode as Element;

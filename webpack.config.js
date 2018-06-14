@@ -6,9 +6,14 @@ const path = require("path");
 const webpack = require("webpack");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const convertPathsToAliases = require("convert-tsconfig-paths-to-webpack-aliases").default;
-const tsconfig = require("./tsconfig-prod.json");
 
-const sourceDir = "./build/aot-compiled/";
+const tsconfigPath = "./src/tsconfig.json";
+const tsconfigDir = path.dirname(tsconfigPath);
+
+// eslint-disable-next-line import/no-dynamic-require
+const tsconfig = require(tsconfigPath);
+
+const sourceDir = "./build/aot/";
 
 const commonExternals = {};
 ["jquery", "bootstrap", "dexie",
@@ -49,7 +54,7 @@ const common = {
   context: path.join(__dirname),
   resolve: {
     modules: [sourceDir, "node_modules"],
-    alias: convertPathsToAliases(tsconfig),
+    alias: convertPathsToAliases(tsconfig, tsconfigDir),
   },
   devtool: "source-map",
   output: {

@@ -3,11 +3,14 @@
   "compilerOptions": {
     "outDir": "../build/aot/",
     "noUnusedParameters": false,
+    "noEmitOnError": false,
     "declaration": false
   },
   "angularCompilerOptions": {
-    "genDir": "../build/aot/",
     "entryModule": "mmwp/app.module#AppModule",
-    "skipMetadataEmit": true
+    "skipMetadataEmit": true,
+    "strictInjectionParameters": true,
+    "fullTemplateTypeCheck": true,
+    "preserveWhitespaces": true
   }
 }
