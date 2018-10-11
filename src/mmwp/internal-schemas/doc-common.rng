@@ -141,6 +141,8 @@
           <value>by.means.of</value>
           <value>achieved.through</value>
           <value>while</value>
+          <value>goal.of</value>
+          <value>takes.goal</value>
         </choice>
       </attribute>
     </optional>
@@ -168,6 +170,8 @@
           <value>oblique.of</value>
           <value>manner.of</value>
           <value>takes.manner</value>
+          <value>clausal.of</value>
+          <value>takes.clausal</value>
         </choice>
       </attribute>
     </optional>
