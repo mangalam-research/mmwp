@@ -99,7 +99,8 @@
     "tslint-config-lddubeau": "^2.0.3",
     "typescript": "^2.7.2",
     "versync": "^3.1.0",
-    "webpack": "^4.12.0"
+    "webpack": "^4.12.0",
+    "webpack-cli": "^3.1.2"
   },
   "scripts": {
     "test": "gulp test"
