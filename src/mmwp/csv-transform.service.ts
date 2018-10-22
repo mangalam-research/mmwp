@@ -23,7 +23,8 @@ for (const [a, b] of [["modifies", "modified.by"],
                       ["takes.oblique", "oblique.of"],
                       ["takes.as.subject.agent", "subject.agent"],
                       ["takes.as.object.patient", "object.patient"],
-                      ["manner.of", "takes.manner"]]) {
+                      ["manner.of", "takes.manner"],
+                      ["clausal.of", "takes.clausal"]]) {
   const first: Relation = { name: a };
   const second = { name: b, reverse: first };
   first.reverse = second;
@@ -271,6 +272,14 @@ export class CSVTransformService extends AnnotatedDocumentTransformService {
     }
 
     const occurrenceId = getNecessaryAttribute(occurrence, "id");
+    const occurenceDepRel = getAttribute(occurrence, "dep.rel");
+    if (occurenceDepRel !== "" && !KNOWN_RELATIONS.has(occurenceDepRel)) {
+      throw new Error(`unknown relation: ${occurenceDepRel}`);
+    }
+    let occurrenceDepHead = occurrence.getAttribute("dep.head");
+    if (occurrenceDepHead !== null) {
+        occurrenceDepHead = occurrenceDepHead.trim();
+    }
     for (const relation of RELATIONS) {
       // From the design document, this is:
       //
@@ -284,11 +293,8 @@ export class CSVTransformService extends AnnotatedDocumentTransformService {
                                               Set).has(x)));
 
       // if @dep.rel = $V, ancestor::s/word[@id=$occurrence/@dep.head]/@lem
-      const depRel = getAttribute(occurrence, "dep.rel");
-      let depHead = occurrence.getAttribute("dep.head");
-      if (depRel === relation.name && depHead !== null) {
-        depHead = depHead.trim();
-        relevantWords.add(idToWord[depHead]);
+      if (occurrenceDepHead !== null && occurenceDepRel === relation.name) {
+        relevantWords.add(idToWord[occurrenceDepHead]);
       }
 
       const relevantWordsArray = Array.from(relevantWords);

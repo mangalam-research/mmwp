@@ -126,6 +126,24 @@ const RELATION_FIELD_NAMES = [
   "takes.manner.sem.role",
   "takes.manner.uncertainty",
   //
+  "clausal.of",
+  "clausal.of.case",
+  "clausal.of.number",
+  "clausal.of.sem.cat",
+  "clausal.of.sem.field",
+  "clausal.of.sem.pros",
+  "clausal.of.sem.role",
+  "clausal.of.uncertainty",
+  //
+  "takes.clausal",
+  "takes.clausal.case",
+  "takes.clausal.number",
+  "takes.clausal.sem.cat",
+  "takes.clausal.sem.field",
+  "takes.clausal.sem.pros",
+  "takes.clausal.sem.role",
+  "takes.clausal.uncertainty",
+  //
   "listed.with",
   "listed.with.case",
   "listed.with.number",
@@ -539,6 +557,7 @@ sem.pros="neg" uncertainty="vague">-moo</word> \
       ["takes.as.subject.agent", "subject.agent"],
       ["takes.as.object.patient", "object.patient"],
       ["manner.of", "takes.manner"],
+      ["clausal.of", "takes.clausal"],
     ]) {
       // tslint:disable-next-line:mocha-no-side-effect-code
       makeTestForPair(forward, reverse);
