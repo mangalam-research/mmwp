@@ -78,7 +78,9 @@ word.attrs = (
         "located.in" |
         "by.means.of" |
         "achieved.through" |
-        "while"
+        "while" |
+        "goal.of" |
+        "takes.goal"
     }?,
     attribute conc.head { xsd:positiveInteger }?,
     attribute dep.rel {
@@ -97,7 +99,9 @@ word.attrs = (
         "takes.oblique" |
         "oblique.of" |
         "manner.of" |
-        "takes.manner"
+        "takes.manner" |
+        "clausal.of" |
+        "takes.clausal"
     }?,
     attribute dep.head { xsd:positiveInteger }?
 )
