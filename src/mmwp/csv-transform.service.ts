@@ -145,6 +145,10 @@ export class CSVTransformService extends AnnotatedDocumentTransformService {
       period: getNecessaryAttribute(top, "period"),
     };
 
+    const cognates = top.getAttribute("lemCognates");
+    const selectedLemmas = new Set(cognates !== null ?
+                                   [lemma, ...cognates.split(/\s+/)] : [lemma]);
+
     const csv = new CSVDocument(COLUMN_NAMES);
     const allWords = doc.getElementsByTagName("word");
     const date = new Date();
@@ -152,7 +156,7 @@ export class CSVTransformService extends AnnotatedDocumentTransformService {
       let lem = word.getAttribute("lem");
       if (lem !== null) {
         lem = lem.trim();
-        if (lem === lemma) {
+        if (selectedLemmas.has(lem)) {
           const row = csv.makeRow();
           const cit = word.closest("cit");
           if (cit === null) {

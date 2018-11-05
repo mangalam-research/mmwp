@@ -1,6 +1,8 @@
 <doc xmlns="http://mangalamresearch.org/ns/mmwp/doc"
      version="1"
      lem="something "
+     lemCognates="  something2
+                  something3  "
      title="Some, title"
      genre="Some &quot; genre"
      author="Some author"
@@ -13,6 +15,8 @@
       <word id="2" lem=" something">word2</word>
       <word id="3" lem="other">word3</word>
       <word id="4">word4</word>
+      <word id="5" lem="something2">word5</word>
+      <word id="6" lem="something3">word6</word>
     </s>
   </cit>
   <cit id="2" ref="b">

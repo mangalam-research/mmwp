@@ -12,6 +12,15 @@
       <attribute name="school"/>
       <attribute name="period"/>
       <attribute name="lem"/>
+      <optional>
+        <attribute name="lemCognates">
+          <list>
+            <oneOrMore>
+              <data type="string" datatypeLibrary=""/>
+            </oneOrMore>
+          </list>
+        </attribute>
+      </optional>
       <oneOrMore>
         <ref name="cit"/>
       </oneOrMore>

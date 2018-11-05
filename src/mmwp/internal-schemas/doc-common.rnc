@@ -9,6 +9,7 @@ doc = element doc {
     attribute school { text },
     attribute period { text },
     attribute lem { text },
+    attribute lemCognates { list { string+ } }?,
     cit+
 }
 
