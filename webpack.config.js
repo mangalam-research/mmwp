@@ -102,8 +102,8 @@ module.exports = [{
         glob: "mmwp/index.html",
       },
       context: "build/dev/lib",
-      transform: content =>
-        content.toString()
+      transform:
+      content => content.toString()
       // Remove the script that sets environment to development.
         .replace(
           /<script data-script-type="set-environment"[^]*?>[^]*?<\/script>/,

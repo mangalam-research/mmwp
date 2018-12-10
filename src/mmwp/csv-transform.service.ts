@@ -111,10 +111,10 @@ with tag name ${el.tagName}`);
   return value.trim();
 }
 
-function getWithDefault<R extends Record<string, {}>>(
+function getWithDefault<X, R extends Record<string, X>>(
   mapping: R,
   key: string,
-  defaultValue: { new (): R[keyof R] }): R[keyof R] {
+  defaultValue: { new (): X }): X {
   let ret = mapping[key];
   if (ret === undefined) {
     ret = mapping[key] = new defaultValue();
@@ -291,7 +291,8 @@ export class CSVTransformService extends AnnotatedDocumentTransformService {
       //                  @dep.head = $occurrence/@id]
       const relevantWords =
         new Set([...
-                 Array.from(getWithDefault(depHeadToWords, occurrenceId, Set))]
+                 Array.from(getWithDefault(depHeadToWords, occurrenceId,
+                                           Set as { new(): Set<Element> }))]
                 .filter((x) => getWithDefault(depRelToWords,
                                               inverse(relation).name,
                                               Set).has(x)));

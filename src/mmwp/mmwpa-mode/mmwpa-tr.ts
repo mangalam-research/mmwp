@@ -59,7 +59,7 @@ of this sentence.`);
 export function numberSentences(editor: EditorAPI,
                                 data: TransformationData): void {
   const node = data.node as Element;
-  let child = node.firstChild;
+  let child: Node | null = node.firstChild;
   let error = null;
   while (child !== null) {
     if (isText(child)) {
@@ -100,7 +100,7 @@ ${textToHTML(child.outerHTML)}`;
 
 function checkForNumbering(editor: EditorAPI, sentence: Element,
                            disallowID: boolean): void {
-  let child = sentence.firstChild;
+  let child: Node | null = sentence.firstChild;
   let error = null;
 
   while (child !== null) {
@@ -138,7 +138,7 @@ export function numberWords(editor: EditorAPI, data: TransformationData): void {
   checkForNumbering(editor, sentence, true);
 
   let id = 1;
-  let child = sentence.firstChild;
+  let child: Node | null = sentence.firstChild;
   while (child !== null) {
     if (isElement(child)) {
       editor.dataUpdater.setAttribute(child, "id", String(id++));
@@ -153,7 +153,7 @@ export function renumberWords(editor: EditorAPI, sentence: Element): void {
   checkForNumbering(editor, sentence, false);
 
   let id = 1;
-  let child = sentence.firstChild;
+  let child: Node | null = sentence.firstChild;
   let changed = false;
   let headAttributesPresent = false;
   while (child !== null) {
@@ -186,7 +186,7 @@ export function numberSentencesAndWords(editor: EditorAPI,
                                         data: TransformationData): void {
   numberSentences(editor, data);
   const node = data.node as Element;
-  let child = node.firstChild;
+  let child: Node | null = node.firstChild;
   while (child !== null) {
     if (!isElement(child) || child.tagName !== "s") {
       throw new Error(
@@ -200,7 +200,7 @@ export function numberSentencesAndWords(editor: EditorAPI,
 export function unnumberWords(editor: EditorAPI,
                               data: TransformationData): void {
   const node = data.node as Element;
-  let child = node.firstChild;
+  let child: Node | null = node.firstChild;
 
   child = node.firstChild;
   while (child !== null) {
@@ -240,7 +240,8 @@ export function splitCompoundIntoParts(editor: EditorAPI,
     return;
   }
 
-  for (const word of wordsFromCompoundParts(parts, node.ownerDocument)) {
+  // tslint:disable-next-line:no-non-null-assertion
+  for (const word of wordsFromCompoundParts(parts, node.ownerDocument!)) {
     setLemFromPart(word);
     editor.dataUpdater.insertBefore(node.parentNode as Element, word, node);
   }

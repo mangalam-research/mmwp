@@ -11,6 +11,7 @@
     "skipMetadataEmit": true,
     "strictInjectionParameters": true,
     "fullTemplateTypeCheck": true,
-    "preserveWhitespaces": true
+    "preserveWhitespaces": true,
+    "disableTypeScriptVersionCheck": true
   }
 }

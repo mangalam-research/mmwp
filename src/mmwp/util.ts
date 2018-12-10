@@ -27,7 +27,9 @@ Promise<ErrorData[]> {
 
         resolve(errors);
       });
-    validator.events.addEventListener("error", errors.push.bind(errors));
+    validator.events.addEventListener("error", (error) => {
+      errors.push(error);
+    });
     validator.start();
   });
 }

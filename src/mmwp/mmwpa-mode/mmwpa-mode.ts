@@ -165,7 +165,8 @@ class MMWPAMode extends generic.Mode<generic.GenericModeOptions> {
   }
 
   getAttributeCompletions(attribute: Attr): string[] {
-    const el = attribute.ownerElement;
+    // tslint:disable-next-line:no-non-null-assertion
+    const el = attribute.ownerElement!;
     if ((el.tagName === "word") &&
         ["conc.head", "dep.head"].indexOf(attribute.name) !== -1) {
       const s = el.parentNode as Element;

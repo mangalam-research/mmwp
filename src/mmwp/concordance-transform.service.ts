@@ -426,7 +426,7 @@ ref: ${line.outerHTML}`);
       logger.warn(`no value for cit/@ref in title: ${title}`);
     }
 
-    let child = line.firstChild;
+    let child: Node | null = line.firstChild;
 
     // Convert <line> to <cit>. Remove <ref> and <page.number> and drop all
     // other tags (but keep their contents), except for the cases below.
@@ -453,7 +453,8 @@ ref: ${line.outerHTML}`);
         }
         else if (tagName === "tr") {
           // We have to create a new element to bring it into our namespace.
-          tr = cit.ownerDocument.createElementNS(MMWP_NAMESPACE, "tr");
+          // tslint:disable-next-line:no-non-null-assertion
+          tr = cit.ownerDocument!.createElementNS(MMWP_NAMESPACE, "tr");
 
           // tslint:disable-next-line:prefer-for-of
           const attributes = (child as Element).attributes;
@@ -469,7 +470,7 @@ ref: ${line.outerHTML}`);
         }
         else {
           // This effectively unwraps the children.
-          let grandChild = child.firstChild;
+          let grandChild: Node | null = child.firstChild;
           while (grandChild !== null) {
             cit.appendChild(grandChild.cloneNode(true));
             grandChild = grandChild.nextSibling;
@@ -576,7 +577,7 @@ ref: ${line.outerHTML}`);
    * in the context of this function, to *invoke* it recursively.
    */
   private _cleanText(node: Node): void {
-    let child = node.firstChild;
+    let child: Node | null = node.firstChild;
     while (child !== null) {
       const next = child.nextSibling;
       switch (child.nodeType) {
@@ -604,7 +605,7 @@ ref: ${line.outerHTML}`);
 
   private breakIntoWords(doc: Document, cit: Element): void {
     // Break the text nodes into words to be wrapped in <word>.
-    let child = cit.firstChild;
+    let child: Node | null = cit.firstChild;
     while (child !== null) {
       const next = child.nextSibling;
       if (child.nodeType === Node.TEXT_NODE) {
@@ -713,7 +714,8 @@ ${line.innerHTML}`);
   }
 
   private wrapWordsInSentenceAndNumber(cit: Element): void {
-    const s = cit.ownerDocument.createElementNS(MMWP_NAMESPACE, "s");
+    // tslint:disable-next-line:no-non-null-assertion
+    const s = cit.ownerDocument!.createElementNS(MMWP_NAMESPACE, "s");
     // We create one sentence per cit and the numbering is scoped to cit so the
     // number is always 1.
     s.setAttribute("id", "1");
