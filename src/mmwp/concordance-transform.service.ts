@@ -453,28 +453,21 @@ abstract class BaseProcessor {
     // Convert <notvariant> and <normalised> to <word>.
     let elChild = cit.firstElementChild;
     while (elChild !== null) {
-      const next = elChild.nextElementSibling;
-      const tagName = elChild.tagName;
-      if (tagName === "notvariant") {
-        const word = doc.createElementNS(MMWP_NAMESPACE, "word");
-        word.textContent = elChild.textContent;
-        // tslint:disable-next-line:no-non-null-assertion
-        word.setAttribute("lem", elChild.textContent!);
-        cit.insertBefore(word, elChild);
+      const word = doc.createElementNS(MMWP_NAMESPACE, "word");
+      switch (elChild.tagName) {
+        case "notvariant":
+          word.textContent = elChild.textContent;
+          break;
+        case "normalised":
+          word.textContent = elChild.getAttribute("orig");
+          break;
+        default:
+          throw new Error(`unexpected element ${elChild.tagName}`);
       }
-      else if (tagName === "normalised") {
-        const word = doc.createElementNS(MMWP_NAMESPACE, "word");
-        word.textContent = elChild.getAttribute("orig");
-        // tslint:disable-next-line:no-non-null-assertion
-        word.setAttribute("lem", elChild.textContent!);
-        cit.insertBefore(word, elChild);
-      }
-      else {
-        throw new Error(`unexpected element ${tagName}`);
-      }
-
-      cit.removeChild(elChild);
-      elChild = next;
+      // tslint:disable-next-line:no-non-null-assertion
+      word.setAttribute("lem", elChild.textContent!);
+      cit.replaceChild(word, elChild);
+      elChild = word.nextElementSibling;
     }
   }
 
