@@ -11,7 +11,7 @@ import { XMLFilesService } from "dashboard/xml-files.service";
 import { XMLTransformService } from "dashboard/xml-transform.service";
 import { setLemFromPart, wordsFromCompoundParts } from "./compounds";
 // tslint:disable-next-line:no-require-imports
-import concordance = require("./internal-schemas/concordance");
+import concordanceV1 = require("./internal-schemas/concordance-v1");
 // tslint:disable-next-line:no-require-imports
 import docUnannotated = require("./internal-schemas/doc-unannotated");
 import { MMWP_NAMESPACE } from "./namespaces";
@@ -202,7 +202,7 @@ export class ConcordanceTransformService extends XMLTransformService {
 
   private get concordanceGrammar(): Grammar {
     if (ConcordanceTransformService._concordanceGrammar === undefined) {
-      const clone = JSON.parse(JSON.stringify(concordance));
+      const clone = JSON.parse(JSON.stringify(concordanceV1));
       ConcordanceTransformService._concordanceGrammar = readTreeFromJSON(clone);
     }
 

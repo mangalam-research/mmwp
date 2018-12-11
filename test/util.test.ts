@@ -8,7 +8,7 @@ import { Grammar, readTreeFromJSON, ValidationError } from "salve";
 import { ErrorData } from "salve-dom";
 
 // tslint:disable-next-line:no-require-imports
-import concordance = require("mmwp/internal-schemas/concordance");
+import concordanceV1 = require("mmwp/internal-schemas/concordance-v1");
 import { validate } from "mmwp/util";
 import { ModeValidator } from "wed";
 
@@ -32,7 +32,7 @@ describe("util", () => {
 
   before(() => {
     badDoc = new DOMParser().parseFromString("<div/>", "text/xml");
-    grammar = readTreeFromJSON(JSON.parse(JSON.stringify(concordance)));
+    grammar = readTreeFromJSON(JSON.parse(JSON.stringify(concordanceV1)));
     return ajax("/base/test/data/sample-concordance-1.xml")
       .then((newDoc) => doc = newDoc);
   });
