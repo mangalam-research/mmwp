@@ -4,7 +4,7 @@ import "mocha";
 const expect = chai.expect;
 
 import { ajax } from "bluejax";
-import { constructTree, Grammar, ValidationError } from "salve";
+import { Grammar, readTreeFromJSON, ValidationError } from "salve";
 import { ErrorData } from "salve-dom";
 
 // tslint:disable-next-line:no-require-imports
@@ -32,7 +32,7 @@ describe("util", () => {
 
   before(() => {
     badDoc = new DOMParser().parseFromString("<div/>", "text/xml");
-    grammar = constructTree(JSON.parse(JSON.stringify(concordance)));
+    grammar = readTreeFromJSON(JSON.parse(JSON.stringify(concordance)));
     return ajax("/base/test/data/sample-concordance-1.xml")
       .then((newDoc) => doc = newDoc);
   });

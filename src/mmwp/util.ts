@@ -1,4 +1,4 @@
-import { constructTree, Grammar } from "salve";
+import { Grammar, readTreeFromJSON } from "salve";
 import { ErrorData, ParsingError, safeParse, WorkingState as WS,
          WorkingStateData } from "salve-dom";
 import { ModeValidator, Validator } from "wed";
@@ -64,7 +64,7 @@ let _annotatedGrammar: Grammar | undefined;
 export function getAnnotatedGrammar(): Grammar {
   if (_annotatedGrammar === undefined) {
     const clone = JSON.parse(JSON.stringify(docAnnotated));
-    _annotatedGrammar = constructTree(clone);
+    _annotatedGrammar = readTreeFromJSON(clone);
   }
 
   return _annotatedGrammar;

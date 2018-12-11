@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { alert } from "bootbox";
-import { constructTree, Grammar } from "salve";
+import { Grammar, readTreeFromJSON } from "salve";
 import { ParsingError, safeParse } from "salve-dom";
 import * as slug from "slug";
 
@@ -203,7 +203,7 @@ export class ConcordanceTransformService extends XMLTransformService {
   private get concordanceGrammar(): Grammar {
     if (ConcordanceTransformService._concordanceGrammar === undefined) {
       const clone = JSON.parse(JSON.stringify(concordance));
-      ConcordanceTransformService._concordanceGrammar = constructTree(clone);
+      ConcordanceTransformService._concordanceGrammar = readTreeFromJSON(clone);
     }
 
     return ConcordanceTransformService._concordanceGrammar;
@@ -212,7 +212,7 @@ export class ConcordanceTransformService extends XMLTransformService {
   private get unannotatedGrammar(): Grammar {
     if (ConcordanceTransformService._unannotatedGrammar === undefined) {
       const clone = JSON.parse(JSON.stringify(docUnannotated));
-      ConcordanceTransformService._unannotatedGrammar = constructTree(clone);
+      ConcordanceTransformService._unannotatedGrammar = readTreeFromJSON(clone);
     }
 
     return ConcordanceTransformService._unannotatedGrammar;

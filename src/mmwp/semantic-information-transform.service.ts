@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { constructTree, Grammar } from "salve";
+import { Grammar, readTreeFromJSON } from "salve";
 import { safeParse } from "salve-dom";
 
 import { ProcessingService } from "dashboard/processing.service";
@@ -71,7 +71,7 @@ extends AnnotatedDocumentTransformService {
     if (SemanticInformationTransformService._semInfoGrammar === undefined) {
       const clone = JSON.parse(JSON.stringify(semInfo));
       SemanticInformationTransformService._semInfoGrammar =
-        constructTree(clone);
+        readTreeFromJSON(clone);
     }
 
     return SemanticInformationTransformService._semInfoGrammar;
