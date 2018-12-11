@@ -10,12 +10,36 @@ import { XMLFile } from "dashboard/xml-file";
 import { XMLFilesService } from "dashboard/xml-files.service";
 import { XMLTransformService } from "dashboard/xml-transform.service";
 import { setLemFromPart, wordsFromCompoundParts } from "./compounds";
-// tslint:disable-next-line:no-require-imports
-import concordanceV1 = require("./internal-schemas/concordance-v1");
+import concordanceAnyVersion =
+  // tslint:disable-next-line:no-require-imports
+  require("./internal-schemas/concordance-any-version");
 // tslint:disable-next-line:no-require-imports
 import docUnannotated = require("./internal-schemas/doc-unannotated");
 import { MMWP_NAMESPACE } from "./namespaces";
 import { validate } from "./util";
+
+// Caches for the grammars. We do this at the class level because these
+// objects are immutable.
+let _concordanceGrammar: Grammar | undefined;
+let _unannotatedGrammar: Grammar | undefined;
+
+function getConcordanceGrammar(): Grammar {
+  if (_concordanceGrammar === undefined) {
+    const clone = JSON.parse(JSON.stringify(concordanceAnyVersion));
+    _concordanceGrammar = readTreeFromJSON(clone);
+  }
+
+  return _concordanceGrammar;
+}
+
+function getUnannotatedGrammar(): Grammar {
+  if (_unannotatedGrammar === undefined) {
+    const clone = JSON.parse(JSON.stringify(docUnannotated));
+    _unannotatedGrammar = readTreeFromJSON(clone);
+  }
+
+  return _unannotatedGrammar;
+}
 
 export class TitleEqualityError extends Error {
   constructor(message: string) {
@@ -188,142 +212,88 @@ async function safeValidate(grammar: Grammar,
   }
 }
 
-@Injectable()
-export class ConcordanceTransformService extends XMLTransformService {
-  // Caches for the grammars. We do this at the class level because these
-  // objects are immutable.
-  private static _concordanceGrammar: Grammar | undefined;
-  private static _unannotatedGrammar: Grammar | undefined;
-
-  constructor(private readonly processing: ProcessingService,
-              private readonly xmlFiles: XMLFilesService) {
-    super("Concordance to doc");
+abstract class BaseProcessor {
+  constructor(protected xmlFiles: XMLFilesService) {
   }
 
-  private get concordanceGrammar(): Grammar {
-    if (ConcordanceTransformService._concordanceGrammar === undefined) {
-      const clone = JSON.parse(JSON.stringify(concordanceV1));
-      ConcordanceTransformService._concordanceGrammar = readTreeFromJSON(clone);
+  async perform(doc: Document): Promise<XMLFile[]> {
+    const titles: Record<string, Title> = Object.create(null);
+    const titleToLines: Record<string, Element[]> = Object.create(null);
+
+    const logger = new Logger();
+    this.gatherTitles(doc, titles, titleToLines, logger);
+    const lemma = this.getLemma(doc);
+    const query = this.getQuery(doc);
+    // tslint:disable-next-line:no-non-null-assertion
+    const path = this.getCorpus(doc);
+    const pathParts = path.split("/");
+    const base = pathParts[pathParts.length - 1];
+    const transformed: { outputName: string; doc: Document }[] = [];
+    for (const title of Object.keys(titles)) {
+      const titleInfo = titles[title];
+      const lines = titleToLines[title];
+      const outputName = `${title}_${slug(query, "_")}_${slug(base, "_")}.xml`;
+      const result = this.transformTitle(lemma, titleInfo, lines, logger);
+      if (result !== null) {
+        transformed.push({ outputName, doc: result });
+      }
     }
 
-    return ConcordanceTransformService._concordanceGrammar;
+    // If there are any errors we don't want to move forward.
+    if (logger.hasErrors) {
+      throw new ProcessingError(
+        "Invalid data",
+        logger.errors.map((x) => `<p>${x}</p>`).join("\n"));
+    }
+
+    const promises: Promise<{ titleDoc: Document; outputName: string }>[] = [];
+    for (const { outputName, doc: titleDoc } of transformed) {
+      promises.push(this.checkOutput(outputName, titleDoc));
+    }
+
+    const results = await Promise.all(promises);
+
+    if (logger.hasWarnings) {
+      this.reportWarnings(logger.warnings.map((x) => `<p>${x}</p>`).join("\n"));
+    }
+
+    return Promise.all(
+      results.map(async ({ outputName, titleDoc }) => {
+        return this.xmlFiles.updateRecord(
+          await this.xmlFiles.makeRecord(outputName,
+            titleDoc.documentElement.outerHTML));
+      }));
   }
 
-  private get unannotatedGrammar(): Grammar {
-    if (ConcordanceTransformService._unannotatedGrammar === undefined) {
-      const clone = JSON.parse(JSON.stringify(docUnannotated));
-      ConcordanceTransformService._unannotatedGrammar = readTreeFromJSON(clone);
-    }
-
-    return ConcordanceTransformService._unannotatedGrammar;
+  private reportWarnings(message: string): void {
+    alert({
+      title: "Warning",
+      message,
+    });
   }
 
-  async perform(input: XMLFile): Promise<XMLFile[]> {
-    this.processing.start(1);
-    let ret: XMLFile[];
-    try {
-      const data = await input.getData();
-      let doc: Document;
-      try {
-        doc = safeParse(data);
-      }
-      catch (ex) {
-        if (!(ex instanceof ParsingError)) {
-          throw ex;
-        }
-
-        throw new ProcessingError(
-          "Parsing Error",
-          "The document cannot be parsed. It is probably due to a \
-well-formedness error. Please check the file for well-formedness outside of \
-this application and fix any errors before uploading again.");
-      }
-
-      const titles: Record<string, Title> = Object.create(null);
-      const titleToLines: Record<string, Element[]> = Object.create(null);
-      await safeValidate(this.concordanceGrammar, doc);
-
-      const logger = new Logger();
-      this.gatherTitles(doc, titles, titleToLines, logger);
-      // tslint:disable-next-line:no-non-null-assertion
-      const lemma = doc.querySelector("concordance>lemma")!.textContent!;
-      // tslint:disable-next-line:no-non-null-assertion
-      const query = doc.querySelector("concordance>heading>query")!
-        .textContent!;
-      // tslint:disable-next-line:no-non-null-assertion
-      const path = doc.querySelector("concordance>heading>corpus")!
-        .textContent!;
-      const pathParts = path.split("/");
-      const base = pathParts[pathParts.length - 1];
-      const transformed: { outputName: string; doc: Document }[] = [];
-      for (const title of Object.keys(titles)) {
-        const titleInfo = titles[title];
-        const lines = titleToLines[title];
-        const outputName =
-          `${title}_${slug(query, "_")}_${slug(base, "_")}.xml`;
-        const result = this.transformTitle(lemma, titleInfo, lines, logger);
-        if (result !== null) {
-          transformed.push({ outputName, doc: result });
-        }
-      }
-
-      // If there are any errors we don't want to move forward.
-      if (logger.hasErrors) {
-        throw new ProcessingError(
-          "Invalid data",
-          logger.errors.map((x) => `<p>${x}</p>`).join("\n"));
-      }
-
-      const promises: Promise<{ titleDoc: Document; outputName: string }>[] =
-        [];
-      for (const { outputName, doc: titleDoc } of transformed) {
-        promises.push(this.checkOutput(outputName, titleDoc));
-      }
-
-      const results = await Promise.all(promises);
-
-      if (logger.hasWarnings) {
-        this.reportWarnings(
-          logger.warnings.map((x) => `<p>${x}</p>`).join("\n"));
-      }
-
-      ret = await Promise.all(
-        results.map(async ({ outputName, titleDoc }) => {
-          return this.xmlFiles.updateRecord(
-            await this.xmlFiles.makeRecord(outputName,
-                                           titleDoc.documentElement.outerHTML));
-        }));
-    }
-    catch (err) {
-      if (err instanceof ProcessingError) {
-        this.reportFailure(err.title !== undefined ? err.title : "Error",
-                           err.message);
-        throw err;
-      }
-
-      this.reportFailure("Internal failure", err.toString());
-      throw err;
-    }
-    finally {
-      this.processing.increment();
-      this.processing.stop();
+  private async checkOutput(outputName: string, titleDoc: Document):
+  Promise<{titleDoc: Document; outputName: string}> {
+    const record = await this.xmlFiles.getRecordByName(outputName);
+    if (record !== undefined) {
+      throw new ProcessingError("File Name Error",
+                                `This would overwrite: ${outputName}`);
     }
 
-    return ret;
+    await safeValidate(getUnannotatedGrammar(), titleDoc);
+
+    return { titleDoc, outputName };
   }
 
   private gatherTitles(doc: Document, titles: Record<string, Title>,
                        titleToLines: Record<string, Element[]>,
                        logger: Logger): void {
     for (const line of Array.from(doc.getElementsByTagName("line"))) {
-      const ref = line.querySelector("ref");
-      if (ref === null) {
-        logger.error(`invalid line: line without a \
-ref: ${line.outerHTML}`);
+      const refText = this.getRefText(line);
+      if (refText === null) {
+        logger.error(`invalid line: line without a ref: ${line.outerHTML}`);
       }
       else {
-        // tslint:disable-next-line:no-non-null-assertion
-        const refText = ref.textContent!;
         const newTitle = Title.fromCSV(refText, logger);
         if (newTitle !== null) {
           const title = newTitle.title;
@@ -400,20 +370,13 @@ ref: ${line.outerHTML}`);
     return logger.hasErrors ? null : doc;
   }
 
-  private extractRef(text: string): string | null {
-    const match =
-      text.match(/_?\d(?:\d|\s)*\.\s*\d(?:\d|\s)*|_\s*\d(?:\d|\s)*/);
-    return match !== null ? match[0].replace(/[_\s]+/g, "") : null;
-  }
-
   /**
    * @returns An object on which ``cit`` is the citation element and ``tr`` is
    * the translation element that should be added after all sentences. ``tr`` is
    * ``null`` if there is no such element.
    */
   private makeCitFromLine(title: Title, doc: Document, line: Element,
-                          citId: number,
-                          logger: Logger):
+                          citId: number, logger: Logger):
   { cit: Element; tr: Element | null } {
     const cit = doc.createElementNS(MMWP_NAMESPACE, "cit");
     cit.setAttribute("id", String(citId));
@@ -484,54 +447,6 @@ ref: ${line.outerHTML}`);
     }
 
     return { cit, tr };
-  }
-
-  private getRefValue(line: Element): string | undefined {
-    let refValue: string | undefined;
-    const ref = line.querySelector("ref");
-    // tslint:disable-next-line:no-non-null-assertion
-    const parsedRef = ref === null ? null : ParsedRef.fromCSV(ref.textContent!);
-    // A ref or parsedRef which is null has been reported earlier as an error.
-    if (parsedRef !== null) {
-      refValue = parsedRef.pageVerse;
-
-      // If we did not get a pageVerse value from the <ref> element, then we
-      // look for a <page.number> element and take that.
-      if (refValue === undefined) {
-        const pageNumber = line.querySelector("page\\.number");
-        if (pageNumber !== null) {
-          // tslint:disable-next-line:no-non-null-assertion
-          refValue = pageNumber.textContent!;
-        }
-      }
-
-      // If we still have not found a value, we search for a number pattern.
-      if (refValue === undefined) {
-        // We clone the line and remove <ref>.
-        const clone = line.cloneNode(true) as Element;
-        // tslint:disable-next-line:no-non-null-assertion
-        const clonedRef = clone.querySelector("ref");
-        if (clonedRef !== null) {
-          clone.removeChild(clonedRef);
-        }
-        // tslint:disable-next-line:no-non-null-assertion
-        const text = clone.textContent!;
-        const match = this.extractRef(text);
-        if (match !== null) {
-          refValue = match;
-        }
-      }
-    }
-
-    return refValue;
-  }
-
-  private checkCit(cit: Element, logger: Logger): void {
-    // tslint:disable-next-line:no-non-null-assertion
-    const text = cit.textContent!;
-    if (/'\s/.test(text)) {
-      logger.error(`errant avagraha in: ${cit.innerHTML}`);
-    }
   }
 
   private convertMarkedToWord(doc: Document, cit: Element): void {
@@ -739,30 +654,202 @@ ${line.innerHTML}`);
     }
   }
 
+  private checkCit(cit: Element, logger: Logger): void {
+    // tslint:disable-next-line:no-non-null-assertion
+    const text = cit.textContent!;
+    if (/'\s/.test(text)) {
+      logger.error(`errant avagraha in: ${cit.innerHTML}`);
+    }
+  }
+
+  private getRefValue(line: Element): string | undefined {
+    let refValue: string | undefined;
+    const ref = this.getRefText(line);
+    const parsedRef = ref === null ? null : ParsedRef.fromCSV(ref);
+    // A ref or parsedRef which is null has been reported earlier as an error.
+    if (parsedRef !== null) {
+      refValue = parsedRef.pageVerse;
+
+      // If we did not get a pageVerse value from the <ref> element, then we
+      // look for a <page.number> element and take that.
+      if (refValue === undefined) {
+        const pageNumber = line.querySelector("page\\.number");
+        if (pageNumber !== null) {
+          // tslint:disable-next-line:no-non-null-assertion
+          refValue = pageNumber.textContent!;
+        }
+      }
+
+      // If we still have not found a value, we search for a number pattern.
+      if (refValue === undefined) {
+        // We clone the line and remove <ref>.
+        const clone = line.cloneNode(true) as Element;
+        // tslint:disable-next-line:no-non-null-assertion
+        const clonedRef = clone.querySelector("ref");
+        if (clonedRef !== null) {
+          clone.removeChild(clonedRef);
+        }
+        // tslint:disable-next-line:no-non-null-assertion
+        const text = clone.textContent!;
+        const match = this.extractRef(text);
+        if (match !== null) {
+          refValue = match;
+        }
+      }
+    }
+
+    return refValue;
+  }
+
+  private extractRef(text: string): string | null {
+    const match =
+      text.match(/_?\d(?:\d|\s)*\.\s*\d(?:\d|\s)*|_\s*\d(?:\d|\s)*/);
+    return match !== null ? match[0].replace(/[_\s]+/g, "") : null;
+  }
+
+  protected abstract getRefText(line: Element): string | null;
+
+  protected abstract getLemma(doc: Document): string;
+
+  protected abstract getQuery(doc: Document): string;
+
+  protected abstract getCorpus(doc: Document): string;
+}
+
+/**
+ * We export it so that it is visible to test code.
+ *
+ * @private
+ */
+export class V1Processor extends BaseProcessor {
+  constructor(xmlFiles: XMLFilesService) {
+    super(xmlFiles);
+  }
+
+  protected getLemma(doc: Document): string {
+    // tslint:disable-next-line:no-non-null-assertion
+    return doc.querySelector("concordance>lemma")!.textContent!;
+  }
+
+  protected getQuery(doc: Document): string {
+    // tslint:disable-next-line:no-non-null-assertion
+    return doc.querySelector("concordance>heading>query")!.textContent!;
+  }
+
+  protected getCorpus(doc: Document): string {
+    // tslint:disable-next-line:no-non-null-assertion no-non-null-assertion
+    return doc.querySelector("concordance>heading>corpus")!.textContent!;
+  }
+
+  protected getRefText(line: Element): string | null {
+    const ref = line.querySelector("ref");
+    return ref === null ? null : ref.textContent;
+  }
+}
+
+/**
+ * We export it so that it is visible to test code.
+ *
+ * @private
+ */
+export class V2Processor extends BaseProcessor {
+  constructor(xmlFiles: XMLFilesService) {
+    super(xmlFiles);
+  }
+
+  protected getLemma(doc: Document): string {
+    // tslint:disable-next-line:no-non-null-assertion
+    return doc.querySelector("export>lemma")!.textContent!;
+  }
+
+  protected getQuery(doc: Document): string {
+    // tslint:disable-next-line:no-non-null-assertion
+    return doc.querySelector("export>header>query")!.textContent!;
+  }
+
+  protected getCorpus(doc: Document): string {
+    // tslint:disable-next-line:no-non-null-assertion no-non-null-assertion
+    return doc.querySelector("export>header>corpus")!.textContent!;
+  }
+
+  protected getRefText(line: Element): string | null {
+    return line.getAttribute("refs");
+  }
+}
+
+@Injectable()
+export class ConcordanceTransformService extends XMLTransformService {
+  constructor(private readonly processing: ProcessingService,
+              private readonly xmlFiles: XMLFilesService) {
+    super("Concordance to doc");
+  }
+
+  async perform(input: XMLFile): Promise<XMLFile[]> {
+    this.processing.start(1);
+    let ret: XMLFile[];
+    try {
+      const data = await input.getData();
+      let doc: Document;
+      try {
+        doc = safeParse(data);
+      }
+      catch (ex) {
+        if (!(ex instanceof ParsingError)) {
+          throw ex;
+        }
+
+        throw new ProcessingError(
+          "Parsing Error",
+          "The document cannot be parsed. It is probably due to a \
+well-formedness error. Please check the file for well-formedness outside of \
+this application and fix any errors before uploading again.");
+      }
+
+      await safeValidate(getConcordanceGrammar(), doc);
+
+      // We need to determine the format version by checking the top level
+      // element.
+      // tslint:disable-next-line:no-non-null-assertion
+      const top = doc.firstElementChild!;
+      let proc: { new(xmlFiles: XMLFilesService): V1Processor | V2Processor };
+      switch (top.tagName) {
+        case "concordance":
+          // v1
+          proc = V1Processor;
+          break;
+        case "export":
+          // v2
+          proc = V2Processor;
+          break;
+        default:
+          throw new ProcessingError(
+            "Parsing Error", "Cannot determine the format of the file.");
+      }
+
+      ret = await new proc(this.xmlFiles).perform(doc);
+    }
+    catch (err) {
+      if (err instanceof ProcessingError) {
+        this.reportFailure(err.title !== undefined ? err.title : "Error",
+                           err.message);
+        throw err;
+      }
+
+      this.reportFailure("Internal failure", err.toString());
+      throw err;
+    }
+    finally {
+      this.processing.increment();
+      this.processing.stop();
+    }
+
+    return ret;
+  }
+
   reportFailure(title: string, message: string): void {
     alert({
       title,
       message,
     });
-  }
-
-  private reportWarnings(message: string): void {
-    alert({
-      title: "Warning",
-      message,
-    });
-  }
-
-  private async checkOutput(outputName: string, titleDoc: Document):
-  Promise<{titleDoc: Document; outputName: string}> {
-    const record = await this.xmlFiles.getRecordByName(outputName);
-    if (record !== undefined) {
-      throw new ProcessingError("File Name Error",
-                                `This would overwrite: ${outputName}`);
-    }
-
-    await safeValidate(this.unannotatedGrammar, titleDoc);
-
-    return { titleDoc, outputName };
   }
 }

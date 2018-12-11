@@ -1,0 +1,1558 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<export>
+<lemma>fnord</lemma>
+<header>
+  <corpus>user/lugli/buddhsktnewton_2</corpus>
+  <subcorpus>BTW</subcorpus>
+  <query>
+    <subquery operation="Query" size="309">[word=&quot;.*prajñapt.*&quot;]</subquery>
+  </query>
+</header>
+<concordance>
+  <line refs="013|24-013|25,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="0" label="_">
+    <left>tarhi jātivācako &quot; yaṃ dhātuśabda ityapare / &lt;/page&gt;&lt;page&gt; aṣṭādaśdharmāṇāṃ jātayaḥ svabhāvā aṣṭādaśa dhātava iti / &lt;/page&gt;&lt;page&gt; yadi rāśyarthaḥ skandhārthaḥ</left>
+    <kwic> prajñaptisantaḥ</kwic>
+    <right> skandhāḥ prāpnuvanti / &lt;/page&gt;&lt;page&gt; anekadravyasamūhatvāt rāśipudgalavat / na / &lt;/page&gt;&lt;page&gt; ekasyāpi dravyaparamāṇoḥ skandhatvāt / na tarhi rāśyarthaḥ</right>
+  </line>
+  <line refs="014|01-014|02,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="1" label="_">
+    <left>rūpamekaśo rūpaskandha iti / &lt;/page&gt;&lt;page&gt; na śakyamevaṃ vijñātum / &lt;/page&gt;&lt;page&gt; &quot; tatsarvamaikadhyamabhisaṃkṣipye &quot; ti vacanāt / tasmādrāśivadeva skandhāḥ</left>
+    <kwic> prajñaptisantaḥ</kwic>
+    <right>&lt;/page&gt;&lt;page&gt; rūpoīnyapi tarhyāyatanāni prajñaptisanti prāpnuvanti / &lt;/page&gt;&lt;page&gt; bahunāṃ cakṣurādiparamāṇūnāmāyadvāra bhāvāt / &lt;/page&gt;&lt;page&gt; na / &lt;/page&gt;&lt;page&gt; ekaśaḥ samagrāṇāṃ</right>
+  </line>
+  <line refs="014|02-014|03,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="2" label="_">
+    <left>vijñātum / &lt;/page&gt;&lt;page&gt; &quot; tatsarvamaikadhyamabhisaṃkṣipye &quot; ti vacanāt / tasmādrāśivadeva skandhāḥ prajñaptisantaḥ &lt;/page&gt;&lt;page&gt; rūpoīnyapi tarhyāyatanāni</left>
+    <kwic> prajñaptisanti</kwic>
+    <right> prāpnuvanti / &lt;/page&gt;&lt;page&gt; bahunāṃ cakṣurādiparamāṇūnāmāyadvāra bhāvāt / &lt;/page&gt;&lt;page&gt; na / &lt;/page&gt;&lt;page&gt; ekaśaḥ samagrāṇāṃ kāraṇabhāvāt viṣayasahakāritvādvā nendriyaṃ</right>
+  </line>
+  <line refs="014|04-014|05,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="3" label="_">
+    <left>samagrāṇāṃ kāraṇabhāvāt viṣayasahakāritvādvā nendriyaṃ pṛthagāyatanaṃ syāt / 0 1 4 0 5 - 0 1 4 0 5 ] vibhāṣāyāṃ tūcyate &quot; yadyābhidharmikaḥ</left>
+    <kwic> skandhaprajñaptimapekṣate</kwic>
+    <right> / &lt;/page&gt;&lt;page&gt; sa āha paramāṇurekasya dhātorekasyāyatanasyaikasya skandhasya pradeśaḥ / &lt;/page&gt;&lt;page&gt; atha nāpekṣate / &lt;/page&gt;&lt;page&gt; sa āha / paramāṇureko</right>
+  </line>
+  <line refs="019|09-019|10,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="4" label="_">
+    <left>/ &lt;/page&gt;&lt;page&gt; yathā hasto haste pratihanyate upale vā / upalo 'pi tayoḥ / &lt;/page&gt;&lt;page&gt; viṣayapratighātaścakṣurādīnāṃ viṣayiṇāṃ rūpādiṣu viṣayeṣu / &lt;/page&gt;&lt;page&gt; yathoktaṃ</left>
+    <kwic> prajñaptā</kwic>
+    <right> &quot; vasti cakṣurjale pratihanyate na sthale / &lt;/page&gt;&lt;page&gt; yathā matsyānām / &lt;/page&gt;&lt;page&gt; asti sthale na jale / &lt;/page&gt;&lt;page&gt; prāyeṇa manuṣyāṇām / astyubhayatra / &lt;/page&gt;</right>
+  </line>
+  <line refs="025|20-025|21,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="5" label="_">
+    <left>pratiprākāra ivārakṣā / &lt;/page&gt;&lt;page&gt; śabda aupacayiko naiḥṣyandikaścāsti / &lt;/page&gt;&lt;page&gt; vipākajaḥ / &lt;/page&gt;&lt;page&gt; na śabdaḥ &lt;/page&gt;&lt;page&gt; kiṃ kāraṇam / īhātaḥ pravṛtteḥ / &lt;/page&gt;&lt;page&gt; yattarhi</left>
+    <kwic> prajñaptiśāstre</kwic>
+    <right> uktaṃ &quot; pāruṣyavirateḥ subhāvitatvād brahmasvaratā mahāpuruṣalakṣaṇaṃ nirvartta iti / &lt;/page&gt;&lt;page&gt; tṛtīyā 'sau paraṃparetyeke / &lt;/page&gt;&lt;page&gt; karmabhyo hi bhūtāni</right>
+  </line>
+  <line refs="064|10-064|11,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="6" label="_">
+    <left>vā samanvāgamaḥ / &lt;/page&gt;&lt;page&gt; yāvaddhi tasyādhivāsako 'vinodako bhavati tāvat bhavyastāni bhāvayitum / &lt;/page&gt;&lt;page&gt; evamayaṃ samanvāgamaḥ sarvāthā</left>
+    <kwic> prajñaptidharmo</kwic>
+    <right> na tu dravyadharmaḥ / &lt;/page&gt;&lt;page&gt; tasya ca pratiṣedho 'samanvāgama iti / &lt;/page&gt;&lt;page&gt; dravyameva tu vaibhāṣikāḥ ubhayaṃ varṇayanti / &lt;/page&gt;&lt;page&gt; kiṃ kāraṇam / eṣa hi naḥ siddhānta</right>
+  </line>
+  <line refs="067|18-067|20,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="7" label="_">
+    <left>yadi satvasabhāgatā dravyamaviśiṣtaṃ na syāt anyonyaviśeṣabhinneṣu sattveṣu sattvasttva ityabhedena buddhirna syāt</left>
+    <kwic> prajñaptiśca</kwic>
+    <right> / &lt;/page&gt;&lt;page&gt; evaṃ skandhādi buddhiprajñaptayyo 'pi yojyāḥ / &lt;/page&gt;&lt;page&gt; syāccyavetopapadyeta na ca sattvasabhāgatāṃ vijahyānna ca pratilabheteti / &lt;/page&gt;</right>
+  </line>
+  <line refs="067|20-067|21,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="8" label="_">
+    <left>dravyamaviśiṣtaṃ na syāt anyonyaviśeṣabhinneṣu sattveṣu sattvasttva ityabhedena buddhirna syāt prajñaptiśca / &lt;/page&gt;&lt;page&gt; evaṃ skandhādi</left>
+    <kwic> buddhiprajñaptayyo</kwic>
+    <right> 'pi yojyāḥ / &lt;/page&gt;&lt;page&gt; syāccyavetopapadyeta na ca sattvasabhāgatāṃ vijahyānna ca pratilabheteti / &lt;/page&gt;&lt;page&gt; catuṣkoṭikaḥ / prathamā koṭiḥ yataścyavate</right>
+  </line>
+  <line refs="068|03-068|04,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="9" label="_">
+    <left>/ &lt;/page&gt;&lt;page&gt; śāliyavamudgamāsāmrapanasalohakāñcanādīnāṃ svajātisādṛśyāt tāsāṃ ca sabhāgatānāmanyonyabhinnānāṃ kathamabhedena sabhāgatā</left>
+    <kwic> prajñaptiḥ</kwic>
+    <right> kriyate / &lt;/page&gt;&lt;page&gt; vaiśeṣikāścaivaṃ dyotitā bhavanti / &lt;/page&gt;&lt;page&gt; teṣāmapi hyeṣa siddhāntaḥ / &lt;/page&gt;&lt;page&gt; sāmānyapadārtho nāmāsti yataḥ</right>
+  </line>
+  <line refs="068|09-068|10,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="10" label="_">
+    <left>ceditthantvamāgacchati manuṣyāṇāṃ sabhāgatāmi &quot; ti / &lt;/page&gt;&lt;page&gt; uktametannatūktaṃ dravyāntaramiti / kā tarhi sā / &lt;/page&gt;&lt;page&gt; ta eva hi tathābhūtāḥ saṃskārā yeṣu</left>
+    <kwic> manuṣyādiprajñaptiḥ</kwic>
+    <right> śālyādiṣu sabhāgatāvat / &lt;/page&gt;&lt;page&gt; tattvetanna varṇayanti / &lt;/page&gt;&lt;page&gt; atha kimidamāsaṃjñikaṃ nāma / &lt;/page&gt;&lt;page&gt; āsaṃjñikamasaṃjñiṣu / &lt;/page&gt;&lt;page&gt; nirodhaścittacaittānāṃ &lt;/page&gt;</right>
+  </line>
+  <line refs="073|06,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="11" label="_">
+    <left>/ &lt;/page&gt;&lt;page&gt; mahābhūtasamatāpādanāt / &lt;/page&gt;&lt;page&gt; samāpatticittena ca tāṃ samāpadyante samāgacchantīti samāpattiḥ / &lt;/page&gt;&lt;page&gt; kiṃ punarete samāpattī dravyataḥ sta utāho</left>
+    <kwic> prajñaptitaḥ</kwic>
+    <right> / &lt;/page&gt;&lt;page&gt; dravyata ityāha / cittotpattipratibandhanāt / na / samāpatticittenaiva tatpratibandhanāt / &lt;/page&gt;&lt;page&gt; samāpatticittameva hi</right>
+  </line>
+  <line refs="074|12-074|13,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="12" label="_">
+    <left>na vā kadācidvāyoraviśeṣāt / &lt;/page&gt;&lt;page&gt; evaṃ tu varṇayanti dravyāntaramevāyurastīti / &lt;/page&gt;&lt;page&gt; atha kimāyuḥkṣayādeva maraṇaṃ bhavatyāhosvidanyathāpi / &lt;/page&gt;&lt;page&gt;</left>
+    <kwic>prajñaptāvuktam</kwic>
+    <right> &quot; āyuḥkṣayānmaraṇaṃ na puṇyakṣayādi &quot; ti / &lt;/page&gt;&lt;page&gt; catuṣkoṭiḥ / &lt;/page&gt;&lt;page&gt; prathamā koṭirāyurvipākasya karmaṇaḥ paryādānāt / &lt;/page&gt;&lt;page&gt; dvitīyā bhogavipākasya /</right>
+  </line>
+  <line refs="079|28,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="13" label="_">
+    <left>/ &lt;/page&gt;&lt;page&gt; ṣaṣṭīvidhānārthaṃ ca rūpasya saṃyoga iti / &lt;/page&gt;&lt;page&gt; eṣā ca ṣaṣṭo kathaṃ kalpyate / &lt;/page&gt;&lt;page&gt; rūpasya svabhāva iti / &lt;/page&gt;&lt;page&gt; tasmāt</left>
+    <kwic> prajñaptimātramevaitadabhūtvābhāvajñāpanārthaṃ</kwic>
+    <right> kriyate jātamiti / &lt;/page&gt;&lt;page&gt; sa cābhūtvābhāvalakṣāṇa utpādo bahuvikalpaḥ / &lt;/page&gt;&lt;page&gt; tasya viśeṣaṇārthaṃ rūpasyotpāda iti ṣaṣṭīṃ kurvanti yathā</right>
+  </line>
+  <line refs="081|26-081|27,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="14" label="_">
+    <left>/ &lt;/page&gt;&lt;page&gt; astu vā vyañjanamātrasya dravyāntarabhāvaparikalpanā / &lt;/page&gt;&lt;page&gt; tatsamūhā eva nāmakāyādayo bhaviṣyantītyapārthikā</left>
+    <kwic> tatprajñaptiḥ</kwic>
+    <right> / &lt;/page&gt;&lt;page&gt; santyeva tu viprayuktasaṃskārabhāvanā nāmakāyā dravyata iti vaibhāṣikāḥ / &lt;/page&gt;&lt;page&gt; nahi sarva dharmāstarkagamyā bhavantīti / &lt;/page&gt;&lt;page&gt; atha</right>
+  </line>
+  <line refs="086|16-086|18,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="15" label="_">
+    <left>&quot; ti / &lt;/page&gt;&lt;page&gt; anāgatasatkāyadṛṣṭisaṃprayuktaṃ duḥkhasatyaṃ sthāpayitvetyevametat karttavyamarthato 'pi caivaṃ boddhavyamiti / &lt;/page&gt;&lt;page&gt; idaṃ tarhi</left>
+    <kwic> prajñaptibhāṣyaṃ</kwic>
+    <right> kathaṃ nīyate &quot; sarvadharmāścatuṣke niyatā hetauphale āśraye ālamvane niyatā &quot; iti / &lt;/page&gt;&lt;page&gt; heturatra saṃprayuktakahetuḥ sahabhūhetuśca / &lt;/page&gt;</right>
+  </line>
+  <line refs="089|13,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="16" label="_">
+    <left>yāvanna satkāyadṛṣṭeḥ teṣāṃ ca dharmāṇāṃ jātiṃ jarāṃ sthitimanityatāṃ ca sthāpayitvā yattadanyat kliṣṭam duḥkhasatya &quot; miti / &lt;/page&gt;&lt;page&gt; idaṃ tarhi</left>
+    <kwic> prajñaptibhāṣyaṃ</kwic>
+    <right> kathaṃ nīyate &quot; syāddharmo 'kuśalo 'kuśalahetuka eva / &lt;/page&gt;&lt;page&gt; syādāryapudgalaḥ kāmavairāgyāt parihīyamāṇo yāṃ tatprathamataḥ klilṣṭāñcetanāṃ</right>
+  </line>
+  <line refs="126|23-126|24,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="17" label="_">
+    <left>dṛṣṭvā puṃsaḥ sataḥ pauṃsno rāga utpadyate mātari stryā satyā straiṇo rāgāḥ udpadyate pitari / &lt;/page&gt;&lt;page&gt; viparyayāt pratighaḥ / &lt;/page&gt;&lt;page&gt; evaṃ paṭhacyate</left>
+    <kwic> prajñaptau</kwic>
+    <right> &quot; gandharvasya tasmin samaye dvayościttayoranyatarānyataraccittaṃ saṃmukhībhūtaṃ bhavatyanunayasahagataṃ vā pratighasahagataṃ</right>
+  </line>
+  <line refs="140|16-140|17,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="18" label="_">
+    <left>/ &lt;/page&gt;&lt;page&gt; ātmadṛṣṭyasmimānāvityapare / kathamanayorātmavādatvam / &lt;/page&gt;&lt;page&gt; &quot; ābhyāmātme &quot; ti vacanāt / &lt;/page&gt;&lt;page&gt; ātmano hyasattvādātmavādopādānamityucyate / &lt;/page&gt;&lt;page&gt;</left>
+    <kwic>prajñaptimātrakasyopādānāt</kwic>
+    <right> / &lt;/page&gt;&lt;page&gt; yathokta &quot; mātmā ātmeti bhikṣavo bālo 'śrutavān pṛthagjanaḥ prajñaptimanupatito natvatrātmā vā ātmīyaṃ vā &quot; iti / &lt;/page&gt;&lt;page&gt; teṣāmupādānaṃ teṣu</right>
+  </line>
+  <line refs="140|17-140|18,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="19" label="_">
+    <left>&lt;page&gt; ātmano hyasattvādātmavādopādānamityucyate / &lt;/page&gt;&lt;page&gt; prajñaptimātrakasyopādānāt / &lt;/page&gt;&lt;page&gt; yathokta &quot; mātmā ātmeti bhikṣavo bālo 'śrutavān pṛthagjanaḥ</left>
+    <kwic> prajñaptimanupatito</kwic>
+    <right> natvatrātmā vā ātmīyaṃ vā &quot; iti / &lt;/page&gt;&lt;page&gt; teṣāmupādānaṃ teṣu yaśchandarāgaḥ / &lt;/page&gt;&lt;page&gt; evaṃ hi bhagavatā sarvatrākhyātam &quot; upādānaṃ katamat / &lt;/page&gt;&lt;page&gt; yo</right>
+  </line>
+  <line refs="169|17,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="20" label="_">
+    <left>tuṣitānāṃ hasitena nirmāṇaratīnāṃ prekṣitena paranirmitavaśavartinām / &lt;/page&gt;&lt;page&gt; svavartināṃ sarveṣāṃ dvandvasamāpattyā / &lt;/page&gt;&lt;page&gt; kālaparimānaṃ tu</left>
+    <kwic> prajñaptāvuktamiti</kwic>
+    <right> vaibhāṣikāḥ / &lt;/page&gt;&lt;page&gt; yāvadyāvadviṣayāṇāṃ tīvrataratā tāvattāvadrāgo'pi tīvrataraḥ / &lt;/page&gt;&lt;page&gt; yasya devasya devyā vā utsaṅge devakumāro devakanyā vā</right>
+  </line>
+  <line refs="191|17-191|18,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="21" label="_">
+    <left>sthitiviśeṣastathā bhājanānāmapāmiti tā etā bhavanti ṣaṭpañcāśattejaḥ saṃvartanyaḥ saptāpsaṃvarttanyaḥ ekā vāyusaṃvarttanī / &lt;/page&gt;&lt;page&gt; evaṃ ca</left>
+    <kwic> prajñaptibhāṣyaṃ</kwic>
+    <right> sunītaṃ bhavati &quot; catuḥṣaṣṭi kalpāḥ śubhakṛtsnānāṃ devānāmāyuḥpramāṇami &quot; ti / &lt;/page&gt;&lt;page&gt; &quot; ye dharmā hetuprabhavā hetum teṣāṃ tathāgatohyavadat /</right>
+  </line>
+  <line refs="195|08-195|09,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="22" label="_">
+    <left>rūpamasti tadavaśyaṃ paramāṇau vidyate / &lt;/page&gt;&lt;page&gt; na cāṇau tat &lt;/page&gt;&lt;page&gt; na ca saṃsthānaṃ paramāṇau vidyate dīrghādi / &lt;/page&gt;&lt;page&gt; tasmādbahuṣveva tathā saṃniviṣṭeṣu</left>
+    <kwic> dīrghādiprajñaptiḥ</kwic>
+    <right> / &lt;/page&gt;&lt;page&gt; atha mattaṃ saṃsthānaparamāṇava eva tathā saṃniviṣṭā dīrghādisaṃjñāṃ labhanta iti / &lt;/page&gt;&lt;page&gt; so 'yaṃ kevalaḥ pakṣapātasteṣāmasiddhatvāt / &lt;/page&gt;</right>
+  </line>
+  <line refs="196|05-196|06,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="23" label="_">
+    <left>/ avijñaptiḥ pūrvamevoktā / &lt;/page&gt;&lt;page&gt; sā 'pi dravyato nāstīti sautrāntikāḥ / &lt;/page&gt;&lt;page&gt; abhyupetyākaraṇamātratvāt / &lt;/page&gt;&lt;page&gt; atītānyapi mahābhūtānyupādāya</left>
+    <kwic> prajñaptesteṣāṃ</kwic>
+    <right> cāvidyamānasvabhāvatvādrūpalakṣaṇābhāvācca / &lt;/page&gt;&lt;page&gt; astīti vaibhāṃṣikāḥ / &lt;/page&gt;&lt;page&gt; kathaṃ jñāyate / &lt;/page&gt;&lt;page&gt; trividhāmalarūpoktivṛddhyakurvatpathādibhiḥ / &lt;/page&gt;</right>
+  </line>
+  <line refs="216|07,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="24" label="_">
+    <left>vinā saṃvareṇopāsakaḥ syādvikalena vā bhikṣuśrāmaṇerāvapi syātām / &lt;/page&gt;&lt;page&gt; kathaṃ tāvadeṣāmupāsakasaṃvarādīnāmaṅgapratiniyamo bhavati / &lt;/page&gt;&lt;page&gt;</left>
+    <kwic>śāstṛprajñaptivaśāt</kwic>
+    <right> / &lt;/page&gt;&lt;page&gt; upāsakatvādipratiniyamo 'pi śāstṛprajñaptivaśādiṣyatām / &lt;/page&gt;&lt;page&gt; vināpi hi saṃvareṇopāsakaḥ prajñaptito na tu bhikṣuśrāmaṇerāviti te</right>
+  </line>
+  <line refs="216|08,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="25" label="_">
+    <left>syātām / &lt;/page&gt;&lt;page&gt; kathaṃ tāvadeṣāmupāsakasaṃvarādīnāmaṅgapratiniyamo bhavati / &lt;/page&gt;&lt;page&gt; śāstṛprajñaptivaśāt / &lt;/page&gt;&lt;page&gt; upāsakatvādipratiniyamo 'pi</left>
+    <kwic> śāstṛprajñaptivaśādiṣyatām</kwic>
+    <right> / &lt;/page&gt;&lt;page&gt; vināpi hi saṃvareṇopāsakaḥ prajñaptito na tu bhikṣuśrāmaṇerāviti te tvetannecchanti kāśmīrāḥ / &lt;/page&gt;&lt;page&gt; sarveṣāṃ tu saṃvarāṇām / &lt;/page&gt;&lt;page&gt; mṛdvāditvaṃ</right>
+  </line>
+  <line refs="216|08-216|09,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="26" label="_">
+    <left>bhavati / &lt;/page&gt;&lt;page&gt; śāstṛprajñaptivaśāt / &lt;/page&gt;&lt;page&gt; upāsakatvādipratiniyamo 'pi śāstṛprajñaptivaśādiṣyatām / &lt;/page&gt;&lt;page&gt; vināpi hi saṃvareṇopāsakaḥ</left>
+    <kwic> prajñaptito</kwic>
+    <right> na tu bhikṣuśrāmaṇerāviti te tvetannecchanti kāśmīrāḥ / &lt;/page&gt;&lt;page&gt; sarveṣāṃ tu saṃvarāṇām / &lt;/page&gt;&lt;page&gt; mṛdvāditvaṃ yathā manaḥ // VAkK_ 4 . 3 1 // &lt;/page&gt;</right>
+  </line>
+  <line refs="219|01-219|02,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="27" label="_">
+    <left>/ &lt;/page&gt;&lt;page&gt; prāṇivadhādivat / kāyaduścaritavacanāddurgatigamanācceti / netyābhidhārmikāḥ / &lt;/page&gt;&lt;page&gt; utsargavihitasyāpi glāneṣu</left>
+    <kwic> prajñaptisāvadyasya</kwic>
+    <right> punarmadyasyāpavādaḥ prasaṅgaparihārārthaṃ madnīyamātrānīyamanāt / &lt;/page&gt;&lt;page&gt; ata eva kuśāgrapānapratiṣedhaḥ / &lt;/page&gt;&lt;page&gt; āryairanadhyācaraṇaṃ</right>
+  </line>
+  <line refs="219|09-219|10,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="28" label="_">
+    <left>/ &lt;/page&gt;&lt;page&gt; te ca kadācidaprāptacyutamadyabhāve bhavataḥ ityato madyagrahaṇam / &lt;/page&gt;&lt;page&gt; pūgaphalakodravādayo 'pi madayantīti surāmaireyagrahaṇam / &lt;/page&gt;&lt;page&gt;</left>
+    <kwic>prajñaptisāvadyasyāpyādareṇa</kwic>
+    <right> praheyatve kāraṇajñāpanārthaṃ pramādasthānavacanam / &lt;/page&gt;&lt;page&gt; sarvapramādāspadatvāditi / &lt;/page&gt;&lt;page&gt; ya ime trayaḥ prātimokṣadhyānānāsravasaṃvarāḥ</right>
+  </line>
+  <line refs="219|19-219|21,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="29" label="_">
+    <left>dhyānānāsravasaṃvarau // VAkK_ 4 . 3 5 // &lt;/page&gt;&lt;page&gt; maulebhya eva karmapathebhyo dhyānānāsravasaṃvarau labhyete na prayogapṛṣṭhebhyaḥ kuta eva</left>
+    <kwic> prajñaptisāvadyebhyaḥ</kwic>
+    <right> sarvakālebhyaśca skandhāyatanadhātubhyo labhyete atītānāgatebhyo 'pi / &lt;/page&gt;&lt;page&gt; ata eva catuṣkoṭikaṃ kriyate / &lt;/page&gt;&lt;page&gt; santi tāni skandha</right>
+  </line>
+  <line refs="248|24,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="30" label="_">
+    <left>samucchedo bhavati / &lt;/page&gt;&lt;page&gt; kāmāptotpattilābhinām / &lt;/page&gt;&lt;page&gt; kāmāvacarāṇi kuśalamūlāni samuchidyante / &lt;/page&gt;&lt;page&gt; rūpārūpyāvacarairasamanvāgatatvāt / &lt;/page&gt;&lt;page&gt;</left>
+    <kwic>prajñaptibhāṣyaṃ</kwic>
+    <right> tarhi kathaṃ nīyate / &lt;/page&gt;&lt;page&gt; &quot; iyatā 'nena pudgalena traidhātukāni kuśalamūlāli samucchinnāni bhavantī &quot; ti / &lt;/page&gt;</right>
+  </line>
+  <line refs="293|05-293|07,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="31" label="_">
+    <left>āhuḥ / &lt;/page&gt;&lt;page&gt; &quot; tathāgato bhagavānarhan samyaksaṃbuddhaḥ svākhyāto 'sya dharmaḥ supratipannaḥ śrāvakasaṃghaḥ rūpamanityaṃ yāvadvijñāna</left>
+    <kwic> duḥkhaprajñaptiryāvanmārgaprajñaptirekāṃśena</kwic>
+    <right> vyākarttavyamarthopasaṃhitatvāt / &lt;/page&gt;&lt;page&gt; vibhajjavyākaraṇaṃ nāma yadi kaścid brūyāddharmān vadeti sa vaktavyo bahavo dharmā atītā anāgatāḥ</right>
+  </line>
+  <line refs="336|15-336|16,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="32" label="_">
+    <left>/ &lt;/page&gt;&lt;page&gt; karmāntena tribhirvṛttiḥ &lt;/page&gt;&lt;page&gt; dharmasvāminā hi bhagavatā parityaktasvavṛttikarmāntebhyaḥ śiṣyebhyo mokṣārthamabhyupagatebhyo dvayaṃ</left>
+    <kwic> prajñaptaṃ</kwic>
+    <right> vṛttiśca karma ca / &lt;/page&gt;&lt;page&gt; tribhirāryavaṃśairvṛttiścaturyena karma / &lt;/page&gt;&lt;page&gt; anayā vṛttyedaṃ karma kurvāṇā bhavantī na cirānmokṣaṃ prāpsyantīti / &lt;/page&gt;</right>
+  </line>
+  <line refs="336|17-336|18,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="33" label="_">
+    <left>karma / &lt;/page&gt;&lt;page&gt; anayā vṛttyedaṃ karma kurvāṇā bhavantī na cirānmokṣaṃ prāpsyantīti / &lt;/page&gt;&lt;page&gt; kasmātpunariyamīdṛśī vṛttiridaṃ ca karma</left>
+    <kwic> prajñaptam</kwic>
+    <right> / &lt;/page&gt;&lt;page&gt; tṛṣṇotpādavipakṣataḥ / &lt;/page&gt;&lt;page&gt; catvārastṛṣṇotpādāḥ sūtra uktāḥ / &lt;/page&gt;&lt;page&gt; &quot; cīvarahetorbhikṣostṛṣṇotpadyamānā utpadyate pratitiṣṭhanti</right>
+  </line>
+  <line refs="419|17,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="34" label="_">
+    <left>/ &lt;/page&gt;&lt;page&gt; vāci prathamakāmayoḥ / &lt;/page&gt;&lt;page&gt; vāṅniruktir ity eko 'rthaḥ / &lt;/page&gt;&lt;page&gt; niruktipratisaṃvitkāmadhātuprathamadhyānabhūmikā ūrdhvaṃ vitarkābhāvāt / &lt;/page&gt;&lt;page&gt;</left>
+    <kwic>prajñaptau</kwic>
+    <right> tu pratisaṃvidāmeva nirdeśaḥ / &lt;/page&gt;&lt;page&gt; &quot; padavyañjane tasyaivarthe tasyaikadvivahustrīpuruṣādyadhivacane tasyāsaktatāyāmavivartyajñānaṃ</right>
+  </line>
+  <line refs="461|03-461|04,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="35" label="_">
+    <left>&lt;page&gt; kiṃ khalvato 'nyatra mokṣo nāsti / nāsti / &lt;/page&gt;&lt;page&gt; kiṃ kāraṇam / &lt;/page&gt;&lt;page&gt; vitathātmadṛṣṭiniviṣṭatvāt / &lt;/page&gt;&lt;page&gt; nahi te skandhasaṃtāna</left>
+    <kwic> evātmaprajñaptiṃ</kwic>
+    <right> vyavasyanti / &lt;/page&gt;&lt;page&gt; kiṃ tarhi / &lt;/page&gt;&lt;page&gt; dravyāntaramevātmānaṃ parikalpayanti ātmagrāhaprabhavāśca sarvakleśā iti / &lt;/page&gt;&lt;page&gt; kathaṃ punaridaṃ gamyate</right>
+  </line>
+  <line refs="461|14-461|15,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="36" label="_">
+    <left>/ &lt;/page&gt;&lt;page&gt; na caivamātmano 'stīti nāstyātmā / &lt;/page&gt;&lt;page&gt; yattrhi vātsīputriyāḥ pudgalaṃ santimicchanti / vicāryaṃ tāvadetat / &lt;/page&gt;&lt;page&gt; kiṃ te dravyata icchantyāhosvit</left>
+    <kwic> prajñaptitaḥ</kwic>
+    <right> / &lt;/page&gt;&lt;page&gt; kiṃ cedaṃ dravyata iti kiṃ vā prajñaptitaḥ / &lt;/page&gt;&lt;page&gt; rūpādivat bhāvāntaraṃ cet dravyataḥ / &lt;/page&gt;&lt;page&gt; kṣīrādivat samudāyaścet prajñaptitaḥ / &lt;/page&gt;&lt;page&gt; kiṃ cātaḥ / yadi</right>
+  </line>
+  <line refs="461|15,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="37" label="_">
+    <left>vātsīputriyāḥ pudgalaṃ santimicchanti / vicāryaṃ tāvadetat / &lt;/page&gt;&lt;page&gt; kiṃ te dravyata icchantyāhosvit prajñaptitaḥ / &lt;/page&gt;&lt;page&gt; kiṃ cedaṃ dravyata iti kiṃ vā</left>
+    <kwic> prajñaptitaḥ</kwic>
+    <right> / &lt;/page&gt;&lt;page&gt; rūpādivat bhāvāntaraṃ cet dravyataḥ / &lt;/page&gt;&lt;page&gt; kṣīrādivat samudāyaścet prajñaptitaḥ / &lt;/page&gt;&lt;page&gt; kiṃ cātaḥ / yadi tāvat dravyataḥ / &lt;/page&gt;&lt;page&gt; saṃbhinna svabhāvatvāt</right>
+  </line>
+  <line refs="461|16-461|17,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="38" label="_">
+    <left>icchantyāhosvit prajñaptitaḥ / &lt;/page&gt;&lt;page&gt; kiṃ cedaṃ dravyata iti kiṃ vā prajñaptitaḥ / &lt;/page&gt;&lt;page&gt; rūpādivat bhāvāntaraṃ cet dravyataḥ / &lt;/page&gt;&lt;page&gt; kṣīrādivat samudāyaścet</left>
+    <kwic> prajñaptitaḥ</kwic>
+    <right> / &lt;/page&gt;&lt;page&gt; kiṃ cātaḥ / yadi tāvat dravyataḥ / &lt;/page&gt;&lt;page&gt; saṃbhinna svabhāvatvāt skandhebhyo 'nyo vaktavya itaretaraskandhavat / &lt;/page&gt;&lt;page&gt; kāraṇaṃ cāsya vaktavyam /</right>
+  </line>
+  <line refs="461|19,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="39" label="_">
+    <left>'nyo vaktavya itaretaraskandhavat / &lt;/page&gt;&lt;page&gt; kāraṇaṃ cāsya vaktavyam / asaṃskṛto vā / &lt;/page&gt;&lt;page&gt; atastīrthikadṛṣṭiprasaṅgo niṣprayojanatvaṃ ca / atha</left>
+    <kwic> prajñaptitaḥ</kwic>
+    <right> / vayamapyevaṃ trūmaḥ / &lt;/page&gt;&lt;page&gt; naiva hi dravyato 'sti nāpi prajñaptitaḥ / kiṃ tarhi / &lt;/page&gt;&lt;page&gt; ādhyātmikānupāttānvarttamānān skandhānupādāya pudgalaḥ</right>
+  </line>
+  <line refs="461|20,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="40" label="_">
+    <left>/ asaṃskṛto vā / &lt;/page&gt;&lt;page&gt; atastīrthikadṛṣṭiprasaṅgo niṣprayojanatvaṃ ca / atha prajñaptitaḥ / vayamapyevaṃ trūmaḥ / &lt;/page&gt;&lt;page&gt; naiva hi dravyato 'sti nāpi</left>
+    <kwic> prajñaptitaḥ</kwic>
+    <right> / kiṃ tarhi / &lt;/page&gt;&lt;page&gt; ādhyātmikānupāttānvarttamānān skandhānupādāya pudgalaḥ prajñapyate / &lt;/page&gt;&lt;page&gt; tadidamandhavacanamanunmīlitārthaṃ na budhyāmahe</right>
+  </line>
+  <line refs="461|22-461|23,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="41" label="_">
+    <left>prajñapyate / &lt;/page&gt;&lt;page&gt; tadidamandhavacanamanunmīlitārthaṃ na budhyāmahe / &lt;/page&gt;&lt;page&gt; kimidamupādāyeti / &lt;/page&gt;&lt;page&gt; yadyayamarhtaḥ skandhānāṃ lakṣyate teṣveva</left>
+    <kwic> pudgalaprajñaptiḥ</kwic>
+    <right> prāpnoti / &lt;/page&gt;&lt;page&gt; yathā rūpādīnālamvya teṣveva kṣīraprajñaptiḥ / &lt;/page&gt;&lt;page&gt; athāyamarthaḥ skandhān pratīyeti / &lt;/page&gt;&lt;page&gt; skandhānāṃ pudgalaprajñaptikāraṇatvāt /</right>
+  </line>
+  <line refs="461|23,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="42" label="_">
+    <left>budhyāmahe / &lt;/page&gt;&lt;page&gt; kimidamupādāyeti / &lt;/page&gt;&lt;page&gt; yadyayamarhtaḥ skandhānāṃ lakṣyate teṣveva pudgalaprajñaptiḥ prāpnoti / &lt;/page&gt;&lt;page&gt; yathā rūpādīnālamvya teṣveva</left>
+    <kwic> kṣīraprajñaptiḥ</kwic>
+    <right> / &lt;/page&gt;&lt;page&gt; athāyamarthaḥ skandhān pratīyeti / &lt;/page&gt;&lt;page&gt; skandhānāṃ pudgalaprajñaptikāraṇatvāt / sa eva doṣaḥ / [ p 4 6 | 1 2 4 - 4 6 1 2 5 ] na sa evaṃ prajñapyate / &lt;/page&gt;</right>
+  </line>
+  <line refs="461|24,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="43" label="_">
+    <left>teṣveva pudgalaprajñaptiḥ prāpnoti / &lt;/page&gt;&lt;page&gt; yathā rūpādīnālamvya teṣveva kṣīraprajñaptiḥ / &lt;/page&gt;&lt;page&gt; athāyamarthaḥ skandhān pratīyeti / &lt;/page&gt;&lt;page&gt; skandhānāṃ</left>
+    <kwic> pudgalaprajñaptikāraṇatvāt</kwic>
+    <right> / sa eva doṣaḥ / [ p 4 6 | 1 2 4 - 4 6 1 2 5 ] na sa evaṃ prajñapyate / &lt;/page&gt;&lt;page&gt; kathaṃ tarhi yathendhanamupādāyāgniḥ / &lt;/page&gt;&lt;page&gt; kathaṃ cendhanamupādāyāgniḥ prajñapyate / &lt;/page&gt;</right>
+  </line>
+  <line refs="462|16,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="44" label="_">
+    <left>lakṣaṇabhedāt / &lt;/page&gt;&lt;page&gt; upādāyārthastu vaktavyaḥ / kathaṃ tadindhanamupādāya so 'gniḥ prajñapyata iti / &lt;/page&gt;&lt;page&gt; na hi tattasya kāraṇaṃ nāpi tat</left>
+    <kwic> prajñapteḥ</kwic>
+    <right> / agnireva hi tatprajñapteḥ kāraṇam / &lt;/page&gt;&lt;page&gt; yadyāśrayārtha upādāyārthaḥ sahabhāvārtho vā / &lt;/page&gt;&lt;page&gt; skandhā apyevaṃ pudgalasyāśrayasahabhūtāḥ</right>
+  </line>
+  <line refs="462|16,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="45" label="_">
+    <left>/ &lt;/page&gt;&lt;page&gt; upādāyārthastu vaktavyaḥ / kathaṃ tadindhanamupādāya so 'gniḥ prajñapyata iti / &lt;/page&gt;&lt;page&gt; na hi tattasya kāraṇaṃ nāpi tat prajñapteḥ / agnireva hi</left>
+    <kwic> tatprajñapteḥ</kwic>
+    <right> kāraṇam / &lt;/page&gt;&lt;page&gt; yadyāśrayārtha upādāyārthaḥ sahabhāvārtho vā / &lt;/page&gt;&lt;page&gt; skandhā apyevaṃ pudgalasyāśrayasahabhūtāḥ prāpnuvantīti vispaṣṭamanyatvaṃ</right>
+  </line>
+  <line refs="463|04-463|05,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="46" label="_">
+    <left>vaktavyam / &lt;/page&gt;&lt;page&gt; yadā ca pudgalaḥ prajñapyate ki tāvatskandhānupalabhya prajñapyate āhosvit pudgalam / &lt;/page&gt;&lt;page&gt; yadi tāvat skandhāṃsteṣveva</left>
+    <kwic> pudgalaprajñaptiḥ</kwic>
+    <right> prāpnoti / &lt;/page&gt;&lt;page&gt; pudgalasyānupalambhāt / &lt;/page&gt;&lt;page&gt; atha pudgalaṃ kathamasya skandhānupādāya prajñaptirbhavati / &lt;/page&gt;&lt;page&gt; pudgala eva hi tasyā upādānaṃ prāpnoti / &lt;/page&gt;</right>
+  </line>
+  <line refs="463|05-463|06,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="47" label="_">
+    <left>pudgalam / &lt;/page&gt;&lt;page&gt; yadi tāvat skandhāṃsteṣveva pudgalaprajñaptiḥ prāpnoti / &lt;/page&gt;&lt;page&gt; pudgalasyānupalambhāt / &lt;/page&gt;&lt;page&gt; atha pudgalaṃ kathamasya skandhānupādāya</left>
+    <kwic> prajñaptirbhavati</kwic>
+    <right> / &lt;/page&gt;&lt;page&gt; pudgala eva hi tasyā upādānaṃ prāpnoti / &lt;/page&gt;&lt;page&gt; atha mataṃ satsu skandheṣu pudgala upalabhyate tataḥ skandhānupādāyāsya prajñaptirucyata iti / &lt;/page&gt;</right>
+ </line>
+  <line refs="463|06-463|07,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="48" label="_">
+    <left>prajñaptirbhavati / &lt;/page&gt;&lt;page&gt; pudgala eva hi tasyā upādānaṃ prāpnoti / &lt;/page&gt;&lt;page&gt; atha mataṃ satsu skandheṣu pudgala upalabhyate tataḥ skandhānupādāyāsya</left>
+    <kwic> prajñaptirucyata</kwic>
+    <right> iti / &lt;/page&gt;&lt;page&gt; tadevaṃ rūpasyāpi cakṣurmanaskārālokeṣu satsūpalambhāt tānupādāya prajñaptirbaktavyā / &lt;/page&gt;&lt;page&gt; rūpavacca pudgalasyānyatvaṃ spaṣṭam / &lt;/page&gt;</right>
+  </line>
+  <line refs="463|07-463|08,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="49" label="_">
+    <left>upalabhyate tataḥ skandhānupādāyāsya prajñaptirucyata iti / &lt;/page&gt;&lt;page&gt; tadevaṃ rūpasyāpi cakṣurmanaskārālokeṣu satsūpalambhāt tānupādāya</left>
+    <kwic> prajñaptirbaktavyā</kwic>
+    <right> / &lt;/page&gt;&lt;page&gt; rūpavacca pudgalasyānyatvaṃ spaṣṭam / &lt;/page&gt;&lt;page&gt; idaṃ tāvadvaktavyam / &lt;/page&gt;&lt;page&gt; ṣaṇṇāṃ vijñānānāṃ katamena pudgalo vijñeyaḥ / &lt;/page&gt;&lt;page&gt; ṣaḍbhirapītyucyate / kathaṃ</right>
+  </line>
+  <line refs="465|21-465|22,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="50" label="_">
+    <left>tarhyavaktavyaḥ / &lt;/page&gt;&lt;page&gt; teṣāmapi caivaṃ paśyato &quot; yāvatā bhikṣo cakṣuryāvatā rūpāṇi vistareṇa etāvatā bhikṣo tathāgataḥ sarvaṃ ca prajñāpayati</left>
+    <kwic> sarvaprajñaptiṃ</kwic>
+    <right> ce &quot; ti / &lt;/page&gt;&lt;page&gt; bimbisārasūtre coktam &quot; ātmā ātmeti bhikṣavo bālo 'śrutavān pṛthagjanaḥ prajñaptimanupatito na tvātrā tmā vā ātmīyaṃ vā</right>
+  </line>
+  <line refs="465|22-465|25,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="51" label="_">
+    <left>bhikṣo tathāgataḥ sarvaṃ ca prajñāpayati sarvaprajñaptiṃ ce &quot; ti / &lt;/page&gt;&lt;page&gt; bimbisārasūtre coktam &quot; ātmā ātmeti bhikṣavo bālo 'śrutavān pṛthagjanaḥ</left>
+    <kwic> prajñaptimanupatito</kwic>
+    <right> na tvātrā tmā vā ātmīyaṃ vā duḥkhamidamutpadya mānamutpadyate &quot; iti vistaraḥ / &lt;/page&gt;&lt;page&gt; śailayāpyarhantyā māramārabhyoktaṃ / &lt;/page&gt;&lt;page&gt; &quot; manyase ki nu</right>
+  </line>
+  <line refs="470|15-470|16,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,classical" num="52" label="_">
+    <left>ca nāvocanmābhūt prājñaptikopyasan // &lt;/page&gt;&lt;page&gt; yatra hi skandhasaṃtāne śubhāśubhaphalāstitā / jīvākhyā tatra sā na syāt jīvanāstitvadeśanāt // &lt;/page&gt;&lt;page&gt;</left>
+    <kwic>prajñaptimātraṃ</kwic>
+    <right> skandhesu jīva ityapināvadat / abhavyaḥ śūnyatāṃ boddhuṃ tadānīṃ tādṛśo janaḥ // &lt;/page&gt;&lt;page&gt; tathā hyātmāsti nāstīti pṛṣṭo vāstyeva nāvadat /</right>
+  </line>
+  <line refs="9,aṣṭasāhasrikā,sūtra,Vīryaśridatta,Prajñapāramitā,N/A,foundational" num="53" label="_">
+    <left>sā māyā anyattadvijñānam / vijñānameva bhagavan māyā , māyaiva vijñānam // bhagavānāha - tatkiṃ manyase subhūte atraiṣāṃ saṃjñā samajñā</left>
+    <kwic> prajñaptirvyavahāraḥ</kwic>
+    <right> pañcasūpādānaskandheṣu yaduta bodhisattva iti ? evamukte āyuṣmān subhūtirbhagavantametadavocat - evametadbhagavan , evametatsugata /</right>
+  </line>
+  <line refs="21,aṣṭasāhasrikā,sūtra,Vīryaśridatta,Prajñapāramitā,N/A,foundational" num="54" label="_">
+    <left>/ yatkauśika anirjātaṃ na tatpuṣpam / atha khalu śakrasya devānāmindrasyaitadabhūt - gambhīraprajño batāyamāryaḥ subhūtiḥ / tāṃ ca nāma</left>
+    <kwic> padaprajñaptiṃ</kwic>
+    <right> nirdiśati , tāṃ ca na virodhayati , tāṃ cottānīkaroti , tāmeva copadiśati / atha khalu śakro devānāmindra āyuṣmataṃ subhūtimetadavocat </right>
+  </line>
+  <line refs="89,aṣṭasāhasrikā,sūtra,Vīryaśridatta,Prajñapāramitā,N/A,foundational" num="55" label="_">
+    <left>/ evaṃ śāntatvānnopalabhyate / yo 'nupalambhaḥ sarvadharmāṇām , sā prajñāpāramitetyucyate / yadā na bhavati saṃjñā samajñā</left>
+    <kwic> prajñaptirvyavahāraḥ</kwic>
+    <right> , tadā prajñāpāramitetyucyate // sthaviraḥ subhūtirāha - kiyacciracaritāvī sa bhagavan bodhisattvo mahāsattvo veditavyo ya iha</right>
+  </line>
+  <line refs="250,aṣṭasāhasrikā,sūtra,Vīryaśridatta,Prajñapāramitā,N/A,foundational" num="56" label="_">
+    <left>, yatra śuddhaṃ kṛṣṇāguru dhūpyate sma yaduta prajñāpāramitāyāḥ pūjārtham / tasya ca kūṭāgārasya madhye saptaratnamayaḥ paryaṅkaḥ</left>
+    <kwic> prajñapto</kwic>
+    <right> 'bhūt / caturṇāṃ ratnānāṃ peḍā kṛtā , yatra prajñāpāramitā prakṣiptā suvarṇapaṭṭeṣu likhitā vilīnena vaidūryeṇa / tacca kūṭāgāraṃ</right>
+  </line>
+  <line refs="258,aṣṭasāhasrikā,sūtra,Vīryaśridatta,Prajñapāramitā,N/A,foundational" num="57" label="_">
+    <left>samyaksaṃbuddhairanuttarā samyaksaṃbodhiḥ samudānītā // atha khalu sadāpraruditasya bodhisattvasya mahāsattvasyaitadabhūt -</left>
+    <kwic> prajñaptaṃ</kwic>
+    <right> mayā dharmodgatasya bodhisattvasya mahāsattvasya dharmāsanam / ayaṃ ca pṛthivīpradeśaḥ susiktaḥ susaṃmṛṣṭaś ca kṛtaḥ / kuto nu khalvahaṃ</right>
+  </line>
+  <line refs="258,aṣṭasāhasrikā,sūtra,Vīryaśridatta,Prajñapāramitā,N/A,foundational" num="58" label="_">
+    <left>// atha khalu dharmodgato bodhisattvo mahāsattvaḥ saptānāṃ varṣāṇāmatyayena tataḥ samādhervyutthāya yena dharmāsanaṃ tenopasaṃkramya</left>
+    <kwic> prajñapta</kwic>
+    <right> evāsane nyaṣīdat , anekaśatasahasrayā parṣadā parivṛtaḥ puraskṛtaḥ prajñāpāramitāṃ deśayāmāsa // &lt;/page&gt;&lt;page&gt; atha khalu sadāprarudito bodhisattvo</right>
+  </line>
+  <line refs="26,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="59" label="_">
+    <left>buddhānāñca bhagavatāṃ dharmanairātmyapraveśāya praviṣṭena suviśuddhena ca sarvadharmāṇāṃ nirabhilāpyasvabhāvatāmārabhya</left>
+    <kwic> prajñaptivāda</kwic>
+    <right> svabhāvanirvikalpajñeyasamena jñānena yo gocaraviṣayaḥ sāsau paramā tathatā niruttarā jñeyaparyantagatā yasyāḥ sarva</right>
+  </line>
+  <line refs="26,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="60" label="_">
+    <left>nābhivartante / tatpunastattvalakṣaṇaṃ vyavasthānataḥ advayaprabhāvitaṃ veditavyam / dvayamucyate bhāvaścābhāvaśca / tatra bhāvo yaḥ</left>
+    <kwic> prajñaptivādasvabhāvo</kwic>
+    <right> vyavasthāpitaḥ / tathaiva ca dīrghakālamabhiniviṣṭo lokena / sarvavikalpaprapañcamūlaṃ lokasya / tadyathā rūpamiti vā vedanā saṃjñā</right>
+  </line>
+  <line refs="26,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="61" label="_">
+    <left>dṛṣṭaśrutamatavijñātaṃ prāptaṃ paryeṣitaṃ manasā 'nuvitarkitamanuvicāritamiti vā / antato yāvannirvāṇamiti vā / ityevaṃbhāgīyaḥ</left>
+    <kwic> prajñaptivādanirūḍhaḥ</kwic>
+    <right> svabhāvo dharmāṇāṃ lokasya bhāva ityucyate / &lt;/page&gt;&lt;page&gt; tatrābhāvo yā asyaiva rūpamiti prajñaptivādasya yāvadantato nirvāṇamiti prajñaptivādasya</right>
+  </line>
+  <line refs="27,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="62" label="_">
+    <left>vā / ityevaṃbhāgīyaḥ prajñaptivādanirūḍhaḥ svabhāvo dharmāṇāṃ lokasya bhāva ityucyate / &lt;/page&gt;&lt;page&gt; tatrābhāvo yā asyaiva rūpamiti</left>
+    <kwic> prajñaptivādasya</kwic>
+    <right> yāvadantato nirvāṇamiti prajñaptivādasya nirvastukatā nirnimittatā prajñaptivādāśrayasya sarveṇa sarvaṃ nāstikatā asaṃvidyamānatā</right>
+  </line>
+  <line refs="27,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="63" label="_">
+    <left>svabhāvo dharmāṇāṃ lokasya bhāva ityucyate / &lt;/page&gt;&lt;page&gt; tatrābhāvo yā asyaiva rūpamiti prajñaptivādasya yāvadantato nirvāṇamiti</left>
+    <kwic> prajñaptivādasya</kwic>
+    <right> nirvastukatā nirnimittatā prajñaptivādāśrayasya sarveṇa sarvaṃ nāstikatā asaṃvidyamānatā yāmāśritya prajñaptivādaḥ pravartate /</right>
+  </line>
+  <line refs="27,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="64" label="_">
+    <left>bhāva ityucyate / &lt;/page&gt;&lt;page&gt; tatrābhāvo yā asyaiva rūpamiti prajñaptivādasya yāvadantato nirvāṇamiti prajñaptivādasya nirvastukatā nirnimittatā</left>
+    <kwic> prajñaptivādāśrayasya</kwic>
+    <right> sarveṇa sarvaṃ nāstikatā asaṃvidyamānatā yāmāśritya prajñaptivādaḥ pravartate / ayamucyate 'bhāvaḥ / yatpunaḥ pūrvakeṇa ca bhāvenānena</right>
+  </line>
+  <line refs="27,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="65" label="_">
+    <left>nirvāṇamiti prajñaptivādasya nirvastukatā nirnimittatā prajñaptivādāśrayasya sarveṇa sarvaṃ nāstikatā asaṃvidyamānatā yāmāśritya</left>
+    <kwic> prajñaptivādaḥ</kwic>
+    <right> pravartate / ayamucyate 'bhāvaḥ / yatpunaḥ pūrvakeṇa ca bhāvenānena cābhāvena ubhābhyāṃ bhāvābhāvābhyāṃ vinirmuktaṃ</right>
+  </line>
+  <line refs="30,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="66" label="_">
+    <left>samyakprayogo veditavyaḥ / &lt;/page&gt;&lt;page&gt; tatra kayā yuktyā nirabhilāpyasvabhāvatā sarvadharmāṇāṃ pratyavagantavyā / yeyaṃ</left>
+    <kwic> svalakṣaṇaprajñaptirdharmāṇāṃ</kwic>
+    <right> yaduta rūpamiti vā vedaneti vā pūrvavadantato yāvannirvāṇamiti vā prajñaptimātrameva tadveditavyam / na svabhāvo nāpi ca</right>
+  </line>
+  <line refs="30,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="67" label="_">
+    <left>pratyavagantavyā / yeyaṃ svalakṣaṇaprajñaptirdharmāṇāṃ yaduta rūpamiti vā vedaneti vā pūrvavadantato yāvannirvāṇamiti vā</left>
+    <kwic> prajñaptimātrameva</kwic>
+    <right> tadveditavyam / na svabhāvo nāpi ca tadvinirmuktastadanyo vāggocaro vāgaviṣayaḥ / evaṃ sati na svabhāvo dharmāṇāṃ tathā vidyate</right>
+  </line>
+  <line refs="30,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="68" label="_">
+    <left>ekasya dharmasyaikasya vastuno bhaveyuḥ / tat kasya hetoḥ / tathā hyekasmindharme ekasminvastuni bahuvidhā bahavo bahubhirabhilāpaiḥ</left>
+    <kwic> prajñaptaya</kwic>
+    <right> upacārāḥ kriyante / na ca bahuvidhānāñca bahūnāṃ prajñaptivādānāṃ niyamaḥ kaścidupalabhyate / yadanyatamena prajñaptivādenaikena</right>
+  </line>
+  <line refs="30,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="69" label="_">
+    <left>tathā hyekasmindharme ekasminvastuni bahuvidhā bahavo bahubhirabhilāpaiḥ prajñaptaya upacārāḥ kriyante / na ca bahuvidhānāñca bahūnāṃ</left>
+    <kwic> prajñaptivādānāṃ</kwic>
+    <right> niyamaḥ kaścidupalabhyate / yadanyatamena prajñaptivādenaikena tasya dharmasya tasya vastunaḥ tādātmyaṃ tanmayatā tatsvabhāvatā</right>
+  </line>
+  <line refs="30,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="70" label="_">
+    <left>prajñaptaya upacārāḥ kriyante / na ca bahuvidhānāñca bahūnāṃ prajñaptivādānāṃ niyamaḥ kaścidupalabhyate / yadanyatamena</left>
+    <kwic> prajñaptivādenaikena</kwic>
+    <right> tasya dharmasya tasya vastunaḥ tādātmyaṃ tanmayatā tatsvabhāvatā syānnānyairavaśiṣṭaiḥ prajñaptivādaiḥ / tasmātsakalavikalaiḥ</right>
+  </line>
+  <line refs="30,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="71" label="_">
+    <left>/ yadanyatamena prajñaptivādenaikena tasya dharmasya tasya vastunaḥ tādātmyaṃ tanmayatā tatsvabhāvatā syānnānyairavaśiṣṭaiḥ</left>
+    <kwic> prajñaptivādaiḥ</kwic>
+    <right> / tasmātsakalavikalaiḥ sarvaprajñaptivādaiḥ sarvadharmāṇāṃ sarvavastūnāṃ nāsti tādātmyaṃ nāsti tanmayatā nāsti tatsvabhāvatā / api ca</right>
+  </line>
+  <line refs="30,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="72" label="_">
+    <left>tasya dharmasya tasya vastunaḥ tādātmyaṃ tanmayatā tatsvabhāvatā syānnānyairavaśiṣṭaiḥ prajñaptivādaiḥ / tasmātsakalavikalaiḥ</left>
+    <kwic> sarvaprajñaptivādaiḥ</kwic>
+    <right> sarvadharmāṇāṃ sarvavastūnāṃ nāsti tādātmyaṃ nāsti tanmayatā nāsti tatsvabhāvatā / api ca sa cedrūpādayo dharmā yathāpūrvanirdiṣṭāḥ</right>
+  </line>
+  <line refs="30,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="73" label="_">
+    <left>sarvadharmāṇāṃ sarvavastūnāṃ nāsti tādātmyaṃ nāsti tanmayatā nāsti tatsvabhāvatā / api ca sa cedrūpādayo dharmā yathāpūrvanirdiṣṭāḥ</left>
+    <kwic> prajñaptivādasvabhāvā</kwic>
+    <right> bhaveyuḥ / evaṃ sati pūrva tāvadvastu paścāttatra chandataḥ prajñaptivādopacāraḥ / prākprajñaptivādopacārādakṛte</right>
+  </line>
+  <line refs="30,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="74" label="_">
+    <left>/ api ca sa cedrūpādayo dharmā yathāpūrvanirdiṣṭāḥ prajñaptivādasvabhāvā bhaveyuḥ / evaṃ sati pūrva tāvadvastu paścāttatra chandataḥ</left>
+    <kwic> prajñaptivādopacāraḥ</kwic>
+    <right> / prākprajñaptivādopacārādakṛte prajñaptivādopacāre sa dharmastadvastu niḥsvabhāva eva syāt / sati niḥsvabhāvatve nirvastukaḥ</right>
+  </line>
+  <line refs="30,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="75" label="_">
+    <left>dharmā yathāpūrvanirdiṣṭāḥ prajñaptivādasvabhāvā bhaveyuḥ / evaṃ sati pūrva tāvadvastu paścāttatra chandataḥ prajñaptivādopacāraḥ /</left>
+    <kwic> prākprajñaptivādopacārādakṛte</kwic>
+    <right> prajñaptivādopacāre sa dharmastadvastu niḥsvabhāva eva syāt / sati niḥsvabhāvatve nirvastukaḥ prajñaptivādo na yujyate /</right>
+  </line>
+  <line refs="30,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="76" label="_">
+    <left>bhaveyuḥ / evaṃ sati pūrva tāvadvastu paścāttatra chandataḥ prajñaptivādopacāraḥ / prākprajñaptivādopacārādakṛte</left>
+    <kwic> prajñaptivādopacāre</kwic>
+    <right> sa dharmastadvastu niḥsvabhāva eva syāt / sati niḥsvabhāvatve nirvastukaḥ prajñaptivādo na yujyate / prajñaptivādopacāre cāsati</right>
+  </line>
+  <line refs="30,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="77" label="_">
+    <left>/ prākprajñaptivādopacārādakṛte prajñaptivādopacāre sa dharmastadvastu niḥsvabhāva eva syāt / sati niḥsvabhāvatve nirvastukaḥ</left>
+    <kwic> prajñaptivādo</kwic>
+    <right> na yujyate / prajñaptivādopacāre cāsati prajñaptivādasvabhāvatā dharmasya vastuno na yujyeta / sa cetpunaḥ pūrvameva</right>
+  </line>
+  <line refs="30,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="78" label="_">
+    <left>prajñaptivādopacāre sa dharmastadvastu niḥsvabhāva eva syāt / sati niḥsvabhāvatve nirvastukaḥ prajñaptivādo na yujyate /</left>
+    <kwic> prajñaptivādopacāre</kwic>
+    <right> cāsati prajñaptivādasvabhāvatā dharmasya vastuno na yujyeta / sa cetpunaḥ pūrvameva prajñaptivādopacārādakṛte prajñaptivādopacāre sa</right>
+  </line>
+  <line refs="30,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="79" label="_">
+    <left>sa dharmastadvastu niḥsvabhāva eva syāt / sati niḥsvabhāvatve nirvastukaḥ prajñaptivādo na yujyate / prajñaptivādopacāre cāsati</left>
+    <kwic> prajñaptivādasvabhāvatā</kwic>
+    <right> dharmasya vastuno na yujyeta / sa cetpunaḥ pūrvameva prajñaptivādopacārādakṛte prajñaptivādopacāre sa dharmastadvastu tadātmakaṃ syāt</right>
+  </line>
+  <line refs="30,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="80" label="_">
+    <left>prajñaptivādo na yujyate / prajñaptivādopacāre cāsati prajñaptivādasvabhāvatā dharmasya vastuno na yujyeta / sa cetpunaḥ pūrvameva</left>
+    <kwic> prajñaptivādopacārādakṛte</kwic>
+    <right> prajñaptivādopacāre sa dharmastadvastu tadātmakaṃ syāt / evaṃ sati vinā tena rūpamiti prajñaptivādopacāreṇa rūpasaṃjñake dharme</right>
+  </line>
+  <line refs="30,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="81" label="_">
+    <left>/ prajñaptivādopacāre cāsati prajñaptivādasvabhāvatā dharmasya vastuno na yujyeta / sa cetpunaḥ pūrvameva prajñaptivādopacārādakṛte</left>
+    <kwic> prajñaptivādopacāre</kwic>
+    <right> sa dharmastadvastu tadātmakaṃ syāt / evaṃ sati vinā tena rūpamiti prajñaptivādopacāreṇa rūpasaṃjñake dharme rūpasaṃjñake vastuni</right>
+  </line>
+  <line refs="30,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="82" label="_">
+    <left>/ sa cetpunaḥ pūrvameva prajñaptivādopacārādakṛte prajñaptivādopacāre sa dharmastadvastu tadātmakaṃ syāt / evaṃ sati vinā tena rūpamiti</left>
+    <kwic> prajñaptivādopacāreṇa</kwic>
+    <right> rūpasaṃjñake dharme rūpasaṃjñake vastuni rūpabuddhiḥ pravarteta / na ca pravartate / tadanena kāraṇonānayā yuktyā nirabhilāpyaḥ</right>
+  </line>
+  <line refs="30,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="83" label="_">
+    <left>yāvannirvāṇaparyantā veditavyāḥ / dvāvimāvasmāddharmavinayātpranaṣṭau veditavyau / yaśca rūpādīnāṃ dharmāṇāṃ rūpādikasya vastunaḥ</left>
+    <kwic> prajñaptivādasvabhāvaṃ</kwic>
+    <right> svalakṣaṇamasadbhūtasamāropato 'bhiniviśate / yaścāpi prajñaptivādanimittādhiṣṭhānaṃ prajñaptivādanimittasanniśrayaṃ &lt;/page&gt;</right>
+  </line>
+  <line refs="30,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="84" label="_">
+    <left>/ yaśca rūpādīnāṃ dharmāṇāṃ rūpādikasya vastunaḥ prajñaptivādasvabhāvaṃ svalakṣaṇamasadbhūtasamāropato 'bhiniviśate / yaścāpi</left>
+    <kwic> prajñaptivādanimittādhiṣṭhānaṃ</kwic>
+    <right> prajñaptivādanimittasanniśrayaṃ &lt;/page&gt;&lt;page&gt; nirabhilāpyātmakatayā paramārthasadbhūtaṃ vastvapadamāno nāśayati sarveṇa sarvaṃ nāstīti /</right>
+  </line>
+  <line refs="30,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="85" label="_">
+    <left>vastunaḥ prajñaptivādasvabhāvaṃ svalakṣaṇamasadbhūtasamāropato 'bhiniviśate / yaścāpi prajñaptivādanimittādhiṣṭhānaṃ</left>
+    <kwic> prajñaptivādanimittasanniśrayaṃ</kwic>
+    <right>&lt;/page&gt;&lt;page&gt; nirabhilāpyātmakatayā paramārthasadbhūtaṃ vastvapadamāno nāśayati sarveṇa sarvaṃ nāstīti / asadbhūtasamārope tāvadye doṣāste</right>
+  </line>
+  <line refs="31,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="86" label="_">
+    <left>sarvavaināśikaḥ pranaṣṭo bhavatyasmāddharmavinayāt tathā vakṣyāmi rūpādīnāṃ dharmānāṃ vastumātramapavadato naiva tattvaṃ nāpi</left>
+    <kwic> prajñaptistadubhayametanna</kwic>
+    <right> yujyate / tadyathā satsu rūpādiṣu skandheṣu pudgalaprajñaptiryujyate / nāsatsu / nirvastukāpudgalaprajñaptiḥ / evaṃ sati rūpādīnāṃ</right>
+  </line>
+  <line refs="31,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="87" label="_">
+    <left>rūpādīnāṃ dharmānāṃ vastumātramapavadato naiva tattvaṃ nāpi prajñaptistadubhayametanna yujyate / tadyathā satsu rūpādiṣu skandheṣu</left>
+    <kwic> pudgalaprajñaptiryujyate</kwic>
+    <right> / nāsatsu / nirvastukāpudgalaprajñaptiḥ / evaṃ sati rūpādīnāṃ dharmāṇāṃ vastumātre [ sa ] rūpādidharmaprajñaptivādopacāro yujyate /</right>
+  </line>
+  <line refs="31,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="88" label="_">
+    <left>naiva tattvaṃ nāpi prajñaptistadubhayametanna yujyate / tadyathā satsu rūpādiṣu skandheṣu pudgalaprajñaptiryujyate / nāsatsu /</left>
+    <kwic> nirvastukāpudgalaprajñaptiḥ</kwic>
+    <right> / evaṃ sati rūpādīnāṃ dharmāṇāṃ vastumātre [ sa ] rūpādidharmaprajñaptivādopacāro yujyate / nāsati / nirvastukaḥ prajñaptivādopacāraḥ /</right>
+  </line>
+  <line refs="31,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="89" label="_">
+    <left>rūpādiṣu skandheṣu pudgalaprajñaptiryujyate / nāsatsu / nirvastukāpudgalaprajñaptiḥ / evaṃ sati rūpādīnāṃ dharmāṇāṃ vastumātre [ sa ]</left>
+    <kwic> rūpādidharmaprajñaptivādopacāro</kwic>
+    <right> yujyate / nāsati / nirvastukaḥ prajñaptivādopacāraḥ / tatra prajñaptervastu nāstīti niradhiṣṭhānā prajñaptirapi nāsti / ato ya ekatyā</right>
+  </line>
+  <line refs="31,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="90" label="_">
+    <left>/ evaṃ sati rūpādīnāṃ dharmāṇāṃ vastumātre [ sa ] rūpādidharmaprajñaptivādopacāro yujyate / nāsati / nirvastukaḥ</left>
+    <kwic> prajñaptivādopacāraḥ</kwic>
+    <right> / tatra prajñaptervastu nāstīti niradhiṣṭhānā prajñaptirapi nāsti / ato ya ekatyā durvijñeyān sūtrāntānmahāyānapratisaṃyuktān</right>
+  </line>
+  <line refs="31,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="91" label="_">
+    <left>sati rūpādīnāṃ dharmāṇāṃ vastumātre [ sa ] rūpādidharmaprajñaptivādopacāro yujyate / nāsati / nirvastukaḥ prajñaptivādopacāraḥ / tatra</left>
+    <kwic> prajñaptervastu</kwic>
+    <right> nāstīti niradhiṣṭhānā prajñaptirapi nāsti / ato ya ekatyā durvijñeyān sūtrāntānmahāyānapratisaṃyuktān gambhīrān</right>
+  </line>
+  <line refs="31,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="92" label="_">
+    <left>] rūpādidharmaprajñaptivādopacāro yujyate / nāsati / nirvastukaḥ prajñaptivādopacāraḥ / tatra prajñaptervastu nāstīti niradhiṣṭhānā</left>
+    <kwic> prajñaptirapi</kwic>
+    <right> nāsti / ato ya ekatyā durvijñeyān sūtrāntānmahāyānapratisaṃyuktān gambhīrān śūnyatāpratisaṃyuktānābhiprāyikārthanirūpitān śrutvā</right>
+  </line>
+  <line refs="31,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="93" label="_">
+    <left>śrutvā yathābhūtaṃ bhāṣitasyārthamavijñāyāyoniśo vikalpyāyogavihitena tarkamātrakeṇaivaṃ dṛṣṭayo bhavantyevaṃvādinaḥ /</left>
+    <kwic> prajñaptimātrameva</kwic>
+    <right> sarvametacca tattvam / yaścaivaṃ paśyati sa samyak paśyatīti / teṣāṃ prajñaptyadhiṣṭhānasya vastumātrasyābhāvātsaiva prajñaptiḥ</right>
+  </line>
+  <line refs="31,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="94" label="_">
+    <left>dṛṣṭayo bhavantyevaṃvādinaḥ / prajñaptimātrameva sarvametacca tattvam / yaścaivaṃ paśyati sa samyak paśyatīti / teṣāṃ</left>
+    <kwic> prajñaptyadhiṣṭhānasya</kwic>
+    <right> vastumātrasyābhāvātsaiva prajñaptiḥ sarveṇa sarvaṃ na bhavati / kutaḥ punaḥ prajñaptimātraṃ tattvaṃ bhaviṣyatīti / tadanena paryāyeṇa</right>
+  </line>
+  <line refs="31,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="95" label="_">
+    <left>sarvametacca tattvam / yaścaivaṃ paśyati sa samyak paśyatīti / teṣāṃ prajñaptyadhiṣṭhānasya vastumātrasyābhāvātsaiva</left>
+    <kwic> prajñaptiḥ</kwic>
+    <right> sarveṇa sarvaṃ na bhavati / kutaḥ punaḥ prajñaptimātraṃ tattvaṃ bhaviṣyatīti / tadanena paryāyeṇa taistattvamapi prajñaptirapi</right>
+  </line>
+  <line refs="31,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="96" label="_">
+    <left>paśyati sa samyak paśyatīti / teṣāṃ prajñaptyadhiṣṭhānasya vastumātrasyābhāvātsaiva prajñaptiḥ sarveṇa sarvaṃ na bhavati / kutaḥ punaḥ</left>
+    <kwic> prajñaptimātraṃ</kwic>
+    <right> tattvaṃ bhaviṣyatīti / tadanena paryāyeṇa taistattvamapi prajñaptirapi tadubhayamapyapavāditaṃ bhavati / prajñaptitattvāpavādācca</right>
+  </line>
+  <line refs="31,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="97" label="_">
+    <left>prajñaptiḥ sarveṇa sarvaṃ na bhavati / kutaḥ punaḥ prajñaptimātraṃ tattvaṃ bhaviṣyatīti / tadanena paryāyeṇa taistattvamapi</left>
+    <kwic> prajñaptirapi</kwic>
+    <right> tadubhayamapyapavāditaṃ bhavati / prajñaptitattvāpavādācca pradhāno nāstiko veditavyaḥ / sa evaṃ nāṣṭikaḥ sannakathyo</right>
+  </line>
+  <line refs="31,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="98" label="_">
+    <left>kutaḥ punaḥ prajñaptimātraṃ tattvaṃ bhaviṣyatīti / tadanena paryāyeṇa taistattvamapi prajñaptirapi tadubhayamapyapavāditaṃ bhavati /</left>
+    <kwic> prajñaptitattvāpavādācca</kwic>
+    <right> pradhāno nāstiko veditavyaḥ / sa evaṃ nāṣṭikaḥ sannakathyo bhavatyasaṃvāsyo bhavati vijñānāṃ sabrahmacāriṇām / sa ātmānamapi vipādayati</right>
+  </line>
+  <line refs="32,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="99" label="_">
+    <left>yathābhūtaṃ prajānāti / iyamucyate śūnyatāvakrāntiryathābhūtā aviparītā / tadyathā rūpādisaṃjñake yathā nirdiṣṭe vastuni</left>
+    <kwic> rūpamityevamādiprajñaptivādātmako</kwic>
+    <right> dharmo nāsti / atastadrūpādisaṃjñakaṃ vastu tena rūpamityevamādiprajñaptivādātmanā śūnyam / kiṃ punastatra rūpādisaṃjñake</right>
+  </line>
+  <line refs="32,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="100" label="_">
+    <left>/ tadyathā rūpādisaṃjñake yathā nirdiṣṭe vastuni rūpamityevamādiprajñaptivādātmako dharmo nāsti / atastadrūpādisaṃjñakaṃ vastu tena</left>
+    <kwic> rūpamityevamādiprajñaptivādātmanā</kwic>
+    <right> śūnyam / kiṃ punastatra rūpādisaṃjñake vastunayavaśiṣṭam / yaduta tadeva rūpamityevamādiprajñaptivādāśrayaḥ / taccobhayaṃ</right>
+  </line>
+  <line refs="32,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="101" label="_">
+    <left>vastu tena rūpamityevamādiprajñaptivādātmanā śūnyam / kiṃ punastatra rūpādisaṃjñake vastunayavaśiṣṭam / yaduta tadeva</left>
+    <kwic> rūpamityevamādiprajñaptivādāśrayaḥ</kwic>
+    <right> / taccobhayaṃ yathābhūtaṃ prajānāti yaduta vastamātrañca vidyamānaṃ vastamātre ca prajñaptimātraṃ ca cāsadbhūtaṃ samāropayati / na</right>
+  </line>
+  <line refs="32,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="102" label="_">
+    <left>/ yaduta tadeva rūpamityevamādiprajñaptivādāśrayaḥ / taccobhayaṃ yathābhūtaṃ prajānāti yaduta vastamātrañca vidyamānaṃ vastamātre ca</left>
+    <kwic> prajñaptimātraṃ</kwic>
+    <right> ca cāsadbhūtaṃ samāropayati / na bhūtamapavadate nādhikaṃ karoti na nyūnīkaroti notkṣipati na pratikṣipati / yathābhūtañca tathatāṃ</right>
+  </line>
+  <line refs="33,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="103" label="_">
+    <left>upādadīta dṛṣṭaśrute kāntimasaṃprakurvan / kathamiyaṃ gāthā etamevārthaṃ paridīpayati / rūpādisaṃjñake vastuni yā rūpamityevamādyāḥ</left>
+    <kwic> prajñaptayaḥ</kwic>
+    <right> / tāḥ saṃvṛtaya ityucyante / tābhiḥ prajñaptibhistasya vastunastādātmyamityevaṃ nopaiti tāḥ saṃvṛtīḥ / tatkasya hetoḥ /</right>
+  </line>
+  <line refs="33,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="104" label="_">
+    <left>gāthā etamevārthaṃ paridīpayati / rūpādisaṃjñake vastuni yā rūpamityevamādyāḥ prajñaptayaḥ / tāḥ saṃvṛtaya ityucyante / tābhiḥ</left>
+    <kwic> prajñaptibhistasya</kwic>
+    <right> vastunastādātmyamityevaṃ nopaiti tāḥ saṃvṛtīḥ / tatkasya hetoḥ / samāropāpavādikā dṛṣṭirasya nāsti / ato 'sau tasyā</right>
+  </line>
+  <line refs="34,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="105" label="_">
+    <left>niśritya dhyāyasi // iti / kathañca punaretatsūtrapadametamevārthaṃ paridīpayati pṛthivyādisaṃjñake vastuni yā pṛthivītyevamādikā</left>
+    <kwic> nāmasaṃketaprajñaptiḥ</kwic>
+    <right> sā pṛthivyādisaṃjñetyucyate / sā punaḥ saṃjñā pṛthivyādisaṃjñake vastuni samāropikā cāpavādikā ca / tanmayasvabhāvavastugrāhikā</right>
+  </line>
+  <line refs="36,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="106" label="_">
+    <left>/ catasṛbhiḥ paryeṣaṇābhiḥ caturvidhena ca yathābhūtaparijñānena / catasraḥ paryeṣaṇāḥ katamāḥ / nāmaparyeṣaṇā / vastuparyeṣaṇā /</left>
+    <kwic> svabhāvaprajñaptiparyeṣaṇā</kwic>
+    <right> ca / viśeṣaprajñaptiparyeṣaṇā ca / tatra nāmaparyeṣaṇā yadvodhisattvo nāmni nāmamātraṃ paśyati / evaṃ vastuni vastumātradarśanaṃ [ vastu</right>
+  </line>
+  <line refs="36,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="107" label="_">
+    <left>caturvidhena ca yathābhūtaparijñānena / catasraḥ paryeṣaṇāḥ katamāḥ / nāmaparyeṣaṇā / vastuparyeṣaṇā / svabhāvaprajñaptiparyeṣaṇā ca /</left>
+    <kwic> viśeṣaprajñaptiparyeṣaṇā</kwic>
+    <right> ca / tatra nāmaparyeṣaṇā yadvodhisattvo nāmni nāmamātraṃ paśyati / evaṃ vastuni vastumātradarśanaṃ [ vastu ] paryeṣaṇā /</right>
+  </line>
+  <line refs="36,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="108" label="_">
+    <left>ca / tatra nāmaparyeṣaṇā yadvodhisattvo nāmni nāmamātraṃ paśyati / evaṃ vastuni vastumātradarśanaṃ [ vastu ] paryeṣaṇā /</left>
+    <kwic> svabhāvaprajñaptau</kwic>
+    <right> svabhāvaprajñaptimātradarśanaṃ svabhāvaprajñaptiparyeṣaṇā / viśeṣaprajñaptau viśeṣaprajñaptimātradarśanaṃ</right>
+  </line>
+  <line refs="36,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="109" label="_">
+    <left>/ tatra nāmaparyeṣaṇā yadvodhisattvo nāmni nāmamātraṃ paśyati / evaṃ vastuni vastumātradarśanaṃ [ vastu ] paryeṣaṇā / svabhāvaprajñaptau</left>
+    <kwic> svabhāvaprajñaptimātradarśanaṃ</kwic>
+    <right> svabhāvaprajñaptiparyeṣaṇā / viśeṣaprajñaptau viśeṣaprajñaptimātradarśanaṃ viśeṣaprajñaptiparyeṣaṇā / sa nāmavastuno bhinnañca</right>
+  </line>
+  <line refs="36,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="110" label="_">
+    <left>nāmni nāmamātraṃ paśyati / evaṃ vastuni vastumātradarśanaṃ [ vastu ] paryeṣaṇā / svabhāvaprajñaptau svabhāvaprajñaptimātradarśanaṃ</left>
+    <kwic> svabhāvaprajñaptiparyeṣaṇā</kwic>
+    <right> / viśeṣaprajñaptau viśeṣaprajñaptimātradarśanaṃ viśeṣaprajñaptiparyeṣaṇā / sa nāmavastuno bhinnañca lakṣaṇaṃ paśyatyanuśliṣṭañca /</right>
+  </line>
+  <line refs="36,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="111" label="_">
+    <left>vastuni vastumātradarśanaṃ [ vastu ] paryeṣaṇā / svabhāvaprajñaptau svabhāvaprajñaptimātradarśanaṃ svabhāvaprajñaptiparyeṣaṇā /</left>
+    <kwic> viśeṣaprajñaptau</kwic>
+    <right> viśeṣaprajñaptimātradarśanaṃ viśeṣaprajñaptiparyeṣaṇā / sa nāmavastuno bhinnañca lakṣaṇaṃ paśyatyanuśliṣṭañca /</right>
+  </line>
+  <line refs="36,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="112" label="_">
+    <left>[ vastu ] paryeṣaṇā / svabhāvaprajñaptau svabhāvaprajñaptimātradarśanaṃ svabhāvaprajñaptiparyeṣaṇā / viśeṣaprajñaptau</left>
+    <kwic> viśeṣaprajñaptimātradarśanaṃ</kwic>
+    <right> viśeṣaprajñaptiparyeṣaṇā / sa nāmavastuno bhinnañca lakṣaṇaṃ paśyatyanuśliṣṭañca / nāmavastvanuśleṣasanniśritāṃ ca</right>
+  </line>
+  <line refs="36,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="113" label="_">
+    <left>/ svabhāvaprajñaptau svabhāvaprajñaptimātradarśanaṃ svabhāvaprajñaptiparyeṣaṇā / viśeṣaprajñaptau viśeṣaprajñaptimātradarśanaṃ</left>
+    <kwic> viśeṣaprajñaptiparyeṣaṇā</kwic>
+    <right> / sa nāmavastuno bhinnañca lakṣaṇaṃ paśyatyanuśliṣṭañca / nāmavastvanuśleṣasanniśritāṃ ca svabhāvaprajñapti viśeṣaprajñaptiñca [</right>
+  </line>
+  <line refs="36,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="114" label="_">
+    <left>viśeṣaprajñaptiparyeṣaṇā / sa nāmavastuno bhinnañca lakṣaṇaṃ paśyatyanuśliṣṭañca / nāmavastvanuśleṣasanniśritāṃ ca</left>
+    <kwic> svabhāvaprajñapti</kwic>
+    <right> viśeṣaprajñaptiñca [ prati ] vidhyati / catvāri yathābhūtaparijñānāni katamāni / nāmaiṣaṇāgataṃ yathābhūtaparijñānaṃ vastveṣaṇāgataṃ</right>
+  </line>
+  <line refs="36,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="115" label="_">
+    <left>/ sa nāmavastuno bhinnañca lakṣaṇaṃ paśyatyanuśliṣṭañca / nāmavastvanuśleṣasanniśritāṃ ca svabhāvaprajñapti</left>
+    <kwic> viśeṣaprajñaptiñca</kwic>
+    <right> [ prati ] vidhyati / catvāri yathābhūtaparijñānāni katamāni / nāmaiṣaṇāgataṃ yathābhūtaparijñānaṃ vastveṣaṇāgataṃ</right>
+  </line>
+  <line refs="36,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="116" label="_">
+    <left>viśeṣaprajñaptiñca [ prati ] vidhyati / catvāri yathābhūtaparijñānāni katamāni / nāmaiṣaṇāgataṃ yathābhūtaparijñānaṃ vastveṣaṇāgataṃ</left>
+    <kwic> svabhāvaprajñaptyeṣaṇāgataṃ</kwic>
+    <right> viśeṣaprajñaptyeṣaṇāgatañca yathābhūtaparijñānam / nāmaiṣaṇāgataṃ yathābhūtaparijñānaṃ katamat / sa khalu bodhisattvo nāmni</right>
+  </line>
+  <line refs="36,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="117" label="_">
+    <left>/ catvāri yathābhūtaparijñānāni katamāni / nāmaiṣaṇāgataṃ yathābhūtaparijñānaṃ vastveṣaṇāgataṃ svabhāvaprajñaptyeṣaṇāgataṃ</left>
+    <kwic> viśeṣaprajñaptyeṣaṇāgatañca</kwic>
+    <right> yathābhūtaparijñānam / nāmaiṣaṇāgataṃ yathābhūtaparijñānaṃ katamat / sa khalu bodhisattvo nāmni nāmamātratāṃ paryeṣya tannāmaivaṃ</right>
+  </line>
+  <line refs="37,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="118" label="_">
+    <left>sarvābhilāpaviśliṣṭaṃ nirabhilāpyaṃ tadrūpādisaṃjñakaṃ vastu paśyati / idaṃ dvitīyaṃ yathābhūtaparijñānaṃ vastveṣaṇāgatam /</left>
+    <kwic> svabhāvaprajñaptyeṣaṇāgataṃ</kwic>
+    <right> yathābhūtaparijñānaṃ katamat yataśca bodhisattvaḥ rūpādisaṃjñake vastuni svabhāvaprajñaptau prajñaptimātratāṃ paryeṣya tathā</right>
+  </line>
+  <line refs="37,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="119" label="_">
+    <left>vastveṣaṇāgatam / svabhāvaprajñaptyeṣaṇāgataṃ yathābhūtaparijñānaṃ katamat yataśca bodhisattvaḥ rūpādisaṃjñake vastuni</left>
+    <kwic> svabhāvaprajñaptau</kwic>
+    <right> prajñaptimātratāṃ paryeṣya tathā svabhāvaprajñaptyā atatsvabhāvasya vastunaḥ tatsvabhāvābhāsatāṃ yathābhūtaṃ pratividhyati</right>
+  </line>
+  <line refs="37,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="120" label="_">
+    <left>/ svabhāvaprajñaptyeṣaṇāgataṃ yathābhūtaparijñānaṃ katamat yataśca bodhisattvaḥ rūpādisaṃjñake vastuni svabhāvaprajñaptau</left>
+    <kwic> prajñaptimātratāṃ</kwic>
+    <right> paryeṣya tathā svabhāvaprajñaptyā atatsvabhāvasya vastunaḥ tatsvabhāvābhāsatāṃ yathābhūtaṃ pratividhyati prajānāti / tasya</right>
+  </line>
+  <line refs="37,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="121" label="_">
+    <left>yathābhūtaparijñānaṃ katamat yataśca bodhisattvaḥ rūpādisaṃjñake vastuni svabhāvaprajñaptau prajñaptimātratāṃ paryeṣya tathā</left>
+    <kwic> svabhāvaprajñaptyā</kwic>
+    <right> atatsvabhāvasya vastunaḥ tatsvabhāvābhāsatāṃ yathābhūtaṃ pratividhyati prajānāti / tasya</right>
+  </line>
+  <line refs="37,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="122" label="_">
+    <left>tatsvabhāvaṃ paśyataḥ tadābhāsamatanmayam idṃ tṛtīyaṃ yathābhūtaṃ parijñānaṃ sugambhīrārthagocaram /</left>
+    <kwic> viśeṣaprajñaptyeṣaṇāgataṃ</kwic>
+    <right> yathābhūtaparijñānaṃ katamat / yataśca bodhisattvo viśeṣaprajñaptau prajñaptimātratāṃ paryeṣya tasmin rūpādisaṃjñake vastuni</right>
+  </line>
+  <line refs="37,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="123" label="_">
+    <left>yathābhūtaṃ parijñānaṃ sugambhīrārthagocaram / viśeṣaprajñaptyeṣaṇāgataṃ yathābhūtaparijñānaṃ katamat / yataśca bodhisattvo</left>
+    <kwic> viśeṣaprajñaptau</kwic>
+    <right> prajñaptimātratāṃ paryeṣya tasmin rūpādisaṃjñake vastuni viśeṣaprajñaptimadvayārthena paśyati / na tadvastu bhāvo nābhāvaḥ /</right>
+  </line>
+  <line refs="37,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="124" label="_">
+    <left>parijñānaṃ sugambhīrārthagocaram / viśeṣaprajñaptyeṣaṇāgataṃ yathābhūtaparijñānaṃ katamat / yataśca bodhisattvo viśeṣaprajñaptau</left>
+    <kwic> prajñaptimātratāṃ</kwic>
+    <right> paryeṣya tasmin rūpādisaṃjñake vastuni viśeṣaprajñaptimadvayārthena paśyati / na tadvastu bhāvo nābhāvaḥ / abhilāpyenātmanā</right>
+  </line>
+  <line refs="37,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="125" label="_">
+    <left>yathābhūtaparijñānaṃ katamat / yataśca bodhisattvo viśeṣaprajñaptau prajñaptimātratāṃ paryeṣya tasmin rūpādisaṃjñake vastuni</left>
+    <kwic> viśeṣaprajñaptimadvayārthena</kwic>
+    <right> paśyati / na tadvastu bhāvo nābhāvaḥ / abhilāpyenātmanā 'pariniṣpannatvānna bhāvaḥ / na punarabhāvo nirabhilāpyenātmanā</right>
+  </line>
+  <line refs="37,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="126" label="_">
+    <left>/ nārūpī saṃvṛtisatyena tatra rūpopacāratayā / yathā bhāvaścābhāvaśca rūpī cārūpī ca / tathā sanidarśanānidarśanādayo</left>
+    <kwic> viśeṣaprajñaptiparyāyāḥ</kwic>
+    <right> sarve 'nena nayenaivaṃ veditavyāḥ / iti yadetāṃ viśeṣaprajñaptimevamadvayārthena yathābhūtaṃ prajānāti / idamucyate</right>
+  </line>
+  <line refs="37,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="127" label="_">
+    <left>rūpī cārūpī ca / tathā sanidarśanānidarśanādayo viśeṣaprajñaptiparyāyāḥ sarve 'nena nayenaivaṃ veditavyāḥ / iti yadetāṃ</left>
+    <kwic> viśeṣaprajñaptimevamadvayārthena</kwic>
+    <right> yathābhūtaṃ prajānāti / idamucyate viśeṣaprajñaptyeṣaṇāgataṃ yathābhūtaparijñānam / tatra yo 'sāvaṣṭavidho mithyāvikalpo bālānāṃ</right>
+  </line>
+  <line refs="37,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="128" label="_">
+    <left>sarve 'nena nayenaivaṃ veditavyāḥ / iti yadetāṃ viśeṣaprajñaptimevamadvayārthena yathābhūtaṃ prajānāti / idamucyate</left>
+    <kwic> viśeṣaprajñaptyeṣaṇāgataṃ</kwic>
+    <right> yathābhūtaparijñānam / tatra yo 'sāvaṣṭavidho mithyāvikalpo bālānāṃ trivastujanako lokanirvartakaḥ so 'sya caturvidhasya</right>
+  </line>
+  <line refs="187,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="129" label="_">
+    <left>yathābhūtaṃ śāntato manasi kurvato yā cittasthitiḥ / ayamasyocyate animittaḥ samādhiḥ / kasmātpunareṣāmeva trayāṇāṃ samādhīnāṃ</left>
+    <kwic> prajñaptirbhavati</kwic>
+    <right> / nāta uttari nāto bhūyaḥ dvayamidaṃ saccāsacca / tatra saṃskṛtamasaskṛtañca sat asadātmā vātmīyaṃ vā / tatraḥ &lt;/page&gt;&lt;page&gt; saṃskṛte</right>
+  </line>
+  <line refs="190,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="130" label="_">
+    <left>utpadyate nirudhyate ceti na yujyate / na ca punaḥ kulaputrasya vā kuladuhiturvā sarvakālāstitāñca dravyasatāṃ svabhāvapariniṣpatiñca</left>
+    <kwic> prajñapti</kwic>
+    <right> satāṃ paśyato nirvidvirāgo vimuktiśca yujyate / ato viparyayeṇa tu yujyate / ityebhirākārairbodhisattvaḥ sarvasaṃskārā anityā iti</right>
+  </line>
+  <line refs="197,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="131" label="_">
+    <left>bodhisattvasya pañcamaṃ sātatyakaraṇīyam / daśeme dharmā bodhisattvānāṃ pradhānasammatā yān bodhisattvā agrato</left>
+    <kwic> dhārayantyagryaprajñaptiṣu</kwic>
+    <right> ca prajñapayanti / katame daśa / bodhisattvagotraṃ sarvagotrāṇāṃ pradhānam / prathamaścittotpādaḥ sarvasamyak praṇidhānānaṃ pradhānam</right>
+  </line>
+  <line refs="198,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="132" label="_">
+    <left>/ sarvasamāpattīnāṃ &lt;/page&gt;&lt;page&gt; nirodhasamāpattiḥ pradhānam / sarvopāyakauśalyānāṃ viśuddhamupāyakauśalyaṃ yathānirdiṣṭaṃ pradhānam / uddānam /</left>
+    <kwic> prajñapteḥ</kwic>
+    <right> syādvyavasthānaṃ dharmāṇāmeṣaṇā tathā / yathābhūtaparijñānamaprameyāstathaiva ca // deśanāyāḥ phalaṃ caiva mahattvaṃ yānasaṃgrahaḥ /</right>
+  </line>
+  <line refs="198,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="133" label="_">
+    <left>tathā / yathābhūtaparijñānamaprameyāstathaiva ca // deśanāyāḥ phalaṃ caiva mahattvaṃ yānasaṃgrahaḥ / bodhisattvā daśa jñeyā</left>
+    <kwic> nāmaprajñaptayastathā</kwic>
+    <right> // catvārīmāni bodhisattvānāṃ prajñaptivyavasthānāni yāniṃ bodhisattvā eva samyak prajñapayanti vyavasthāpayanti tathāgatā vā / na</right>
+  </line>
+  <line refs="198,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="134" label="_">
+    <left>ca // deśanāyāḥ phalaṃ caiva mahattvaṃ yānasaṃgrahaḥ / bodhisattvā daśa jñeyā nāmaprajñaptayastathā // catvārīmāni bodhisattvānāṃ</left>
+    <kwic> prajñaptivyavasthānāni</kwic>
+    <right> yāniṃ bodhisattvā eva samyak prajñapayanti vyavasthāpayanti tathāgatā vā / na tvanyaḥ kaściddevabhūto vā manuṣyabhūto vā</right>
+  </line>
+  <line refs="198,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="135" label="_">
+    <left>tathāgatā vā / na tvanyaḥ kaściddevabhūto vā manuṣyabhūto vā śramaṇabrāhmaṇabhūto vānyatraitebhya evaṃ śrutvā / katamāni catvāri /</left>
+    <kwic> dharmaprajñaptivyavasthānaṃ</kwic>
+    <right> satyaprajñaptivyavattthānaṃ yuktiprajñaptivyavasthānaṃ yānaprajñaptivyavasthānañca / tatra yā dvādaśāṅgasya sūtrādikasya</right>
+  </line>
+  <line refs="198,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="136" label="_">
+    <left>kaściddevabhūto vā manuṣyabhūto vā śramaṇabrāhmaṇabhūto vānyatraitebhya evaṃ śrutvā / katamāni catvāri / dharmaprajñaptivyavasthānaṃ</left>
+    <kwic> satyaprajñaptivyavattthānaṃ</kwic>
+    <right> yuktiprajñaptivyavasthānaṃ yānaprajñaptivyavasthānañca / tatra yā dvādaśāṅgasya sūtrādikasya vacogatasyānupūrvaracanā</right>
+  </line>
+  <line refs="198,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="137" label="_">
+    <left>vā śramaṇabrāhmaṇabhūto vānyatraitebhya evaṃ śrutvā / katamāni catvāri / dharmaprajñaptivyavasthānaṃ satyaprajñaptivyavattthānaṃ</left>
+    <kwic> yuktiprajñaptivyavasthānaṃ</kwic>
+    <right> yānaprajñaptivyavasthānañca / tatra yā dvādaśāṅgasya sūtrādikasya vacogatasyānupūrvaracanā anupūrvavyavasthānasamāyogaḥ /</right>
+  </line>
+  <line refs="198,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="138" label="_">
+    <left>evaṃ śrutvā / katamāni catvāri / dharmaprajñaptivyavasthānaṃ satyaprajñaptivyavattthānaṃ yuktiprajñaptivyavasthānaṃ</left>
+    <kwic> yānaprajñaptivyavasthānañca</kwic>
+    <right> / tatra yā dvādaśāṅgasya sūtrādikasya vacogatasyānupūrvaracanā anupūrvavyavasthānasamāyogaḥ / idamucyate</right>
+  </line>
+  <line refs="198,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="139" label="_">
+    <left>/ tatra yā dvādaśāṅgasya sūtrādikasya vacogatasyānupūrvaracanā anupūrvavyavasthānasamāyogaḥ / idamucyate</left>
+    <kwic> dharmaprajñaptivyavasthānam</kwic>
+    <right> / satyaprajñaptivyavasthānaṃ punaranekavidham / avitathārthena tāvadekameva satyaṃ na dvitīyamasti / dvividhaṃ satyam / saṃvṛtisatyaṃ</right>
+  </line>
+  <line refs="198,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="140" label="_">
+    <left>yā dvādaśāṅgasya sūtrādikasya vacogatasyānupūrvaracanā anupūrvavyavasthānasamāyogaḥ / idamucyate dharmaprajñaptivyavasthānam /</left>
+    <kwic> satyaprajñaptivyavasthānaṃ</kwic>
+    <right> punaranekavidham / avitathārthena tāvadekameva satyaṃ na dvitīyamasti / dvividhaṃ satyam / saṃvṛtisatyaṃ paramārthasatyaṃ ca /</right>
+  </line>
+  <line refs="199,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="141" label="_">
+    <left>kleśasatyaṃ tathā śravaṇayoniśomanaskārasatyaṃ samyakdṛṣṭisatyaṃ samyagdṛṣṭiphalasatyaṃ ceti / idamucyate bodhisattvānāṃ</left>
+    <kwic> satyaprajñaptivyavasthānam</kwic>
+    <right> / prabhedaśaḥ punaretadapramāṇa veditavyam / catasro yuktayo yuktiprajñaptivyavasthānamityucyate / tāsāṃ punaḥ pravibhāgaḥ</right>
+  </line>
+  <line refs="199,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="142" label="_">
+    <left>ceti / idamucyate bodhisattvānāṃ satyaprajñaptivyavasthānam / prabhedaśaḥ punaretadapramāṇa veditavyam / catasro yuktayo</left>
+    <kwic> yuktiprajñaptivyavasthānamityucyate</kwic>
+    <right> / tāsāṃ punaḥ pravibhāgaḥ pūrvavadveditavyaḥ / trayāṇāṃ yānānāṃ ekaikasya saptabhirākāraiḥ prajñaptivyavasthānam / śrāvakayānasya</right>
+  </line>
+  <line refs="199,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="143" label="_">
+    <left>yuktiprajñaptivyavasthānamityucyate / tāsāṃ punaḥ pravibhāgaḥ pūrvavadveditavyaḥ / trayāṇāṃ yānānāṃ ekaikasya saptabhirākāraiḥ</left>
+    <kwic> prajñaptivyavasthānam</kwic>
+    <right> / śrāvakayānasya pratyekabuddhayānasya mahāyānasya yānaprajñaptivyavasthānamityucyate / caturṣvāryasatyeṣu yā prajñā tasyā eva ca</right>
+  </line>
+  <line refs="199,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="144" label="_">
+    <left>/ trayāṇāṃ yānānāṃ ekaikasya saptabhirākāraiḥ prajñaptivyavasthānam / śrāvakayānasya pratyekabuddhayānasya mahāyānasya</left>
+    <kwic> yānaprajñaptivyavasthānamityucyate</kwic>
+    <right> / caturṣvāryasatyeṣu yā prajñā tasyā eva ca prajñāyā ya āśrayaḥ ālambanaṃ sahāyaḥ karma saṃbhārastasyā eva ca prajñāyā yat phalam ebhiḥ</right>
+  </line>
+  <line refs="199,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="145" label="_">
+    <left>yā prajñā tasyā eva ca prajñāyā ya āśrayaḥ ālambanaṃ sahāyaḥ karma saṃbhārastasyā eva ca prajñāyā yat phalam ebhiḥ saptabhirākāraiḥ</left>
+    <kwic> śrāvakayānaprajñaptivyavasthānaṃ</kwic>
+    <right> sākalyena veditavyam / yathā śrāvakayānamevaṃ pratyekabuddhayānaprajñaptivyavasthānam / nirabhilāpyaṃ vastvālambanīkṛtya</right>
+  </line>
+  <line refs="199,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="146" label="_">
+    <left>eva ca prajñāyā yat phalam ebhiḥ saptabhirākāraiḥ śrāvakayānaprajñaptivyavasthānaṃ sākalyena veditavyam / yathā śrāvakayānamevaṃ</left>
+    <kwic> pratyekabuddhayānaprajñaptivyavasthānam</kwic>
+    <right> / nirabhilāpyaṃ vastvālambanīkṛtya sarvadharmeṣu yā tathatā nirvikalpasamatā niryāṇatā prajñā tasyā eva ca prajñāyā ya āśraya ālambanaṃ</right>
+  </line>
+  <line refs="199,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="147" label="_">
+    <left>niryāṇatā prajñā tasyā eva ca prajñāyā ya āśraya ālambanaṃ sahāyaḥ karma sambhārastasyā eva ca prajñāyā yatphalam / ityebhiḥ</left>
+    <kwic> saptabhirākārairmahāyānaprajñaptivyavasthānaṃ</kwic>
+    <right> veditavyam / atītānāgatapratyutpanneṣvadhvaṣu ye kecidbodhisattvāḥ samyakprajñaptivyavasthānaṃ kṛtavantaḥ kariṣyanti kurvanti vā</right>
+  </line>
+  <line refs="199,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="148" label="_">
+    <left>/ ityebhiḥ saptabhirākārairmahāyānaprajñaptivyavasthānaṃ veditavyam / atītānāgatapratyutpanneṣvadhvaṣu ye kecidbodhisattvāḥ</left>
+    <kwic> samyakprajñaptivyavasthānaṃ</kwic>
+    <right> kṛtavantaḥ kariṣyanti kurvanti vā punaḥ sarve ta ebhiścatubhirvastubhiḥ / nāta uttari nāto bhūyaḥ / catvārīmāni bodhisattvānāṃ</right>
+  </line>
+  <line refs="199,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="149" label="_">
+    <left>bodhisattvānāṃ sarvadharmāṇāṃ yathābhūtaparijñāyai paryeṣaṇāvastūni / katamāni catvāri / nāmaparyeṣaṇā / vastuparyeṣaṇā /</left>
+    <kwic> svabhāvaprajñaptiparyeṣaṇā</kwic>
+    <right> / viśeṣaprajñaptiparyeṣaṇā ca / eṣāṃ ca vibhāgaḥ pūrvavadveditavyaḥ tadyathā tattvārthapaṭale / &lt;/page&gt;&lt;page&gt; catvārīmāni bodhisattvānāṃ</right>
+  </line>
+  <line refs="199,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="150" label="_">
+    <left>yathābhūtaparijñāyai paryeṣaṇāvastūni / katamāni catvāri / nāmaparyeṣaṇā / vastuparyeṣaṇā / svabhāvaprajñaptiparyeṣaṇā /</left>
+    <kwic> viśeṣaprajñaptiparyeṣaṇā</kwic>
+    <right> ca / eṣāṃ ca vibhāgaḥ pūrvavadveditavyaḥ tadyathā tattvārthapaṭale / &lt;/page&gt;&lt;page&gt; catvārīmāni bodhisattvānāṃ sarvadharmāṇāṃ yathābhūtaparijñānāni</right>
+  </line>
+  <line refs="200,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="151" label="_">
+    <left>sarvadharmāṇāṃ yathābhūtaparijñānāni / katamāni catvāri / nāmaparyeṣaṇāgataṃ yathābhūtaparijñānaṃ vastuparyeṣaṇāgataṃ</left>
+    <kwic> svabhāvaprajñaptiparyeṣaṇāgataṃ</kwic>
+    <right> viśeṣaprajñaptiparyeṣaṇāgataṃ yathābhūtaparijñānam / eṣāmapi vibhāgaḥ pūrvavadveditavyaḥ / [ tadyathā tattvārthapaṭale / ] / pañceme</right>
+  </line>
+  <line refs="200,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="152" label="_">
+    <left>/ katamāni catvāri / nāmaparyeṣaṇāgataṃ yathābhūtaparijñānaṃ vastuparyeṣaṇāgataṃ svabhāvaprajñaptiparyeṣaṇāgataṃ</left>
+    <kwic> viśeṣaprajñaptiparyeṣaṇāgataṃ</kwic>
+    <right> yathābhūtaparijñānam / eṣāmapi vibhāgaḥ pūrvavadveditavyaḥ / [ tadyathā tattvārthapaṭale / ] / pañceme aprameyā bodhisattvānāṃ</right>
+  </line>
+  <line refs="216,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="153" label="_">
+    <left>samyaksaṃbodhimabhisaṃbudhyante arthāya hitāya sukhāya devamanuṣyāṇām / tatra ye kecidbhagavatā bodhisattvānāmadhyāśayā ākhyātāḥ</left>
+    <kwic> prajñaptāḥ</kwic>
+    <right> prakāśitāsteṣu teṣvadhikaraṇeṣu teṣāṃ sarveṣāmebhireva pañcadaśabhiradhyāśayaiḥ saṃgraho veditavyaḥ /</right>
+  </line>
+  <line refs="266,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="154" label="_">
+    <left>tadanyaiḥ punastadanyeṣām / evaṃ pāraṃparyeṇa brahmā preritaṃ sarvasattvanikāye bhramati / tasmād brāhmañcakramitucyate /</left>
+    <kwic> agraprajñaptipatitasya</kwic>
+    <right> niruttaraśāstṛsaṃpatparigṛhītasya cātmano vikhyāpanāt tanmārgadeśanayā ca sarvatadanyapāṣaṇḍapratikṣepaṇāt</right>
+  </line>
+  <line refs="266,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="155" label="_">
+    <left>/ samāsatastvātmahita-pratipattisampat-parahita- [ pratipatti- ] sva parahitapratipattisampadaścāsādhāraṇam / teṣām uttānā vivṛtā</left>
+    <kwic> prajñaptā</kwic>
+    <right> prakāśitā bhavati / aparaḥ samāsārthaparyāyaḥ / prāptavyantaprāptyabhyupāyaḥ / tasya cābhyupāyasya sarvajanyatāyo [ yaḥ ]</right>
+  </line>
+  <line refs="272,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="156" label="_">
+    <left>śrāvakāṇāṃ teṣu teṣvavatāramukheṣvavavādamanuprayacchanti tathāśrāvakabhūmau sarveṇa sarvaṃ nirantaramākhyātamuttānaṃ vivṛtaṃ</left>
+    <kwic> prajñaptaṃ</kwic>
+    <right> prakāśitam / kathañca punastathāgatā bodhisattvamādikarmikaṃ tatprathamakarmikaṃ samādhisambhāraparigrahe</right>
+  </line>
+  <line refs="273,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="157" label="_">
+    <left>kaścitṣaḍāyatanavinirmukto dharmaḥ svabhāvena pariniṣpannaḥ adhyātmaṃ vā bahirdhā vā ubhayamantareṇa vā vidyate / yatredaṃ nāma &lt;/page&gt;&lt;page&gt; saṃjñā</left>
+    <kwic> prajñaptiḥ</kwic>
+    <right> upacāraḥ pravartate sa tvamevaṃ yoniśo manasikurvaṃstaṃ dharmaṃ nopalapsyase / nānyatra te evaṃ bhaviṣyati / āgantukeṣveṣu</right>
+  </line>
+  <line refs="273,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="158" label="_">
+    <left>/ yadā ca te kulaputra tasmin svanāmni āgantukasaṃjñā utpānna bhavati pratilabdhā sa tvaṃ yā te cakṣuṣi cakṣurnāma cakṣuḥsaṃjñā</left>
+    <kwic> cakṣuḥ-prajñaptistāmadhyātmaṃ</kwic>
+    <right> yoniśomanasikuru / evañca punarmanasikuru / asmiñcakṣuṣi dvayamupalabhyate / idaṃ ca nāma saṃjñā prajñaptiścakṣuriti / etacca</right>
+  </line>
+  <line refs="273,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="159" label="_">
+    <left>cakṣuḥ-prajñaptistāmadhyātmaṃ yoniśomanasikuru / evañca punarmanasikuru / asmiñcakṣuṣi dvayamupalabhyate / idaṃ ca nāma saṃjñā</left>
+    <kwic> prajñaptiścakṣuriti</kwic>
+    <right> / etacca vastumātram / yatredaṃ nāma saṃjñā prajñaptiḥ / nāta uttari nāto bhūyaḥ / tatra yaccakṣuṣi nāma saṃjñā prajñaptistattāvanna cakṣuḥ</right>
+  </line>
+  <line refs="273,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="160" label="_">
+    <left>punarmanasikuru / asmiñcakṣuṣi dvayamupalabhyate / idaṃ ca nāma saṃjñā prajñaptiścakṣuriti / etacca vastumātram / yatredaṃ nāma saṃjñā</left>
+    <kwic> prajñaptiḥ</kwic>
+    <right> / nāta uttari nāto bhūyaḥ / tatra yaccakṣuṣi nāma saṃjñā prajñaptistattāvanna cakṣuḥ / yadapi tadvastu yatra cakṣuḥsaṃjñā tadapi</right>
+  </line>
+  <line refs="273,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="161" label="_">
+    <left>saṃjñā prajñaptiścakṣuriti / etacca vastumātram / yatredaṃ nāma saṃjñā prajñaptiḥ / nāta uttari nāto bhūyaḥ / tatra yaccakṣuṣi nāma saṃjñā</left>
+    <kwic> prajñaptistattāvanna</kwic>
+    <right> cakṣuḥ / yadapi tadvastu yatra cakṣuḥsaṃjñā tadapi svabhāvato na cakṣuḥ / tatkasya hetoḥ / na hi tatra cakṣurnāma cakṣuḥsaṃjñāṃ</right>
+  </line>
+  <line refs="273,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="162" label="_">
+    <left>cakṣuḥ / yadapi tadvastu yatra cakṣuḥsaṃjñā tadapi svabhāvato na cakṣuḥ / tatkasya hetoḥ / na hi tatra cakṣurnāma cakṣuḥsaṃjñāṃ</left>
+    <kwic> cakṣuḥprajñaptiṃ</kwic>
+    <right> vinā kasyacit cakṣurbuddhiḥ pravartate / sa cedetadvastu tenātmanā pariniṣpannaṃ syāt / yena nāmnā 'bhilapyate na tatra punastadapekṣā</right>
+  </line>
+  <line refs="273,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="163" label="_">
+    <left>tasmin vastuni cakṣuriti buddhiḥ pravartate / na ca punaḥ pravartamānā upalabhyate tasmādidamapi cakṣurnāma cakṣuḥsaṃjñā</left>
+    <kwic> cakṣuḥprajñaptiḥ</kwic>
+    <right> āgantuke dharme saṃjñā āgantukī / evaṃ te 'dhyātmametaccakṣuryoniśo manasikurvataścakṣuḥsaṃjñāyāmapyāgantukasaṃjñā utpannā</right>
+  </line>
+  <line refs="282,Bbhūmi,śāstra,N/A,abhidharma,yogācāra,foundational" num="164" label="_">
+    <left>tasya samāsato yāvān puṇyaskandho bhagavatā sarvabodhisattvapiṭake saṃgṛhītasya sūtrāntasya śravaṇādikarmaṇa ākhyāta uttāno vivṛtaḥ</left>
+    <kwic> prajñaptaḥ</kwic>
+    <right> prakāśitaḥ tāvānasya puṇyaskandhaḥ pratyāśaṃsitavyaḥ / tatkasya hetoḥ / tathā hyasyāṃ bodhisattvabhūmau sarvasya</right>
+  </line>
+  <line refs="16,Daśabhūmika,sūtra,N/A,N/A,N/A,foundational" num="165" label="_">
+    <left>'māyāvī buddhadharmasaṃghaniyatāśayaḥ / sa imān daśa kuśalān karmapathān satatasamitamanurakṣan evaṃ cittāśayamabhinirharati - yā</left>
+    <kwic> kācitsattvānāmapāyadurgativinipātaprajñaptiḥ</kwic>
+    <right> sarvā sā eṣāṃ daśānāmakuśalānāṃ karmapathānāṃ samādānahetoḥ / hanta ahamātmanaiva samyakpratipattisthitaḥ parān samyakpratipattau</right>
+  </line>
+  <line refs="51,Daśabhūmika,sūtra,N/A,N/A,N/A,foundational" num="166" label="_">
+    <left>dharmapratisaṃvidā abhāvaśarīraṃ dharmāṇāṃ prajānāti / arthapratisaṃvidā udayāstagamanaṃ dharmāṇāṃ prajānāti / niruktipratisaṃvidā</left>
+    <kwic> sarvadharmaprajñaptyacchedanadharmaṃ</kwic>
+    <right> deśayati / pratibhānapratisaṃvidā yathāprajñaptyavikopanatāparyantatayā dharmaṃ deśayati // punaraparaṃ dharmapratisaṃvidā</right>
+  </line>
+  <line refs="51,Daśabhūmika,sūtra,N/A,N/A,N/A,foundational" num="167" label="_">
+    <left>udayāstagamanaṃ dharmāṇāṃ prajānāti / niruktipratisaṃvidā sarvadharmaprajñaptyacchedanadharmaṃ deśayati / pratibhānapratisaṃvidā</left>
+    <kwic> yathāprajñaptyavikopanatāparyantatayā</kwic>
+    <right> dharmaṃ deśayati // punaraparaṃ dharmapratisaṃvidā pratyutpannavibhaktiṃ dharmāṇāṃ prajānāti / arthapratisaṃvidā</right>
+  </line>
+  <line refs="56,Daśabhūmika,sūtra,N/A,N/A,N/A,foundational" num="168" label="_">
+    <left>tathāgatapūjopasthānaṃ ... / tataḥ khalvapi mahāraśmijālamaṇḍalādyāvatī daśasu dikṣu niravaśeṣasarvadharmadhātvantargatā</left>
+    <kwic> puṣpaprajñaptirvā</kwic>
+    <right> gandhadhūpamālyavilepanacūrṇacīvaracchatradhvajapatākāvastrābharaṇamaṇiratnaprajñaptirvā , tato 'tiriktatarāḥ</right>
+  </line>
+  <line refs="56,Daśabhūmika,sūtra,N/A,N/A,N/A,foundational" num="169" label="_">
+    <left>... / tataḥ khalvapi mahāraśmijālamaṇḍalādyāvatī daśasu dikṣu niravaśeṣasarvadharmadhātvantargatā puṣpaprajñaptirvā</left>
+    <kwic> gandhadhūpamālyavilepanacūrṇacīvaracchatradhvajapatākāvastrābharaṇamaṇiratnaprajñaptirvā</kwic>
+    <right> , tato 'tiriktatarāḥ sarvalokaviṣayasamatikrāntā lokottarakuśalamūlasaṃbhārādhipatyābhinirvṛttāḥ sarvākāraguṇasaṃpannā</right>
+  </line>
+  <line refs="66,Daśabhūmika,sūtra,N/A,N/A,N/A,foundational" num="170" label="_">
+    <left>/ vimalāyāṃ bodhisattvabhūmau dauḥśīlyamṛtakuṇapāsaṃvāsataḥ / prabhākaryāṃ bodhisattvabhūmau</left>
+    <kwic> laukikaprajñaptisaṃkhyātyāgataḥ</kwic>
+    <right> / arciṣmatyāṃ bodhisattvabhūmau buddhabhedyaprasādaikarasataḥ / sudurjayāyāṃ bodhisattvabhūmau</right>
+  </line>
+  <line refs="Kāśyapaparivarta,sūtra,N/A,N/A,N/A,foundational" num="171" label="_">
+    <left>kāśyapa 2 catvāro duḥśīlā śīlavantapratirūpakā draṣṭavyāḥ // 135 śīlaṃ śīlam iti kāśyapa ucyate / yatra nātmā + nair . + 3 nātmīyaṃ na satvo na</left>
+    <kwic> satvaprajñaptiḥ</kwic>
+    <right> na kriyā nākriyā / na karaṇaṃ nākaraṇaṃ / na cāro nācāraḥ na pracāro 4 nāpracāraḥ na nāmaṃ na rūpa / na nimittaṃ nānimittaṃ / na śamo na praśamaḥ na</right>
+  </line>
+  <line refs="Kāśyapaparivarta,sūtra,N/A,N/A,N/A,foundational" num="172" label="_">
+    <left>na pracāro 4 nāpracāraḥ na nāmaṃ na rūpa / na nimittaṃ nānimittaṃ / na śamo na praśamaḥ na grāho notsargaḥ na grāhyaṃ nāgrāhya / 5 na satvo na</left>
+    <kwic> satvaprajñaptiḥ</kwic>
+    <right> na vāṅ na vākprajñapti na cittaṃ na cittaprajñaptiḥ na loko nālokaḥ na niśrayo nāniśrayaḥ &lt; page number = &quot; 6 8 r ” &gt; 1 nātmaśīlotkarṣaṇā / na</right>
+  </line>
+  <line refs="Kāśyapaparivarta,sūtra,N/A,N/A,N/A,foundational" num="173" label="_">
+    <left>na nāmaṃ na rūpa / na nimittaṃ nānimittaṃ / na śamo na praśamaḥ na grāho notsargaḥ na grāhyaṃ nāgrāhya / 5 na satvo na satvaprajñaptiḥ na vāṅ na</left>
+    <kwic> vākprajñapti</kwic>
+    <right> na cittaṃ na cittaprajñaptiḥ na loko nālokaḥ na niśrayo nāniśrayaḥ &lt; page number = &quot; 6 8 r ” &gt; 1 nātmaśīlotkarṣaṇā / na paraduḥśīlapaṃsanā / na</right>
+  </line>
+  <line refs="Kāśyapaparivarta,sūtra,N/A,N/A,N/A,foundational" num="174" label="_">
+    <left>nānimittaṃ / na śamo na praśamaḥ na grāho notsargaḥ na grāhyaṃ nāgrāhya / 5 na satvo na satvaprajñaptiḥ na vāṅ na vākprajñapti na cittaṃ na</left>
+    <kwic> cittaprajñaptiḥ</kwic>
+    <right> na loko nālokaḥ na niśrayo nāniśrayaḥ &lt; page number = &quot; 6 8 r ” &gt; 1 nātmaśīlotkarṣaṇā / na paraduḥśīlapaṃsanā / na śīlamanyanā / na śīlakalpanā / na</right>
+  </line>
+  <line refs="Kāśyapaparivarta,sūtra,N/A,N/A,N/A,foundational" num="175" label="_">
+    <left>nākaraṇaṃ / na cāro nācāro na pracāro nāpracāraḥ na nāmarūpam / na nimittaṃ : na śamo na praśamaḥ na grāho notsargaḥ na grāhyaṃ : na satvo na</left>
+    <kwic> satvaprajñaptiḥ</kwic>
+    <right> ( KP-VD ) Hoenrle 143 S.B. 38 + 3 9 + Mannerheim Fragment No . 3 v 7 na vāṅ na vākprajñaptiḥ na cittaṃ na cittaprajñaptiḥ na loko nālokaḥ na niśrayo</right>
+  </line>
+  <line refs="Kāśyapaparivarta,sūtra,N/A,N/A,N/A,foundational" num="176" label="_">
+    <left>na praśamaḥ na grāho notsargaḥ na grāhyaṃ : na satvo na satvaprajñaptiḥ ( KP-VD ) Hoenrle 143 S.B. 38 + 3 9 + Mannerheim Fragment No . 3 v 7 na vāṅ na</left>
+    <kwic> vākprajñaptiḥ</kwic>
+    <right> na cittaṃ na cittaprajñaptiḥ na loko nālokaḥ na niśrayo nāniśrayaḥ nātmaśīlotkarṣaṇā / na parākarmaśīlyapaṃsanā : na śīlamanyanā / na</right>
+  </line>
+  <line refs="Kāśyapaparivarta,sūtra,N/A,N/A,N/A,foundational" num="177" label="_">
+    <left>na grāhyaṃ : na satvo na satvaprajñaptiḥ ( KP-VD ) Hoenrle 143 S.B. 38 + 3 9 + Mannerheim Fragment No . 3 v 7 na vāṅ na vākprajñaptiḥ na cittaṃ na</left>
+    <kwic> cittaprajñaptiḥ</kwic>
+    <right> na loko nālokaḥ na niśrayo nāniśrayaḥ nātmaśīlotkarṣaṇā / na parākarmaśīlyapaṃsanā : na śīlamanyanā / na śīlakalpanā : ( KP-VD ) Hoenrle 143</right>
+  </line>
+  <line refs="12,Lankavatara,sūtra,N/A,N/A,yogācāra,classical" num="178" label="_">
+    <left>jātakāśca kathaṃvidhāḥ / māro bhavetkatividhaḥ pāṣaṇḍāśca katividhāḥ // Lank_ 2 . 3 6 // svabhāvaste katividhaścittaṃ katividhaṃ bhavet /</left>
+    <kwic> prajñaptimātraṃ</kwic>
+    <right> ca kathaṃ brūhi me vadatāṃvara // Lank_ 2 . 3 7 // ghanāḥ khe pavanaṃ kena smṛtirmegho kathaṃ bhavet / taruvallyaḥ kathaṃ kena brūhi me</right>
+  </line>
+  <line refs="16,Lankavatara,sūtra,N/A,N/A,yogācāra,classical" num="179" label="_">
+    <left>jñānaṃ śīlaṃ gotraṃ jinaurasāḥ // Lank_ 2 . 9 0 // yuktavyākhyā guruśiṣyaḥ sattvānāṃ citratā katham / annapānaṃ nabho meghā mārāḥ</left>
+    <kwic> prajñaptimātrakam</kwic>
+    <right> // Lank_ 2 . 9 1 // taruvallyaḥ kathaṃ kena pṛcchase māṃ jinaurasa / kṣetrāṇi citratā kena ṛṣirdīrghatapāstathā // Lank_ 2 . 9 2 // vaṃśaḥ kaste</right>
+  </line>
+  <line refs="17,Lankavatara,sūtra,N/A,N/A,yogācāra,classical" num="180" label="_">
+    <left>aghanapadam , śilpakalāvidyāpadam aśilpakalāvidyāpadam , vāyupadam avāyupadam , bhūmipadam abhūmipadam , cintyapadam acintyapadam ,</left>
+    <kwic> prajñaptipadam</kwic>
+    <right> aprajñaptipadam , svabhāvapadam asvabhāvapadam , skandhapadam askandhapadam , sattvapadam asattvapadam , buddhipadam abuddhipadam ,</right>
+  </line>
+  <line refs="17,Lankavatara,sūtra,N/A,N/A,yogācāra,classical" num="181" label="_">
+    <left>śilpakalāvidyāpadam aśilpakalāvidyāpadam , vāyupadam avāyupadam , bhūmipadam abhūmipadam , cintyapadam acintyapadam , prajñaptipadam</left>
+    <kwic> aprajñaptipadam</kwic>
+    <right> , svabhāvapadam asvabhāvapadam , skandhapadam askandhapadam , sattvapadam asattvapadam , buddhipadam abuddhipadam , nirvāṇapadam</right>
+  </line>
+  <line refs="46,Lankavatara,sūtra,N/A,N/A,yogācāra,classical" num="182" label="_">
+    <left>kṛto māyā / vyañjanakāyaḥ punarmahāmate yaduta yena nāmapadayorabhivyaktirbhavati / vyañjanaṃ liṅgaṃ lakṣaṇamupalabdhiḥ</left>
+    <kwic> prajñaptirityanarthāntaram</kwic>
+    <right> // &lt;/page&gt;&lt;page&gt; punaraparaṃ mahāmate padakāyo yaduta padakāryaniṣṭhā / nāma punarmahāmate yaduta akṣarāṇāṃ ca nāmasvabhāvabhedo</right>
+  </line>
+  <line refs="62,Lankavatara,sūtra,N/A,N/A,yogācāra,classical" num="183" label="_">
+    <left>// Lank_ 3 . 2 5 // mātrā svabhāvasaṃsthānaṃ pratyayairbhāvavarjitam / niṣṭhābhāvaḥ paraṃ brahma etāṃ mātrāṃ vadāmyaham // Lank_ 3 . 2 6 //</left>
+    <kwic> prajñaptisatyato</kwic>
+    <right> hyātmā dravyasanna hi vidyate / skandhānāṃ skandhatā tadvatprajñaptyā na tu dravyataḥ // Lank_ 3 . 2 7 // caturvidhā vai samatā lakṣaṇaṃ</right>
+  </line>
+  <line refs="62,Lankavatara,sūtra,N/A,N/A,yogācāra,classical" num="184" label="_">
+    <left>/ niṣṭhābhāvaḥ paraṃ brahma etāṃ mātrāṃ vadāmyaham // Lank_ 3 . 2 6 // prajñaptisatyato hyātmā dravyasanna hi vidyate / skandhānāṃ skandhatā</left>
+    <kwic> tadvatprajñaptyā</kwic>
+    <right> na tu dravyataḥ // Lank_ 3 . 2 7 // caturvidhā vai samatā lakṣaṇaṃ hetubhāvajam / nairātmyasamatā caiva caturthaṃ yogayoginām // Lank_ 3 . 2 8 //</right>
+  </line>
+  <line refs="68,Lankavatara,sūtra,N/A,N/A,yogācāra,classical" num="185" label="_">
+    <left>// Lank_ 3 . 5 0 // keśoṇḍukaṃ yathā mithyā gṛhyate taimirairjanaiḥ / tathā bhāvavikalpo 'yaṃ mithyā bālairvikalpyate // Lank_ 3 . 5 1 //</left>
+    <kwic> prajñaptimātrātribhavaṃ</kwic>
+    <right> nāsti vastusvabhāvataḥ / prajñaptivastubhāvena kalpayiṣyanti tārkikāḥ // Lank_ 3 . 5 2 // nimittaṃ vastu vijñaptiṃ manovispanditaṃ ca tat /</right>
+  </line>
+  <line refs="68,Lankavatara,sūtra,N/A,N/A,yogācāra,classical" num="186" label="_">
+    <left>taimirairjanaiḥ / tathā bhāvavikalpo 'yaṃ mithyā bālairvikalpyate // Lank_ 3 . 5 1 // prajñaptimātrātribhavaṃ nāsti vastusvabhāvataḥ /</left>
+    <kwic> prajñaptivastubhāvena</kwic>
+    <right> kalpayiṣyanti tārkikāḥ // Lank_ 3 . 5 2 // nimittaṃ vastu vijñaptiṃ manovispanditaṃ ca tat / atikramya tu putrā me nirvikalpāścaranti te //</right>
+  </line>
+  <line refs="93,Lankavatara,sūtra,N/A,N/A,yogācāra,classical" num="187" label="_">
+    <left>/ tattvaṃ bhūtaṃ niścato niṣṭhā prakṛtiḥ svabhāvo 'nupalabdhistattathālakṣaṇam / mayā anyaiśca tathāgatairanugamya yathāvaddeśitaṃ</left>
+    <kwic> prajñaptaṃ</kwic>
+    <right> vivṛtamuttānīkṛtam , yatrānugamya samyagavabodhānucchedāśāśvatato vikalpasyāpravṛttiḥ svapratyātmāryajñānānukūlaṃ</right>
+  </line>
+  <line refs="108,Lankavatara,sūtra,N/A,N/A,yogācāra,classical" num="188" label="_">
+    <left>vettā na ca sarvavettā sarvasya madhye na ca sarvamasti / bālā vikalpenti budhaśca loko na cāpi budhyāmi na ca bodhayāmi // Lank_ 1 0 . 22 //</left>
+    <kwic> prajñaptirnāmamātreyaṃ</kwic>
+    <right> lakṣaṇena na vidyate / skandhāḥ keśoṇḍukākārā yatra bālairvikalpyate // Lank_ 1 0 . 2 3 // nābhūtvā jāyate kiṃcitpratyayairna vinaśyate /</right>
+  </line>
+  <line refs="112,Lankavatara,sūtra,N/A,N/A,yogācāra,classical" num="189" label="_">
+    <left>/ anyanna vidyate dṛśyaṃ yathā bālairvikalpyate // Lank_ 1 0 . 7 0 // saṃkalā buddhabimbaṃ ca bhūtānāṃ ca vidāraṇam / adhiṣṭhanti jagaccitraṃ</left>
+    <kwic> prajñaptyā</kwic>
+    <right> vai suśikṣitāḥ // Lank_ 1 0 . 7 1 // dehaḥ pratiṣṭhā bhogaśca grāhyavijñaptayastrayaḥ / mana udgrahavijñaptivikalpo grāhakāstrayaḥ // Lank_</right>
+  </line>
+  <line refs="113,Lankavatara,sūtra,N/A,N/A,yogācāra,classical" num="190" label="_">
+    <left>// Lank_ 1 0 . 8 4 // &lt;/page&gt;&lt;page&gt; na hyatrotpadyate kiṃcitpratyayairna nirudhyate / utpadyante nirudhyante pratyayā eva kalpitāḥ // Lank_ 1 0 . 8 5 //</left>
+    <kwic> prajñaptimātraṃ</kwic>
+    <right> tribhavaṃ nāsti vastu svabhāvataḥ / prajñaptivastubhāvena kalpayiṣyanti tārkikāḥ // Lank_ 1 0 . 8 6 // bhāvasvabhāvajijñāsā na hi</right>
+  </line>
+  <line refs="113,Lankavatara,sūtra,N/A,N/A,yogācāra,classical" num="191" label="_">
+    <left>nirudhyate / utpadyante nirudhyante pratyayā eva kalpitāḥ // Lank_ 1 0 . 8 5 // prajñaptimātraṃ tribhavaṃ nāsti vastu svabhāvataḥ /</left>
+    <kwic> prajñaptivastubhāvena</kwic>
+    <right> kalpayiṣyanti tārkikāḥ // Lank_ 1 0 . 8 6 // bhāvasvabhāvajijñāsā na hi bhrāntirnivāryate / bhāvasvabhāvānutpattirevaṃ dṛṣṭvā vimucyate //</right>
+  </line>
+  <line refs="122,Lankavatara,sūtra,N/A,N/A,yogācāra,classical" num="192" label="_">
+    <left>vijñānaṃ na pravartate / tadā manomayaṃ kāyaṃ labhate buddhabhūmi ca // Lank_ 1 0 . 22 6 // pratyayā dhātavaḥ skandhā dharmāṇāṃ ca svalakṣaṇam /</left>
+    <kwic> prajñaptiṃ</kwic>
+    <right> pudgalaṃ cittaṃ svapnakeśoṇḍukopamāḥ // Lank_ 1 0 . 22 7 // māyāsvapnopamaṃ lokaṃ dṛṣṭvā tattvaṃ samāśrayet / tattvaṃ hi lakṣaṇairmuktaṃ</right>
+  </line>
+  <line refs="125,Lankavatara,sūtra,N/A,N/A,yogācāra,classical" num="193" label="_">
+    <left>'san vacanaṃ hi tathāpyasat / śūnyatāṃ śūnyatārthaṃ vā bālo 'paśyan vidhāvati // Lank_ 1 0 . 2 6 5 // &lt;/page&gt;&lt;page&gt; satyasthitiṃ manyanayā dṛṣṭvā</left>
+    <kwic> prajñaptideśanā</kwic>
+    <right> / ekatvaṃ pañcadhāsiddhamidaṃ satyaṃ prahīyate // Lank_ 1 0 . 2 66 // prapañcamārabhedyaśca astināsti vyatikramet / nāsticchando bhave</right>
+  </line>
+  <line refs="128,Lankavatara,sūtra,N/A,N/A,yogācāra,classical" num="194" label="_">
+    <left>hi bhautikam // Lank_ 1 0 . 3 1 2 // asaṃbhūtā mahābhūtā nāsti bhūteṣu bhautikam / kāraṇaṃ hi mahābhūtāḥ kāryaṃ bhūsalilādayaḥ // Lank_ 1 0 . 3 1 3 //</left>
+    <kwic> dravyaprajñaptirūpaṃ</kwic>
+    <right> ca māyājātikṛtaṃ tathā / svapnagandharvarūpaṃ ca mṛgatṛṣṇā ca pañcamam // Lank_ 1 0 . 3 1 4 // icchantikaṃ pañcavidhaṃ gotrāḥ pañca tathā</right>
+  </line>
+  <line refs="135,Lankavatara,sūtra,N/A,N/A,yogācāra,classical" num="195" label="_">
+    <left>mithyā vikalpayet / pratyekaśrāvakāṇāṃ ca deśanā na jinaurasām // Lank_ 1 0 . 4 2 7 // saccāsacca sato naiva kṣaṇikaṃ lakṣaṇaṃ na vai /</left>
+    <kwic> prajñaptidravyasannaiva</kwic>
+    <right> cittamātre na vidyate // Lank_ 1 0 . 4 2 8 // bhāvā vidyanti saṃvṛtyā paramārthe na bhāvakāḥ / niḥsvabhāveṣu yā bhrāntistatsatyaṃ</right>
+  </line>
+  <line refs="135,Lankavatara,sūtra,N/A,N/A,yogācāra,classical" num="196" label="_">
+    <left>vidyanti saṃvṛtyā paramārthe na bhāvakāḥ / niḥsvabhāveṣu yā bhrāntistatsatyaṃ saṃvṛtirbhavet // Lank_ 1 0 . 4 2 9 // asatsu sarvadharmeṣu</left>
+    <kwic> prajñaptiḥ</kwic>
+    <right> kriyate mayā / abhilāpo vyavahāraśca bālānāṃ tattvavarjitaḥ // Lank_ 1 0 . 4 3 0 // abhilāpasaṃbhavo bhāvo vidyate hyarthagocaraḥ /</right>
+  </line>
+  <line refs="139,Lankavatara,sūtra,N/A,N/A,yogācāra,classical" num="197" label="_">
+    <left>// Lank_ 1 0 . 4 7 9 // &lt;/page&gt;&lt;page&gt; mātrāsvabhāvasaṃsthānaṃ pratyayairbhāvavarjitam / niṣṭhābhāvaparaṃ brahma etāṃ mātrāṃ vadāmyaham // Lank_ 1 0 . 4 8 0 //</left>
+    <kwic> prajñaptisatyato</kwic>
+    <right> hyātmā dravyaḥ sa hi na vidyate / skandhānāṃ skandhatā tadvatprajñaptyā na tu dravyataḥ // Lank_ 1 0 . 4 8 1 // caturvidhā vai samatā lakṣaṇaṃ</right>
+  </line>
+  <line refs="139,Lankavatara,sūtra,N/A,N/A,yogācāra,classical" num="198" label="_">
+    <left>/ niṣṭhābhāvaparaṃ brahma etāṃ mātrāṃ vadāmyaham // Lank_ 1 0 . 4 8 0 // prajñaptisatyato hyātmā dravyaḥ sa hi na vidyate / skandhānāṃ skandhatā</left>
+    <kwic> tadvatprajñaptyā</kwic>
+    <right> na tu dravyataḥ // Lank_ 1 0 . 4 8 1 // caturvidhā vai samatā lakṣaṇaṃ hetubhājanam / nairātmyasamatā caiva caturthā yogayoginām // Lank_ 1 0 . 4 8 2</right>
+  </line>
+  <line refs="41,Madhyāntavibhāgabhāṣya,śāstra,N/A,philosophy,yogācāra,classical" num="199" label="_">
+    <left>iti veditavyaṃ [ / ] [ 5 . Audārikasūkṣmatattva ] audārikasūkṣmatatvaṃ punaḥ saṃvṛtiparamārthasatyaṃ tan mūlatatve kathaṃ veditavyaṃ /</left>
+    <kwic> prajñaptipratipattitas</kwic>
+    <right> tathodbhāvanayodāraṃ / trividhā hi saṃvṛtiḥ prajñaptisaṃvṛtiḥ / pratipattisaṃvṛtiḥ / udbhāvanāsaṃvṛtiś ca / tayā saṃvṛtisatyatvaṃ</right>
+  </line>
+  <line refs="41,Madhyāntavibhāgabhāṣya,śāstra,N/A,philosophy,yogācāra,classical" num="200" label="_">
+    <left>punaḥ saṃvṛtiparamārthasatyaṃ tan mūlatatve kathaṃ veditavyaṃ / prajñaptipratipattitas tathodbhāvanayodāraṃ / trividhā hi saṃvṛtiḥ</left>
+    <kwic> prajñaptisaṃvṛtiḥ</kwic>
+    <right> / pratipattisaṃvṛtiḥ / udbhāvanāsaṃvṛtiś ca / tayā saṃvṛtisatyatvaṃ mūlatatve yathākramaṃ veditavyaṃ / paramārthan tu ekataḥ // III . 1 0</right>
+  </line>
+  <line refs="48,Madhyāntavibhāgabhāṣya,śāstra,N/A,philosophy,yogācāra,classical" num="201" label="_">
+    <left>parato niryāṇārthena pratyekabuddhayānaṃ / avikalpena jñānena svayaṃ niryāṇārthena mahāyānaṃ veditavyaṃ // [ j . Saṃskṛtāsaṃskṛtārtha ]</left>
+    <kwic> saprajñaptisahetukāt</kwic>
+    <right> / nimittāt praśamāt sārthāt paścimaṃ samudāhṛtaṃ // III . 22 saṃskṛtāsaṃskṛtaṃ tatra saprajñaptir nāmakāyādayaḥ hetur bījasaṃgṛhītam</right>
+  </line>
+  <line refs="48,Madhyāntavibhāgabhāṣya,śāstra,N/A,philosophy,yogācāra,classical" num="202" label="_">
+    <left>// [ j . Saṃskṛtāsaṃskṛtārtha ] saprajñaptisahetukāt / nimittāt praśamāt sārthāt paścimaṃ samudāhṛtaṃ // III . 22 saṃskṛtāsaṃskṛtaṃ tatra</left>
+    <kwic> saprajñaptir</kwic>
+    <right> nāmakāyādayaḥ hetur bījasaṃgṛhītam ālayavijñānaṃ / nimittaṃ pratiṣṭhādehabhogasaṃgṛhītaṃ / pravṛttivijñānasaṃgṛhītāś ca</right>
+  </line>
+  <line refs="48,Madhyāntavibhāgabhāṣya,śāstra,N/A,philosophy,yogācāra,classical" num="203" label="_">
+    <left>bījasaṃgṛhītam ālayavijñānaṃ / nimittaṃ pratiṣṭhādehabhogasaṃgṛhītaṃ / pravṛttivijñānasaṃgṛhītāś ca manaudgrahavikalpaḥ / etat</left>
+    <kwic> saprajñaptisahetukaṃ</kwic>
+    <right> nimittaṃ sasaṃprayogaṃ saṃskṛtaṃ veditavyaṃ / tatra mano yan nityaṃ manyanākāraṃ / udgrahaḥ pañcavijñānakāyāḥ vikalpo manovijñānaṃ ( / )</right>
+  </line>
+  <line refs="63,Madhyāntavibhāgabhāṣya,śāstra,N/A,philosophy,yogācāra,classical" num="204" label="_">
+    <left>ca pratyanubhavati / satvāṃś ca paripācayati / uktā paramā pratipattiḥ / [ b . Manasikārapratipatti ] &lt;/page&gt;&lt;page&gt; manasikārapratipattiḥ katamā /</left>
+    <kwic> yathāprajñaptito</kwic>
+    <right> dharmamahāyānamanaskriyā / bodhisatvasya satataṃ prajñayā triprakārayā // V . 7 dānādīny adhikṛtya yathāprajñaptānāṃ sūtrādidharmāṇāṃ</right>
+  </line>
+  <line refs="63,Madhyāntavibhāgabhāṣya,śāstra,N/A,philosophy,yogācāra,classical" num="205" label="_">
+    <left>katamā / yathāprajñaptito dharmamahāyānamanaskriyā / bodhisatvasya satataṃ prajñayā triprakārayā // V . 7 dānādīny adhikṛtya</left>
+    <kwic> yathāprajñaptānāṃ</kwic>
+    <right> sūtrādidharmāṇāṃ mahāyāne manasikaraṇam abhīkṣṇaṃ śrutacintābhāvanāmayyā prajñayā manasikārapratipattiḥ / sā triprakārayā prajñayā</right>
+  </line>
+  <line refs="70,Madhyāntavibhāgabhāṣya,śāstra,N/A,philosophy,yogācāra,classical" num="206" label="_">
+    <left>madhyamā pratipad yā rūpādīnāṃ na nityapratyavekṣā nānityapratyavekṣā / ātmeti pudgalasamāropāntaḥ nairātmyam ity apavādāntaḥ</left>
+    <kwic> prajñaptisato</kwic>
+    <right> 'py apavādāt / tatparivarjanārthaṃ madhyamā pratipad yad ātmanairātmyayor madhyaṃ nirvikalpaṃ jñānaṃ / bhūtaṃ cittam iti</right>
+  </line>
+  <line refs="74,Madhyāntavibhāgabhāṣya,śāstra,N/A,philosophy,yogācāra,classical" num="207" label="_">
+    <left>ca prativedhaḥ pratānatā / &lt;/page&gt;&lt;page&gt; pragamaḥ praśaṭhatvaṃ ca prakarṣālambanaṃ mataṃ // V . 2 8 ity etat / dvādaśavidham ālambanaṃ / yad uta</left>
+    <kwic> dharmaprajñaptivyavasthānālambanaṃ</kwic>
+    <right> dharmadhātvālambanaṃ sādhyālambanaṃ sādhanālambanaṃ / dhāraṇālambanaṃ avadhāraṇālambanaṃ / pradhāraṇālambanaṃ /</right>
+  </line>
+  <line refs="76,Madhyāntavibhāgabhāṣya,śāstra,N/A,philosophy,yogācāra,classical" num="208" label="_">
+    <left>/ samāsatas trividham ānuttaryaṃ pratipattiḥ ( / ) pratipattyādhāraḥ pratipattiphalaṃ caiva / sā ca pratipattir yādṛśī paramā / yena ca</left>
+    <kwic> yathāprajñaptito</kwic>
+    <right> dharmamahāyānamanaskriyā ( V . 7 ab ) ity evamādinā / yathā yena prakāreṇāvikṣepapariṇatā ca śamathabhāvanayā aviparyāsapariṇatā ca</right>
+  </line>
+  <line refs="MMK,śāstra,Nāgārjuna,philosophy,Madhyamaka,foundational" num="209" label="_">
+    <left>/ prajñapyate ca śūnyena kathaṃ śūnyas tathāgataḥ // MMK_ 22 . 1 0 // śūnyam iti na vaktavyam aśūnyam iti vā bhavet / ubhayaṃ nobhayaṃ ceti</left>
+    <kwic> prajñaptyarthaṃ</kwic>
+    <right> tu kathyate // MMK_ 22 . 11 // śāśvatāśāśvatādy atra kutaḥ śānte catuṣṭayam / antānantādi cāpy atra kutaḥ śānte catuṣṭayam // MMK_ 22 . 1 2 //</right>
+  </line>
+  <line refs="MMK,śāstra,Nāgārjuna,philosophy,Madhyamaka,foundational" num="210" label="_">
+    <left>kartāraṃ karaṇaṃ kriyām / utpādaṃ ca nirodhaṃ ca phalaṃ ca pratibādhase // MMK_ 2 4 . 1 7 // yaḥ pratītyasamutpādaḥ śūnyatāṃ tāṃ pracakṣmahe / sā</left>
+    <kwic> prajñaptir</kwic>
+    <right> upādāya pratipat saiva madhyamā // MMK_ 2 4 . 1 8 // apratītya samutpanno dharmaḥ kaścin na vidyate / yasmāt tasmād aśūnyo hi dharmaḥ kaścin na</right>
+  </line>
+  <line refs="54,mahāyānasūtrālaṃkāraḥ,śāstra,N/A,philosophy,yogācāra,classical" num="211" label="_">
+    <left>vivādādhikaraṇādibhiḥ | abhigamyate sūtrārtha etenety abhidharmaḥ | āpatter utthānād vyutthānān niḥsṛteś ca vinayatvam | pudgalataḥ</left>
+    <kwic> prajñapteḥ</kwic>
+    <right> pravibhāgaviniścayāc caiva || AMsa_ 11 . 4 || āpattitaḥ samutthānato vyutthānato niḥsaraṇataś ca veditavyaḥ | tatrāpattiḥ &lt;/page&gt;</right>
+  </line>
+  <line refs="55,mahāyānasūtrālaṃkāraḥ,śāstra,N/A,philosophy,yogācāra,classical" num="212" label="_">
+    <left>āśayato na daṇḍakarmataḥ | niḥsaraṇaṃ saptavidhaṃ | pratideśanā | abhyupagamaḥ śikṣādattakādīnāṃ daṇḍakarmaṇaḥ | samavadyotaḥ</left>
+    <kwic> prajñapte</kwic>
+    <right> śikṣāpade punaḥ paryāyeṇa | ajñānāt prasrabdhiḥ samagreṇa saṃghena śikṣāpadastha pratiprasrambhaṇāt | āśrayaparivṛttir</right>
+  </line>
+  <line refs="55,mahāyānasūtrālaṃkāraḥ,śāstra,N/A,philosophy,yogācāra,classical" num="213" label="_">
+    <left>kṣudrānukṣudrāpannābhāve dharmapratilambhāt | punaś caturvidhenārthena vinayo veditavyaḥ | pudgalato yam āgamya śikṣā prajñapyate |</left>
+    <kwic> prajñaptito</kwic>
+    <right> yadā 'rocite pudgalāparādhe śāstā saṃnipātya saṃghaśikṣāṃ prajñāpayati | pravibhāgato yaḥ prajñapte śikṣāpade tad uddeśasya vibhāgaḥ |</right>
+  </line>
+  <line refs="55,mahāyānasūtrālaṃkāraḥ,śāstra,N/A,philosophy,yogācāra,classical" num="214" label="_">
+    <left>yam āgamya śikṣā prajñapyate | prajñaptito yadā 'rocite pudgalāparādhe śāstā saṃnipātya saṃghaśikṣāṃ prajñāpayati | pravibhāgato yaḥ</left>
+    <kwic> prajñapte</kwic>
+    <right> śikṣāpade tad uddeśasya vibhāgaḥ | viniścayataś ca tatrāpattiḥ kathaṃ bhavaty anāpattir veti nirdhāraṇāt | ālambanalābhaparyeṣṭau</right>
+  </line>
+  <line refs="80,mahāyānasūtrālaṃkāraḥ,śāstra,N/A,philosophy,yogācāra,classical" num="215" label="_">
+    <left>pratipattinairyāṇikatvāt | anantā sarvaparapravādibhir anāchedyatvāt | kalā rañjikatvāt | vinītā rāgādipratipakṣatvāt | akarkaśā</left>
+    <kwic> śikṣāprajñaptisukhopāyatvāt</kwic>
+    <right> | aparuṣā tadvyatikramasaṃpanniḥsaraṇopadeśakatvāt | suvinītā yānatrayanayopadeśikatvāt | karṇasukhā vikṣepapratipakṣatvāt |</right>
+  </line>
+  <line refs="154,mahāyānasūtrālaṃkāraḥ,śāstra,N/A,philosophy,yogācāra,classical" num="216" label="_">
+    <left>evaṃ paryanuyogato 'pi kṣaṇikatvaṃ sarvasaṃskārāṇāṃ prasiddhaṃ | pudgalanairātmyaprasādhanārthaṃ nairātmyavibhāge dvādaśa ślokaḥ |</left>
+    <kwic> prajñaptyastitayā</kwic>
+    <right> vācyaḥ pudgalo dravyato na tu | nopalambhād viparyāsāt saṃkleśāt kliṣṭahetutaḥ || AMsa_ 1 8 . 9 2 || ekatvānyatvato vācyas tasmād doṣadvayād</right>
+  </line>
+  <line refs="155,mahāyānasūtrālaṃkāraḥ,śāstra,N/A,philosophy,yogācāra,classical" num="217" label="_">
+    <left>'nādikālikaḥ | ayatnamokṣaḥ sarveṣāṃ na mokṣaḥ pudgalo 'sti vā || AMsa_ 1 8 . 1 0 3 || pudgalaḥ kim astīti vaktavyo nāstīti vaktavyaḥ | āha |</left>
+    <kwic> prajñaptyastitayā</kwic>
+    <right> vācyaḥ pudgalo dravyato na tu | yataś ca prajñaptito 'stīti vaktavyo dravyato nāstīti vaktavyaḥ | evam anekāṃśavādaparigrahe naivāstitve</right>
+  </line>
+  <line refs="155,mahāyānasūtrālaṃkāraḥ,śāstra,N/A,philosophy,yogācāra,classical" num="218" label="_">
+    <left>'sti vā || AMsa_ 1 8 . 1 0 3 || pudgalaḥ kim astīti vaktavyo nāstīti vaktavyaḥ | āha | prajñaptyastitayā vācyaḥ pudgalo dravyato na tu | yataś ca</left>
+    <kwic> prajñaptito</kwic>
+    <right> 'stīti vaktavyo dravyato nāstīti vaktavyaḥ | evam anekāṃśavādaparigrahe naivāstitve doṣāvakāśo na nāstitve | sa punar dravyato nāstīti</right>
+  </line>
+  <line refs="156,mahāyānasūtrālaṃkāraḥ,śāstra,N/A,philosophy,yogācāra,classical" num="219" label="_">
+    <left>caiṣa saṃkleśa iti kathaṃ veditavyaṃ | kliṣṭahetutaḥ | tathā hi tadhetukāḥ kliṣṭā &lt;/page&gt;&lt;page&gt; rāgādaya utpadyante | yatra punar vastuni rūpādisaṃjñake</left>
+    <kwic> prajñaptiḥ</kwic>
+    <right> pudgala iti tasmāt kim ekatvena pudgalo vaktavya āhosvid anyatvena | āha | ekatvānyatvato vācyas tasmād asau | kiṃ kāraṇaṃ | doṣadvayāt |</right>
+  </line>
+  <line refs="156,mahāyānasūtrālaṃkāraḥ,śāstra,N/A,philosophy,yogācāra,classical" num="220" label="_">
+    <left>| ekatve hi skandhānām ātmatvaṃ prasajyate pudgalasya ca dravyasatvaṃ | athānyatve pudgalsya dravyasatyaṃ | evaṃ hi pudgalsya</left>
+    <kwic> prajñaptito</kwic>
+    <right> 'stitvād avaktavyatvaṃ yuktaḥ | tenāvyākṛtavastusiddhaḥ | ye punaḥ śāstuḥ śāsanam atikramya pudgalsya dravyato 'stitvam icchanti ta idaṃ</right>
+  </line>
+  <line refs="159,mahāyānasūtrālaṃkāraḥ,śāstra,N/A,philosophy,yogācāra,classical" num="221" label="_">
+    <left>vyavadāne ca avasthāc chedabhinnake | vṛttisaṃtānabhedo hi pudgalenopadarśitaḥ || avasthābhinne hi saṃkleśavyavadāne chedabhinne ca |</left>
+    <kwic> pudgalaprajñaptim</kwic>
+    <right> antareṇa tadvṛttibhedaḥ saṃtānabhedaś ca deśayituṃ na śakyaḥ | parijñāsūtre parijñeyā dharmāḥ saṃkleśaḥ parijñā vyavadānaṃ |</right>
+  </line>
+  <line refs="159,mahāyānasūtrālaṃkāraḥ,śāstra,N/A,philosophy,yogācāra,classical" num="222" label="_">
+    <left>vyavadānaṃ | bhārahārasūtre | bhāro bhārādānaṃ ca saṃkleśaḥ | bhāranikṣepaṇaṃ vyavadānaṃ | tayor vṛttibhedaḥ saṃtānabhedaś cāntareṇa</left>
+    <kwic> parijñātāvībhārahārapudgalaprajñaptiṃ</kwic>
+    <right> na śakyeta deśayituṃ | bodhipakṣāś ca dharmā bahudhāvasthāḥ prayogadarśanabhāvanāniṣṭhāmārgaviśeṣabhedataḥ | teṣāṃ vṛttibhedaḥ</right>
+  </line>
+  <line refs="159,mahāyānasūtrālaṃkāraḥ,śāstra,N/A,philosophy,yogācāra,classical" num="223" label="_">
+    <left>| bodhipakṣāś ca dharmā bahudhāvasthāḥ prayogadarśanabhāvanāniṣṭhāmārgaviśeṣabhedataḥ | teṣāṃ vṛttibhedaḥ saṃtānabhedaś cāntareṇa</left>
+    <kwic> śraddhānusāryādipudgalaprajñaptiṃ</kwic>
+    <right> na śakyeta deśayituṃ | yenāsati dravyato 'stitve pudgalo deśita ity ayam atra nayo veditavyaḥ | itarathā hi pudgaladeśanā niṣprayojanā</right>
+  </line>
+  <line refs="167,mahāyānasūtrālaṃkāraḥ,śāstra,N/A,philosophy,yogācāra,classical" num="224" label="_">
+    <left>ṣaḍvidhaṃ pradhānaṃ | tatra śīlaviśuddhir āryakāntaṃ śīlaṃ | antyā sakaruṇā sthitiś caturthaṃ karuṇā 'pramāṇayuktaṃ | śeṣaṃ gatārthaṃ |</left>
+    <kwic> prajñaptivyavasthānavibhāge</kwic>
+    <right> catvāraḥ ślokaḥ | vidyāsthānavyavasthānaṃ sūtrādyākārabhedataḥ | jñeyaṃ dharmavyavasthānaṃ dhīmatāṃ sarvabhūmiṣu || AMsa_ 1 9 . 4 3 ||</right>
+  </line>
+  <line refs="167,mahāyānasūtrālaṃkāraḥ,śāstra,N/A,philosophy,yogācāra,classical" num="225" label="_">
+    <left>|| AMsa_ 1 9 . 4 5 || āśayād deśanāc caiva prayogāt saṃbhṛter api | samudāgamabhedāc ca trividhaṃ yānam iṣyate || AMsa_ 1 9 . 4 6 || caturvidhaṃ</left>
+    <kwic> prajñaptivyavasthānaṃ</kwic>
+    <right> | dharmasatyayuktiyānaprajñaptivyavasthānabhedāt | tatra &lt;/page&gt;&lt;page&gt; pañcavidyāsthānavyavasthānaṃ dharmavyavasthānaṃ veditavyaṃ</right>
+  </line>
+  <line refs="167,mahāyānasūtrālaṃkāraḥ,śāstra,N/A,philosophy,yogācāra,classical" num="226" label="_">
+    <left>deśanāc caiva prayogāt saṃbhṛter api | samudāgamabhedāc ca trividhaṃ yānam iṣyate || AMsa_ 1 9 . 4 6 || caturvidhaṃ prajñaptivyavasthānaṃ |</left>
+    <kwic> dharmasatyayuktiyānaprajñaptivyavasthānabhedāt</kwic>
+    <right> | tatra &lt;/page&gt;&lt;page&gt; pañcavidyāsthānavyavasthānaṃ dharmavyavasthānaṃ veditavyaṃ sūtrageyādibhir ākārabhedaiḥ | tadantarbhūtāny eva tadanyāni</right>
+  </line>
+  <line refs="168,mahāyānasūtrālaṃkāraḥ,śāstra,N/A,philosophy,yogācāra,classical" num="227" label="_">
+    <left>pravṛttitathatāṃ lakṣaṇatathatāṃ vijñaptitathatāṃ saṃniveśatathatāṃ mithyāpratipattitathatāṃ samyakpratipattitathatāṃ ca |</left>
+    <kwic> yuktiprajñaptivyavasthānaṃ</kwic>
+    <right> caturvidhaṃ | apekṣāyuktiḥ | kāryakāraṇayuktiḥ | upapattisādhanayuktiḥ | dharmatāyuktiś ca | yānaprajñaptivyavasthānaṃ trividhaṃ |</right>
+  </line>
+  <line refs="168,mahāyānasūtrālaṃkāraḥ,śāstra,N/A,philosophy,yogācāra,classical" num="228" label="_">
+    <left>ca | yuktiprajñaptivyavasthānaṃ caturvidhaṃ | apekṣāyuktiḥ | kāryakāraṇayuktiḥ | upapattisādhanayuktiḥ | dharmatāyuktiś ca |</left>
+    <kwic> yānaprajñaptivyavasthānaṃ</kwic>
+    <right> trividhaṃ | śrāvakayānaṃ | pratyekabuddhayānaṃ | mahāyānaṃ | tatrāpekṣāyuktis triṣv api yāneṣu yoniśomanaskāraḥ | tam apekṣya tena</right>
+  </line>
+  <line refs="168,mahāyānasūtrālaṃkāraḥ,śāstra,N/A,philosophy,yogācāra,classical" num="229" label="_">
+    <left>yathāprayogaṃ saṃbhāraḥ | yathāsaṃbhāraṃ ca bodhisamudāgama iti | paryeṣaṇāvibhāge ślokaḥ | āgantukatvaparyeṣā anyonyaṃ nāma vastunoḥ |</left>
+    <kwic> prajñapter</kwic>
+    <right> dvividhasyātra tanmātratvasya vaiṣaṇā || AMsa_ 1 9 . 4 7 || caturvidhā paryeṣaṇā dharmāṇāṃ | nāmaparyṣaṇā vastuparyeṣaṇā |</right>
+  </line>
+  <line refs="168,mahāyānasūtrālaṃkāraḥ,śāstra,N/A,philosophy,yogācāra,classical" num="230" label="_">
+    <left>| prajñapter dvividhasyātra tanmātratvasya vaiṣaṇā || AMsa_ 1 9 . 4 7 || caturvidhā paryeṣaṇā dharmāṇāṃ | nāmaparyṣaṇā vastuparyeṣaṇā |</left>
+    <kwic> svabhāvaprajñaptiparyeṣaṇā</kwic>
+    <right> | viśeṣaprajñaptiparyeṣaṇā ca | tatra nāmno vastuny āgantukatvaparyeṣaṇā nāmaparyeṣaṇā veditavyā | vastuno nāmny āgantukatvaparyeṣaṇā</right>
+  </line>
+  <line refs="168,mahāyānasūtrālaṃkāraḥ,śāstra,N/A,philosophy,yogācāra,classical" num="231" label="_">
+    <left>tanmātratvasya vaiṣaṇā || AMsa_ 1 9 . 4 7 || caturvidhā paryeṣaṇā dharmāṇāṃ | nāmaparyṣaṇā vastuparyeṣaṇā | svabhāvaprajñaptiparyeṣaṇā |</left>
+    <kwic> viśeṣaprajñaptiparyeṣaṇā</kwic>
+    <right> ca | tatra nāmno vastuny āgantukatvaparyeṣaṇā nāmaparyeṣaṇā veditavyā | vastuno nāmny āgantukatvaparyeṣaṇā vastuparyeṣaṇā veditavyā |</right>
+  </line>
+  <line refs="168,mahāyānasūtrālaṃkāraḥ,śāstra,N/A,philosophy,yogācāra,classical" num="232" label="_">
+    <left>āgantukatvaparyeṣaṇā nāmaparyeṣaṇā veditavyā | vastuno nāmny āgantukatvaparyeṣaṇā vastuparyeṣaṇā veditavyā | tadubhayābhisaṃbandhe</left>
+    <kwic> svabhāvaviśeṣaprajñaptyoḥ</kwic>
+    <right> prajñaptimātratvaparyeṣaṇā svabhāvaviśeṣaprajñaptiparyeṣaṇā veditavyā | yathābhūtaparihāravibhāge daśa ślokaḥ |</right>
+  </line>
+  <line refs="168,mahāyānasūtrālaṃkāraḥ,śāstra,N/A,philosophy,yogācāra,classical" num="233" label="_">
+    <left>veditavyā | vastuno nāmny āgantukatvaparyeṣaṇā vastuparyeṣaṇā veditavyā | tadubhayābhisaṃbandhe svabhāvaviśeṣaprajñaptyoḥ</left>
+    <kwic> prajñaptimātratvaparyeṣaṇā</kwic>
+    <right> svabhāvaviśeṣaprajñaptiparyeṣaṇā veditavyā | yathābhūtaparihāravibhāge daśa ślokaḥ | sarvasyānupalambhāc ca bhūtajñānaṃ</right>
+  </line>
+  <line refs="168,mahāyānasūtrālaṃkāraḥ,śāstra,N/A,philosophy,yogācāra,classical" num="234" label="_">
+    <left>āgantukatvaparyeṣaṇā vastuparyeṣaṇā veditavyā | tadubhayābhisaṃbandhe svabhāvaviśeṣaprajñaptyoḥ prajñaptimātratvaparyeṣaṇā</left>
+    <kwic> svabhāvaviśeṣaprajñaptiparyeṣaṇā</kwic>
+    <right> veditavyā | yathābhūtaparihāravibhāge daśa ślokaḥ | sarvasyānupalambhāc ca bhūtajñānaṃ caturvidhaṃ | sarvārthasiddhyai dhīrāṇāṃ</right>
+  </line>
+  <line refs="168,mahāyānasūtrālaṃkāraḥ,śāstra,N/A,philosophy,yogācāra,classical" num="235" label="_">
+    <left>dhīrāṇāṃ sarvabhūmiṣu jāyate || AMsa_ 1 9 . 4 8 || caturvidhaṃ yathābhūtaparijñānaṃ dharmāṇāṃ nāmaparyeṣaṇāgatam | vastuparyeṣaṇāgataṃ |</left>
+    <kwic> svabhāvaprajñaptiparyeṣaṇāgataṃ</kwic>
+    <right> | viśeṣaparjñaptiparyeṣaṇāgataṃ ca | tac ca sarvasyāsya &lt;/page&gt;&lt;page&gt; nāmādikasyānupalambhād veditavyaṃ | uttarārdhena yathābhūtaparijñānasya</right>
+  </line>
+  <line refs="144,Rāṣṭrapālaparipṛcchā,sūtra,N/A,N/A,N/A,foundational" num="236" label="_">
+    <left>saptānāṃ ratnānāmaṣṭāpadanibaddhaṃ toraṇasaptapratimaṇḍitam / tatra caikaḥ prāsādaḥ kārito 'bhūt , yatra catasraḥ śayanakoṭyaḥ</left>
+    <kwic> prajñaptamabhūtkumārasya</kwic>
+    <right> paribhogārtham / tatra ca madhye udyānaṃ māpitamabhūtsarvapuṣpavṛkṣasarvaphalavṛkṣasarvaratnavṛkṣapratisphuṭaṃ</right>
+  </line>
+  <line refs="144,Rāṣṭrapālaparipṛcchā,sūtra,N/A,N/A,N/A,foundational" num="237" label="_">
+    <left>upariratnajālasaṃchāditābhūt , mā kumārasya rajo pāṃśurvā śarīre nipatiṣyatīti // tena ca samayena tasmin prāsāde catasra āsanakoṭyaḥ</left>
+    <kwic> prajñaptā</kwic>
+    <right> abhūvan saptaratnamayyaḥ / sarvasmiṃścāsane pañca pañca dūṣyaśatāni prajñptānyabhūvan / tatra ca madhye āsanaṃ prajñaptaṃ</right>
+  </line>
+  <line refs="144,Rāṣṭrapālaparipṛcchā,sūtra,N/A,N/A,N/A,foundational" num="238" label="_">
+    <left>āsanakoṭyaḥ prajñaptā abhūvan saptaratnamayyaḥ / sarvasmiṃścāsane pañca pañca dūṣyaśatāni prajñptānyabhūvan / tatra ca madhye āsanaṃ</left>
+    <kwic> prajñaptaṃ</kwic>
+    <right> saptaratnamayaṃ saptapauruṣamuccatvena aśītidūṣyakoṭibhiḥ prajñaptam , yatra puṇyaraśmī rājakumāro &lt;/page&gt;&lt;page&gt; niṣetsyata iti / sarvatra</right>
+  </line>
+  <line refs="144,Rāṣṭrapālaparipṛcchā,sūtra,N/A,N/A,N/A,foundational" num="239" label="_">
+    <left>pañca dūṣyaśatāni prajñptānyabhūvan / tatra ca madhye āsanaṃ prajñaptaṃ saptaratnamayaṃ saptapauruṣamuccatvena aśītidūṣyakoṭibhiḥ</left>
+    <kwic> prajñaptam</kwic>
+    <right> , yatra puṇyaraśmī rājakumāro &lt;/page&gt;&lt;page&gt; niṣetsyata iti / sarvatra cāsanamūle agarugandhaghaṭikā dhūpyate / triṣkṛtvo divasasya triṣkṛtvo rātreḥ</right>
+  </line>
+  <line refs="157,Rāṣṭrapālaparipṛcchā,sūtra,N/A,N/A,N/A,foundational" num="240" label="_">
+    <left>taṃ tathāgataṃ pratipādayati sma sārdhaṃ bhikṣusaṃghena / sarveṣāṃ teṣāṃ bhikṣūṇāṃ saptaratnacitān vihārān kārayāmāsa maṇicaṃkramān</left>
+    <kwic> prajñaptānupari</kwic>
+    <right> ca ratnajālavitānavitatān vāmadakṣiṇena puṣpavṛkṣasupariniṣṭhitān / puṇḍarīkapuṣkariṇyupaśibhitānyubhayato</right>
+  </line>
+  <line refs="157,Rāṣṭrapālaparipṛcchā,sūtra,N/A,N/A,N/A,foundational" num="241" label="_">
+    <left>prajñaptānupari ca ratnajālavitānavitatān vāmadakṣiṇena puṣpavṛkṣasupariniṣṭhitān / puṇḍarīkapuṣkariṇyupaśibhitānyubhayato</left>
+    <kwic> mukhanirmaladūṣyaśatasahasraprajñaptāni</kwic>
+    <right>&lt;/page&gt;&lt;page&gt; śayyāsanāni / ekaikasya ca bhikṣorabhivandya cīvaro dīyate sma ekaikaḥ / anyonyāni cīvarāṇyanipradīyante divase divase / sa</right>
+  </line>
+  <line refs="Ratnāvalī,śāstra,Nāgārjuna,N/A,Madhyamaka,foundational" num="242" label="_">
+    <left>udayaṃ paśyan nāstitām ativartate | astitām api nopaiti nirodhaṃ saha hetunā || RATNA_ 0 1 . 4 6 prāgjātaḥ sahajātaś ca hetur ahetuko 'rthataḥ |</left>
+    <kwic> prajñapter</kwic>
+    <right> apratītatvād utpatteś caiva tattvataḥ || RATNA_ 0 1 . 4 7 asmin satīdaṃ bhavati dīrghe hrasvaṃ yathā sati | [ tasyotpādād udetīdaṃ dīpotpādād</right>
+  </line>
+  <line refs="17,Ratnagotravibhāga,śāstra,Sāramati,N/A,TG,classical" num="243" label="_">
+    <left>/ kāruṇyamutpādya paraṃ pareṣu sa śīlavāṃstatpratirūpako 'nya iti // tatra kenārthena kimadhikṛtya bhagavatā śaraṇatrayaṃ</left>
+    <kwic> prajñaptam</kwic>
+    <right> // śāstṛśāsanaśiṣyārthairadhikṛtya triyānikān / kāratrayādhimuktāṃśca prajñaptaṃ śaraṇatrayam // 19 // &lt;/page&gt;&lt;page&gt; buddhaḥ śaraṇamagryatvād</right>
+  </line>
+  <line refs="17,Ratnagotravibhāga,śāstra,Sāramati,N/A,TG,classical" num="244" label="_">
+    <left>kenārthena kimadhikṛtya bhagavatā śaraṇatrayaṃ prajñaptam // śāstṛśāsanaśiṣyārthairadhikṛtya triyānikān / kāratrayādhimuktāṃśca</left>
+    <kwic> prajñaptaṃ</kwic>
+    <right> śaraṇatrayam // 19 // &lt;/page&gt;&lt;page&gt; buddhaḥ śaraṇamagryatvād dvipadānāmiti śāstṛguṇodbhāvanārthena buddhabhāvāyopagatān bodhisattvān pudgalān</right>
+  </line>
+  <line refs="18,Ratnagotravibhāga,śāstra,Sāramati,N/A,TG,classical" num="245" label="_">
+    <left>śāstṛguṇodbhāvanārthena buddhabhāvāyopagatān bodhisattvān pudgalān buddhe ca paramakārakriyādhimuktānadhikṛtya deśitaṃ</left>
+    <kwic> prajñaptam</kwic>
+    <right> / dharmaḥ śaraṇamagryatvādvirāgāṇāmiti śāstṛḥ śāsana guṇodbhāvanārthena svayaṃ pratītya gambhīradharmānubodhāyopagatān</right>
+  </line>
+  <line refs="18,Ratnagotravibhāga,śāstra,Sāramati,N/A,TG,classical" num="246" label="_">
+    <left>pratītya gambhīradharmānubodhāyopagatān pratyekabuddhayānikān pudgalān dharme ca paramakārakriyādhimuktānadhikṛtya deśitaṃ</left>
+    <kwic> prajñaptam</kwic>
+    <right> / saṃghaḥ śaraṇamagryatvādgaṇānāmiti śāstuḥ śāsane supratipannaśiṣyaguṇodbhāvanārthena parataḥ śravaghoṣasyānugamāyopagatān</right>
+  </line>
+  <line refs="18,Ratnagotravibhāga,śāstra,Sāramati,N/A,TG,classical" num="247" label="_">
+    <left>parataḥ śravaghoṣasyānugamāyopagatān śrāvakayānikān pudgalān saṃghe ca paramakārākriyādhimuktānadhikṛtya deśitaṃ</left>
+    <kwic> prajñaptam</kwic>
+    <right> / ityanena samāsatastrividhenārthena ṣaṭ pudgalānadhikṛtya prabhedayo bhagavatā saṃvṛtipadasthānena</right>
+  </line>
+  <line refs="18,Ratnagotravibhāga,śāstra,Sāramati,N/A,TG,classical" num="248" label="_">
+    <left>ṣaṭ pudgalānadhikṛtya prabhedayo bhagavatā saṃvṛtipadasthānena sattvānāmanupūrvanayāvatārārthamimāni trīṇi śaraṇāni deśitāni</left>
+    <kwic> prajñaptāni</kwic>
+    <right> / tyājyatvān moṣadharmatvādabhāvāt sabhayatvataḥ / dharmo dvidhāryasaṃghaśca nātyantaṃ śaraṇaṃ param // 20 // dvividho dharmaḥ /</right>
+  </line>
+  <line refs="72,Ratnagotravibhāga,śāstra,Sāramati,N/A,TG,classical" num="249" label="_">
+    <left>nirvāṇādhigamo 'pi ca // tatra kathamanādikālikaḥ / yattathāgatagarbhamevādhikṛtya bhagavatā pūrva koṭirna prajñāyata iti deśitaṃ</left>
+    <kwic> prajñaptam</kwic>
+    <right> / dhāturiti / yadāha / yo 'yaṃ bhagavaṃstathāgatagarbho &lt;/page&gt;&lt;page&gt; lokottaragarbhaḥ prakṛtipariśuddhagarbha iti / sarvadharmasamāśraya iti /</right>
+  </line>
+  <line refs="5,Samādhirāja,sūtra,N/A,N/A,N/A,foundational" num="250" label="_">
+    <left>| satpuruṣasamavadhānam | satpuruṣasaṃsevanatā | kāpuruṣavivarjanam | dhyānānāṃ niṣpādanam , tatra cānāsvādanam | abhijñāvikurvaṇam |</left>
+    <kwic> nāmasaṃketaprajñaptisvabhāvāvatārajñānam</kwic>
+    <right> | prajñaptisamuddhātaḥ | saṃskāreṣu nirvedaḥ | satkāreṣvanabhilāṣaḥ | asatkāreṣūpekṣā | lābhe 'narthikatā | alābhe 'navalīnatā |</right>
+  </line>
+  <line refs="5,Samādhirāja,sūtra,N/A,N/A,N/A,foundational" num="251" label="_">
+    <left>| kāpuruṣavivarjanam | dhyānānāṃ niṣpādanam , tatra cānāsvādanam | abhijñāvikurvaṇam | nāmasaṃketaprajñaptisvabhāvāvatārajñānam |</left>
+    <kwic> prajñaptisamuddhātaḥ</kwic>
+    <right> | saṃskāreṣu nirvedaḥ | satkāreṣvanabhilāṣaḥ | asatkāreṣūpekṣā | lābhe 'narthikatā | alābhe 'navalīnatā | yaśasyanabhilāṣaḥ |</right>
+  </line>
+  <line refs="41,Samādhirāja,sūtra,N/A,N/A,N/A,foundational" num="252" label="_">
+    <left>sarvatṛṇagulmauṣadhivanaspatibhyaḥ sarvaśailaśikharebhyaścābhāvasamudgataśabdo niścarati | yāvati ca tatra lokadhātau</left>
+    <kwic> śabdaprajñaptiḥ</kwic>
+    <right> sarvato 'bhāvasamudgatavijñaptiśabdo niścarati | tena ca kumāra kālena tena samayena tasya bhagavato 'bhāvasamudgatasya</right>
+  </line>
+  <line refs="54,Samādhirāja,sūtra,N/A,N/A,N/A,foundational" num="253" label="_">
+    <left>bhagavan yāvat subhāṣitā ceyaṃ bhagavatā bodhisattvānāṃ mahāsattvānāmavavādānuśāsanī sarvabodhisattvaśikṣā deśitā svākhyātā</left>
+    <kwic> suprajñaptā</kwic>
+    <right> | sarvatathāgatagocaro 'yaṃ bhagavan yatra abhūmiḥ sarvaśrāvakapratyekabuddhānāṃ kaḥ punarvādo 'nyatīrthikānām ? pratipattisārāśca</right>
+  </line>
+  <line refs="68,Samādhirāja,sūtra,N/A,N/A,N/A,foundational" num="254" label="_">
+    <left>kumārabhūtasya niviśanarathyāmavagāhamānaścandraprabhasya kumārabhūtasya niveśanaṃ praviṣṭo 'bhūt | praviśya ca nyaṣīdat</left>
+    <kwic> prajñapta</kwic>
+    <right> evāsane | yathārhe cāsane bodhisattvasaṃgho bhikṣusaṃghaśca niṣaṇṇo 'bhūt | atha khalu candraprabhaḥ kumārabhūto bhagavantaṃ</right>
+  </line>
+  <line refs="79,Samādhirāja,sūtra,N/A,N/A,N/A,foundational" num="255" label="_">
+    <left>avikalpanā | aviṭhapanā asamutthāpanā | anutpādaḥ anirodhaḥ | kalpavikalpaparikalpasamucchedaḥ | cittānālambanatā | amanasikāraḥ |</left>
+    <kwic> prajñaptisamucchedaḥ</kwic>
+    <right> | vitarkavikalpasamucchedaḥ | rāgadveṣamohasamucchedaḥ | nāntānantamanasikāraḥ | manasikārasamucchedaḥ |</right>
+  </line>
+  <line refs="103,Samādhirāja,sūtra,N/A,N/A,N/A,foundational" num="256" label="_">
+    <left>samuttejya saṃpraharṣya samādāpya utthāyāsanāt prākrāmat | yena ca gṛdhrakūṭaparvatarājastenaiva upasamakrāmat | upasaṃkramya ca</left>
+    <kwic> prajñapta</kwic>
+    <right> evāsane nyaṣīdat | bhikṣusaṃghaparivṛto devanāgayakṣagandharvāsuragaruḍakinnaramahoragamanuṣyāmanuṣyanamaskṛtaḥ sāgaropamāyāṃ</right>
+  </line>
+  <line refs="115,Samādhirāja,sūtra,N/A,N/A,N/A,foundational" num="257" label="_">
+    <left>// sasaṅgatā satpuruṣehi nityaṃ vivarjanā kāpuruṣāna caiva / jine prasādaṃ sada prematāṃ ca evaṃ jino deśayi dharma śreṣṭham // SRS_ 1 7 . 8 4 //</left>
+    <kwic> saṃketaprajñaptivyāhāratāṃ</kwic>
+    <right> ca saṃsāraduḥkhāni sadā vivarjanā / alābhi lābhe ca asaktabhāvamevaṃ jino deśayi dharmamuttamam // SRS_ 1 7 . 8 5 // satkāru labdhvā ca na</right>
+  </line>
+  <line refs="148,Samādhirāja,sūtra,N/A,N/A,N/A,foundational" num="258" label="_">
+    <left>, iyamucyate pratibhānapratisaṃvit || atha khalu bhagavāṃstasyāṃ velāyāmimā gāthā abhāṣata - yāttakaṃ jñānu buddhasya</left>
+    <kwic> rūpaprajñapti</kwic>
+    <right> tāttikā / yāvatī rūpaprajñapti rūpavyāhāra tāttakā // SRS_ 2 3 . 1 // yāvanto rūpavyāhārāḥ śīlanāmāni tāttakāḥ / yāvanti śīlanāmāni</right>
+  </line>
+  <line refs="148,Samādhirāja,sūtra,N/A,N/A,N/A,foundational" num="259" label="_">
+    <left>pratibhānapratisaṃvit || atha khalu bhagavāṃstasyāṃ velāyāmimā gāthā abhāṣata - yāttakaṃ jñānu buddhasya rūpaprajñapti tāttikā / yāvatī</left>
+    <kwic> rūpaprajñapti</kwic>
+    <right> rūpavyāhāra tāttakā // SRS_ 2 3 . 1 // yāvanto rūpavyāhārāḥ śīlanāmāni tāttakāḥ / yāvanti śīlanāmāni buddhanāmāni tāttakāḥ // SRS_ 2 3 . 2 //</right>
+  </line>
+  <line refs="214,Samādhirāja,sūtra,N/A,N/A,N/A,foundational" num="260" label="_">
+    <left>3 2 . 2 4 3 // ṛddhiṃ ca tatra sparśenti balabodhyaṅga indriyān / dhyānavimokṣān sparśenti bhonti co dakṣiṇārhāḥ // SRS_ 3 2 . 2 44 // pañcakoṭīya</left>
+    <kwic> prajñaptā</kwic>
+    <right> vastrakoṭībhi saṃstṛtā / saṃchannā ratnajālehi cchatrakoṭībhi citritāḥ // SRS_ 3 2 . 2 4 5 // niṣaṇṇāstatra te śūrā bodhisattvāḥ samāgatāḥ /</right>
+  </line>
+  <line refs="218,Samādhirāja,sūtra,N/A,N/A,N/A,foundational" num="261" label="_">
+    <left>tatrānekāni dīpārdhyakoṭiniyutaśatasahasrāṇi prajvālitāni | siktasaṃmṛṣṭaśodhitaśca maṇḍalamātraḥ kṛto 'bhūt puṣpābhikīrṇo</left>
+    <kwic> nānāvicitraśayanāsanaprajñaptaḥ</kwic>
+    <right> | rājāpi śrīghoṣaḥ sāntaḥpuragrāmanagarajanapadapāriṣadyaḥ sapauro niṣkrāntaḥ |</right>
+  </line>
+  <line refs="242,Samādhirāja,sūtra,N/A,N/A,N/A,foundational" num="262" label="_">
+    <left>tada āgato 'si eṣyanti bhikṣu sukaruṇa krandamānāḥ // SRS_ 3 5 . 4 5 // puṣpadhvajāni ima kṛta dakṣiṇenā vāmena anye surucira darśanīyāḥ /</left>
+    <kwic> prajñapta</kwic>
+    <right> mārgaḥ sphuṭa kṛta cīvarebhi uttiṣṭha bhikṣo pratibhaṇa dharma śreṣṭham // SRS_ 3 5 . 4 6 // cirapraviṣṭo tuhu iha rājadhānyāmeṣyanti bhikṣu</right>
+  </line>
+  <line refs="299,Samādhirāja,sūtra,N/A,N/A,N/A,foundational" num="263" label="_">
+    <left>durvijñeyānāṃ buddhadharmāṇāṃ parebhyaḥ saṃprakāśanatā || .... nāmasaṃketaḥ ? yadidaṃ apariniṣpannānāṃ nāmnāmanubudhyanatā || ....</left>
+    <kwic> prajñaptivyavahāraḥ</kwic>
+    <right> ? yadidaṃ lokavyavahāraḥ || .... prajñaptisamuddhātaḥ ? yadidaṃ pravyāhārajñānam || .... saṃsāranivṛttiḥ ? yadidaṃ</right>
+  </line>
+  <line refs="299,Samādhirāja,sūtra,N/A,N/A,N/A,foundational" num="264" label="_">
+    <left>|| .... nāmasaṃketaḥ ? yadidaṃ apariniṣpannānāṃ nāmnāmanubudhyanatā || .... prajñaptivyavahāraḥ ? yadidaṃ lokavyavahāraḥ || ....</left>
+    <kwic> prajñaptisamuddhātaḥ</kwic>
+    <right> ? yadidaṃ pravyāhārajñānam || .... saṃsāranivṛttiḥ ? yadidaṃ saṃsāradoṣapratyavekṣā || .... lābhānarthikatā ? yadidaṃ bhūtālpecchatā ||</right>
+  </line>
+  <line refs="21,Saddharmapuṇḍarīka,sūtra,N/A,N/A,N/A,foundational" num="265" label="_">
+    <left>|| durvijñeyaṃ śāriputra saṃdhābhāṣyaṃ tathāgatānāmarhatāṃ samyaksaṃbuddhānām | tatkasya hetoḥ ? svapratyayān dharmān prakāśayanti</left>
+    <kwic> vividhopāyakauśalyajñānadarśanahetukāraṇanirdeśanārambaṇaniruktiprajñaptibhistairupāyakauśalyaistasmiṃstasmiṃllagnān</kwic>
+    <right> sattvān pramocayitum | mahopāyakauśalyajñānadarśanaparamapāramitāprāptāḥ śāriputra tathāgatā arhantaḥ samyaksaṃbuddhāḥ |</right>
+  </line>
+  <line refs="28,Saddharmapuṇḍarīka,sūtra,N/A,N/A,N/A,foundational" num="266" label="_">
+    <left>bhaviṣyanti | tadanenāpi śāriputra paryāyeṇa evaṃ veditavyaṃ yathā nāsti dvitīyasya yānasya kvaciddaśasu dikṣu loke</left>
+    <kwic> prajñaptiḥ</kwic>
+    <right> , kutaḥ punastṛtīyasya || api tu khalu punaḥ śāriputra yadā tathāgatā arhantaḥ samyaksaṃbuddhā kalpakaṣāye &lt;/page&gt;&lt;page&gt; votpadyante sattvakaṣāye vā</right>
+  </line>
+  <line refs="91,Saddharmapuṇḍarīka,sūtra,N/A,N/A,N/A,foundational" num="267" label="_">
+    <left>bhagavantametadavocat - yadi bhagavan na santi trīṇi yānāni , kiṃ kāraṇaṃ pratyutpanne 'dhvani śrāvakapratyekabuddhabodhisattvānāṃ</left>
+    <kwic> prajñaptiḥ</kwic>
+    <right> prajñapyate ? evamukte bhagavānāyuṣmantaṃ mahākāśyapametadavocat - tadyathā kāśyapa kumbhakāraḥ samāsu mṛttikāsu bhājanāni karoti |</right>
+  </line>
+  <line refs="105,Saddharmapuṇḍarīka,sūtra,N/A,N/A,N/A,foundational" num="268" label="_">
+    <left>te dharmā āmukhībhavanti sma || tasya khalu punarbhikṣavo bhagavato bodhimaṇḍavarāgragatasya devaistrāyastriṃśairmahāsiṃhāsanaṃ</left>
+    <kwic> prajñaptamabhūd</kwic>
+    <right> yojanaśatasahasraṃ samucchrayeṇa , yatra sa bhagavān niṣadya anuttarāṃ samyaksaṃbodhimabhisaṃbuddhaḥ | samanantaraniṣaṇṇasya ca</right>
+  </line>
+  <line refs="118,Saddharmapuṇḍarīka,sūtra,N/A,N/A,N/A,foundational" num="269" label="_">
+    <left>samādhervyuttiṣṭhat | vyutthāya ca sa bhagavān mahābhijñājñānābhibhūstathāgato yena taddharmāsanaṃ tenopasaṃkrāmat | upasaṃkramya</left>
+    <kwic> prajñapta</kwic>
+    <right> evāsane nyaṣīdat | samanantaraniṣaṇṇaśca khalu punarbhikṣavaḥ sa bhagavān mahābhijñājñānābhibhūstathāgatastasmin dharmāsane , atha</right>
+  </line>
+  <line refs="151,Saddharmapuṇḍarīka,sūtra,N/A,N/A,N/A,foundational" num="270" label="_">
+    <left>anupūrvaśākhāpatrapalāśapariṇāhaḥ puṣpaphalapratimaṇḍitaḥ | ekaikasmiṃśca ratnavṛkṣamūle siṃhāsanaṃ</left>
+    <kwic> prajñaptamabhūt</kwic>
+    <right> pañcayojanaśatānyuccaistvena mahāratnapratimaṇḍitam | tasminnekaikastathāgataḥ paryaṅkaṃ baddhvā niṣaṇṇo 'bhūt | anena paryāyeṇa</right>
+  </line>
+  <line refs="152,Saddharmapuṇḍarīka,sūtra,N/A,N/A,N/A,foundational" num="271" label="_">
+    <left>| sarvasmiṃśca ratnavṛkṣamūle pañcayojanaśatānyārohapariṇāhaṃ divyaratnamayaṃ vicitraṃ darśanīyaṃ siṃhāsanaṃ</left>
+    <kwic> prajñaptamabhūt</kwic>
+    <right> | teṣu ratnavṛkṣamūleṣvāgatāgatāstathāgatāḥ siṃhāsaneṣu paryaṅkaṃ baddhvā niṣīdante sma | anena paryāyeṇa punaraparāṇi</right>
+  </line>
+  <line refs="165,Saddharmapuṇḍarīka,sūtra,N/A,N/A,N/A,foundational" num="272" label="_">
+    <left>. 1 5 // &lt;/page&gt;&lt;page&gt; bhagavāneva jānīte yādṛśāḥ pāpabhikṣavaḥ / paścime kāli bheṣyanti saṃdhābhāṣyamajānakāḥ // Saddhp_ 1 2 . 1 6 // bhṛkuṭī sarva soḍhavyā</left>
+    <kwic> aprajñaptiḥ</kwic>
+    <right> punaḥ punaḥ / niṣkāsanaṃ vihārebhyo bandhakuṭṭī bahūvidhā // Saddhp_ 1 2 . 1 7 // ājñaptiṃ lokanāthasya smarantā kāli paścime / bhāṣiṣyāma</right>
+  </line>
+  <line refs="170,Saddharmapuṇḍarīka,sūtra,N/A,N/A,N/A,foundational" num="273" label="_">
+    <left>|| atha khalu bhagavāṃstasyāṃ velāyāmimā gāthā abhāṣata - sukhasthito bhoti sadā vicakṣaṇaḥ sukhaṃ niṣaṇṇastatha dharmu bhāṣate / udāra</left>
+    <kwic> prajñapta</kwic>
+    <right> karitva āsanaṃ caukṣe manojñe pṛthivīpradeśe // Saddhp_ 1 3 . 2 6 // caukṣaṃ cāsau cīvara prāvaritvā suraktaraṅgaṃ supraśastaraṅgaiḥ /</right>
+  </line>
+  <line refs="203,Saddharmapuṇḍarīka,sūtra,N/A,N/A,N/A,foundational" num="274" label="_">
+    <left>/ dvātriṃśatī ca prāsādā uccaistvenāṣṭavattalāḥ // Saddhp_ 1 6 . 44 // śayyāsanairupastabdhāḥ khādyabhojyaiḥ samanvitāḥ / praveṇī praṇīta</left>
+    <kwic> prajñaptā</kwic>
+    <right> āvāsāśca sahasraśaḥ // Saddhp_ 1 6 . 4 5 // ārāmāścaṃkramā dattāḥ puṣpārāmopaśobhitāḥ / bahu ucchadakāścaiva bahurūpavicitritāḥ // Saddhp_</right>
+  </line>
+  <line refs="262,Saddharmapuṇḍarīka,sūtra,N/A,N/A,N/A,foundational" num="275" label="_">
+    <left> āścaryaṃ bhagavan yāvanmahārthamidaṃ tathāgataśāsanam , acintyaguṇasamanvāgataśca tathāgatapravedito dharmavinayaḥ , yāvat</left>
+    <kwic> suprajñaptā</kwic>
+    <right> ca tathāgataśikṣā | adyāgreṇa vayaṃ bhagavanna bhūyaścittasya vaśagā bhaviṣyāmaḥ , na bhūyo mithyādṛṣṭervaśagā bhaviṣyāmaḥ , na bhūyaḥ</right>
+  </line>
+  <line refs="3.39,Vimalakīrtinirdeśa,sūtra,N/A,N/A,N/A,foundational" num="276" label="_">
+    <left>, pañcabalapratilambhā , pañcendriyapratiṣṭhā , pareṣām anupaghātaḥ , pāpadharmāsaṃsṛṣṭā , paratīrthyapramardanī ,</left>
+    <kwic> prajñaptisamatikrāntā</kwic>
+    <right> , paṅke saṃkramaḥ , amamā mamakāravigatā , aparigrahā , anupādānā , anākulā , ākulaprahīṇā , svacittadarśanī paracittasaṃrakṣaṇī ,</right>
+  </line>
+  <line refs="5-5,Madhyamakahrdayakarika,śāstra,Bhāvaviveka,Madhyamaka,,commentarial" num="277" label="_">
+    <left>nopalabdhiḥ prajāyate || || &lt;/page&gt;&lt;page&gt; kalpitānupalabdheś ca paratantrasya cāgrahāt | svabhāvaṃ pariniṣpannam ikṣante tattvadarśinaḥ || || &lt;/page&gt;&lt;page&gt;</left>
+    <kwic>prajñapteḥ</kwic>
+    <right> sanimittatvād anyathā dvayanāśataḥ | saṃkleśasyopalabdheś ca paratantrāstitā matā || || &lt;/page&gt;&lt;page&gt; prajñāpāramitānītir iyaṃ sarvajñatāptaye | na</right>
+  </line>
+  <line refs="5-45,Madhyamakahrdayakarika,śāstra,Bhāvaviveka,Madhyamaka,,commentarial" num="278" label="_">
+    <left>'pi vidyate || || &lt;/page&gt;&lt;page&gt; cittamātraprasiddhy arthaṃ na cittād vyatirekiṇaḥ | caitā vābhyupagantavyā na vā vijñaptimātratā || || &lt;/page&gt;&lt;page&gt; vedanādisamūhe vā</left>
+    <kwic> cittaprajñaptir</kwic>
+    <right> iṣyatām | tathā parāṇuvādaḥ syāt svanītityāgitāpi ca || || &lt;/page&gt;&lt;page&gt; saṃkleśavyavadānāc ced dravyasaccittam iṣyate | vedanāditathotpādāt</right>
+  </line>
+  <line refs="5-79,Madhyamakahrdayakarika,śāstra,Bhāvaviveka,Madhyamaka,,commentarial" num="279" label="_">
+    <left>katham || || &lt;/page&gt;&lt;page&gt; sadbhūtenātmanājāter anutpannāniruddhatā | avastutvāsvabhāvatve tathāpy adravyasattvataḥ || || &lt;/page&gt;&lt;page&gt; vijñaptimātratulyatvāt</left>
+    <kwic> prajñapter</kwic>
+    <right> nāsti duṣṭatā | heyaprahātryasadbhāvāt kasyeṣtaṃ nirvidādi sat || || &lt;/page&gt;&lt;page&gt; vikalpoparamānmuktir adravyatve 'pi sā yataḥ | dravyasattve 'py</right>
+  </line>
+  <line refs="5-81,Madhyamakahrdayakarika,śāstra,Bhāvaviveka,Madhyamaka,,commentarial" num="280" label="_">
+    <left>kasyeṣtaṃ nirvidādi sat || || &lt;/page&gt;&lt;page&gt; vikalpoparamānmuktir adravyatve 'pi sā yataḥ | dravyasattve 'py ajātatvān nāto 'nyā kalpaneṣyate || || &lt;/page&gt;&lt;page&gt;</left>
+    <kwic>prajñapter</kwic>
+    <right> apy asadbhāvo vastvabhāve bhavet sati | taddṛṣṭir nāstiko 'kathyaḥ sa hy asaṃvāsya eva ca || || &lt;/page&gt;&lt;page&gt; svayamāpāyikatve 'sau pareṣāṃ ca vipādakaḥ |</right>
+  </line>
+  <line refs="10.2 - 12.3,Suvarnavarna,avadāna,N/A,Buddh,,foundational" num="281" label="_">
+    <left>anugacchatv iti &lt;/page&gt;&lt;page&gt; [ 6 ] āpannasattvāñ caināṃ viditvā upariprāsādatalagatām ayantritāṃ dhārayati | śīte śītopakaraṇai uṣṇe uṣṇopakaraṇair</left>
+    <kwic> vaidyaprajñaptair</kwic>
+    <right> āhārair nātitiktair nātyamlair nātilavaṇair nātimadhurair nātikaṭukair nātikaṣāyais</right>
+  </line>
+  <line refs="149.1 - 150.4,Suvarnavarna,avadāna,N/A,Buddh,,foundational" num="282" label="_">
+    <left>tatra ca sthavirānandasyārthe nānāratnavinyāsavicitritabhaktiprakāraracitaṃ divyaṃ sarvasauvarṇaṃ sapādapīṭhaṃ mahat siṃhāsanaṃ</left>
+    <kwic> prajñaptaṃ</kwic>
+    <right> teṣām api pañcānām arhacchatānām arthe divyāny āsanāni prajñaptāni | tataḥ sthavirānando gagatalād avatīrya siṃhāsane niṣaṇṇaḥ | tāny api</right>
+  </line>
+  <line refs="149.1 - 150.4,Suvarnavarna,avadāna,N/A,Buddh,,foundational" num="283" label="_">
+    <left>divyaṃ sarvasauvarṇaṃ sapādapīṭhaṃ mahat siṃhāsanaṃ prajñaptaṃ teṣām api pañcānām arhacchatānām arthe divyāny āsanāni</left>
+    <kwic> prajñaptāni</kwic>
+    <right> | tataḥ sthavirānando gagatalād avatīrya siṃhāsane niṣaṇṇaḥ | tāny api pañcārhacchatāny avatīrya prajñapteṣv āsaneṣu niṣaṇṇāni || &lt;/page&gt;&lt;page&gt; [ 6 0 ]</right>
+  </line>
+  <line refs="149.1 - 150.4,Suvarnavarna,avadāna,N/A,Buddh,,foundational" num="284" label="_">
+    <left>arthe divyāny āsanāni prajñaptāni | tataḥ sthavirānando gagatalād avatīrya siṃhāsane niṣaṇṇaḥ | tāny api pañcārhacchatāny avatīrya</left>
+    <kwic> prajñapteṣv</kwic>
+    <right> āsaneṣu niṣaṇṇāni || &lt;/page&gt;&lt;page&gt; [ 6 0 ] rājā cājātaśatrur anekaprāṇiśatasahasraparivāraḥ samanuprāpto yāvat paśyati tām vibhūtiṃ suvarṇavarṇañ ca</right>
+  </line>
+  <line refs="336.5 - 339.3,Suvarnavarna,avadāna,N/A,Buddh,,foundational" num="285" label="_">
+    <left>atiruciravitānatoraṇam atiramaṇīyaṃ kārayitvā tām eva rātriṃ śucipraṇītaṃ khādanīyaṃ samudānīya kālyam</left>
+    <kwic> evotthāyāsanaprajñaptiṃ</kwic>
+    <right> kṛtvodakamaṇī pratiṣṭhāpya sthavirānandasya dūtena kālam ārocayati | samayo bhadanta sajjaṃ bhaktaṃ yasyedānīṃ kālaṃ manyase | ity &lt;/page&gt;&lt;page&gt; [ 1 2 3 ]</right>
+  </line>
+  <line refs="339.3 - 341.5,Suvarnavarna,avadāna,N/A,Buddh,,foundational" num="286" label="_">
+    <left>tisraḥ koṭyo bhikṣuṇyāḥ 'sannipatitaḥ | ekā kṣīṇāsravaṇāṃ | dvitīya śaikṣaṇāṃ | tṛtīyā pṛthakagjanakalyāṇakānāṃ tato yathā vṛddhikayā</left>
+    <kwic> prajñapteṣu</kwic>
+    <right> sveṣu sveṣv āśaneṣūpaviṣṭāḥ || &lt;/page&gt;&lt;page&gt; [ 1 2 4 ] atha divākara sārthavāhaḥ sukhopaniṣaṇṇam āryasthavirānandapramukhaṃ bhikṣusaṃghaṃ viditvā</right>
+  </line>
+  <line refs="65,Aśokāvadāna,avadāna,N/A,Buddh,,N/A" num="287" label="_">
+    <left>manye yaśasā pūtaṃ puramiva gehaṃ ca / pratipadyatāṃ tvayā [ vai ] daśabaladharaśāsanamudāraṃ // atha rājāśokaḥ sarvāṅgeṇa parigṛhya</left>
+    <kwic> prajñapta</kwic>
+    <right> evāsane niṣādayāmāsa / praṇītena cāhāreṇa svahastaṃ santarpayati / bhuktavantaṃ &lt;/page&gt;&lt;page&gt; viditvā ghautahastamapanītapātramāyuṣmato</right>
+  </line>
+  <line refs="80,Aśokāvadāna,avadāna,N/A,Buddh,,N/A" num="288" label="_">
+    <left>kāle na śocanti iṣṭaṃ yānti surālayaṃ // yāvad rājā mahatā śrīsamudayena sthaviropaguptaṃ rājakule praveśayitvā sarvāṅgeṇānuparigṛhya</left>
+    <kwic> prajñapta</kwic>
+    <right> evāsane niṣādayāmāsa / sthaviropaguptasya śarīraṃ mṛdu sumṛdu / tadyathā tūlapiśurvā karpāsapiśurvā / atha rājā sthaviropaguptasya</right>
+  </line>
+  <line refs="29,SukhavativyuhaLarger,sūtra,N/A,Buddh,,foundational" num="289" label="_">
+    <left>eva tasya bhagavata āyuṣpramāṇam aparyantam . tena sa tathāgato 'mitāyur ity ucyate . yathā cānandeha lokadhātau kalpasaṃkhyā kalpagaṇanā</left>
+    <kwic> prajñaptikasaṃketas</kwic>
+    <right> , tathā sāṃprataṃ daśakalpās tasya bhagavato 'mitāyuṣas tathāgatasyotpannasyānuttarāṃ samyaksaṃbodhim &lt;/page&gt;&lt;page&gt; abhisaṃbuddhasya . tasya khalu</right>
+  </line>
+  <line refs="40,SukhavativyuhaLarger,sūtra,N/A,Buddh,,foundational" num="290" label="_">
+    <left>bhikṣuḥ . tasmiṃś cānanda buddhakṣetre sarvaśo 'gnicandrasūrya- grahanakṣatratārārūpānāṃ tamo'ndhakārasya ca nāmadheya-</left>
+    <kwic> prajñaptir</kwic>
+    <right> api nāsti . sarvaśo rātridivaprajñaptir api nāsty , anyatra tathāgatavyavahārāt . sarvaśaś cāgāraparigraha- saṃjñā nāsti . tasyāṃ khalu</right>
+  </line>
+  <line refs="40,SukhavativyuhaLarger,sūtra,N/A,Buddh,,foundational" num="291" label="_">
+    <left>cānanda buddhakṣetre sarvaśo 'gnicandrasūrya- grahanakṣatratārārūpānāṃ tamo'ndhakārasya ca nāmadheya- prajñaptir api nāsti . sarvaśo</left>
+    <kwic> rātridivaprajñaptir</kwic>
+    <right> api nāsty , anyatra tathāgatavyavahārāt . sarvaśaś cāgāraparigraha- saṃjñā nāsti . tasyāṃ khalu punar ānanda sukhāvatyāṃ lokadhātau kāle</right>
+  </line>
+  <line refs="40,SukhavativyuhaLarger,sūtra,N/A,Buddh,,foundational" num="292" label="_">
+    <left>upapannā utpadyanta upapatsyante , sarve te niyatāḥ samyaktve yāvan nirvāṇāt . tat kasya hetoḥ . nāsti tatra dvayo rāśyor vyavasthānaṃ</left>
+    <kwic> prajñaptir</kwic>
+    <right> vā , yad idam : aniyatyasya vā mithyātvaniyatasya vā . tad anenāpy ānanda paryāyeṇa sā lokadhātuḥ sukhāvatīty ucyate saṃkṣiptena , na</right>
+  </line>
+  <line refs="59,SukhavativyuhaLarger,sūtra,N/A,Buddh,,foundational" num="293" label="_">
+    <left>. tatra tasya rājñaḥ putraḥ kenacid eva kṛtyena prakṣipto &lt;/page&gt;&lt;page&gt; jāmbūnadasuvarṇamayair nigaḍair baddho bhavati . tasya ca tatra paryaṅkaḥ</left>
+    <kwic> prajñaptaḥ</kwic>
+    <right> syād , anekagoṇikāstīrṇas , tūlikāpalālikāstīrṇaḥ , kācilindikasukhasaṃsparśaḥ , kāliṅga- prāvaraṇasottarapaṭacchadana ,</right>
+  </line>
+  <line refs="40,triṃśikabhāṣya,śāstra,Sthiramati,yogācāra,,commentarial" num="294" label="_">
+    <left>iti vākyaśeṣaḥ | vijñānapariṇāme 'sau | 1 c ātmadharmopacāra iti saṃbadhyate | ātmā dharmāś copacaryanta ity ātmadharmopacāraḥ | sa punar</left>
+    <kwic> ātmaprajñaptir</kwic>
+    <right> dharmaprajñaptiś ca | vividha ity anekaprakāraḥ | ātmā jīvo jantur manujo māṇava ity evamādika ātmopacāraḥ skandhā dhātava āyatanāni rūpaṃ</right>
+  </line>
+  <line refs="40,triṃśikabhāṣya,śāstra,Sthiramati,yogācāra,,commentarial" num="295" label="_">
+    <left>| vijñānapariṇāme 'sau | 1 c ātmadharmopacāra iti saṃbadhyate | ātmā dharmāś copacaryanta ity ātmadharmopacāraḥ | sa punar ātmaprajñaptir</left>
+    <kwic> dharmaprajñaptiś</kwic>
+    <right> ca | vividha ity anekaprakāraḥ | ātmā jīvo jantur manujo māṇava ity evamādika ātmopacāraḥ skandhā dhātava āyatanāni rūpaṃ vedanā saṃjñā</right>
+  </line>
+  <line refs="90,triṃśikabhāṣya,śāstra,Sthiramati,yogācāra,,commentarial" num="296" label="_">
+    <left>vartamānam apakāram āgamya yaś cetasa āghātaḥ | ayaṃ cāghātasvarūpatvāt pratighān na bhidyate | kiṃ tv asya pratighasyāvasthāviśeṣe</left>
+    <kwic> prajñaptatvāt</kwic>
+    <right> pratighāṃśikaḥ | vartamānam apakāram āgamya yaś cetasa āghātaḥ sattvāsattvaviṣayo daṇḍadānādisaṃniśrayadānakarmakaś ca sa krodha iti</right>
+  </line>
+  <line refs="90,triṃśikabhāṣya,śāstra,Sthiramati,yogācāra,,commentarial" num="297" label="_">
+    <left>| akṣāntir apakārāmarṣaṇaṃ pratyapakāracikīrṣā ca | ayam api krodhavat pradveṣāvasthāviśeṣe prajñapyate | ataḥ</left>
+    <kwic> prajñaptisann</kwic>
+    <right> eva veditavyaḥ | mrakṣa ātmano 'vadyapracchādanā | chandadveṣabhayādīn nirākṛtya kāle taddhitaiṣiṇā codakena tat tvam evaṃkārīty</right>
+  </line>
+  <line refs="92,triṃśikabhāṣya,śāstra,Sthiramati,yogācāra,,commentarial" num="298" label="_">
+    <left>arthasyānyathā prakāśanā | iyañ ca sahitābhyāṃ rāgamohābhyām abhūtān guṇān prakāśayatas tayoḥ samuditayoḥ prajñapyata iti krodhādivat</left>
+    <kwic> prajñaptita</kwic>
+    <right> eva na dravyata iti mithyājīvasaṃniśrayadānakarmikā | &lt;/page&gt;&lt;page&gt; śāṭhyaṃ svadoṣapracchādanopāyasaṃgṛhītañ cetasaḥ kauṭilyam |</right>
+  </line>
+  <line refs="96,triṃśikabhāṣya,śāstra,Sthiramati,yogācāra,,commentarial" num="299" label="_">
+    <left>cittaṃ jaḍībhavati stimitaṃ bhavati nālambanaṃ pratipattuṃ samutsahate | etac ca sarvakleśopakleśasahāyyadānakarmakam | mohāṃśe</left>
+    <kwic> prajñaptatvāc</kwic>
+    <right> ca mohāṃśikam eva na pṛthag vidyate | auddhatyaṃ cittasyāvyupaśamaḥ | vyupaśamo hi śamathas tadviruddho 'vyupaśamaḥ | sa punar eṣa</right>
+  </line>
+  <line refs="98,triṃśikabhāṣya,śāstra,Sthiramati,yogācāra,,commentarial" num="300" label="_">
+    <left>cetanāyāś cittaparispandātmakatvāt prajñāyāś ca guṇadoṣavivekākāratvāt | tadvaśena cittapravṛtteḥ kadācic cittacetanayor vitarkaḥ</left>
+    <kwic> prajñaptiḥ</kwic>
+    <right> kadācit prajñācetasor yathākramam anabhyūhābhyuhāvasthayoḥ | atha vā cetanāprajñayor eva vitarkaḥ prajñaptis tadvaśena cittasya</right>
+  </line>
+  <line refs="98,triṃśikabhāṣya,śāstra,Sthiramati,yogācāra,,commentarial" num="301" label="_">
+    <left>cittacetanayor vitarkaḥ prajñaptiḥ kadācit prajñācetasor yathākramam anabhyūhābhyuhāvasthayoḥ | atha vā cetanāprajñayor eva vitarkaḥ</left>
+    <kwic> prajñaptis</kwic>
+    <right> tadvaśena cittasya tathāpravṛttatvāt | sa eva cittasyaudārikatā | audārikateti sthūlatā vastumātraparyeṣaṇākāratvāt | &lt;/page&gt;&lt;page&gt; eṣa ca nayo</right>
+  </line>
+  <line refs="15r,Tathagatacintyaguhya1-2-4-6,sūtra,N/A,Buddh,,foundational" num="302" label="_">
+    <left>kulaputra bodhisatvena tr̥ṇasaṃstare atha tair api caturaśītyā devaputrasahasaiḥ caturaśītiḥ siṃhāsanasahasrāni bodhisatvam udriśya</left>
+    <kwic> prajñaptāni</kwic>
+    <right> citrāṇi darśanīyāni uccāni pragr̥hītāni sarvaratnapratyuptāni ratnavedikāprahītāni ratnajālasaṃsthannāni kiṃkiṇījālāvanaddhāni |</right>
+  </line>
+  <line refs="15r,Tathagatacintyaguhya1-2-4-6,sūtra,N/A,Buddh,,foundational" num="303" label="_">
+    <left>pragr̥hītāni sarvaratnapratyuptāni ratnavedikāprahītāni ratnajālasaṃsthannāni kiṃkiṇījālāvanaddhāni | muktāhārapralaṃbitāni</left>
+    <kwic> anekadūṣyaśatasahasraprajñaptāni</kwic>
+    <right> | tatra kulaputra bodhisatvena sarveṣu teṣu siṃhāsaneṣu niṣaṇṇaḥ || &lt;/page&gt;&lt;page&gt; atmā upadarśito bhūt | na ca te devaputrā anyonyaṃ paśyanti sma | na tu</right>
+  </line>
+  <line refs="18r,Tathagatacintyaguhya1-2-4-6,sūtra,N/A,Buddh,,foundational" num="304" label="_">
+    <left>bhagavatādhivāsitaṃ dharmacakrapravarttanāya tadā śikhinā brahmaṇā vārāṇasyām r̥ṣipatane mr̥gadāve bhagavantam uddiśya siṃhāsanaṃ</left>
+    <kwic> prajñaptam</kwic>
+    <right> abhūt dvācatvāriṃśad yojanasahasrāṇy uccaistvena sarvākāravaropetaṃ citraṃ darśanīyaṃ dharaṇitalāpratiṣṭitaṃ yathā ca śikhinā</right>
+  </line>
+  <line refs="18r,Tathagatacintyaguhya1-2-4-6,sūtra,N/A,Buddh,,foundational" num="305" label="_">
+    <left>uccaistvena sarvākāravaropetaṃ citraṃ darśanīyaṃ dharaṇitalāpratiṣṭitaṃ yathā ca śikhinā brahmanā tathāgatam uddiśya siṃhāsaṃnaṃ</left>
+    <kwic> prajñaptam</kwic>
+    <right> abhūt tathā daśabhir brahmakoṭībhiḥ śakrakoṭibhiḥ daśabhir bodhisatvanayutaiḥ saparivāraiḥ tathāgatam uddiśya siṃhāsanāni</right>
+  </line>
+  <line refs="129,Ajitasenavyakarana,sūtra,N/A,Buddh,,foundational" num="306" label="_">
+    <left>bhagavantam evam āha | anena kuśalamūlena sarvasatvā anuttarāṃ samyaksaṃbodhim abhisampadyante | atha rājñā ajitasenena āsanāni</left>
+    <kwic> prajñaptāni</kwic>
+    <right> | tasya bhagavataḥ siṃhāsanaṃ pradattam * | atha bhagavān siṃhāsane niṣaṇṇo rājño 'jitasenasya dharmān deśitavān * | atha rājñā ajitasenena</right>
+  </line>
+  <line refs="Vajracchedikā,sūtra,N/A,Buddh,,foundational" num="307" label="_">
+    <left>samyaksaṃbodhir abhisaṃbuddhā | yat khalu punaḥ subhūte syād evaṃ bodhisatvayānasaṃprasthitaiḥ kasyacid dharmasya vināśaḥ</left>
+    <kwic> prajñapta</kwic>
+    <right> ucchedo vā na khalu punaḥ subhūte evaṃ draṣṭavyaṃ | na bodhisatvayānasaṃprasthitaiḥ kasyacid dharmasya vināśaḥ prajñapto nocchedaḥ yaś ca</right>
+  </line>
+  <line refs="Vajracchedikā,sūtra,N/A,Buddh,,foundational" num="308" label="_">
+    <left>vināśaḥ prajñapta ucchedo vā na khalu punaḥ subhūte evaṃ draṣṭavyaṃ | na bodhisatvayānasaṃprasthitaiḥ kasyacid dharmasya vināśaḥ</left>
+    <kwic> prajñapto</kwic>
+    <right> nocchedaḥ yaś ca khalu punaḥ subhūte kulaputro vā kuladuhitā vā gaṃgānadīvālukopamāl lokadhātūn saptaratnapratipūrṇān kṛtvā</right>
+  </line>
+</concordance>
+</export>

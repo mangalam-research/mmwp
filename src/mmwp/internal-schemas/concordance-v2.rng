@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://relaxng.org/ns/structure/1.0">
+  <start>
+    <ref name="export"/>
+  </start>
+  <define name="export">
+    <element name="export">
+      <ref name="lemma"/>
+      <ref name="header"/>
+      <ref name="concordance"/>
+    </element>
+  </define>
+  <define name="lemma">
+    <element name="lemma">
+      <text/>
+    </element>
+  </define>
+  <define name="header">
+    <element name="header">
+      <ref name="corpus"/>
+      <ref name="subcorpus"/>
+      <ref name="query"/>
+    </element>
+  </define>
+  <define name="corpus">
+    <element name="corpus">
+      <text/>
+    </element>
+  </define>
+  <define name="subcorpus">
+    <element name="subcorpus">
+      <text/>
+    </element>
+  </define>
+  <define name="query">
+    <element name="query">
+      <ref name="subquery"/>
+    </element>
+  </define>
+  <define name="subquery">
+    <element name="subquery">
+      <attribute name="operation"/>
+      <attribute name="size"/>
+      <text/>
+    </element>
+  </define>
+  <define name="concordance">
+    <element name="concordance">
+      <oneOrMore>
+        <ref name="line"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="tr">
+    <a:documentation>A translation.</a:documentation>
+    <element name="tr">
+      <optional>
+        <attribute name="tr">
+          <a:documentation>The translator.</a:documentation>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="p">
+          <a:documentation>The page number.</a:documentation>
+        </attribute>
+      </optional>
+      <text/>
+    </element>
+  </define>
+  <define name="line">
+    <element name="line">
+      <attribute name="refs"/>
+      <attribute name="num"/>
+      <attribute name="label"/>
+      <group>
+        <zeroOrMore>
+          <choice>
+            <ref name="left"/>
+            <ref name="kwic"/>
+            <ref name="right"/>
+            <ref name="page.number"/>
+            <ref name="vard.and.text"/>
+          </choice>
+        </zeroOrMore>
+        <optional>
+          <ref name="tr"/>
+        </optional>
+      </group>
+    </element>
+  </define>
+  <define name="left">
+    <element name="left">
+      <zeroOrMore>
+        <ref name="vard.and.text"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="kwic">
+    <element name="kwic">
+      <zeroOrMore>
+        <ref name="vard.and.text"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="right">
+    <element name="right">
+      <zeroOrMore>
+        <ref name="vard.and.text"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="page.number">
+    <element name="page.number">
+      <text/>
+    </element>
+  </define>
+  <define name="vard.elements">
+    <choice>
+      <ref name="notvariant"/>
+      <ref name="normalised"/>
+    </choice>
+  </define>
+  <define name="vard.and.text">
+    <choice>
+      <ref name="vard.elements"/>
+      <text/>
+    </choice>
+  </define>
+  <define name="notvariant">
+    <element name="notvariant">
+      <text/>
+      <optional>
+        <attribute name="a_id"/>
+      </optional>
+    </element>
+  </define>
+  <define name="normalised">
+    <element name="normalised">
+      <text/>
+      <optional>
+        <attribute name="a_id"/>
+      </optional>
+      <attribute name="orig"/>
+      <attribute name="auto"/>
+    </element>
+  </define>
+</grammar>

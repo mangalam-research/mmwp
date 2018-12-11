@@ -33,7 +33,7 @@ describe("util", () => {
   before(() => {
     badDoc = new DOMParser().parseFromString("<div/>", "text/xml");
     grammar = readTreeFromJSON(JSON.parse(JSON.stringify(concordanceV1)));
-    return ajax("/base/test/data/sample-concordance-1.xml")
+    return ajax("/base/test/data/sample-concordance-v1-1.xml")
       .then((newDoc) => doc = newDoc);
   });
 

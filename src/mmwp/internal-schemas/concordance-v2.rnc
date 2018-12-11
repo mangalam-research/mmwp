@@ -1,0 +1,54 @@
+start = export
+
+export = element export { lemma, header, concordance }
+
+lemma = element lemma { text }
+
+header = element header { corpus, subcorpus, query }
+
+corpus = element corpus { text }
+subcorpus = element subcorpus { text }
+query = element query { subquery }
+subquery = element subquery {
+    attribute operation { text },
+    attribute size { text },
+    text
+}
+
+concordance = element concordance { line+ }
+
+## A translation.
+tr = element tr {
+    ## The translator.
+    attribute tr { text }?,
+    ## The page number.
+    attribute p { text }?,
+    text
+}
+
+line = element line {
+    attribute refs { text },
+    attribute num { text },
+    attribute label { text },
+    ((left | kwic | right | page.number | vard.and.text)*, tr?)
+}
+
+left = element left { vard.and.text* }
+kwic = element kwic { vard.and.text* }
+right = element right { vard.and.text* }
+page.number = element page.number { text }
+
+vard.elements = notvariant | normalised
+vard.and.text = vard.elements | text
+
+notvariant = element notvariant {
+    text,
+    attribute a_id { text }?
+}
+
+normalised = element normalised {
+    text,
+    attribute a_id { text }?,
+    attribute orig { text },
+    attribute auto { text }
+}
