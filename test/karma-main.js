@@ -1,4 +1,4 @@
-/* global Promise SystemJS */
+/* global Promise SystemJS chai */
 (function main() {
   "use strict";
 
@@ -22,13 +22,14 @@
   config.map.sinon = "npm:sinon/pkg/sinon.js";
   config.map["sinon-chai"] = "npm:sinon-chai";
   config.map["check-error"] = "npm:check-error/check-error.js";
+  config.map["expect-rejection"] = "npm:expect-rejection";
   config.map.dashboard = "npm:wed-demo/dev/lib/dashboard";
   config.map.mmwp = "/base/build/dev/lib/mmwp";
   SystemJS.config(config);
 
   // These are preloaded by Karma as scripts that leak into the global space.
   SystemJS.amdDefine("mocha.js", [], {});
-  SystemJS.amdDefine("chai.js", [], {});
+  SystemJS.amdDefine("chai.js", [], chai);
 
   function importIt(file) {
     return SystemJS.import(file);

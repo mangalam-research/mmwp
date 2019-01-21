@@ -1,4 +1,5 @@
 import "chai";
+import { expectRejection } from "expect-rejection";
 import "mocha";
 
 const expect = chai.expect;
@@ -12,7 +13,7 @@ import { SemanticInformationTransformService,
          Tuple } from "mmwp/semantic-information-transform.service";
 import { ProcessingError } from "mmwp/util";
 
-import { DataProvider, expectReject } from "./util";
+import { DataProvider } from "./util";
 
 // tslint:disable-next-line:max-func-body-length
 describe("SemanticInformationTransformService", () => {
@@ -42,7 +43,7 @@ describe("SemanticInformationTransformService", () => {
     it("converts a file", () => service.perform(file));
 
     it("errors if the file is invalid", () =>
-       expectReject(
+       expectRejection(
          service.perform(bad),
          ProcessingError,
          `<p>tag not allowed here: {"ns":"","name":"div"}<\/p>
@@ -50,7 +51,7 @@ describe("SemanticInformationTransformService", () => {
 "name":"doc"}</p>`));
 
     it("errors if the file is malformed", () =>
-       expectReject(
+       expectRejection(
          service.perform(malformed),
          ProcessingError,
          "The document cannot be parsed. It is probably due to a \

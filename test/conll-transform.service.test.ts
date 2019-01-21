@@ -1,4 +1,5 @@
 import "chai";
+import { expectRejection } from "expect-rejection";
 import "mocha";
 
 const expect = chai.expect;
@@ -11,7 +12,7 @@ import { XMLFilesService } from "dashboard/xml-files.service";
 import { CoNLLTransformService } from "mmwp/conll-transform.service";
 import { ProcessingError } from "mmwp/util";
 
-import { DataProvider, expectReject } from "./util";
+import { DataProvider } from "./util";
 
 // Interface that shows the private members of ConcordanceTransformService.  We
 // cannot link it directly to ConcordanceTransformService because revealing
@@ -55,7 +56,7 @@ describe("CoNLLTransformService", () => {
     it("converts a file", () => service.perform(file));
 
     it("errors if the file is invalid", () =>
-       expectReject(
+       expectRejection(
          service.perform(bad),
          ProcessingError,
          `<p>tag not allowed here: {"ns":"","name":"div"}<\/p>
@@ -63,7 +64,7 @@ describe("CoNLLTransformService", () => {
 "name":"doc"}</p>`));
 
     it("errors if the file is malformed", () =>
-       expectReject(
+       expectRejection(
          service.perform(malformed),
          ProcessingError,
          "The document cannot be parsed. It is probably due to a \

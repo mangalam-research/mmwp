@@ -1,4 +1,5 @@
 import "chai";
+import { expectRejection } from "expect-rejection";
 import "mocha";
 import * as sinon from "sinon";
 import * as sinonChai from "sinon-chai";
@@ -13,7 +14,7 @@ import { XMLFile } from "dashboard/xml-file";
 import { XMLFilesService } from "dashboard/xml-files.service";
 import { ConcordanceTransformService, Logger, ProcessingError, V1Processor,
          V2Processor } from "mmwp/concordance-transform.service";
-import { DataProvider, expectReject } from "./util";
+import { DataProvider } from "./util";
 
 // We use innerHTML a lot for testing purposes.
 // tslint:disable:no-inner-html
@@ -173,33 +174,33 @@ describe("ConcordanceTransformService", () => {
       it(`raises an error if any file is going to be overwritten (${version})`,
          async () => {
            await service.perform(good[version]);
-           await expectReject(service.perform(good[version]), ProcessingError,
-                              /^This would overwrite: /);
+           await expectRejection(service.perform(good[version]),
+                                 ProcessingError,
+                                 /^This would overwrite: /);
          });
     }
 
-    it("rejects if the file is incorrect", async () => {
-      await expectReject(
-        service.perform(bad),
-        ProcessingError,
-        `<p>tag not allowed here: {\"ns\":\"\",\"name\":\"div\"}<\/p>
+    it("rejects if the file is incorrect", () =>
+       expectRejection(
+         service.perform(bad),
+         ProcessingError,
+         `<p>tag not allowed here: {\"ns\":\"\",\"name\":\"div\"}<\/p>
 <p>must choose either {"ns":"","name":"concordance"} or \
-{"ns":"","name":"export"}</p>`);
-    });
+{"ns":"","name":"export"}</p>`));
 
     it("rejects if the file is malformed", () =>
-       expectReject(
-        service.perform(malformed),
-        ProcessingError,
-        "The document cannot be parsed. It is probably due to a \
+       expectRejection(
+         service.perform(malformed),
+         ProcessingError,
+         "The document cannot be parsed. It is probably due to a \
 well-formedness error. Please check the file for well-formedness outside of \
 this application and fix any errors before uploading again."));
 
     it("reports ref errors", async () => {
-      await expectReject(service.perform(refErrorDocument),
-                         ProcessingError,
-                         new RegExp(
-                           `^<p>invalid line: line without a ref: <line>
+      await expectRejection(service.perform(refErrorDocument),
+                            ProcessingError,
+                            new RegExp(
+                              `^<p>invalid line: line without a ref: <line>
       <left_context><normalised a_id="lugli" orig="yāvan" auto="false">(.|\n)*
 <p>invalid ref:`));
       const title = document.querySelector(".modal.in .modal-title");
