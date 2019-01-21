@@ -3,7 +3,6 @@ import "mocha";
 
 const expect = chai.expect;
 
-import { ajax } from "bluejax";
 import { Grammar, readTreeFromJSON, ValidationError } from "salve";
 import { ErrorData } from "salve-dom";
 
@@ -30,11 +29,13 @@ describe("util", () => {
   let grammar: Grammar;
   let badDoc: Document;
 
-  before(() => {
-    badDoc = new DOMParser().parseFromString("<div/>", "text/xml");
+  before(async () => {
+    const parser = new DOMParser();
+    badDoc = parser.parseFromString("<div/>", "text/xml");
     grammar = readTreeFromJSON(JSON.parse(JSON.stringify(concordanceV1)));
-    return ajax("/base/test/data/sample-concordance-v1-1.xml")
-      .then((newDoc) => doc = newDoc);
+    const text =
+      await (await fetch("/base/test/data/sample-concordance-v1-1.xml")).text();
+    doc = parser.parseFromString(text, "text/xml");
   });
 
   describe("validate", () => {

@@ -37,8 +37,6 @@ window.systemJSConfig = {
     "salve-dom": "npm:salve-dom",
     json: "npm:systemjs-plugin-json",
     slug: "npm:slug",
-    bluejax: "npm:bluejax",
-    "bluejax.try": "npm:bluejax.try",
     dashboard: "npm:wed-demo/prod/lib/dashboard",
     wed: "npm:wed-demo/wed-prod/lib/wed",
     rangy: "npm:rangy/rangy-core",

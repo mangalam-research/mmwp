@@ -1,4 +1,3 @@
-import { ajax } from "bluejax";
 import "chai";
 
 const expect = chai.expect;
@@ -55,25 +54,20 @@ export class DataProvider {
     return this._getText(this.base + path);
   }
 
-  _getText(path: string): Promise<string> {
-    return Promise.resolve().then(() => {
-      const cached = this.cache[path];
-      if (cached !== undefined) {
-        return cached;
-      }
+  async _getText(path: string): Promise<string> {
+    const cached = this.cache[path];
+    if (cached !== undefined) {
+      return cached;
+    }
 
-      return ajax({ url: path, dataType: "text"})
-        .then((data) => {
-          this.cache[path] = data;
-          return data;
-        });
-    });
+    const data = await (await fetch(path)).text();
+    this.cache[path] = data;
+    return data;
   }
 
-  getDoc(path: string): Promise<Document> {
-    return this._getText(this.base + path).then((data) => {
-      return this.parser.parseFromString(data, "text/xml");
-    });
+  async getDoc(path: string): Promise<Document> {
+    const data = await this._getText(this.base + path);
+    return this.parser.parseFromString(data, "text/xml");
   }
 }
 
