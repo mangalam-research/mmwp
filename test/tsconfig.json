@@ -6,8 +6,8 @@
     "paths": {
       "dashboard/*": ["../node_modules/wed-demo/dev/lib/dashboard/*"],
       "mmwp/*": ["../build/dev/lib/mmwp/*"],
-      "wed": ["../node_modules/wed/standalone/lib/wed"],
-      "wed/*": ["../node_modules/wed/standalone/lib/wed/*"],
+      "wed": ["../node_modules/@wedxml/core/dev/lib/wed"],
+      "wed/modes/*": ["../node_modules/@wedxml/core/dev/lib/wed/modes/*"],
       "sinon": ["../types/sinon"],
       "bluejax": ["../types/bluejax"]
     }

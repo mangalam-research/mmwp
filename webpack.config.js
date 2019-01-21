@@ -108,8 +108,7 @@ module.exports = [{
         .replace(
           /<script data-script-type="set-environment"[^]*?>[^]*?<\/script>/,
           ""),
-    }, ...["{kitchen-sink,global-config,wed-store,system.config,\
-requirejs-local-config}.js",
+    }, ...["{kitchen-sink,global-config,wed-store,system.config}.js",
            "*.html"].map(x => ({
              from: {
                glob: x,
@@ -134,9 +133,7 @@ requirejs-local-config}.js",
   resolve: {
     modules: [sourceDir, "node_modules"],
     alias: {
-      wed: path.join(__dirname, "node_modules/wed/standalone/lib/wed"),
-      "merge-options": path.join(__dirname, "node_modules/wed/standalone/lib/external/merge-options"),
-      "is-plain-obj": path.join(__dirname, "node_modules/wed/standalone/lib/external/is-plain-obj"),
+      wed: path.join(__dirname, "node_modules/wed-demo/node_modules/@wedxml/core/dev/lib/wed"),
     },
   },
   entry: {

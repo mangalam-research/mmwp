@@ -6,7 +6,7 @@
           type="text/css" media="screen" rel="stylesheet"/>
     <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css"
           type="text/css" media="screen" rel="stylesheet"/>
-    <link href="/node_modules/wed/standalone/lib/wed/wed.css" type="text/css"
+    <link href="/node_modules/wed-demo/wed-prod/lib/wed/wed.css" type="text/css"
           media="screen"
           rel="stylesheet" />
     <script>
@@ -19,21 +19,27 @@
         env.DASHBOARD_BASE = "/node_modules/wed-demo/dev/lib/";
       }());
     </script>
-    <script data-script-type="set-environment" type="text/javascript">
+    <script data-script-type="set-environment">
       process.env.NODE_ENV = "development";
     </script>
-    <script type="text/javascript" src="/node_modules/wed/standalone/lib/external/core-js.min.js"></script>
-    <script type="text/javascript" src="/node_modules/wed/standalone/lib/external/bluebird.js"></script>
-    <script type="text/javascript" src="/node_modules/wed/standalone/lib/external/classList.js"></script>
-    <script type="text/javascript" src="/node_modules/wed/standalone/lib/wed/polyfills/contains.js"></script>
-    <script type="text/javascript" src="/node_modules/wed/standalone/lib/wed/polyfills/matches.js"></script>
-    <script type="text/javascript" src="/node_modules/wed/standalone/lib/wed/polyfills/innerHTML_for_XML.js"></script>
-    <script type="text/javascript" src="/node_modules/wed/standalone/lib/wed/polyfills/closest.js"></script>
-    <script type="text/javascript" src="/node_modules/wed/standalone/lib/wed/polyfills/firstElementChild_etc.js"></script>
-    <script type="text/javascript" src="/node_modules/wed/standalone/lib/wed/polyfills/normalize.js"></script>
-    <script type="text/javascript" src="/node_modules/wed/standalone/lib/requirejs/require.js"></script>
-    <script type="text/javascript" src="/node_modules/wed/standalone/requirejs-config.js"></script>
-    <script src="requirejs-local-config.js"></script>
+    <script src="/node_modules/core-js/client/shim.min.js"></script>
+    <script src="/node_modules/wed-demo/wed-prod/lib/wed/polyfills/contains.js"></script>
+    <script src="/node_modules/wed-demo/wed-prod/lib/wed/polyfills/matches.js"></script>
+    <script src="/node_modules/wed-demo/wed-prod/lib/wed/polyfills/innerHTML_for_XML.js"></script>
+    <script src="/node_modules/wed-demo/wed-prod/lib/wed/polyfills/closest.js"></script>
+    <script src="/node_modules/wed-demo/wed-prod/lib/wed/polyfills/firstElementChild_etc.js"></script>
+    <script src="/node_modules/wed-demo/wed-prod/lib/wed/polyfills/normalize.js"></script>
+    <script src="/node_modules/systemjs/dist/system.src.js"></script>
+    <script src="/web/system.config.js"></script>
+    <script>
+      systemJSConfig.baseURL = "";
+      systemJSConfig.map["wed-store"] =
+        process.env.DASHBOARD_BASE + "wed-store";
+
+      SystemJS.config(systemJSConfig);
+      window.define = SystemJS.amdDefine;
+      window.require = window.requirejs = SystemJS.amdRequire;
+    </script>
   </head>
   <body>
     <div class="container">

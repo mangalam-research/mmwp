@@ -3,7 +3,6 @@ import { Action, domtypeguards, EditorAPI, exceptions, ModeValidator,
 import isText = domtypeguards.isText;
 import AbortTransformationException = exceptions.AbortTransformationException;
 import Transformation = transformation.Transformation;
-import TransformationData = transformation.TransformationData;
 
 import * as generic from "wed/modes/generic/generic";
 
@@ -20,12 +19,11 @@ declare var platformRequire: any;
 const req = typeof platformRequire !== "undefined" ? platformRequire : require;
 
 class MMWPAMode extends generic.Mode<generic.GenericModeOptions> {
-  private readonly numberSentencesTr: Transformation<TransformationData>;
-  private readonly numberWordsTr: Transformation<TransformationData>;
-  private readonly numberSentencesAndWordsTr:
-  Transformation<TransformationData>;
-  private readonly unnumberWordsTr: Transformation<TransformationData>;
-  private readonly splitCompoundIntoPartsTr: Transformation<TransformationData>;
+  private readonly numberSentencesTr: Transformation;
+  private readonly numberWordsTr: Transformation;
+  private readonly numberSentencesAndWordsTr: Transformation;
+  private readonly unnumberWordsTr: Transformation;
+  private readonly splitCompoundIntoPartsTr: Transformation;
 
   readonly optionTemplate: objectCheck.Template = {
     autoinsert: false,
