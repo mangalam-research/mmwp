@@ -113,12 +113,12 @@ describe("ConcordanceTransformService", () => {
     afterEach(() => db.delete().then(() => db.open()));
 
     afterEach(() => {
-      const modals = Array.from(document.querySelectorAll(".modal.in"));
+      const modals = Array.from(document.querySelectorAll(".modal.show"));
       for (const modal of modals) {
         $(modal).modal("hide");
       }
 
-      const openModal = document.querySelector(".modal.in");
+      const openModal = document.querySelector(".modal.show");
       expect(openModal).to.be.null;
 
       sinon.restore();
@@ -203,7 +203,7 @@ this application and fix any errors before uploading again."));
                               `^<p>invalid line: line without a ref: <line>
       <left_context><normalised a_id="lugli" orig="yāvan" auto="false">(.|\n)*
 <p>invalid ref:`));
-      const title = document.querySelector(".modal.in .modal-title");
+      const title = document.querySelector(".modal.show .modal-title");
       expect(title).to.have.property("textContent").equal("Invalid data");
     });
   });
@@ -277,7 +277,7 @@ for (const version of Object.keys(processorTests)) {
         // tslint:disable-next-line:no-any
         sinon.spy(proc, "reportWarnings" as any);
         await proc.perform(doc);
-        const title = document.querySelector(".modal.in .modal-title");
+        const title = document.querySelector(".modal.show .modal-title");
         expect(title).to.have.property("textContent").equal("Warning");
         const warnings = document.querySelector(".modal-body");
         expect(warnings).to.have.property("textContent")

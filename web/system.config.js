@@ -29,10 +29,10 @@ window.systemJSConfig = {
     "rxjs/operators": "npm:rxjs/operators/index.js",
     jquery: "npm:jquery",
     bootstrap: "npm:bootstrap/dist/js/bootstrap.js",
+    "popper.js": "npm:popper.js",
     bootbox: "npm:bootbox",
     "blueimp-md5": "npm:blueimp-md5",
     dexie: "npm:dexie",
-    bluebird: "npm:bluebird/js/browser/bluebird.js",
     salve: "npm:salve/salve.min.js",
     "salve-dom": "npm:salve-dom",
     json: "npm:systemjs-plugin-json",
@@ -41,26 +41,25 @@ window.systemJSConfig = {
     wed: "npm:wed-demo/wed-prod/lib/wed",
     rangy: "npm:rangy/rangy-core",
     log4javascript: "npm:log4javascript",
-    "merge-options": "npm:merge-options",
-    "is-plain-obj": "npm:is-plain-obj",
-    ajv: "npm:ajv.min",
     interact: "npm:interactjs",
     interactjs: "npm:interactjs",
     "bootstrap-notify": "npm:bootstrap-notify",
     typeahead: "npm:corejs-typeahead",
     inversify: "npm:inversify",
     "last-resort": "npm:last-resort",
+    // The modes need these modules.
+    "merge-options": "npm:merge-options/index.js",
+    "is-plain-obj": "npm:is-plain-obj/index.js",
+    ajv: "npm:ajv/dist/ajv.bundle.js",
   },
   meta: {
+    "wed/modes/generic/metadata-schema.json": {
+      loader: "json",
+    },
     "npm:bootbox/*": {
       // We must add bootstrap here because bootbox does not list
       // it as a dependency.
       deps: ["bootstrap"],
-    },
-    "npm:bootstrap/bootstrap/*.js": {
-      format: "global",
-      deps: ["jquery"],
-      exports: "$",
     },
   },
   packages: {

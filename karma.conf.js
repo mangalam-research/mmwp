@@ -2,8 +2,6 @@
 
 "use strict";
 
-const serveStatic = require("serve-static");
-
 //
 // karma-typescript-preprocessor does not support loading a tsconfig.json. There
 // is an old issue saying it can but probably the TS API changed and it no
@@ -17,33 +15,12 @@ const serveStatic = require("serve-static");
 // - The gulp-typescript it uses does not support "extends".
 //
 
-function makeServeMiddleware(/* config */) {
-  const serve = serveStatic("./node_modules", {
-    index: false,
-  });
-
-  const baseURL = "/base/node_modules/";
-  return function handle(req, resp, next) {
-    if (req.url.lastIndexOf(baseURL, 0) === 0) {
-      req.url = req.url.slice(baseURL.length);
-      serve(req, resp, next);
-    }
-    else {
-      next();
-    }
-  };
-}
-
 module.exports = function configure(config) {
   const coverage = !config.debug ? ["coverage"] : [];
   config.set({
     basePath: "",
     frameworks: ["mocha", "chai", "source-map-support"],
-    middleware: ["serve-node-modules"],
-    plugins: [
-      "karma-*", // This is the default, which we need to keep here.
-      { "middleware:serve-node-modules": ["factory", makeServeMiddleware] },
-    ],
+    middleware: ["serve-static-map"],
     client: {
       mocha: {
         grep: config.grep,
@@ -75,6 +52,9 @@ module.exports = function configure(config) {
       { pattern: "build/**/*.@(js|html|map|css)", included: false },
     ],
     exclude: [],
+    serveStaticMap: [
+      { fsPath: "./node_modules", baseURL: "/base/node_modules/" },
+    ],
     preprocessors: {
       "test/**/*.ts": ["typescript"],
       "build/dev/lib/dashboard.js": coverage,

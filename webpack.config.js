@@ -133,7 +133,7 @@ module.exports = [{
   resolve: {
     modules: [sourceDir, "node_modules"],
     alias: {
-      wed: path.join(__dirname, "node_modules/wed-demo/node_modules/@wedxml/core/dev/lib/wed"),
+      wed: path.join(__dirname, "node_modules/wed-demo/wed-prod/lib/wed"),
     },
   },
   entry: {
