@@ -804,7 +804,7 @@ this application and fix any errors before uploading again.");
       // element.
       // tslint:disable-next-line:no-non-null-assertion
       const top = doc.firstElementChild!;
-      let proc: { new(xmlFiles: XMLFilesService): V1Processor | V2Processor };
+      let proc: new (xmlFiles: XMLFilesService) => V1Processor | V2Processor;
       switch (top.tagName) {
         case "concordance":
           // v1

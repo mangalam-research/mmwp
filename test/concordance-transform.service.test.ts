@@ -210,7 +210,7 @@ this application and fix any errors before uploading again."));
 });
 
 type ProcessorTest = {
-  ctor: { new (xmlFiles: XMLFilesService): V1Processor | V2Processor };
+  ctor: new (xmlFiles: XMLFilesService) => V1Processor | V2Processor;
   fileName: string;
   setRef(line: Element, value: string): void;
   deleteRef(line: Element): void;
