@@ -30,4 +30,32 @@
       <word id=" 2" lem="foo">word7</word>
     </s>
   </cit>
+  <cit id="4">
+    <s id="1">
+      <word id="1" lem="something" dep.rel="listed.with " dep.head=" 2">word6</word>
+      <word id=" 2" lem="foo">word7</word>
+    </s>
+    <tr>Something or other</tr>
+  </cit>
+  <cit id="5">
+    <s id="1">
+      <word id="1" lem="something" dep.rel="listed.with " dep.head=" 2">word6</word>
+      <word id=" 2" lem="foo">word7</word>
+    </s>
+    <tr tr="source" p="page">Something or other</tr>
+  </cit>
+  <cit id="6">
+    <s id="1">
+      <word id="1" lem="something" dep.rel="listed.with " dep.head=" 2">word6</word>
+      <word id=" 2" lem="foo">word7</word>
+    </s>
+    <tr tr="source">Something or other</tr>
+  </cit>
+ <cit id="7">
+    <s id="1">
+      <word id="1" lem="something" dep.rel="listed.with " dep.head=" 2">word6</word>
+      <word id=" 2" lem="foo">word7</word>
+    </s>
+    <tr p="page">Something or other</tr>
+  </cit>
 </doc>

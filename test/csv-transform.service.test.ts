@@ -500,7 +500,7 @@ sem.pros="neg" uncertainty="vague">-moo</word> \
       expect(row.columns).to.have.keys(["citation"]);
     });
 
-    it("fills the columns, with translation", () => {
+    it("fills the columns, with translation but without attributes", () => {
       const csv = new CSVDocument(COLUMN_NAMES);
       const row = csv.makeRow();
       const doc =
@@ -519,6 +519,72 @@ sem.pros="neg" uncertainty="vague">-moo</word> \
         .equal("-moo wordA wordB wordA");
       expect(row.columns).to.have.property("translation")
         .equal("Something or other");
+      expect(row.columns).to.have.keys(["citation", "translation"]);
+    });
+
+    it("fills the columns, with translation and @tr and @p", () => {
+      const csv = new CSVDocument(COLUMN_NAMES);
+      const row = csv.makeRow();
+      const doc =
+        safeParse(`<cit id="1" ref="refValue" xmlns='${MMWP_NAMESPACE}'>\
+<s id="1">\
+<word id="1" lem="lemmaValue" case="nominative" number="dual" \
+sem.cat="cat a, cat b" sem.field="sem field value" sem.role="sem role value" \
+sem.pros="neg" uncertainty="vague">-moo</word> \
+<word id="2" lem="a" sem.field="semA">wordA</word> \
+<word id="3" lem="b" sem.field="semB">wordB</word> \
+<word id="4" lem="a" sem.field="semA">wordA</word>\
+</s><tr tr="source" p="page">Something or other</tr></cit>`);
+      const cit = doc.firstElementChild!;
+      service.fillCitationTranslationColumns(cit, row);
+      expect(row.columns).to.have.property("citation")
+        .equal("-moo wordA wordB wordA");
+      expect(row.columns).to.have.property("translation")
+        .equal("Something or other [source page]");
+      expect(row.columns).to.have.keys(["citation", "translation"]);
+    });
+
+    it("fills the columns, with translation and @tr", () => {
+      const csv = new CSVDocument(COLUMN_NAMES);
+      const row = csv.makeRow();
+      const doc =
+        safeParse(`<cit id="1" ref="refValue" xmlns='${MMWP_NAMESPACE}'>\
+<s id="1">\
+<word id="1" lem="lemmaValue" case="nominative" number="dual" \
+sem.cat="cat a, cat b" sem.field="sem field value" sem.role="sem role value" \
+sem.pros="neg" uncertainty="vague">-moo</word> \
+<word id="2" lem="a" sem.field="semA">wordA</word> \
+<word id="3" lem="b" sem.field="semB">wordB</word> \
+<word id="4" lem="a" sem.field="semA">wordA</word>\
+</s><tr tr="source">Something or other</tr></cit>`);
+      const cit = doc.firstElementChild!;
+      service.fillCitationTranslationColumns(cit, row);
+      expect(row.columns).to.have.property("citation")
+        .equal("-moo wordA wordB wordA");
+      expect(row.columns).to.have.property("translation")
+        .equal("Something or other [source]");
+      expect(row.columns).to.have.keys(["citation", "translation"]);
+    });
+
+    it("fills the columns, with translation and @p", () => {
+      const csv = new CSVDocument(COLUMN_NAMES);
+      const row = csv.makeRow();
+      const doc =
+        safeParse(`<cit id="1" ref="refValue" xmlns='${MMWP_NAMESPACE}'>\
+<s id="1">\
+<word id="1" lem="lemmaValue" case="nominative" number="dual" \
+sem.cat="cat a, cat b" sem.field="sem field value" sem.role="sem role value" \
+sem.pros="neg" uncertainty="vague">-moo</word> \
+<word id="2" lem="a" sem.field="semA">wordA</word> \
+<word id="3" lem="b" sem.field="semB">wordB</word> \
+<word id="4" lem="a" sem.field="semA">wordA</word>\
+</s><tr p="page">Something or other</tr></cit>`);
+      const cit = doc.firstElementChild!;
+      service.fillCitationTranslationColumns(cit, row);
+      expect(row.columns).to.have.property("citation")
+        .equal("-moo wordA wordB wordA");
+      expect(row.columns).to.have.property("translation")
+        .equal("Something or other [page]");
       expect(row.columns).to.have.keys(["citation", "translation"]);
     });
   });

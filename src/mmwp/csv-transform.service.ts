@@ -236,7 +236,13 @@ export class CSVTransformService extends AnnotatedDocumentTransformService {
     const tr = trs[0];
     if (tr !== undefined) {
       tr.parentNode!.removeChild(tr);
-      row.setColumn("translation", tr.textContent!);
+      const additional = ["tr", "p"].map(x => getAttribute(tr, x))
+        .filter(x => x !== "").join(" ");
+      const columnText = additional !== "" ?
+        `${tr.textContent!} [${additional}]` :
+        tr.textContent!;
+
+      row.setColumn("translation", columnText);
     }
 
     row.setColumn("citation", citWithoutTr.textContent!);
