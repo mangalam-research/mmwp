@@ -30,7 +30,7 @@ window.systemJSConfig = {
     jquery: "npm:jquery",
     bootstrap: "npm:bootstrap/dist/js/bootstrap.js",
     "popper.js": "npm:popper.js",
-    bootbox: "npm:bootbox",
+    bootprompt: "npm:bootprompt",
     "blueimp-md5": "npm:blueimp-md5",
     dexie: "npm:dexie",
     salve: "npm:salve/salve.min.js",
@@ -55,11 +55,6 @@ window.systemJSConfig = {
   meta: {
     "wed/modes/generic/metadata-schema.json": {
       loader: "json",
-    },
-    "npm:bootbox/*": {
-      // We must add bootstrap here because bootbox does not list
-      // it as a dependency.
-      deps: ["bootstrap"],
     },
   },
   packages: {

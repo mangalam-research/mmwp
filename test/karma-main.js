@@ -35,17 +35,17 @@
     return SystemJS.import(file);
   }
 
-  return Promise.all(["bootbox",
+  return Promise.all(["bootprompt",
                       "@angular/core/testing",
                       "@angular/platform-browser-dynamic/testing"]
                      .map(importIt))
     .then(function loaded(deps) {
-      var bootbox = deps[0];
+      var bootprompt = deps[0];
       var testing = deps[1];
       var browser = deps[2];
 
       // Disable animations to help simplify tests.
-      bootbox.setDefaults({ animate: false });
+      bootprompt.setDefaults({ animate: false });
 
       // This is needed so that the testbed is properly initialized.
       testing.TestBed.initTestEnvironment(browser.BrowserDynamicTestingModule,

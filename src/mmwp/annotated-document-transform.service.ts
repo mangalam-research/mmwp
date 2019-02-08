@@ -1,4 +1,4 @@
-import { alert } from "bootbox";
+import { alert } from "bootprompt";
 
 import { ProcessingService } from "dashboard/processing.service";
 import { triggerDownload } from "dashboard/util";

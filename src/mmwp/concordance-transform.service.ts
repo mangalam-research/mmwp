@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { alert } from "bootbox";
+import { alert } from "bootprompt";
 import { Grammar, readTreeFromJSON } from "salve";
 import { ParsingError, safeParse } from "salve-dom";
 import * as slug from "slug";
