@@ -236,8 +236,8 @@ export class CSVTransformService extends AnnotatedDocumentTransformService {
     const tr = trs[0];
     if (tr !== undefined) {
       tr.parentNode!.removeChild(tr);
-      const additional = ["tr", "p"].map(x => getAttribute(tr, x))
-        .filter(x => x !== "").join(" ");
+      const additional = ["tr", "p"].map((x) => getAttribute(tr, x))
+        .filter((x) => x !== "").join(" ");
       const columnText = additional !== "" ?
         `${tr.textContent!} [${additional}]` :
         tr.textContent!;
