@@ -45,7 +45,7 @@
       var browser = deps[2];
 
       // Disable animations to help simplify tests.
-      bootprompt.setDefaults({ animate: false });
+      bootprompt.setAnimate(false);
 
       // This is needed so that the testbed is properly initialized.
       testing.TestBed.initTestEnvironment(browser.BrowserDynamicTestingModule,

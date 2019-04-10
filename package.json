@@ -29,7 +29,7 @@
     "@angular/platform-browser": "^6.1.4",
     "@angular/platform-browser-dynamic": "^6.1.4",
     "@angular/router": "^6.0.4",
-    "bootprompt": "^5.0.0-alpha.3",
+    "bootprompt": "^6.0.0",
     "bootstrap": "^4.3.1",
     "core-js": "^2.6.3",
     "dexie": "^2.0.4",
