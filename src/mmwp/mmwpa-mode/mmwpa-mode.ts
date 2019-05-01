@@ -18,6 +18,8 @@ declare var platformRequire: any;
 // tslint:disable-next-line:no-typeof-undefined
 const req = typeof platformRequire !== "undefined" ? platformRequire : require;
 
+const MMWPA_MODE_ORIGIN = "https://github.com/mangalam-research/mmwp";
+
 class MMWPAMode extends generic.Mode<generic.GenericModeOptions> {
   private readonly numberSentencesTr: Transformation;
   private readonly numberWordsTr: Transformation;
@@ -55,16 +57,19 @@ class MMWPAMode extends generic.Mode<generic.GenericModeOptions> {
     };
 
     this.numberSentencesTr = new Transformation(
-      editor, "transform", "Number the sentences", mmwpaTr.numberSentences);
+      MMWPA_MODE_ORIGIN, editor, "transform", "Number the sentences",
+      mmwpaTr.numberSentences);
     this.numberWordsTr = new Transformation(
-      editor, "transform", "Number the words", mmwpaTr.numberWords);
+      MMWPA_MODE_ORIGIN, editor, "transform", "Number the words",
+      mmwpaTr.numberWords);
     this.numberSentencesAndWordsTr = new Transformation(
-      editor, "transform", "Number sentences and words",
+      MMWPA_MODE_ORIGIN, editor, "transform", "Number sentences and words",
       mmwpaTr.numberSentencesAndWords);
     this.unnumberWordsTr = new Transformation(
-      editor, "transform", "Unnumber the words", mmwpaTr.unnumberWords);
+      MMWPA_MODE_ORIGIN, editor, "transform", "Unnumber the words",
+      mmwpaTr.unnumberWords);
     this.splitCompoundIntoPartsTr = new Transformation(
-      editor, "split", "Split compound into parts",
+      MMWPA_MODE_ORIGIN, editor, "split", "Split compound into parts",
       mmwpaTr.splitCompoundIntoParts);
   }
 

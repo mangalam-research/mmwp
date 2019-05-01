@@ -37,7 +37,7 @@
     "jquery": "^3.3.1",
     "last-resort": "^1.0.1",
     "rxjs": "^6.4.0",
-    "salve": "^9.1.1",
+    "salve": "^9.1.2",
     "salve-dom": "^6.0.0",
     "slug": "^1.1.0",
     "systemjs": "^0.21.6",
