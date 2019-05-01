@@ -88,7 +88,7 @@ describe("ConcordanceTransformService", () => {
 
     function getAllFiles(): Promise<(XMLFile | undefined)[]> {
       return Promise.all(
-        resultNames.map((name) => xmlFilesService.getRecordByName(name)));
+        resultNames.map(name => xmlFilesService.getRecordByName(name)));
     }
 
     beforeEach(async () => {
@@ -146,7 +146,7 @@ describe("ConcordanceTransformService", () => {
         await service.perform(good[version]);
         const files = await getAllFiles();
 
-        const datas = await Promise.all(files.map((x) => x!.getData()));
+        const datas = await Promise.all(files.map(x => x!.getData()));
 
         // We check the cit/@ref of in all files due to the complexity of the
         // code that generates them.
@@ -162,7 +162,7 @@ describe("ConcordanceTransformService", () => {
 
       it(`names the resulting files properly (${version})`, async () => {
         const results = await service.perform(good[version]);
-        expect(results.map((x) => x.name)).to.have.members(resultNames);
+        expect(results.map(x => x.name)).to.have.members(resultNames);
       });
 
       it(`saves the files (${version})`, async () => {

@@ -103,7 +103,7 @@ class MMWPAMode extends generic.Mode<generic.GenericModeOptions> {
     dl.addHandler("added-element", wordClass, wordAddedRemoved);
     dl.addHandler("removing-element", wordClass, wordAddedRemoved);
 
-    editor.transformations.subscribe((ev) => {
+    editor.transformations.subscribe(ev => {
       if (ev.name !== "EndTransformation" || sentences.length === 0) {
         return;
       }
@@ -126,7 +126,7 @@ class MMWPAMode extends generic.Mode<generic.GenericModeOptions> {
 
     // We check for the mark that ``mmwpaTr.renumberWords`` left among the undos
     // to bring up a warning for the user.
-    editor.undoEvents.subscribe((ev) => {
+    editor.undoEvents.subscribe(ev => {
       if (ev.undo instanceof mmwpaTr.WordNumberingMarker) {
         mmwpaTr.getRenumberModal(editor).modal();
       }

@@ -15,7 +15,6 @@ export class AnnotatedDocumentCSVRenderer extends CSVDocumentRenderer {
 
     // cameCase the name, and drop the periods.
     return super.renderColumnName(
-      name.replace(/\../g, (match) => match[1].toUpperCase())
-        .replace(/\.$/, ""));
+      name.replace(/\../g, match => match[1].toUpperCase()).replace(/\.$/, ""));
   }
 }

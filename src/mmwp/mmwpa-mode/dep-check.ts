@@ -157,7 +157,7 @@ but is not part of the ${this.treeName} tree`));
                errors: ErrorData[]): void {
     const seen: Record<string, boolean> = Object.create(null);
     this._walk(root, seen, [], errors);
-    const notSeen = Object.keys(participating).filter((key) => !(key in seen));
+    const notSeen = Object.keys(participating).filter(key => !(key in seen));
     for (const id of notSeen) {
       const node = participating[id];
       errors.push(node.makeError(`word ${id} has a dependency in the \

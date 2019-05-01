@@ -150,7 +150,7 @@ conc.rel="blah" dep.head="3" conc.head="3">bar</word>\
   });
 
   it("reports no errors on good file", () =>
-     provider.getText("annotated-file-1.xml").then((data) => {
+     provider.getText("annotated-file-1.xml").then(data => {
        const document = parser.parseFromString(data, "text/xml");
        const v = new MMWPAValidator(document);
        expect(v.validateDocument()).to.have.lengthOf(0);

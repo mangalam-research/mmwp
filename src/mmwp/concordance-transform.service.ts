@@ -208,7 +208,7 @@ async function safeValidate(grammar: Grammar,
   if (errors.length !== 0) {
     throw new ProcessingError(
       "Validation Error",
-      errors.map((x) => `<p>${x.error.toString()}</p>`).join("\n"));
+      errors.map(x => `<p>${x.error.toString()}</p>`).join("\n"));
   }
 }
 
@@ -243,7 +243,7 @@ abstract class BaseProcessor {
     if (logger.hasErrors) {
       throw new ProcessingError(
         "Invalid data",
-        logger.errors.map((x) => `<p>${x}</p>`).join("\n"));
+        logger.errors.map(x => `<p>${x}</p>`).join("\n"));
     }
 
     const promises: Promise<{ titleDoc: Document; outputName: string }>[] = [];
@@ -254,7 +254,7 @@ abstract class BaseProcessor {
     const results = await Promise.all(promises);
 
     if (logger.hasWarnings) {
-      this.reportWarnings(logger.warnings.map((x) => `<p>${x}</p>`).join("\n"));
+      this.reportWarnings(logger.warnings.map(x => `<p>${x}</p>`).join("\n"));
     }
 
     return Promise.all(

@@ -35,7 +35,7 @@ for (const name of ["listed.with", "contrasted.with", "dep", "parallel.to"]) {
   RELATIONS.push({ name });
 }
 
-const KNOWN_RELATIONS = new Set(RELATIONS.map((x) => x.name));
+const KNOWN_RELATIONS = new Set(RELATIONS.map(x => x.name));
 
 function inverse(relation: Relation): Relation {
   return (relation.reverse !== undefined) ? relation.reverse : relation;
@@ -197,7 +197,7 @@ export class CSVTransformService extends AnnotatedDocumentTransformService {
 
   fillCotextColumns(cit: Element, occurrence: Element, row: CSVRow): void {
     const citationWords = Array.from(cit.getElementsByTagName("word"))
-      .filter((x) => x !== occurrence);
+      .filter(x => x !== occurrence);
 
     let cotext = "";
     let cotextSemField = "";
@@ -236,8 +236,8 @@ export class CSVTransformService extends AnnotatedDocumentTransformService {
     const tr = trs[0];
     if (tr !== undefined) {
       tr.parentNode!.removeChild(tr);
-      const additional = ["tr", "p"].map((x) => getAttribute(tr, x))
-        .filter((x) => x !== "").join(" ");
+      const additional = ["tr", "p"].map(x => getAttribute(tr, x))
+        .filter(x => x !== "").join(" ");
       const columnText = additional !== "" ?
         `${tr.textContent!} [${additional}]` :
         tr.textContent!;
@@ -251,7 +251,7 @@ export class CSVTransformService extends AnnotatedDocumentTransformService {
   fillRelationColumns(occurrence: Element, row: CSVRow): void {
     const sentence = occurrence.closest("s")!;
     const sentenceWords = Array.from(sentence.getElementsByTagName("word"))
-      .filter((x) => x !== occurrence);
+      .filter(x => x !== occurrence);
 
     const depRelToWords: Record<string, Set<Element>> = Object.create(null);
     const depHeadToWords: Record<string, Set<Element>> = Object.create(null);
@@ -299,9 +299,9 @@ export class CSVTransformService extends AnnotatedDocumentTransformService {
         new Set([...
                  Array.from(getWithDefault(depHeadToWords, occurrenceId,
                                            Set as new () => Set<Element>))]
-                .filter((x) => getWithDefault(depRelToWords,
-                                              inverse(relation).name,
-                                              Set).has(x)));
+                .filter(x => getWithDefault(depRelToWords,
+                                            inverse(relation).name,
+                                            Set).has(x)));
 
       // if @dep.rel = $V, ancestor::s/word[@id=$occurrence/@dep.head]/@lem
       if (occurrenceDepHead !== null && occurenceDepRel === relation.name) {
@@ -310,14 +310,14 @@ export class CSVTransformService extends AnnotatedDocumentTransformService {
 
       const relevantWordsArray = Array.from(relevantWords);
       const lems = relevantWordsArray
-        .map((x) => getAttribute(x, "lem"))
-        .filter((x) => x !== "").join(";;");
+        .map(x => getAttribute(x, "lem"))
+        .filter(x => x !== "").join(";;");
       row.setColumn(relation.name, lems);
 
       for (const attribute of RELATION_ATTRIBUTES) {
         const values = relevantWordsArray
-          .map((x) => getAttribute(x, attribute))
-          .filter((x) => x !== "").join(";;");
+          .map(x => getAttribute(x, attribute))
+          .filter(x => x !== "").join(";;");
         row.setColumn(`${relation.name}.${attribute}`, values);
       }
     }

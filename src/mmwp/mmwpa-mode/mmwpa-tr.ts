@@ -41,14 +41,14 @@ function makeModalGetter(key: string, builder: (modal: Modal) => void):
 
 const getNumberSentenceModal = makeModalGetter(
   "number-sentence-modal",
-  (modal) => {
+  modal => {
     modal.setTitle("Invalid");
     modal.addButton("Ok", true);
   });
 
 export const getRenumberModal = makeModalGetter(
   "renumber-modal",
-  (modal) => {
+  modal => {
     modal.setTitle("Check references");
     modal.setBody(`The words of the sentence in which the caret is located \
 were renumbered. Check @dep.head and @conc.head for correctness on each word \
@@ -213,7 +213,7 @@ export function unnumberWords(editor: EditorAPI,
 
 const getSplitCompoundModal = makeModalGetter(
   "split-compound-modal",
-  (modal) => {
+  modal => {
     modal.setTitle("Split compound into parts");
     modal.setBody(`The word is not in a correct format for splitting. \
 Make sure there are no XML elements inside the word. And that there is no \

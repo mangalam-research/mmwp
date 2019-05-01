@@ -14,7 +14,7 @@ Promise<boolean> {
       return false;
     }
 
-    return new Promise((resolve) => setTimeout(resolve, delay)).then(check);
+    return new Promise(resolve => setTimeout(resolve, delay)).then(check);
   }
 
   return Promise.resolve().then(check);

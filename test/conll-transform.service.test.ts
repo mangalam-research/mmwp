@@ -83,8 +83,8 @@ this application and fix any errors before uploading again."));
       const result = await rservice.transform(doc);
 
       const lines = result.split("\n");
-      const expectedLines = expected.split("\n")
-        .filter((line) => line[0] !== "#");
+      const expectedLines =
+        expected.split("\n").filter(line => line[0] !== "#");
 
       for (let ix = 0; ix < lines.length; ++ix) {
         const line = lines[ix];

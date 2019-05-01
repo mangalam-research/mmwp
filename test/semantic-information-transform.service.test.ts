@@ -68,8 +68,8 @@ this application and fix any errors before uploading again."));
       const result = await service.transform(doc);
 
       const lines = result.split("\n");
-      const expectedLines = expected.split("\n")
-        .filter((line) => line[0] !== "#");
+      const expectedLines =
+        expected.split("\n").filter(line => line[0] !== "#");
 
       for (let ix = 0; ix < lines.length; ++ix) {
         const line = lines[ix];
@@ -107,7 +107,7 @@ describe("'semantic-information-transform.service'.Tuple", () => {
     it("is unequal for tuples that are different", () => {
       expect(new Tuple("", "x", "").key)
         .to.not.equal(new Tuple("", "", "").key);
-      expect(variants.map((x) => x.key))
+      expect(variants.map(x => x.key))
         .to.not.include(new Tuple("a", "b", "c").key);
     });
   });

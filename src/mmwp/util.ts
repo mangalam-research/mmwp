@@ -17,7 +17,7 @@ Promise<ErrorData[]> {
     new Validator(grammar, doc,
                   modeValidator !== undefined ? [modeValidator] : []);
   const errors: ErrorData[] = [];
-  return new Promise<ErrorData[]>((resolve) => {
+  return new Promise<ErrorData[]>(resolve => {
     validator.events.addEventListener(
       "state-update",
       (state: WorkingStateData) => {
@@ -27,7 +27,7 @@ Promise<ErrorData[]> {
 
         resolve(errors);
       });
-    validator.events.addEventListener("error", (error) => {
+    validator.events.addEventListener("error", error => {
       errors.push(error);
     });
     validator.start();
@@ -54,7 +54,7 @@ Promise<void> {
   if (errors.length !== 0) {
     throw new ProcessingError(
       "Validation Error",
-      errors.map((x) => `<p>${x.error.toString()}</p>`).join("\n"));
+      errors.map(x => `<p>${x.error.toString()}</p>`).join("\n"));
   }
 }
 
