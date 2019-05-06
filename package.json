@@ -93,7 +93,7 @@
     "ngc": "ngc -p src/tsconfig-aot.json",
     "create-aot-main": "sed -e 's/AppModule/AppModuleNgFactory/' -e 's/app\\.module/app\\.module\\.ngfactory/' -e 's/bootstrapModule/bootstrapModuleFactory/' build/aot/mmwp.js > build/aot/mmwp-aot.js",
     "fix-paths": "sed -i -e's;../../node_modules/;;g' `find build/aot -type f -name '*.js'`",
-    "copy-prod": "mkdir -p buidl/aot && (cd src; cp -r --parents `find . -type f -regex '.*\\.\\(js\\|html\\|css\\)$'` ../build/aot/)",
+    "copy-prod": "mkdir -p build/aot && (cd src; cp -r --parents `find . -type f -regex '.*\\.\\(js\\|html\\|css\\)$'` ../build/aot/)",
     "build-prod": "npm run ngc && npm run create-aot-main && npm run copy-prod && npm run fix-paths && npm run copy-dev && webpack",
     "test": "karma start --single-run",
     "lint": "tslint --format verbose -p src/tsconfig.json -c src/tslint.json && tslint --format verbose -p test/tsconfig.json -c test/tslint.json && eslint '*.js' 'test/**/*.js' 'web/**/*.js' --ignore-pattern 'test/data/*.js' && versync -v",
