@@ -18,7 +18,7 @@ import { ProcessingError, validateAnnotatedDocument } from "mmwp/util";
 
 import { DataProvider } from "./util";
 
-const RELATION_FIELD_NAMES = [
+const DEP_RELATION_FIELD_NAMES = [
   "modifies",
   "modifies.case",
   "modifies.number",
@@ -181,6 +181,116 @@ const RELATION_FIELD_NAMES = [
   "parallel.to.sem.role",
   "parallel.to.uncertainty",
 ];
+
+// const CONC_RELATION_FIELD_NAMES = [
+//   "leading.to",
+//   "leading.to.case",
+//   "leading.to.number",
+//   "leading.to.sem.cat",
+//   "leading.to.sem.field",
+//   "leading.to.sem.pros",
+//   "leading.to.sem.role",
+//   "leading.to.uncertainty",
+//   //
+//   "caused.by",
+//   "caused.by.case",
+//   "caused.by.number",
+//   "caused.by.sem.cat",
+//   "caused.by.sem.field",
+//   "caused.by.sem.pros",
+//   "caused.by.sem.role",
+//   "caused.by.uncertainty",
+//   //
+//   "possessing",
+//   "possessing.case",
+//   "possessing.number",
+//   "possessing.sem.cat",
+//   "possessing.sem.field",
+//   "possessing.sem.pros",
+//   "possessing.sem.role",
+//   "possessing.uncertainty",
+//   //
+//   "belonging.to",
+//   "belonging.to.case",
+//   "belonging.to.number",
+//   "belonging.to.sem.cat",
+//   "belonging.to.sem.field",
+//   "belonging.to.sem.pros",
+//   "belonging.to.sem.role",
+//   "belonging.to.uncertainty",
+//   //
+//   "locus.of",
+//   "locus.of.case",
+//   "locus.of.number",
+//   "locus.of.sem.cat",
+//   "locus.of.sem.field",
+//   "locus.of.sem.pros",
+//   "locus.of.sem.role",
+//   "locus.of.uncertainty",
+//   //
+//   "located.in",
+//   "located.in.case",
+//   "located.in.number",
+//   "located.in.sem.cat",
+//   "located.in.sem.field",
+//   "located.in.sem.pros",
+//   "located.in.sem.role",
+//   "located.in.uncertainty",
+//   //
+//   "by.means.of",
+//   "by.means.of.case",
+//   "by.means.of.number",
+//   "by.means.of.sem.cat",
+//   "by.means.of.sem.field",
+//   "by.means.of.sem.pros",
+//   "by.means.of.sem.role",
+//   "by.means.of.uncertainty",
+//   //
+//   "achieved.through",
+//   "achieved.through.case",
+//   "achieved.through.number",
+//   "achieved.through.sem.cat",
+//   "achieved.through.sem.field",
+//   "achieved.through.sem.pros",
+//   "achieved.through.sem.role",
+//   "achieved.through.uncertainty",
+//   //
+//   "goal.of",
+//   "goal.of.case",
+//   "goal.of.number",
+//   "goal.of.sem.cat",
+//   "goal.of.sem.field",
+//   "goal.of.sem.pros",
+//   "goal.of.sem.role",
+//   "goal.of.uncertainty",
+//   //
+//   "takes.goal",
+//   "takes.goal.case",
+//   "takes.goal.number",
+//   "takes.goal.sem.cat",
+//   "takes.goal.sem.field",
+//   "takes.goal.sem.pros",
+//   "takes.goal.sem.role",
+//   "takes.goal.uncertainty",
+//   //
+//   "equal",
+//   "equal.case",
+//   "equal.number",
+//   "equal.sem.cat",
+//   "equal.sem.field",
+//   "equal.sem.pros",
+//   "equal.sem.role",
+//   "equal.uncertainty",
+//   //
+//   "while",
+//   "while.case",
+//   "while.number",
+//   "while.sem.cat",
+//   "while.sem.field",
+//   "while.sem.pros",
+//   "while.sem.role",
+//   "while.uncertainty",
+// ];
 
 function makeRelationPairXML(forward: string, reverse: string,
                              citId: string): string {
@@ -597,8 +707,8 @@ sem.pros="neg" uncertainty="vague">-moo</word> \
         const doc = safeParse(makeRelationPairXML(forward, reverse, "1"));
         const cit = doc.firstElementChild!;
         const word = cit.firstElementChild!.firstElementChild!;
-        service.fillRelationColumns(word, row);
-        expect(row.columns).to.have.keys(RELATION_FIELD_NAMES);
+        service.fillRelationColumns("dep", word, row);
+        expect(row.columns).to.have.keys(DEP_RELATION_FIELD_NAMES);
         expect(row.columns).to.have.property(forward).equal("b;;a;;a");
         expect(row.columns).to.have.property(`${forward}.case`)
           .equal("accusative;;nominative;;nominative");
@@ -639,8 +749,8 @@ sem.pros="neg" uncertainty="vague">-moo</word> \
         const doc = safeParse(makeSingleRelationXML(relation, "1"));
         const cit = doc.firstElementChild!;
         const word = cit.firstElementChild!.firstElementChild!;
-        service.fillRelationColumns(word, row);
-        expect(row.columns).to.have.keys(RELATION_FIELD_NAMES);
+        service.fillRelationColumns("dep", word, row);
+        expect(row.columns).to.have.keys(DEP_RELATION_FIELD_NAMES);
         expect(row.columns).to.have.property(relation).equal("b;;a;;a");
         expect(row.columns).to.have.property(`${relation}.case`)
           .equal("accusative;;nominative;;nominative");

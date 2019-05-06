@@ -11,41 +11,83 @@ import { CSVDocument, CSVRow } from "./csv";
 // We use assertions too much in this file to let this be an error.
 /* tslint:disable:no-non-null-assertion */
 
+const RELATION_ATTRIBUTES: readonly string[] =
+  ["case", "number", "sem.cat", "sem.field", "sem.pros", "sem.role",
+   "uncertainty"];
+
 interface Relation {
   name: string;
   reverse?: Relation;
 }
 
-const RELATIONS: Relation[] = [];
+type TreeKind = "dep" | "conc";
 
-for (const [a, b] of [["modifies", "modified.by"],
-                      ["glossing", "glossed.by"],
-                      ["takes.oblique", "oblique.of"],
-                      ["takes.as.subject.agent", "subject.agent"],
-                      ["takes.as.object.patient", "object.patient"],
-                      ["manner.of", "takes.manner"],
-                      ["clausal.of", "takes.clausal"]]) {
-  const first: Relation = { name: a };
-  const second = { name: b, reverse: first };
-  first.reverse = second;
-  RELATIONS.push(first, second);
+class TreeSpec {
+  readonly relationAttrName: string;
+  readonly headAttrName: string;
+  readonly relations: readonly Relation[];
+  readonly knownRelations: ReadonlySet<string>;
+  readonly columnNames: readonly string[];
+
+  constructor(kind: TreeKind,
+              spec: readonly ([string, string] | [string])[]) {
+    this.relationAttrName = `${kind}.rel`;
+    this.headAttrName = `${kind}.head`;
+
+    const knownRelations = new Set<string>();
+    const relations: Relation[] = [];
+    for (const [a, b] of spec) {
+      knownRelations.add(a);
+      const first: Relation = { name: a };
+      relations.push(first);
+      if (b !== undefined) {
+        knownRelations.add(b);
+        const second = { name: b, reverse: first };
+        first.reverse = second;
+        relations.push(second);
+      }
+    }
+    this.relations = relations;
+    this.knownRelations = knownRelations;
+
+    const columnNames: string[] = [];
+    for (const relation of knownRelations) {
+      columnNames.push(relation);
+      for (const attr of RELATION_ATTRIBUTES) {
+        columnNames.push(`${relation}.${attr}`);
+      }
+    }
+
+    this.columnNames = columnNames;
+  }
 }
 
-for (const name of ["listed.with", "contrasted.with", "dep", "parallel.to"]) {
-  RELATIONS.push({ name });
-}
-
-const KNOWN_RELATIONS = new Set(RELATIONS.map(x => x.name));
+const kindToSpec: Record<TreeKind, TreeSpec> = {
+  dep: new TreeSpec("dep", [["modifies", "modified.by"],
+                            ["glossing", "glossed.by"],
+                            ["takes.oblique", "oblique.of"],
+                            ["takes.as.subject.agent", "subject.agent"],
+                            ["takes.as.object.patient", "object.patient"],
+                            ["manner.of", "takes.manner"],
+                            ["clausal.of", "takes.clausal"],
+                            ["listed.with"],
+                            ["contrasted.with"],
+                            ["dep"],
+                            ["parallel.to"]]),
+  conc: new TreeSpec("conc", [["leading.to", "caused.by"],
+                              ["possessing", "belonging.to"],
+                              ["locus.of", "located.in"],
+                              ["by.means.of", "achieved.through"],
+                              ["goal.of", "takes.goal"],
+                              ["equal"],
+                              ["while"]]),
+};
 
 function inverse(relation: Relation): Relation {
   return (relation.reverse !== undefined) ? relation.reverse : relation;
 }
 
-const RELATION_ATTRIBUTES: string[] =
-  ["case", "number", "sem.cat", "sem.field", "sem.pros", "sem.role",
-   "uncertainty"];
-
-export const COLUMN_NAMES: string[] = [
+export const COLUMN_NAMES: readonly string[] = [
   "id",
   "lemma",
   "title",
@@ -66,16 +108,11 @@ export const COLUMN_NAMES: string[] = [
   "lemma.sem.role",
   "lemma.sem.pros",
   "lemma.uncertainty",
-  "lemma.compounded"];
-
-for (const relation of RELATIONS) {
-  COLUMN_NAMES.push(relation.name);
-  for (const attr of RELATION_ATTRIBUTES) {
-    COLUMN_NAMES.push(`${relation.name}.${attr}`);
-  }
-}
-
-COLUMN_NAMES.push("csvCreationDateTime", "csvFormatVersion");
+  "lemma.compounded",
+  ...kindToSpec["dep"].columnNames,
+  ...kindToSpec["conc"].columnNames,
+  "csvCreationDateTime",
+  "csvFormatVersion"];
 
 export interface TitleInfo {
   title: string;
@@ -181,7 +218,8 @@ export class CSVTransformService extends AnnotatedDocumentTransformService {
     this.fillCitationTranslationColumns(cit, row);
     this.fillCotextColumns(cit, occurrence, row);
     this.fillAttributeColumns(occurrence, row);
-    this.fillRelationColumns(occurrence, row);
+    this.fillRelationColumns("dep", occurrence, row);
+    this.fillRelationColumns("conc", occurrence, row);
     this.fillBookkepingColumns(creationDateTime.toISOString(), row);
   }
 
@@ -248,30 +286,36 @@ export class CSVTransformService extends AnnotatedDocumentTransformService {
     row.setColumn("citation", citWithoutTr.textContent!);
   }
 
-  fillRelationColumns(occurrence: Element, row: CSVRow): void {
+  fillRelationColumns(kind: TreeKind, occurrence: Element, row: CSVRow): void {
+    const spec = kindToSpec[kind];
+    if (spec === undefined) {
+      throw new Error(`unknown tree kind ${kind}`);
+    }
+
+    const { relationAttrName, headAttrName, relations, knownRelations } = spec;
+
     const sentence = occurrence.closest("s")!;
     const sentenceWords = Array.from(sentence.getElementsByTagName("word"))
       .filter(x => x !== occurrence);
 
-    const depRelToWords: Record<string, Set<Element>> = Object.create(null);
-    const depHeadToWords: Record<string, Set<Element>> = Object.create(null);
+    const relToWords: Record<string, Set<Element>> = Object.create(null);
+    const headToWords: Record<string, Set<Element>> = Object.create(null);
     const idToWord: Record<string, Element> = Object.create(null);
 
     for (const word of sentenceWords) {
-      let depRel = word.getAttribute("dep.rel")!;
-      if (depRel !== null) {
-        depRel = depRel.trim();
-        if (!KNOWN_RELATIONS.has(depRel)) {
-          throw new Error(`unknown relation: ${depRel}`);
+      let rel = word.getAttribute(relationAttrName)!;
+      if (rel !== null) {
+        rel = rel.trim();
+        if (!knownRelations.has(rel)) {
+          throw new Error(`unknown relation: ${rel}`);
         }
 
-        getWithDefault(depRelToWords, depRel, Set).add(word);
+        getWithDefault(relToWords, rel, Set).add(word);
       }
 
-      let depHead = word.getAttribute("dep.head")!;
-      if (depHead !== null) {
-        depHead = depHead.trim();
-        getWithDefault(depHeadToWords, depHead, Set).add(word);
+      const head = word.getAttribute(headAttrName)!;
+      if (head !== null) {
+        getWithDefault(headToWords, head.trim(), Set).add(word);
       }
 
       const id = getNecessaryAttribute(word, "id");
@@ -282,30 +326,30 @@ export class CSVTransformService extends AnnotatedDocumentTransformService {
     }
 
     const occurrenceId = getNecessaryAttribute(occurrence, "id");
-    const occurenceDepRel = getAttribute(occurrence, "dep.rel");
-    if (occurenceDepRel !== "" && !KNOWN_RELATIONS.has(occurenceDepRel)) {
-      throw new Error(`unknown relation: ${occurenceDepRel}`);
+    const occurenceRel = getAttribute(occurrence, relationAttrName);
+    if (occurenceRel !== "" && !knownRelations.has(occurenceRel)) {
+      throw new Error(`unknown relation: ${occurenceRel}`);
     }
-    let occurrenceDepHead = occurrence.getAttribute("dep.head");
-    if (occurrenceDepHead !== null) {
-        occurrenceDepHead = occurrenceDepHead.trim();
+    let occurrenceHead = occurrence.getAttribute(headAttrName);
+    if (occurrenceHead !== null) {
+        occurrenceHead = occurrenceHead.trim();
     }
-    for (const relation of RELATIONS) {
+    for (const relation of relations) {
       // From the design document, this is:
       //
       // ancestor::s/word[@dep.rel = $inverse($V) and
       //                  @dep.head = $occurrence/@id]
       const relevantWords =
         new Set([...
-                 Array.from(getWithDefault(depHeadToWords, occurrenceId,
+                 Array.from(getWithDefault(headToWords, occurrenceId,
                                            Set as new () => Set<Element>))]
-                .filter(x => getWithDefault(depRelToWords,
+                .filter(x => getWithDefault(relToWords,
                                             inverse(relation).name,
                                             Set).has(x)));
 
       // if @dep.rel = $V, ancestor::s/word[@id=$occurrence/@dep.head]/@lem
-      if (occurrenceDepHead !== null && occurenceDepRel === relation.name) {
-        relevantWords.add(idToWord[occurrenceDepHead]);
+      if (occurrenceHead !== null && occurenceRel === relation.name) {
+        relevantWords.add(idToWord[occurrenceHead]);
       }
 
       const relevantWordsArray = Array.from(relevantWords);
