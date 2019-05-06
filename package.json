@@ -99,6 +99,8 @@
     "lint": "tslint --format verbose -p src/tsconfig.json -c src/tslint.json && tslint --format verbose -p test/tsconfig.json -c test/tslint.json && eslint '*.js' 'test/**/*.js' 'web/**/*.js' --ignore-pattern 'test/data/*.js' && versync -v",
     "posttest": "npm run lint",
     "build-and-test": "npm run build-dev && npm run test",
-    "clean": "rm -rf build"
+    "clean": "rm -rf build",
+    "start": "lite-server -c bs-config.js",
+    "start-dev": "lite-server -c bs-config-dev.js"
   }
 }
