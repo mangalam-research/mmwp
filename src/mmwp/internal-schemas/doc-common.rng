@@ -95,6 +95,10 @@
           <value>genitive</value>
           <value>locative</value>
           <value>vocative</value>
+          <value>active</value>
+          <value>passive</value>
+          <value>atmanepada</value>
+          <value>caus.denom</value>
         </choice>
       </attribute>
     </optional>

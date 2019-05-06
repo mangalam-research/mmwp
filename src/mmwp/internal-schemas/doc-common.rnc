@@ -46,7 +46,11 @@ word.attrs = (
         "ablative" |
         "genitive" |
         "locative" |
-        "vocative"
+        "vocative" |
+        "active" |
+        "passive" |
+        "atmanepada" |
+        "caus.denom"
     }?,
     attribute number {
         "sing" |
