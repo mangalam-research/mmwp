@@ -34,7 +34,7 @@
     "core-js": "^2.6.3",
     "dexie": "^2.0.4",
     "font-awesome": "^4.7.0",
-    "jquery": "^3.4.0",
+    "jquery": "^3.4.1",
     "last-resort": "^1.0.1",
     "rxjs": "^6.5.1",
     "salve": "^9.1.2",
