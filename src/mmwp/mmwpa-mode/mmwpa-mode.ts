@@ -83,22 +83,21 @@ class MMWPAMode extends generic.Mode<generic.GenericModeOptions> {
 
     let sentences: Element[] = [];
     const wordAddedRemoved =
-      (root: Node, _parent: Node, _prev: Node | null, _next: Node | null,
-       el: Element) => {
-         // Skip elements which would already have been removed from the
-         // tree. Unlikely but...
-         if (!root.contains(el)) {
-           return;
-         }
+      ({ root, element }: { root: Node, element: Element }) => {
+        // Skip elements which would already have been removed from the
+        // tree. Unlikely but...
+        if (!root.contains(element)) {
+          return;
+        }
 
-         const dataEl = $.data(el, "wed_mirror_node");
-         const sentence = dataEl.parentNode;
-         // We only act if the word was a direct child of a sentence.
-         if ((sentence.tagName === "s") &&
-             (sentences.indexOf(sentence) === -1)) {
-           sentences.push(sentence);
-         }
-       };
+        const dataEl = $.data(element, "wed_mirror_node");
+        const sentence = dataEl.parentNode;
+        // We only act if the word was a direct child of a sentence.
+        if ((sentence.tagName === "s") &&
+            (sentences.indexOf(sentence) === -1)) {
+          sentences.push(sentence);
+        }
+      };
 
     dl.addHandler("added-element", wordClass, wordAddedRemoved);
     dl.addHandler("removing-element", wordClass, wordAddedRemoved);
