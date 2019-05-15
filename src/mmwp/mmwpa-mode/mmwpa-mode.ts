@@ -1,4 +1,4 @@
-import { Action, domtypeguards, EditorAPI, exceptions, ModeValidator,
+import { Action, domtypeguards, domutil, EditorAPI, exceptions, ModeValidator,
          objectCheck, transformation, util } from "wed";
 import isText = domtypeguards.isText;
 import AbortTransformationException = exceptions.AbortTransformationException;
@@ -90,8 +90,8 @@ class MMWPAMode extends generic.Mode<generic.GenericModeOptions> {
           return;
         }
 
-        const dataEl = $.data(element, "wed_mirror_node");
-        const sentence = dataEl.parentNode;
+        const dataEl = domutil.mustGetMirror(element);
+        const sentence = dataEl.parentNode as Element;
         // We only act if the word was a direct child of a sentence.
         if ((sentence.tagName === "s") &&
             (sentences.indexOf(sentence) === -1)) {
