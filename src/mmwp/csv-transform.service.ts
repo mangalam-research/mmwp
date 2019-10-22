@@ -148,10 +148,10 @@ with tag name ${el.tagName}`);
   return value.trim();
 }
 
-function getWithDefault<X, R extends Record<string, X>>(
-  mapping: R,
-  key: string,
-  defaultValue: new () => X): X {
+function getWithDefault<R>(mapping: R,
+                           key: keyof R,
+                           defaultValue: new () => R[typeof key]):
+R[typeof key] {
   let ret = mapping[key];
   if (ret === undefined) {
     ret = mapping[key] = new defaultValue();

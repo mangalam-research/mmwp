@@ -1,5 +1,3 @@
-/* global __dirname */
-
 "use strict";
 
 const path = require("path");

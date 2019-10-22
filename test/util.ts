@@ -1,11 +1,11 @@
-export function waitFor(fn: () => boolean | Promise<boolean>,
-                        delay: number = 100,
-                        timeout?: number):
+export async function waitFor(fn: () => boolean | Promise<boolean>,
+                              delay: number = 100,
+                              timeout?: number):
 Promise<boolean> {
   const start = Date.now();
 
-  function check(): boolean | Promise<boolean> {
-    const ret = fn();
+  async function check(): Promise<boolean> {
+    const ret = await fn();
     if (ret) {
       return ret;
     }
@@ -14,17 +14,18 @@ Promise<boolean> {
       return false;
     }
 
-    return new Promise(resolve => setTimeout(resolve, delay)).then(check);
+    await new Promise(resolve => setTimeout(resolve, delay));
+    return check();
   }
 
-  return Promise.resolve().then(check);
+  return check();
 }
 
-export function waitForSuccess(fn: () => void,
-                               delay?: number,
-                               timeout?: number):
+export async function waitForSuccess(fn: () => void,
+                                     delay?: number,
+                                     timeout?: number):
 Promise<void> {
-  return waitFor(() => {
+  await waitFor(() => {
     try {
       fn();
       return true;
@@ -37,7 +38,7 @@ Promise<void> {
       throw e;
     }
     // tslint:disable-next-line:align
-  }, delay, timeout).then(() => undefined);
+  }, delay, timeout);
 }
 
 export class DataProvider {

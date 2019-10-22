@@ -1,5 +1,5 @@
 function checkColumnNames(columnNames: ReadonlyArray<string>): Set<string> {
-  const ret = new Set();
+  const ret: Set<string> = new Set();
   for (const name of columnNames) {
     // Empty names don't make sense.
     if (name === "") {
