@@ -582,11 +582,10 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
         expect(cit).to.have.property("textContent", "something");
       });
 
-      it("removes ref and page.number element", () => {
+      it("removes page.number element", () => {
         const line = doc.createElement("line");
         line.setAttribute("refs", "foo");
-        line.innerHTML = `a<ref>something</ref>\
-<page.number>something</page.number>b<ref>something else</ref>\
+        line.innerHTML = `a<page.number>something</page.number>b\
 <page.number>foo</page.number>c`;
         const { cit } = rproc.makeCitFromLine(title, doc, line, 222, logger);
         expect(cit).to.have.property("textContent", "abc");

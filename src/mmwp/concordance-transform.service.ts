@@ -386,8 +386,8 @@ export class Processor {
 
     let child: Node | null = line.firstChild;
 
-    // Convert <line> to <cit>. Remove <ref> and <page.number> and drop all
-    // other tags (but keep their contents), except for the cases below.
+    // Convert <line> to <cit>. Remove <page.number> and drop all other tags
+    // (but keep their contents), except for the cases below.
     //
     // We cannot immediately convert notvariant and normalised to word because
     // some of these elements may be part of the content unwrapped.
@@ -402,7 +402,7 @@ export class Processor {
         break;
       case Node.ELEMENT_NODE:
         const tagName = (child as Element).tagName;
-        if (["ref", "page.number"].indexOf(tagName) !== -1) {
+        if (tagName === "page.number") {
           // Do nothing: this effectively strips these elements and what they
           // contain.
         }
@@ -658,8 +658,8 @@ ${line.innerHTML}`);
     if (parsedRef !== null) {
       refValue = parsedRef.pageVerse;
 
-      // If we did not get a pageVerse value from the <ref> element, then we
-      // look for a <page.number> element and take that.
+      // If we did not get a pageVerse value from @refs, then we look for a
+      // <page.number> element and take that.
       if (refValue === undefined) {
         const pageNumber = line.querySelector("page\\.number");
         if (pageNumber !== null) {
@@ -670,16 +670,7 @@ ${line.innerHTML}`);
 
       // If we still have not found a value, we search for a number pattern.
       if (refValue === undefined) {
-        // We clone the line and remove <ref>.
-        const clone = line.cloneNode(true) as Element;
-        // tslint:disable-next-line:no-non-null-assertion
-        const clonedRef = clone.querySelector("ref");
-        if (clonedRef !== null) {
-          clone.removeChild(clonedRef);
-        }
-        // tslint:disable-next-line:no-non-null-assertion
-        const text = clone.textContent!;
-        const match = this.extractRef(text);
+        const match = this.extractRef(line.textContent!);
         if (match !== null) {
           refValue = match;
         }
