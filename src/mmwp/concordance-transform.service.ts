@@ -212,7 +212,7 @@ async function safeValidate(grammar: Grammar,
   }
 }
 
-abstract class BaseProcessor {
+export class Processor {
   constructor(protected xmlFiles: XMLFilesService) {
   }
 
@@ -700,72 +700,22 @@ ${line.innerHTML}`);
     return match !== null ? match[0].replace(/[_\s]+/g, "") : null;
   }
 
-  protected abstract getRefText(line: Element): string | null;
-
-  protected abstract getLemma(doc: Document): string;
-
-  protected abstract getQuery(doc: Document): string;
-
-  protected abstract getCorpus(doc: Document): string;
-}
-
-/**
- * We export it so that it is visible to test code.
- *
- * @private
- */
-export class V1Processor extends BaseProcessor {
-  constructor(xmlFiles: XMLFilesService) {
-    super(xmlFiles);
-  }
-
-  protected getLemma(doc: Document): string {
-    // tslint:disable-next-line:no-non-null-assertion
-    return doc.querySelector("concordance>lemma")!.textContent!;
-  }
-
-  protected getQuery(doc: Document): string {
-    // tslint:disable-next-line:no-non-null-assertion
-    return doc.querySelector("concordance>heading>query")!.textContent!;
-  }
-
-  protected getCorpus(doc: Document): string {
-    // tslint:disable-next-line:no-non-null-assertion no-non-null-assertion
-    return doc.querySelector("concordance>heading>corpus")!.textContent!;
-  }
-
-  protected getRefText(line: Element): string | null {
-    const ref = line.querySelector("ref");
-    return ref === null ? null : ref.textContent;
-  }
-}
-
-/**
- * We export it so that it is visible to test code.
- *
- * @private
- */
-export class V2Processor extends BaseProcessor {
-  constructor(xmlFiles: XMLFilesService) {
-    super(xmlFiles);
-  }
-
-  protected getLemma(doc: Document): string {
+  private getLemma(doc: Document): string {
     // tslint:disable-next-line:no-non-null-assertion
     return doc.querySelector("export>lemma")!.textContent!;
   }
 
-  protected getQuery(doc: Document): string {
+  private getQuery(doc: Document): string {
     // tslint:disable-next-line:no-non-null-assertion
     return doc.querySelector("export>header>query")!.textContent!;
   }
 
-  protected getCorpus(doc: Document): string {
+  private getCorpus(doc: Document): string {
     // tslint:disable-next-line:no-non-null-assertion no-non-null-assertion
     return doc.querySelector("export>header>corpus")!.textContent!;
   }
 
-  protected getRefText(line: Element): string | null {
+  private getRefText(line: Element): string | null {
     return line.getAttribute("refs");
   }
 }
@@ -800,26 +750,7 @@ this application and fix any errors before uploading again.");
 
       await safeValidate(getConcordanceGrammar(), doc);
 
-      // We need to determine the format version by checking the top level
-      // element.
-      // tslint:disable-next-line:no-non-null-assertion
-      const top = doc.firstElementChild!;
-      let proc: new (xmlFiles: XMLFilesService) => V1Processor | V2Processor;
-      switch (top.tagName) {
-        case "concordance":
-          // v1
-          proc = V1Processor;
-          break;
-        case "export":
-          // v2
-          proc = V2Processor;
-          break;
-        default:
-          throw new ProcessingError(
-            "Parsing Error", "Cannot determine the format of the file.");
-      }
-
-      ret = await new proc(this.xmlFiles).perform(doc);
+      ret = await new Processor(this.xmlFiles).perform(doc);
     }
     catch (err) {
       if (err instanceof ProcessingError) {

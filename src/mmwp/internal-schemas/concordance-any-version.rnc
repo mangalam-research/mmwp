@@ -1,1 +1,3 @@
-start = external "./concordance-v1.rnc" | external "./concordance-v2.rnc"
+# If we need to support more versions of the concordance file, we can
+# add schemas here, separated by a choice operator (|).
+start = external "./concordance-v2.rnc"

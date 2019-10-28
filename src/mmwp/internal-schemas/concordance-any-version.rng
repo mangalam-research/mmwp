@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <grammar xmlns="http://relaxng.org/ns/structure/1.0">
+  <!--
+    If we need to support more versions of the concordance file, we can
+    add schemas here, separated by a choice operator (|).
+  -->
   <start>
-    <choice>
-      <externalRef href="concordance-v1.rng"/>
-      <externalRef href="concordance-v2.rng"/>
-    </choice>
+    <externalRef href="concordance-v2.rng"/>
   </start>
 </grammar>

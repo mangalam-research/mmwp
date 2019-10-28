@@ -12,8 +12,8 @@ import { ProcessingService } from "dashboard/processing.service";
 import { db } from "dashboard/store";
 import { XMLFile } from "dashboard/xml-file";
 import { XMLFilesService } from "dashboard/xml-files.service";
-import { ConcordanceTransformService, Logger, ProcessingError, V1Processor,
-         V2Processor } from "mmwp/concordance-transform.service";
+import { ConcordanceTransformService, Logger, ProcessingError,
+         Processor } from "mmwp/concordance-transform.service";
 import { DataProvider } from "./util";
 
 // We use innerHTML a lot for testing purposes.
@@ -47,7 +47,7 @@ interface RevealedProcessor {
   getCorpus(doc: Document): string;
 }
 
-function revealProcessor(s: V1Processor | V2Processor): RevealedProcessor {
+function revealProcessor(s: Processor): RevealedProcessor {
   // tslint:disable-next-line:no-any
   return s as any as RevealedProcessor;
 }
@@ -92,9 +92,6 @@ describe("ConcordanceTransformService", () => {
     }
 
     beforeEach(async () => {
-      good["v1"] = await xmlFilesService.makeRecord(
-        "foo",
-        provider.getText("multiple-titles-v1-1.xml"));
       good["v2"] = await xmlFilesService.makeRecord(
         "foo",
         provider.getText("multiple-titles-v2-1.xml"));
@@ -141,7 +138,7 @@ describe("ConcordanceTransformService", () => {
       }
     });
 
-    for (const version of ["v1", "v2"]) {
+    for (const version of ["v2"]) {
       it(`runs without error (${version})`, async () => {
         await service.perform(good[version]);
         const files = await getAllFiles();
@@ -185,8 +182,7 @@ describe("ConcordanceTransformService", () => {
          service.perform(bad),
          ProcessingError,
          `<p>tag not allowed here: {\"ns\":\"\",\"name\":\"div\"}<\/p>
-<p>must choose either {"ns":"","name":"concordance"} or \
-{"ns":"","name":"export"}</p>`));
+<p>tag required: {"ns":"","name":"export"}</p>`));
 
     it("rejects if the file is malformed", () =>
        expectRejection(
@@ -210,7 +206,7 @@ this application and fix any errors before uploading again."));
 });
 
 type ProcessorTest = {
-  ctor: new (xmlFiles: XMLFilesService) => V1Processor | V2Processor;
+  ctor: new (xmlFiles: XMLFilesService) => Processor;
   fileName: string;
   setRef(line: Element, value: string): void;
   deleteRef(line: Element): void;
@@ -219,24 +215,8 @@ type ProcessorTest = {
 
 // tslint:disable-next-line:mocha-no-side-effect-code
 const processorTests: Record<string, ProcessorTest> = Object.create(null);
-processorTests["1"] = {
-  ctor: V1Processor,
-  fileName: "multiple-titles-v1-1.xml",
-  setRef(line: Element, value: string): void {
-    const ref = line.getElementsByTagName("ref")[0];
-    ref.textContent = value;
-  },
-  deleteRef(line: Element): void {
-    const ref = line.getElementsByTagName("ref")[0];
-    line.removeChild(ref);
-  },
-  deleteRefPart(line: Element): void {
-    const ref = line.getElementsByTagName("ref")[0];
-    ref.textContent = "";
-  },
-};
 processorTests["2"] = {
-  ctor: V2Processor,
+  ctor: Processor,
   fileName: "multiple-titles-v2-1.xml",
   setRef(line: Element, value: string): void {
     line.setAttribute("refs", value);
@@ -255,7 +235,7 @@ for (const version of Object.keys(processorTests)) {
     const { fileName, setRef, deleteRef, deleteRefPart } = test;
     let provider: DataProvider;
     let xmlFilesService: XMLFilesService;
-    let proc: V1Processor | V2Processor;
+    let proc: Processor;
     let rproc: RevealedProcessor;
 
     before(() => {
