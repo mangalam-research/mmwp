@@ -22,7 +22,7 @@ tr = element tr {
     text
 }
 
-cit.content = (s+, tr?)
+cit.content = (s, tr?)
 cit = element cit {
     attribute id { xsd:positiveInteger },
     attribute ref { text }?,

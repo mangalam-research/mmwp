@@ -43,9 +43,7 @@
     </element>
   </define>
   <define name="cit.content">
-    <oneOrMore>
-      <ref name="s"/>
-    </oneOrMore>
+    <ref name="s"/>
     <optional>
       <ref name="tr"/>
     </optional>

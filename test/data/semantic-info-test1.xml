@@ -20,6 +20,8 @@
       <word id="6" lem="b" conc.head="4" dep.head="4" sem.cat="cat2" sem.field="field2">vedanāvat</word>
       <word id="7" lem="b" conc.head="4" dep.head="4" sem.cat="cat2" sem.field="field2">a</word>
     </s>
+  </cit>
+  <cit id="3">
     <s>
       <word id="1" lem="a" conc.head="4" dep.head="4" sem.cat="cat2" sem.field="field2">a</word>
       <word id="2">'nye</word>
