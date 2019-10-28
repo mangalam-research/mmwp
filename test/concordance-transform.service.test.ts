@@ -214,7 +214,7 @@ processorTests["2"] = {
 };
 
 for (const version of Object.keys(processorTests)) {
-  describe(`VXProcessor common tests (X = ${version})`, () => {
+  describe("Processor common tests", () => {
     const test = processorTests[version];
     const { fileName, setRef, deleteRef, deleteRefPart } = test;
     let provider: DataProvider;
@@ -540,7 +540,7 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
           .match(/^no value for cit\/@ref in title: Moo,/);
       });
 
-      it("creates @ref when the <ref> element had a pageVerse number", () => {
+      it("creates @ref when @refs had a pageVerse number", () => {
         const line = doc.getElementsByTagName("line")[0];
         expect(line.querySelector("page\\.number")).to.be.null;
         const { cit } = rproc.makeCitFromLine(title, doc, line, 1, logger);
