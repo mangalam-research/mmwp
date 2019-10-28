@@ -64,7 +64,6 @@ describe("ConcordanceTransformService", () => {
   let service: ConcordanceTransformService;
   let bad: XMLFile;
   let malformed: XMLFile;
-  let refErrorDocument: XMLFile;
 
   before(() => {
     provider = new DataProvider("/base/test/data/");
@@ -95,10 +94,6 @@ describe("ConcordanceTransformService", () => {
       good["v2"] = await xmlFilesService.makeRecord(
         "foo",
         provider.getText("multiple-titles-v2-1.xml"));
-
-      refErrorDocument = await xmlFilesService.makeRecord(
-        "foo",
-        provider.getText("ref-errors.xml"));
 
       bad = await xmlFilesService.makeRecord("foo", "<div/>");
 
@@ -191,17 +186,6 @@ describe("ConcordanceTransformService", () => {
          "The document cannot be parsed. It is probably due to a \
 well-formedness error. Please check the file for well-formedness outside of \
 this application and fix any errors before uploading again."));
-
-    it("reports ref errors", async () => {
-      await expectRejection(service.perform(refErrorDocument),
-                            ProcessingError,
-                            new RegExp(
-                              `^<p>invalid line: line without a ref: <line>
-      <left_context><normalised a_id="lugli" orig="yāvan" auto="false">(.|\n)*
-<p>invalid ref:`));
-      const title = document.querySelector(".modal.show .modal-title");
-      expect(title).to.have.property("textContent").equal("Invalid data");
-    });
   });
 });
 
@@ -280,10 +264,10 @@ for (const version of Object.keys(processorTests)) {
 classical");
       });
 
-      it("returns null ref is absent", () => {
+      it("throws if @refs is absent", () => {
         const line = doc.getElementsByTagName("line")[0];
         deleteRef(line);
-        expect(rproc.getRefText(line)).to.be.null;
+        expect(() => rproc.getRefText(line)).to.throw(Error);
       });
     });
 
@@ -390,17 +374,6 @@ classical");
                       `the title Abhidharmakośabhāṣya appears more than once, \
 with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
         }
-      });
-
-      it("reports an error if a line is missing a ref", () => {
-        const line = doc.getElementsByTagName("line")[0];
-        deleteRef(line);
-        const titles: Record<string, Title> = Object.create(null);
-        const titleToLines: Record<string, Element[]> = Object.create(null);
-        rproc.gatherTitles(doc, titles, titleToLines, logger);
-        expect(logger.errors).to.have.lengthOf(1);
-        expect(logger.errors[0]).to.have.property("message")
-          .equal(`invalid line: line without a ref: ${line.outerHTML}`);
       });
 
       it("reports an error if a ref lacks expected parts", () => {
@@ -603,6 +576,7 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
 
       it("preserves text", () => {
         const line = doc.createElement("line");
+        line.setAttribute("refs", "foo");
         line.textContent = "something";
         const { cit } = rproc.makeCitFromLine(title, doc, line, 222, logger);
         expect(cit).to.have.property("textContent", "something");
@@ -610,6 +584,7 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
 
       it("removes ref and page.number element", () => {
         const line = doc.createElement("line");
+        line.setAttribute("refs", "foo");
         line.innerHTML = `a<ref>something</ref>\
 <page.number>something</page.number>b<ref>something else</ref>\
 <page.number>foo</page.number>c`;
@@ -620,6 +595,7 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
 
       it("leaves notvariant and normalised as they are", () => {
         const line = doc.createElement("line");
+        line.setAttribute("refs", "foo");
         line.innerHTML = `a<notvariant>something</notvariant>\
 <normalised>something</normalised>b<notvariant>something else</notvariant>\
 <normalised>foo</normalised>c`;
@@ -629,6 +605,7 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
 
       it("unwraps other elements", () => {
         const line = doc.createElement("line");
+        line.setAttribute("refs", "foo");
         line.innerHTML = `a<foo>b</foo>c<bar>d</bar>e`;
         const { cit } = rproc.makeCitFromLine(title, doc, line, 222, logger);
         expect(cit).to.have.property("innerHTML", "abcde");
@@ -650,6 +627,7 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
 
       it("converts marked words to word elements", () => {
         const line = doc.createElement("line");
+        line.setAttribute("refs", "foo");
         line.innerHTML = `a<notvariant>something</notvariant>\
 <normalised orig="a">something</normalised>b\
 <notvariant>something else</notvariant>\

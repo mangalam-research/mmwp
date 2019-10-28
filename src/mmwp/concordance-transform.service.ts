@@ -290,27 +290,22 @@ export class Processor {
                        logger: Logger): void {
     for (const line of Array.from(doc.getElementsByTagName("line"))) {
       const refText = this.getRefText(line);
-      if (refText === null) {
-        logger.error(`invalid line: line without a ref: ${line.outerHTML}`);
-      }
-      else {
-        const newTitle = Title.fromCSV(refText, logger);
-        if (newTitle !== null) {
-          const title = newTitle.title;
-          if (!(title in titles)) {
-            titles[title] = newTitle;
-          }
-          else {
-            titles[title].assertEqual(newTitle);
-          }
-
-          let lines: Element[] = titleToLines[title];
-          if (lines === undefined) {
-            lines = titleToLines[title] = [];
-          }
-
-          lines.push(line);
+      const newTitle = Title.fromCSV(refText, logger);
+      if (newTitle !== null) {
+        const title = newTitle.title;
+        if (!(title in titles)) {
+          titles[title] = newTitle;
         }
+        else {
+          titles[title].assertEqual(newTitle);
+        }
+
+        let lines: Element[] = titleToLines[title];
+        if (lines === undefined) {
+          lines = titleToLines[title] = [];
+        }
+
+        lines.push(line);
       }
     }
   }
@@ -658,7 +653,7 @@ ${line.innerHTML}`);
   private getRefValue(line: Element): string | undefined {
     let refValue: string | undefined;
     const ref = this.getRefText(line);
-    const parsedRef = ref === null ? null : ParsedRef.fromCSV(ref);
+    const parsedRef = ParsedRef.fromCSV(ref);
     // A ref or parsedRef which is null has been reported earlier as an error.
     if (parsedRef !== null) {
       refValue = parsedRef.pageVerse;
@@ -715,8 +710,12 @@ ${line.innerHTML}`);
     return doc.querySelector("export>header>corpus")!.textContent!;
   }
 
-  private getRefText(line: Element): string | null {
-    return line.getAttribute("refs");
+  private getRefText(line: Element): string {
+    const text = line.getAttribute("refs");
+    if (text === null) {
+      throw new Error("cannot get @refs, which is mandatory");
+    }
+    return text;
   }
 }
 
