@@ -319,7 +319,7 @@ export class Processor {
     if (docEl === null) {
       throw new Error("no child in the document");
     }
-    docEl.setAttribute("version", "1");
+    docEl.setAttribute("version", "2");
     docEl.setAttribute("lem", lemma);
     docEl.setAttribute("title", title);
     docEl.setAttribute("genre", titleInfo.genre);
@@ -619,9 +619,6 @@ ${line.innerHTML}`);
   private wrapWordsInSentenceAndNumber(cit: Element): void {
     // tslint:disable-next-line:no-non-null-assertion
     const s = cit.ownerDocument!.createElementNS(MMWP_NAMESPACE, "s");
-    // We create one sentence per cit and the numbering is scoped to cit so the
-    // number is always 1.
-    s.setAttribute("id", "1");
 
     // This wraps all children of cit in a <s>.
     let citChild = cit.firstChild;

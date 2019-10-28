@@ -21,9 +21,7 @@ const req = typeof platformRequire !== "undefined" ? platformRequire : require;
 const MMWPA_MODE_ORIGIN = "https://github.com/mangalam-research/mmwp";
 
 class MMWPAMode extends generic.Mode<generic.GenericModeOptions> {
-  private readonly numberSentencesTr: Transformation;
   private readonly numberWordsTr: Transformation;
-  private readonly numberSentencesAndWordsTr: Transformation;
   private readonly unnumberWordsTr: Transformation;
   private readonly splitCompoundIntoPartsTr: Transformation;
 
@@ -56,15 +54,9 @@ class MMWPAMode extends generic.Mode<generic.GenericModeOptions> {
       },
     };
 
-    this.numberSentencesTr = new Transformation(
-      MMWPA_MODE_ORIGIN, editor, "transform", "Number the sentences",
-      mmwpaTr.numberSentences);
     this.numberWordsTr = new Transformation(
       MMWPA_MODE_ORIGIN, editor, "transform", "Number the words",
       mmwpaTr.numberWords);
-    this.numberSentencesAndWordsTr = new Transformation(
-      MMWPA_MODE_ORIGIN, editor, "transform", "Number sentences and words",
-      mmwpaTr.numberSentencesAndWords);
     this.unnumberWordsTr = new Transformation(
       MMWPA_MODE_ORIGIN, editor, "transform", "Unnumber the words",
       mmwpaTr.unnumberWords);
@@ -148,11 +140,6 @@ class MMWPAMode extends generic.Mode<generic.GenericModeOptions> {
 
     const ret = super.getContextualActions(transformationType, tag, container,
                                            offset);
-    if (transformationType.indexOf("wrap-content") !== -1 &&
-        el.tagName === "cit") {
-      ret.push(this.numberSentencesAndWordsTr, this.numberSentencesTr);
-    }
-
     if (transformationType.indexOf("wrap-content") !== -1 &&
         el.tagName === "s") {
       ret.push(this.numberWordsTr, this.unnumberWordsTr);

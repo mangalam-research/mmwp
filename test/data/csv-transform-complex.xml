@@ -1,5 +1,5 @@
 <doc xmlns="http://mangalamresearch.org/ns/mmwp/doc"
-     version="1"
+     version="2"
      lem="lemmaValue"
      title="Some, title"
      genre="Some &quot; genre"
@@ -9,7 +9,7 @@
      period="classical">
 <!--
   <cit id="${citId}" ref="refValue">
-    <s id="1">
+    <s>
       <word id="1" lem="lemmaValue" case="nominative" number="dual"
             sem.cat="cat a, cat b" sem.field="sem field value"
             sem.role="sem role value"
@@ -41,7 +41,7 @@
    </cit>
 -->
   <cit id="1" ref="refValueA">
-    <s id="1">
+    <s>
       <word id="1" lem="lemmaValue" case="nominative" number="dual"
             sem.cat="cat a, cat b" sem.field="sem field value"
             sem.role="sem role value"
@@ -72,7 +72,7 @@
     <tr>Something or other</tr>
   </cit>
   <cit id="2" ref="refValueB">
-    <s id="1">
+    <s>
       <word id="1" lem="lemmaValue" case="nominative" number="dual"
             sem.cat="cat a, cat b" sem.field="sem field value"
             sem.role="sem role value"
@@ -103,7 +103,7 @@
       <tr>Something or other</tr>
    </cit>
   <cit id="3" ref="refValueC">
-    <s id="1">
+    <s>
       <word id="1" lem="lemmaValue" case="nominative" number="dual"
             sem.cat="cat a, cat b" sem.field="sem field value"
             sem.role="sem role value"
@@ -134,7 +134,7 @@
     <tr>Something or other</tr>
   </cit>
   <cit id="4" ref="refValueD">
-    <s id="1">
+    <s>
       <word id="1" lem="lemmaValue" case="nominative" number="dual"
             sem.cat="cat a, cat b" sem.field="sem field value"
             sem.role="sem role value"
@@ -165,7 +165,7 @@
     <tr>Something or other</tr>
   </cit>
   <cit id="5" ref="refValueE">
-    <s id="1">
+    <s>
       <word id="1" lem="lemmaValue" case="nominative" number="dual"
             sem.cat="cat a, cat b" sem.field="sem field value"
             sem.role="sem role value"
@@ -196,7 +196,7 @@
     <tr>Something or other</tr>
   </cit>
   <cit id="6" ref="refValueF">
-    <s id="1">
+    <s>
       <word id="1" lem="lemmaValue" case="nominative" number="dual"
             sem.cat="cat a, cat b" sem.field="sem field value"
             sem.role="sem role value"
@@ -227,7 +227,7 @@
     <tr>Something or other</tr>
   </cit>
   <cit id="7" ref="refValueG">
-    <s id="1">
+    <s>
       <word id="1" lem="lemmaValue" case="nominative" number="dual"
             sem.cat="cat a, cat b" sem.field="sem field value"
             sem.role="sem role value"
@@ -258,7 +258,7 @@
     <tr>Something or other</tr>
   </cit>
   <cit id="8" ref="refValueH">
-    <s id="1">
+    <s>
       <word id="1" lem="lemmaValue" case="nominative" number="dual"
             sem.cat="cat a, cat b" sem.field="sem field value"
             sem.role="sem role value"
@@ -289,7 +289,7 @@
     <tr>Something or other</tr>
   </cit>
   <cit id="9" ref="refValueI">
-    <s id="1">
+    <s>
       <word id="1" lem="lemmaValue" case="nominative" number="dual"
             sem.cat="cat a, cat b" sem.field="sem field value"
             sem.role="sem role value"
@@ -320,7 +320,7 @@
     <tr>Something or other</tr>
   </cit>
   <cit id="10" ref="refValueJ">
-    <s id="1">
+    <s>
       <word id="1" lem="lemmaValue" case="nominative" number="dual"
             sem.cat="cat a, cat b" sem.field="sem field value"
             sem.role="sem role value"
@@ -351,7 +351,7 @@
     <tr>Something or other</tr>
   </cit>
   <cit id="11" ref="refValueK">
-    <s id="1">
+    <s>
       <word id="1" lem="lemmaValue" case="nominative" number="dual"
             sem.cat="cat a, cat b" sem.field="sem field value"
             sem.role="sem role value"
@@ -382,7 +382,7 @@
     <tr>Something or other</tr>
   </cit>
   <cit id="12" ref="refValueL">
-    <s id="1">
+    <s>
       <word id="1" lem="lemmaValue" case="nominative" number="dual"
             sem.cat="cat a, cat b" sem.field="sem field value"
             sem.role="sem role value"
@@ -413,7 +413,7 @@
     <tr>Something or other</tr>
   </cit>
   <cit id="13" ref="refValueM">
-    <s id="1">
+    <s>
       <word id="1" lem="lemmaValue" case="nominative" number="dual"
             sem.cat="cat a, cat b" sem.field="sem field value"
             sem.role="sem role value"
@@ -439,7 +439,7 @@
     <tr>Something or other</tr>
   </cit>
   <cit id="14" ref="refValueN">
-    <s id="1">
+    <s>
       <word id="1" lem="lemmaValue" case="nominative" number="dual"
             sem.cat="cat a, cat b" sem.field="sem field value"
             sem.role="sem role value"
@@ -465,7 +465,7 @@
     <tr>Something or other</tr>
   </cit>
   <cit id="15" ref="refValueO">
-    <s id="1">
+    <s>
       <word id="1" lem="lemmaValue" case="nominative" number="dual"
             sem.cat="cat a, cat b" sem.field="sem field value"
             sem.role="sem role value"
@@ -491,7 +491,7 @@
     <tr>Something or other</tr>
   </cit>
   <cit id="16" ref="refValueP">
-    <s id="1">
+    <s>
       <word id="1" lem="lemmaValue" case="nominative" number="dual"
             sem.cat="cat a, cat b" sem.field="sem field value"
             sem.role="sem role value"
@@ -517,7 +517,7 @@
     <tr>Something or other</tr>
   </cit>
   <cit id="17" ref="refValueQ">
-    <s id="1">
+    <s>
       <word id="1" lem="lemmaValue" case="nominative" number="dual"
             sem.cat="cat a, cat b" sem.field="sem field value"
             sem.role="sem role value"
@@ -548,7 +548,7 @@
     <tr>Something or other</tr>
   </cit>
   <cit id="18" ref="refValueR">
-    <s id="1">
+    <s>
       <word id="1" lem="lemmaValue" case="nominative" number="dual"
             sem.cat="cat a, cat b" sem.field="sem field value"
             sem.role="sem role value"
@@ -579,7 +579,7 @@
     <tr>Something or other</tr>
   </cit>
   <cit id="19" ref="refValueS">
-    <s id="1">
+    <s>
       <word id="1" lem="lemmaValue" case="nominative" number="dual"
             sem.cat="cat a, cat b" sem.field="sem field value"
             sem.role="sem role value"
@@ -614,7 +614,7 @@
     <tr>Something or other</tr>
   </cit>
   <cit id="20" ref="refValueT">
-    <s id="1">
+    <s>
       <word id="1" lem="lemmaValue" case="nominative" number="dual"
             sem.cat="cat a, cat b" sem.field="sem field value"
             sem.role="sem role value"
@@ -649,7 +649,7 @@
     <tr>Something or other</tr>
   </cit>
   <cit id="21" ref="refValueU">
-    <s id="1">
+    <s>
       <word id="1" lem="lemmaValue" case="nominative" number="dual"
             sem.cat="cat a, cat b" sem.field="sem field value"
             sem.role="sem role value"
@@ -684,7 +684,7 @@
     <tr>Something or other</tr>
   </cit>
   <cit id="22" ref="refValueV">
-    <s id="1">
+    <s>
       <word id="1" lem="lemmaValue" case="nominative" number="dual"
             sem.cat="cat a, cat b" sem.field="sem field value"
             sem.role="sem role value"
@@ -719,7 +719,7 @@
     <tr>Something or other</tr>
   </cit>
   <cit id="23" ref="refValueW">
-    <s id="1">
+    <s>
       <word id="1" lem="lemmaValue" case="nominative" number="dual"
             sem.cat="cat a, cat b" sem.field="sem field value"
             sem.role="sem role value"
@@ -754,7 +754,7 @@
     <tr>Something or other</tr>
   </cit>
   <cit id="24" ref="refValueX">
-    <s id="1">
+    <s>
       <word id="1" lem="lemmaValue" case="nominative" number="dual"
             sem.cat="cat a, cat b" sem.field="sem field value"
             sem.role="sem role value"
@@ -789,7 +789,7 @@
     <tr>Something or other</tr>
   </cit>
   <cit id="25" ref="refValueY">
-    <s id="1">
+    <s>
       <word id="1" lem="lemmaValue" case="nominative" number="dual"
             sem.cat="cat a, cat b" sem.field="sem field value"
             sem.role="sem role value"
@@ -824,7 +824,7 @@
     <tr>Something or other</tr>
   </cit>
   <cit id="26" ref="refValueZ">
-    <s id="1">
+    <s>
       <word id="1" lem="lemmaValue" case="nominative" number="dual"
             sem.cat="cat a, cat b" sem.field="sem field value"
             sem.role="sem role value"
@@ -859,7 +859,7 @@
     <tr>Something or other</tr>
   </cit>
   <cit id="27" ref="refValueAA">
-    <s id="1">
+    <s>
       <word id="1" lem="lemmaValue" case="nominative" number="dual"
             sem.cat="cat a, cat b" sem.field="sem field value"
             sem.role="sem role value"
@@ -894,7 +894,7 @@
     <tr>Something or other</tr>
   </cit>
   <cit id="28" ref="refValueAB">
-    <s id="1">
+    <s>
       <word id="1" lem="lemmaValue" case="nominative" number="dual"
             sem.cat="cat a, cat b" sem.field="sem field value"
             sem.role="sem role value"
@@ -929,7 +929,7 @@
     <tr>Something or other</tr>
   </cit>
   <cit id="29" ref="refValueAC">
-    <s id="1">
+    <s>
       <word id="1" lem="lemmaValue" case="nominative" number="dual"
             sem.cat="cat a, cat b" sem.field="sem field value"
             sem.role="sem role value"
@@ -958,7 +958,7 @@
     <tr>Something or other</tr>
   </cit>
   <cit id="30" ref="refValueAD">
-    <s id="1">
+    <s>
       <word id="1" lem="lemmaValue" case="nominative" number="dual"
             sem.cat="cat a, cat b" sem.field="sem field value"
             sem.role="sem role value"

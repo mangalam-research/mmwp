@@ -1,5 +1,5 @@
 <doc xmlns="http://mangalamresearch.org/ns/mmwp/doc"
-     version="1"
+     version="2"
      lem="something"
      title="Some title"
      genre="Some genre"
@@ -8,7 +8,7 @@
      school="N/A"
      period="classical">
   <cit id="1" ref="a">
-    <s id="1">
+    <s>
       <word id="1">word</word>
     </s>
   </cit>

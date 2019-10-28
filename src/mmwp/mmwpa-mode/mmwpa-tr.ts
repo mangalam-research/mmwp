@@ -56,48 +56,6 @@ of this sentence.`);
     modal.addButton("Ok", true);
   });
 
-export function numberSentences(editor: EditorAPI,
-                                data: TransformationData): void {
-  const node = data.node as Element;
-  let child: Node | null = node.firstChild;
-  let error = null;
-  while (child !== null) {
-    if (isText(child)) {
-      if (child.data.trim() !== "") {
-        error = `there is text outside of a sentence: ${child.data}`;
-        break;
-      }
-    }
-    else if (isElement(child)) {
-      if (child.tagName !== "s") {
-        error = `there is an element outside of a sentence: \
-${textToHTML(child.outerHTML)}`;
-        break;
-      }
-    }
-    else {
-      throw new Error(`unknown type of child: ${child.nodeType}`);
-    }
-    child = child.nextSibling;
-  }
-
-  if (error !== null) {
-    const modal = getNumberSentenceModal(editor);
-    modal.setBody(`<p>The sentences cannot be numbered because ${error}.</p>`);
-    modal.modal();
-    throw new AbortTransformationException("cit content is invalid");
-  }
-
-  let id = 1;
-  child = node.firstChild;
-  while (child !== null) {
-    if (isElement(child)) {
-      editor.dataUpdater.setAttribute(child, "id", String(id++));
-    }
-    child = child.nextSibling;
-  }
-}
-
 function checkForNumbering(editor: EditorAPI, sentence: Element,
                            disallowID: boolean): void {
   let child: Node | null = sentence.firstChild;
@@ -179,21 +137,6 @@ export function renumberWords(editor: EditorAPI, sentence: Element): void {
     // made.
     editor.recordUndo(new WordNumberingMarker());
     getRenumberModal(editor).modal();
-  }
-}
-
-export function numberSentencesAndWords(editor: EditorAPI,
-                                        data: TransformationData): void {
-  numberSentences(editor, data);
-  const node = data.node as Element;
-  let child: Node | null = node.firstChild;
-  while (child !== null) {
-    if (!isElement(child) || child.tagName !== "s") {
-      throw new Error(
-        "unexpected state; numberSentences should not allow this");
-    }
-    numberWords(editor, { name: "s", node: child });
-    child = child.nextSibling;
   }
 }
 

@@ -36,23 +36,6 @@ export class MMWPAValidator implements ModeValidator {
       else {
         citIds[citId] = true;
       }
-
-      const sIds: Record<string, boolean> = Object.create(null);
-      for (const s of
-           Array.prototype.slice.call(cit.getElementsByTagName("s"))) {
-        const sId = s.getAttribute("id");
-        if (sId !== null && sId in sIds) {
-          ret.push({
-                     error: new ValidationError(
-                       `duplicate sentence id: ${sId}`),
-                     node: cit,
-                     index: indexOf(cit.childNodes, s),
-                   });
-        }
-        else {
-          sIds[sId] = true;
-        }
-      }
     }
 
     for (const s of Array.prototype.slice.call(ss)) {

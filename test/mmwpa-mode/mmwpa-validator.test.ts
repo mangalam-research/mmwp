@@ -19,7 +19,7 @@ describe("MMWPAValidator", () => {
 
   it("reports a compounded bit requiring an absent next sibling", () => {
     const document = parser.parseFromString(`\
-<cit id="1"><s id="1"><word id="1">foo-</word></s></cit>\
+<cit id="1"><s><word id="1">foo-</word></s></cit>\
 `,
                                             "text/xml");
     const v = new MMWPAValidator(document);
@@ -33,7 +33,7 @@ describe("MMWPAValidator", () => {
 
   it("reports a compounded bit requiring a compounded next sibling", () => {
     const document = parser.parseFromString(`\
-<cit id="1"><s id="1"><word id="1">foo-</word><word id="2">bar</word></s></cit>\
+<cit id="1"><s><word id="1">foo-</word><word id="2">bar</word></s></cit>\
 `,
                                             "text/xml");
     const v = new MMWPAValidator(document);
@@ -47,7 +47,7 @@ describe("MMWPAValidator", () => {
 
   it("reports a compounded bit requiring an absent previous sibling", () => {
     const document = parser.parseFromString(`\
-<cit id="1"><s id="1"><word id="1">-foo</word></s></cit>\
+<cit id="1"><s><word id="1">-foo</word></s></cit>\
 `,
                                             "text/xml");
     const v = new MMWPAValidator(document);
@@ -61,7 +61,7 @@ describe("MMWPAValidator", () => {
 
   it("reports a compounded bit requiring a compounded previous sibling", () => {
     const document = parser.parseFromString(`\
-<cit id="1"><s id="1"><word id="1">foo</word><word id="2">-bar</word>\
+<cit id="1"><s><word id="1">foo</word><word id="2">-bar</word>\
 </s></cit>\
 `,
                                             "text/xml");
@@ -77,7 +77,7 @@ compounded: -bar`),
 
   it("reports duplicate ids on words", () => {
     const document = parser.parseFromString(`\
-<cit id="1"><s id="1"><word id="2">foo</word><word id="2">bar</word></s></cit>\
+<cit id="1"><s><word id="2">foo</word><word id="2">bar</word></s></cit>\
 `,
                                             "text/xml");
     const v = new MMWPAValidator(document);
@@ -98,7 +98,7 @@ compounded: -bar`),
 
   it("checks the dependency tree", () => {
     const document = parser.parseFromString(`\
-<cit id="1"><s id="1"><word id="1" lem="blah" dep.rel="listed.with" \
+<cit id="1"><s><word id="1" lem="blah" dep.rel="listed.with" \
 conc.rel="blah">foo</word>\
 <word id="2" lem="q" dep.rel="listed.with" \
 conc.rel="blah" dep.head="3" conc.head="3">bar</word>\
@@ -130,21 +130,6 @@ conc.rel="blah" dep.head="3" conc.head="3">bar</word>\
       error: new ValidationError(
         "duplicate citation id: 1"),
       node: doc,
-      index: 1,
-    }]);
-  });
-
-  it("reports duplicate ids on s", () => {
-    const document = parser.parseFromString(`\
-<doc><cit id="1"><s id="1"></s><s id="1"></s></cit></doc>\
-`,
-                                            "text/xml");
-    const v = new MMWPAValidator(document);
-    const cit = document.getElementsByTagName("cit")[0];
-    expect(v.validateDocument()).to.deep.equal([{
-      error: new ValidationError(
-        "duplicate sentence id: 1"),
-      node: cit,
       index: 1,
     }]);
   });

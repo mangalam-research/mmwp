@@ -295,7 +295,7 @@ const DEP_RELATION_FIELD_NAMES = [
 function makeRelationPairXML(forward: string, reverse: string,
                              citId: string): string {
   return `<cit id="${citId}" ref="refValue" xmlns='${MMWP_NAMESPACE}'>\
-<s id="1">\
+<s>\
 <word id="1" lem="lemmaValue" case="nominative" number="dual" \
 sem.cat="cat a, cat b" sem.field="sem field value" sem.role="sem role value" \
 sem.pros="neg" uncertainty="vague" dep.rel="${forward}" \
@@ -326,7 +326,7 @@ dep.rel="${reverse}" dep.head="3">wordA</word>\
 
 function makeSingleRelationXML(relation: string, citId: string): string {
   return `<cit id="${citId}" ref="refValue" xmlns='${MMWP_NAMESPACE}'>\
-<s id="1">\
+<s>\
 <word id="1" lem="lemmaValue" case="nominative" number="dual" \
 sem.cat="cat a, cat b" sem.field="sem field value" sem.role="sem role value" \
 sem.pros="neg" uncertainty="vague" dep.rel="${relation}" \
@@ -479,7 +479,7 @@ describe("CSVTransformService", () => {
       const row = csv.makeRow();
       const doc =
         safeParse(`<cit id="1" ref="refValue" xmlns='${MMWP_NAMESPACE}'>\
-<s id="1"><word id="1" lem="lemmaValue">moo</word></s></cit>`);
+<s><word id="1" lem="lemmaValue">moo</word></s></cit>`);
       const cit = doc.firstElementChild!;
       const word = cit.firstElementChild!.firstElementChild!;
       service.fillStartColumns("abc", {
@@ -513,7 +513,7 @@ describe("CSVTransformService", () => {
       const row = csv.makeRow();
       const doc =
         safeParse(`<cit id="1" ref="refValue" xmlns='${MMWP_NAMESPACE}'>\
-<s id="1">\
+<s>\
 <word id="1" lem="lemmaValue">moo</word>\
 <word id="2" lem="a" sem.field="semA">wordA</word>\
 <word id="3" lem="b" sem.field="semB">wordB</word>\
@@ -535,7 +535,7 @@ describe("CSVTransformService", () => {
       const row = csv.makeRow();
       const doc =
         safeParse(`<cit id="1" ref="refValue" xmlns='${MMWP_NAMESPACE}'>\
-<s id="1">\
+<s>\
 <word id="1" lem="lemmaValue" case="nominative" number="dual" \
 sem.cat="cat a, cat b" sem.field="sem field value" sem.role="sem role value" \
 sem.pros="neg" uncertainty="vague">moo</word>\
@@ -569,7 +569,7 @@ sem.pros="neg" uncertainty="vague">moo</word>\
       const row = csv.makeRow();
       const doc =
         safeParse(`<cit id="1" ref="refValue" xmlns='${MMWP_NAMESPACE}'>\
-<s id="1">\
+<s>\
 <word id="1" lem="lemmaValue" case="nominative" number="dual" \
 sem.cat="cat a, cat b" sem.field="sem field value" sem.role="sem role value" \
 sem.pros="neg" uncertainty="vague">-moo</word>\
@@ -595,7 +595,7 @@ sem.pros="neg" uncertainty="vague">-moo</word>\
       const row = csv.makeRow();
       const doc =
         safeParse(`<cit id="1" ref="refValue" xmlns='${MMWP_NAMESPACE}'>\
-<s id="1">\
+<s>\
 <word id="1" lem="lemmaValue" case="nominative" number="dual" \
 sem.cat="cat a, cat b" sem.field="sem field value" sem.role="sem role value" \
 sem.pros="neg" uncertainty="vague">-moo</word> \
@@ -615,7 +615,7 @@ sem.pros="neg" uncertainty="vague">-moo</word> \
       const row = csv.makeRow();
       const doc =
         safeParse(`<cit id="1" ref="refValue" xmlns='${MMWP_NAMESPACE}'>\
-<s id="1">\
+<s>\
 <word id="1" lem="lemmaValue" case="nominative" number="dual" \
 sem.cat="cat a, cat b" sem.field="sem field value" sem.role="sem role value" \
 sem.pros="neg" uncertainty="vague">-moo</word> \
@@ -637,7 +637,7 @@ sem.pros="neg" uncertainty="vague">-moo</word> \
       const row = csv.makeRow();
       const doc =
         safeParse(`<cit id="1" ref="refValue" xmlns='${MMWP_NAMESPACE}'>\
-<s id="1">\
+<s>\
 <word id="1" lem="lemmaValue" case="nominative" number="dual" \
 sem.cat="cat a, cat b" sem.field="sem field value" sem.role="sem role value" \
 sem.pros="neg" uncertainty="vague">-moo</word> \
@@ -659,7 +659,7 @@ sem.pros="neg" uncertainty="vague">-moo</word> \
       const row = csv.makeRow();
       const doc =
         safeParse(`<cit id="1" ref="refValue" xmlns='${MMWP_NAMESPACE}'>\
-<s id="1">\
+<s>\
 <word id="1" lem="lemmaValue" case="nominative" number="dual" \
 sem.cat="cat a, cat b" sem.field="sem field value" sem.role="sem role value" \
 sem.pros="neg" uncertainty="vague">-moo</word> \
@@ -681,7 +681,7 @@ sem.pros="neg" uncertainty="vague">-moo</word> \
       const row = csv.makeRow();
       const doc =
         safeParse(`<cit id="1" ref="refValue" xmlns='${MMWP_NAMESPACE}'>\
-<s id="1">\
+<s>\
 <word id="1" lem="lemmaValue" case="nominative" number="dual" \
 sem.cat="cat a, cat b" sem.field="sem field value" sem.role="sem role value" \
 sem.pros="neg" uncertainty="vague">-moo</word> \

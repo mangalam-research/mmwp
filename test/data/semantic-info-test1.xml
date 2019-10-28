@@ -1,6 +1,6 @@
 <doc xmlns="http://mangalamresearch.org/ns/mmwp/doc" version="1" title="Abhidharmakośabhāṣya" genre="śāstra" author="Vasubandhu" tradition="abhidharma" school="N/A" period="classical">
   <cit id="1">
-    <s id="1">
+    <s>
       <word lem="a" id="1" conc.head="2" conc.rel="leading.to" dep.head="4" dep.rel="subject.agent" sem.field="field1" sem.cat="cat1">a</word>
       <word lem="b" id="2" conc.head="3" dep.head="4" sem.field="field1" sem.cat="cat1">b</word>
       <word id="3" lem="c" dep.head="4">c</word>
@@ -11,7 +11,7 @@
     </s>
   </cit>
   <cit id="2">
-    <s id="1">
+    <s>
       <word id="1" lem="a" conc.head="4" dep.head="4" sem.cat="cat2" sem.field="field2">a</word>
       <word id="2" lem="a" conc.head="4" dep.head="4" sem.cat="cat2" sem.field="field1">punar</word>
       <word id="3" lem="a" conc.head="4" dep.head="4" sem.cat="cat1" sem.field="field2">bhidyamānaḥ</word>
@@ -20,7 +20,7 @@
       <word id="6" lem="b" conc.head="4" dep.head="4" sem.cat="cat2" sem.field="field2">vedanāvat</word>
       <word id="7" lem="b" conc.head="4" dep.head="4" sem.cat="cat2" sem.field="field2">a</word>
     </s>
-    <s id="2">
+    <s>
       <word id="1" lem="a" conc.head="4" dep.head="4" sem.cat="cat2" sem.field="field2">a</word>
       <word id="2">'nye</word>
       <word id="3">tu</word>

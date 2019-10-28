@@ -1,7 +1,7 @@
 namespace xsd = "http://www.w3.org/2001/XMLSchema-datatypes"
 
 doc = element doc {
-    attribute version { "1" },
+    attribute version { "2" },
     attribute title { text },
     attribute genre { text },
     attribute author { text },
@@ -31,7 +31,6 @@ cit = element cit {
 
 s.content = (word | text)+
 s = element s {
-    attribute id { xsd:positiveInteger },
     s.content
 }
 

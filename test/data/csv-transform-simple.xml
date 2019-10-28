@@ -1,5 +1,5 @@
 <doc xmlns="http://mangalamresearch.org/ns/mmwp/doc"
-     version="1"
+     version="2"
      lem="something "
      lemCognates="  something2
                   something3  "
@@ -10,7 +10,7 @@
      school="N/A"
      period="classical">
   <cit id="1" ref="a">
-    <s id="1">
+    <s>
       <word id="1" lem="something">word1</word>
       <word id="2" lem=" something">word2</word>
       <word id="3" lem="other">word3</word>
@@ -20,39 +20,39 @@
     </s>
   </cit>
   <cit id="2" ref="b">
-    <s id="1">
+    <s>
       <word id="1" lem="something">word5</word>
     </s>
   </cit>
   <cit id="3">
-    <s id="1">
+    <s>
       <word id="1" lem="something" dep.rel="listed.with " dep.head=" 2">word6</word>
       <word id=" 2" lem="foo">word7</word>
     </s>
   </cit>
   <cit id="4">
-    <s id="1">
+    <s>
       <word id="1" lem="something" dep.rel="listed.with " dep.head=" 2">word6</word>
       <word id=" 2" lem="foo">word7</word>
     </s>
     <tr>Something or other</tr>
   </cit>
   <cit id="5">
-    <s id="1">
+    <s>
       <word id="1" lem="something" dep.rel="listed.with " dep.head=" 2">word6</word>
       <word id=" 2" lem="foo">word7</word>
     </s>
     <tr tr="source" p="page">Something or other</tr>
   </cit>
   <cit id="6">
-    <s id="1">
+    <s>
       <word id="1" lem="something" dep.rel="listed.with " dep.head=" 2">word6</word>
       <word id=" 2" lem="foo">word7</word>
     </s>
     <tr tr="source">Something or other</tr>
   </cit>
  <cit id="7">
-    <s id="1">
+    <s>
       <word id="1" lem="something" dep.rel="listed.with " dep.head=" 2">word6</word>
       <word id=" 2" lem="foo">word7</word>
     </s>

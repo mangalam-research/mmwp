@@ -414,7 +414,7 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
 
         const root = result!.documentElement;
         expect(root).to.have.property("tagName", "doc");
-        expect(root).to.have.nested.property("attributes.version.value", "1");
+        expect(root).to.have.nested.property("attributes.version.value", "2");
         expect(root).to.have.nested.property("attributes.title.value", "Moo");
         expect(root).to.have.nested.property("attributes.genre.value", "sūtra");
         expect(root).to.have.nested.property("attributes.author.value",
@@ -431,7 +431,7 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
         const first = root.firstElementChild!;
         expect(first).to.have.nested.property("attributes.id.value", "1");
 
-        const firstExpected = `<s id="1"> \
+        const firstExpected = `<s ${XMLNS}> \
 <word lem="yāvad" id="1">yāvan</word> \
 <word lem="nīla" id="2">nīla-</word> <word lem="pīta" id="3">-pīta-</word>\
 <word lem="dīrgha" id="4">-dīrgha-</word> \
@@ -460,13 +460,10 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
 <word lem="skandha" id="29">-skandhaḥ</word> \
 <word id="30">rūpavedanāsaṃjñāvijñānebhyaścatubbryo</word> \
 <word lem="'nye" id="31">'nye</word> \
-<word lem="tu" id="32">tu</word> </s><tr tr="me" p="1">foo</tr>`
-          .replace(/<(s|tr) (.*?)>/g, `<$1 ${XMLNS} $2>`);
+<word lem="tu" id="32">tu</word> </s><tr ${XMLNS} tr="me" p="1">foo</tr>`;
         expect(first).to.have.nested.property("innerHTML").equal(firstExpected);
 
         const second = first.nextElementSibling!;
-        expect(second).to.have.nested.property("attributes.id.value", "2");
-
         const third = second.nextElementSibling;
         expect(third).to.have.nested.property("attributes.ref.value", "12.34");
       });
