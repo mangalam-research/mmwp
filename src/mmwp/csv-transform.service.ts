@@ -89,6 +89,7 @@ function inverse(relation: Relation): Relation {
 
 export const COLUMN_NAMES: readonly string[] = [
   "id",
+  "sentenceID",
   "lemma",
   "title",
   "genre",
@@ -226,6 +227,7 @@ export class CSVTransformService extends AnnotatedDocumentTransformService {
   fillStartColumns(rowId: string, titleInfo: TitleInfo, cit: Element,
                    occurrence: Element, row: CSVRow): void {
     row.setColumn("id", rowId);
+    row.setColumn("sentenceID", getNecessaryAttribute(cit, "sid"));
     row.setColumn("lemma", getNecessaryAttribute(occurrence, "lem"));
     for (const field of TITLE_INFO_KEYS) {
       row.setColumn(field, titleInfo[field]);

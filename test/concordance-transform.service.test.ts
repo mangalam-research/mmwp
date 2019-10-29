@@ -144,12 +144,12 @@ describe("ConcordanceTransformService", () => {
         // code that generates them.
         const refRegExp = /<cit .*?>/g;
         expect(datas[0].match(refRegExp)).to.deep.equal(
-          ["<cit id=\"1\" ref=\"010|18\">",
-           "<cit id=\"2\">"]);
+          [`<cit id="1" sid="10" ref="010|18">`,
+           `<cit id="2" sid="20">`]);
         expect(datas[1].match(refRegExp)).to.deep.equal(
-          ["<cit id=\"1\">",
-           "<cit id=\"2\" ref=\"010|20\">",
-           "<cit id=\"3\" ref=\"12.34\">"]);
+          [`<cit id="1" sid="30">`,
+           `<cit id="2" sid="40" ref="010|20">`,
+           `<cit id="3" sid="50" ref="12.34">`]);
       });
 
       it(`names the resulting files properly (${version})`, async () => {
@@ -260,7 +260,7 @@ for (const version of Object.keys(processorTests)) {
       it("returns the ref text", () => {
         const line = doc.getElementsByTagName("line")[0];
         expect(rproc.getRefText(line)).to.equal(
-          "010|18,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,\
+          "10,010|18,Abhidharmakośabhāṣya,śāstra,Vasubandhu,abhidharma,N/A,\
 classical");
       });
 
@@ -351,25 +351,24 @@ classical");
       it("throws a processing error if the titles are inconsistent", () => {
         const line = doc.getElementsByTagName("line")[0];
         const refText = rproc.getRefText(line);
-        // Skip the 1st part because that's not something we need.
-        const parts = refText!.split(",").slice(1);
+        // Skip the 1st two parts because that's not something we need.
+        const parts = refText!.split(",").slice(2);
         for (let ix = 0; ix < parts.length; ++ix) {
           parts[ix] = parts[ix].trim();
         }
 
-        const refFieldNames = [undefined, "genres", "authors", "traditions",
-                               "schools", "periods"];
+        const refFieldNames = [undefined, "genres", "authors",
+                               "traditions", "schools", "periods"];
         expect(parts).to.have.lengthOf(refFieldNames.length);
         for (let ix = 1; ix < parts.length; ++ix) {
           const fieldName = refFieldNames[ix];
           const corrupt = parts.slice();
           corrupt[ix] = "bad";
-          setRef(line, `ignored,${corrupt.join(",")}`);
+          setRef(line, `ignored,ignored,${corrupt.join(",")}`);
 
-          const titles: Record<string, Title> = Object.create(null);
-          const titleToLines: Record<string, Element[]> = Object.create(null);
           expect(() => {
-            rproc.gatherTitles(doc, titles, titleToLines, logger);
+            rproc.gatherTitles(doc, Object.create(null), Object.create(null),
+                               logger);
           }).to.throw(ProcessingError,
                       `the title Abhidharmakośabhāṣya appears more than once, \
 with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
@@ -377,15 +376,27 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
       });
 
       it("reports an error if a ref lacks expected parts", () => {
-        const line = doc.getElementsByTagName("line")[0];
-        deleteRefPart(line);
-        const titles: Record<string, Title> = Object.create(null);
-        const titleToLines: Record<string, Element[]> = Object.create(null);
-        rproc.gatherTitles(doc, titles, titleToLines, logger);
+        deleteRefPart(doc.getElementsByTagName("line")[0]);
+        rproc.gatherTitles(doc, Object.create(null), Object.create(null),
+                           logger);
         expect(logger.errors).to.have.lengthOf(1);
         expect(logger.errors[0]).to.have.property("message")
-          .equal(`invalid ref: ref does not contain 6 or 7 parts: `);
+          .equal(`invalid ref: ref does not contain 7 or 8 parts: `);
       });
+
+      for (const [title, sid] of [["0", "0"], ["not an integer", "0.0"],
+                                  ["not a number", "a"]]) {
+        it(`reports an error on sentence id which is ${title}`, () => {
+          const line = doc.getElementsByTagName("line")[0];
+          setRef(line, `${sid},${rproc.getRefText(line)!.split(",").slice(1)
+.join(",")}`);
+          rproc.gatherTitles(doc, Object.create(null), Object.create(null),
+                             logger);
+          expect(logger.errors).to.have.lengthOf(1);
+          expect(logger.errors).to.have.nested.property("[0].message")
+          .equal(`invalid ref: sentenceID is not a positive integer: ${sid}`);
+        });
+      }
     });
 
     // tslint:disable-next-line:no-http-string
@@ -430,6 +441,7 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
         expect(root).to.have.property("childNodes").with.lengthOf(3);
         const first = root.firstElementChild!;
         expect(first).to.have.nested.property("attributes.id.value", "1");
+        expect(first).to.have.nested.property("attributes.sid.value", "30");
 
         const firstExpected = `<s ${XMLNS}> \
 <word lem="yāvad" id="1">yāvan</word> \
@@ -464,8 +476,13 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
         expect(first).to.have.nested.property("innerHTML").equal(firstExpected);
 
         const second = first.nextElementSibling!;
+        expect(second).to.have.nested.property("attributes.id.value", "2");
+        expect(second).to.have.nested.property("attributes.sid.value", "40");
+
         const third = second.nextElementSibling;
         expect(third).to.have.nested.property("attributes.ref.value", "12.34");
+        expect(third).to.have.nested.property("attributes.id.value", "3");
+        expect(third).to.have.nested.property("attributes.sid.value", "50");
       });
 
       it("errors on errant avagraha", () => {
@@ -569,6 +586,12 @@ with differing values: ${fieldName} differ: bad vs ${parts[ix]}`);
         const line = doc.getElementsByTagName("line")[0];
         const { cit } = rproc.makeCitFromLine(title, doc, line, 222, logger);
         expect(cit).to.have.nested.property("attributes.id.value", "222");
+      });
+
+      it("sets @sid to the sentence ID from @refs", () => {
+        const line = doc.getElementsByTagName("line")[0];
+        const { cit } = rproc.makeCitFromLine(title, doc, line, 222, logger);
+        expect(cit).to.have.nested.property("attributes.sid.value", "10");
       });
 
       it("preserves text", () => {

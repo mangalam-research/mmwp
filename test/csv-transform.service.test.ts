@@ -478,7 +478,8 @@ describe("CSVTransformService", () => {
       const csv = new CSVDocument(COLUMN_NAMES);
       const row = csv.makeRow();
       const doc =
-        safeParse(`<cit id="1" ref="refValue" xmlns='${MMWP_NAMESPACE}'>\
+        safeParse(`<cit id="1" ref="refValue" sid="10" \
+xmlns='${MMWP_NAMESPACE}'>\
 <s><word id="1" lem="lemmaValue">moo</word></s></cit>`);
       const cit = doc.firstElementChild!;
       const word = cit.firstElementChild!.firstElementChild!;
@@ -492,6 +493,7 @@ describe("CSVTransformService", () => {
       }, cit, word, row);
 
       expect(row.columns).to.have.property("id").equal("abc");
+      expect(row.columns).to.have.property("sentenceID").equal("10");
       expect(row.columns).to.have.property("lemma").equal("lemmaValue");
       expect(row.columns).to.have.property("title").equal("Some title");
       expect(row.columns).to.have.property("genre").equal("Some genre");
@@ -501,9 +503,9 @@ describe("CSVTransformService", () => {
       expect(row.columns).to.have.property("period").equal("Some period");
       expect(row.columns).to.have.property("ref").equal("refValue");
 
-      expect(row.columns).to.have.keys(["id", "lemma", "title", "genre",
-                                        "author", "tradition", "school",
-                                        "period", "ref"]);
+      expect(row.columns).to.have.keys(["id", "sentenceID", "lemma", "title",
+                                        "genre", "author", "tradition",
+                                        "school", "period", "ref"]);
     });
   });
 

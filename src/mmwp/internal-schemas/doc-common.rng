@@ -53,6 +53,7 @@
       <attribute name="id">
         <data type="positiveInteger"/>
       </attribute>
+      <attribute name="sid"/>
       <optional>
         <attribute name="ref"/>
       </optional>

@@ -9,7 +9,7 @@
      tradition="Some tradition"
      school="N/A"
      period="classical">
-  <cit id="1" ref="a">
+  <cit id="1" ref="a" sid="10">
     <s>
       <word id="1" lem="something">word1</word>
       <word id="2" lem=" something">word2</word>
@@ -19,39 +19,39 @@
       <word id="6" lem="something3">word6</word>
     </s>
   </cit>
-  <cit id="2" ref="b">
+  <cit id="2" ref="b" sid="20">
     <s>
       <word id="1" lem="something">word5</word>
     </s>
   </cit>
-  <cit id="3">
+  <cit id="3" sid="30">
     <s>
       <word id="1" lem="something" dep.rel="listed.with " dep.head=" 2">word6</word>
       <word id=" 2" lem="foo">word7</word>
     </s>
   </cit>
-  <cit id="4">
+  <cit id="4" sid="40">
     <s>
       <word id="1" lem="something" dep.rel="listed.with " dep.head=" 2">word6</word>
       <word id=" 2" lem="foo">word7</word>
     </s>
     <tr>Something or other</tr>
   </cit>
-  <cit id="5">
+  <cit id="5" sid="50">
     <s>
       <word id="1" lem="something" dep.rel="listed.with " dep.head=" 2">word6</word>
       <word id=" 2" lem="foo">word7</word>
     </s>
     <tr tr="source" p="page">Something or other</tr>
   </cit>
-  <cit id="6">
+  <cit id="6" sid="60">
     <s>
       <word id="1" lem="something" dep.rel="listed.with " dep.head=" 2">word6</word>
       <word id=" 2" lem="foo">word7</word>
     </s>
     <tr tr="source">Something or other</tr>
   </cit>
- <cit id="7">
+ <cit id="7" sid="70">
     <s>
       <word id="1" lem="something" dep.rel="listed.with " dep.head=" 2">word6</word>
       <word id=" 2" lem="foo">word7</word>

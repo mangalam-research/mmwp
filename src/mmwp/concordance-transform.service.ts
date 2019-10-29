@@ -120,36 +120,38 @@ export class Logger {
 }
 
 class ParsedRef{
-  constructor(readonly pageVerse: string | undefined,
-              readonly title: string,
-              readonly genre: string,
-              readonly author: string,
-              readonly tradition: string,
-              readonly school: string,
-              readonly period: string) {}
+  protected constructor(readonly sentenceID: string,
+                        readonly title: string,
+                        readonly genre: string,
+                        readonly author: string,
+                        readonly tradition: string,
+                        readonly school: string,
+                        readonly period: string,
+                        readonly pageVerse: string | undefined) {}
 
   static fromCSV(text: string, logger?: Logger): ParsedRef | null {
     const parts = text.split(",");
-    if (parts.length !== 7 && parts.length !== 6) {
+    if (parts.length !== 8 && parts.length !== 7) {
       if (logger !== undefined) {
-        logger.error(`invalid ref: ref does not contain 6 or 7 parts: ${text}`);
+        logger.error(`invalid ref: ref does not contain 7 or 8 parts: ${text}`);
       }
       return null;
     }
 
     for (let ix = 0; ix < parts.length; ++ix) {
-    parts[ix] = parts[ix].trim();
+      parts[ix] = parts[ix].trim();
     }
 
-    let pageVerse;
-    if (parts.length === 7) {
-      pageVerse = parts.shift();
+    const [sid] = parts;
+    if (logger !== undefined && (!/^[0-9]+$/.test(sid) ||
+                                 parseInt(sid, 10) <= 0)) {
+      logger.error(`invalid ref: sentenceID is not a positive integer: ${sid}`);
     }
 
-    // Apparently we cannot use new Title(...parts);
-    const [title, genre, author, tradition, school, period] = parts;
-    return new ParsedRef(pageVerse, title, genre, author, tradition, school,
-                         period);
+    const pageVerse = parts.length === 7 ? [] : parts.splice(1, 1);
+    return new ParsedRef(...(parts.concat(pageVerse) as
+                             [string, string, string, string, string,
+                              string, string, string | undefined]));
   }
 }
 
@@ -376,6 +378,13 @@ export class Processor {
     const cit = doc.createElementNS(MMWP_NAMESPACE, "cit");
     cit.setAttribute("id", String(citId));
     const refValue = this.getRefValue(line);
+
+    const ref = this.getRefText(line);
+    const parsedRef = ParsedRef.fromCSV(ref);
+    if (parsedRef !== null ) {
+      cit.setAttribute("sid", parsedRef.sentenceID);
+    }
+    // If parsedRef is null, an error was reported already.
 
     if (refValue !== undefined) {
       cit.setAttribute("ref", refValue);

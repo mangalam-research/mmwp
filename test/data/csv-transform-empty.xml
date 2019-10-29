@@ -7,7 +7,7 @@
      tradition="Some tradition"
      school="N/A"
      period="classical">
-  <cit id="1" ref="a">
+  <cit id="1" ref="a" sid="10">
     <s>
       <word id="1">word</word>
     </s>

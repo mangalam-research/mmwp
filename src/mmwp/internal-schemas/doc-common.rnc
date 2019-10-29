@@ -25,6 +25,7 @@ tr = element tr {
 cit.content = (s, tr?)
 cit = element cit {
     attribute id { xsd:positiveInteger },
+    attribute sid { xsd:positiveInteger },
     attribute ref { text }?,
     cit.content
 }
