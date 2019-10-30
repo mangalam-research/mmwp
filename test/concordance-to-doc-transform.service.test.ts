@@ -12,8 +12,8 @@ import { ProcessingService } from "dashboard/processing.service";
 import { db } from "dashboard/store";
 import { XMLFile } from "dashboard/xml-file";
 import { XMLFilesService } from "dashboard/xml-files.service";
-import { ConcordanceTransformService, Logger, ProcessingError,
-         Processor } from "mmwp/concordance-transform.service";
+import { ConcordanceToDocTransformService, Logger, ProcessingError,
+         Processor } from "mmwp/concordance-to-doc-transform.service";
 import { DataProvider } from "./util";
 
 // We use innerHTML a lot for testing purposes.
@@ -23,9 +23,9 @@ import { DataProvider } from "./util";
 type Title = any;
 // tslint:enable:no-any
 
-// Interface that shows the private members of ConcordanceTransformService.  We
-// cannot link it directly to ConcordanceTransformService because revealing
-// private fields is not allowed by TS.
+// Interface that shows the private members of ConcordanceToDocTransformService.
+// We cannot link it directly to ConcordanceToDocTransformService because
+// revealing private fields is not allowed by TS.
 interface RevealedProcessor {
   gatherTitles(doc: Document, titles: Record<string, Title>,
                titleToLines: Record<string, Element[]>,
@@ -58,17 +58,17 @@ function addErrantAvagraha(doc: Document): void {
 }
 
 // tslint:disable-next-line:max-func-body-length
-describe("ConcordanceTransformService", () => {
+describe("ConcordanceToDocTransformService", () => {
   let provider: DataProvider;
   let xmlFilesService: XMLFilesService;
-  let service: ConcordanceTransformService;
+  let service: ConcordanceToDocTransformService;
   let bad: XMLFile;
   let malformed: XMLFile;
 
   before(() => {
     provider = new DataProvider("/base/test/data/");
     xmlFilesService = new XMLFilesService(new ChunksService());
-    service = new ConcordanceTransformService(new ProcessingService(),
+    service = new ConcordanceToDocTransformService(new ProcessingService(),
                                               xmlFilesService);
   });
 

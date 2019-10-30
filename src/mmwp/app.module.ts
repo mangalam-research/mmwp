@@ -18,7 +18,8 @@ import { XMLFilesService } from "dashboard/xml-files.service";
 import { XMLTransformService } from "dashboard/xml-transform.service";
 
 import { AppRoutingModule } from "./app-routing.module";
-import { ConcordanceTransformService } from "./concordance-transform.service";
+import { ConcordanceToDocTransformService,
+       } from "./concordance-to-doc-transform.service";
 import { CoNLLTransformService } from "./conll-transform.service";
 import { CSVTransformService } from "./csv-transform.service";
 import { SemanticInformationTransformService,
@@ -53,7 +54,7 @@ export const configuration: NgModule = {
     // is what we add for mmwp.
     {
       provide: XMLTransformService,
-      useClass: ConcordanceTransformService,
+      useClass: ConcordanceToDocTransformService,
       multi: true,
     }, {
       provide: XMLTransformService,

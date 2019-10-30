@@ -717,7 +717,7 @@ ${line.innerHTML}`);
 }
 
 @Injectable()
-export class ConcordanceTransformService extends XMLTransformService {
+export class ConcordanceToDocTransformService extends XMLTransformService {
   constructor(private readonly processing: ProcessingService,
               private readonly xmlFiles: XMLFilesService) {
     super("Concordance to doc");
