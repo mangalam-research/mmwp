@@ -91,3 +91,9 @@ this application and fix any errors before uploading again.");
   await safeValidate(getAnnotatedGrammar(), doc, new MMWPAValidator(doc));
   return doc;
 }
+
+export function splitOnExt(name: string): [string, string] {
+  const lastDot = name.lastIndexOf(".");
+  return lastDot === -1 ? [ name, "" ] : [ name.substring(0, lastDot),
+                                           name.substring(lastDot + 1) ];
+}

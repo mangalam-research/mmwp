@@ -43,7 +43,7 @@
     "systemjs": "^0.21.6",
     "systemjs-plugin-json": "^0.3.0",
     "urijs": "^1.19.2",
-    "wed-demo": "file:../wed-demo/build/wed-demo-1.0.0.tgz",
+    "wed-demo": "file:../wed-demo-old/build/wed-demo-1.0.0.tgz",
     "zone.js": "^0.10.2"
   },
   "devDependencies": {

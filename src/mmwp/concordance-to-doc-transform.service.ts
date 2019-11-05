@@ -10,27 +10,15 @@ import { XMLFile } from "dashboard/xml-file";
 import { XMLFilesService } from "dashboard/xml-files.service";
 import { XMLTransformService } from "dashboard/xml-transform.service";
 import { setLemFromPart, wordsFromCompoundParts } from "./compounds";
-import concordanceAnyVersion =
-  // tslint:disable-next-line:no-require-imports
-  require("./internal-schemas/concordance-any-version");
+import { getConcordanceGrammar } from "./concordance-util";
 // tslint:disable-next-line:no-require-imports
 import docUnannotated = require("./internal-schemas/doc-unannotated");
 import { MMWP_NAMESPACE } from "./namespaces";
-import { validate } from "./util";
+import { ProcessingError, safeValidate } from "./util";
 
 // Caches for the grammars. We do this at the class level because these
 // objects are immutable.
-let _concordanceGrammar: Grammar | undefined;
 let _unannotatedGrammar: Grammar | undefined;
-
-function getConcordanceGrammar(): Grammar {
-  if (_concordanceGrammar === undefined) {
-    const clone = JSON.parse(JSON.stringify(concordanceAnyVersion));
-    _concordanceGrammar = readTreeFromJSON(clone);
-  }
-
-  return _concordanceGrammar;
-}
 
 function getUnannotatedGrammar(): Grammar {
   if (_unannotatedGrammar === undefined) {
@@ -47,18 +35,6 @@ export class TitleEqualityError extends Error {
     this.name = "TitleEqualityError";
     this.message = message;
     fixPrototype(this, TitleEqualityError);
-  }
-}
-
-export class ProcessingError extends Error {
-  public readonly title: string;
-
-  constructor(title: string, message: string) {
-    super();
-    this.title = "ProcessingError";
-    this.message = message;
-    this.title = title;
-    fixPrototype(this, ProcessingError);
   }
 }
 
@@ -201,16 +177,6 @@ values: ${ex.message}`);
   toString(): string {
     return `${this.title}, ${this.genre}, ${this.author}, ${this.tradition},
 ${this.school}, ${this.period}`;
-  }
-}
-
-async function safeValidate(grammar: Grammar,
-                            document: Document): Promise<void> {
-  const errors = await validate(grammar, document);
-  if (errors.length !== 0) {
-    throw new ProcessingError(
-      "Validation Error",
-      errors.map(x => `<p>${x.error.toString()}</p>`).join("\n"));
   }
 }
 

@@ -12,8 +12,9 @@ import { ProcessingService } from "dashboard/processing.service";
 import { db } from "dashboard/store";
 import { XMLFile } from "dashboard/xml-file";
 import { XMLFilesService } from "dashboard/xml-files.service";
-import { ConcordanceToDocTransformService, Logger, ProcessingError,
+import { ConcordanceToDocTransformService, Logger,
          Processor } from "mmwp/concordance-to-doc-transform.service";
+import { ProcessingError } from "mmwp/util";
 import { DataProvider } from "./util";
 
 // We use innerHTML a lot for testing purposes.

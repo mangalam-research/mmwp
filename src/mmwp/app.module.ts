@@ -16,10 +16,16 @@ import { SharedModule } from "dashboard/shared.module";
 import { UpgradeService } from "dashboard/upgrade.service";
 import { XMLFilesService } from "dashboard/xml-files.service";
 import { XMLTransformService } from "dashboard/xml-transform.service";
+import { XMLUploadAndTransformService,
+       } from "dashboard/xml-upload-and-transform.service";
 
 import { AppRoutingModule } from "./app-routing.module";
+import { ConcordanceCleanupTransformService,
+       } from "./concordance-cleanup-transform.service";
 import { ConcordanceToDocTransformService,
        } from "./concordance-to-doc-transform.service";
+import { ConcordanceUploadAndCleanupService,
+       } from "./concordance-upload-and-cleanup.service";
 import { CoNLLTransformService } from "./conll-transform.service";
 import { CSVTransformService } from "./csv-transform.service";
 import { SemanticInformationTransformService,
@@ -54,6 +60,10 @@ export const configuration: NgModule = {
     // is what we add for mmwp.
     {
       provide: XMLTransformService,
+      useClass: ConcordanceCleanupTransformService,
+      multi: true,
+    }, {
+      provide: XMLTransformService,
       useClass: ConcordanceToDocTransformService,
       multi: true,
     }, {
@@ -67,6 +77,10 @@ export const configuration: NgModule = {
     }, {
       provide: XMLTransformService,
       useClass: CSVTransformService,
+      multi: true,
+    }, {
+      provide: XMLUploadAndTransformService,
+      useClass: ConcordanceUploadAndCleanupService,
       multi: true,
     }, {
       provide: "Mode",
