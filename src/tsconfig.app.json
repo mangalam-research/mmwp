@@ -1,0 +1,17 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/app",
+    "types": ["node"]
+  },
+  "angularCompilerOptions": {
+    "disableTypeScriptVersionCheck": true
+  },
+  "exclude": [
+    "test/**/*",
+    "mmwpa-mode/mmpwa-metadata.ts",
+    "mmwpa-mode/mmwpa-mode.ts",
+    "mmwpa-mode/dep-check.ts",
+    "mmwpa-mode/mmpwa-tr.ts"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/mode",
+    "types": ["node"]
+  },
+  "angularCompilerOptions": {
+    "disableTypeScriptVersionCheck": true
+  },
+  "include": [
+    "app/mmwpa-mode/**/*.ts"
+  ]
+}

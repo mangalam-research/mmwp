@@ -1,0 +1,8 @@
+{
+  "extends": "../../tslint.json",
+  "rules": {
+    "no-unused-expression": [false, "Too many false positives with Chai."],
+    "no-non-null-assertion": [false, "We use these frequently in testing."],
+    "no-submodule-imports": [true, "core-js", "zone.js", "@angular", "rxjs"]
+  }
+}

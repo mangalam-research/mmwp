@@ -1,0 +1,4 @@
+**/test/data/*.js
+build/**
+dist/**
+src/app/internal-schemas/**/*.js
