@@ -184,10 +184,12 @@ export function splitCompoundIntoParts(editor: EditorAPI,
   }
 
   // tslint:disable-next-line:no-non-null-assertion
-  for (const word of wordsFromCompoundParts(parts, node.ownerDocument!)) {
+  const words = wordsFromCompoundParts(parts, node.ownerDocument!);
+  for (const word of words) {
     setLemFromPart(word);
     editor.dataUpdater.insertBefore(node.parentNode as Element, word, node);
   }
 
   editor.dataUpdater.removeNode(node);
+  editor.caretManager.setCaret(words[0], 0);
 }
