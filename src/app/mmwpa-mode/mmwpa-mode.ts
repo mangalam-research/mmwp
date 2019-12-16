@@ -183,7 +183,11 @@ class MMWPAMode extends generic.Mode<generic.GenericModeOptions> {
   }
 
   getStylesheets(): string[] {
-    return [`${req.toUrl(".")}mmwpa-mode.css`];
+    let root = req.toUrl(".") as string;
+    if (!root.endsWith("/")) {
+      root += "/";
+    }
+    return [`${root}mmwpa-mode.css`];
   }
 }
 
