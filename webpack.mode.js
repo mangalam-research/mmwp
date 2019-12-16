@@ -3,40 +3,10 @@
 const path = require("path");
 const webpack = require("webpack");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-// const convertPathsToAliases = require("convert-tsconfig-paths-to-webpack-aliases").default;
 
 const sourceDir = "./src";
 
-const commonExternals = {};
-["jquery", "bootstrap", "dexie",
- // The mode service needs to load this dynamically.,
- "wed/mode-map",
- // Wed is loaded by util.ts.
- "wed"]
-  .forEach((name) => {
-    commonExternals[name] = name;
-  });
-
-function createMakeExternals(mapping) {
-  return function makeExternals(context, request, callback) {
-    // If the request is relative to the module it is in, we want to turn it
-    // into something relative to our sourceDir. This allows handling a request
-    // to "./store" made in a module located in "dashboard/" the same as a
-    // request to "dashboard/store" made from outside dashboard.
-    if (request[0] === ".") {
-      request = path.relative(sourceDir, path.join(context, request));
-    }
-
-    if (request in mapping) {
-      callback(null, mapping[request]);
-      return;
-    }
-
-    callback();
-  };
-}
-
-module.exports = [{
+module.exports = {
   context: path.join(__dirname),
   mode: "production",
   devtool: "source-map",
@@ -77,26 +47,20 @@ module.exports = [{
       }],
     }],
   },
-  externals: (() => {
-    const fn = createMakeExternals(commonExternals);
-    return (context, request, callback) => {
-      if (request === "require") {
-        callback(null, "require");
-        return;
-      }
-
-      fn(context, request, callback);
-    };
-  })(),
+  externals: {
+    require: "require",
+    wed: "wed",
+  },
   plugins: [
     new CopyWebpackPlugin([{
       from: {
-        glob: "src/app/mmwpa-mode/mmwpa-mode.css",
+        glob: "mmwpa-mode.css",
       },
-      context: "dist/mmwp/mmwpa-mode",
+      to: ".",
+      context: "src/app/mmwpa-mode/",
     }]),
     new webpack.ProvidePlugin({
       platformRequire: "require",
     }),
   ],
-}];
+};
