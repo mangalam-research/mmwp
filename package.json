@@ -5,7 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "webpack --config webpack.mode.js && ng build",
+    "build-prod": "webpack --config webpack.mode.js && ng build --prod --href=.",
     "test": "ng test --watch=false",
+    "test-prod": "ng test --prod --watch=false",
     "posttest": "npm run lint",
     "lint": "ng lint && eslint '**/*.js' && versync -v",
     "e2e": "ng e2e"
