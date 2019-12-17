@@ -5,6 +5,7 @@
     "types": ["node"]
   },
   "angularCompilerOptions": {
+    "enableIvy": true,
     "disableTypeScriptVersionCheck": true
   },
   "exclude": [

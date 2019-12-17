@@ -1,12 +1,6 @@
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
-import { BrowserModule } from "@angular/platform-browser";
-import { RouterModule } from "@angular/router";
 
-import { ChunksService, ConfirmService, MetadataService, ModesService,
-         PacksService, ProcessingService, routes, SchemasService, SharedModule,
-         UpgradeService, UtilModule, WedDemoDashboardComponent, WedDemoModule,
-         XMLFilesService, XMLTransformService,
+import { WedDemoDashboardComponent, WedDemoModule, XMLTransformService,
          XMLUploadAndTransformService } from "wed-demo-lib";
 
 import { ConcordanceCleanupTransformService,
@@ -28,23 +22,9 @@ import { SemanticInformationTransformService,
 //
 @NgModule({
   imports: [
-    BrowserModule,
-    FormsModule,
-    SharedModule,
-    RouterModule.forRoot(routes, { useHash: true }),
-    UtilModule,
     WedDemoModule,
   ],
   providers: [
-    ConfirmService,
-    ChunksService,
-    XMLFilesService,
-    ProcessingService,
-    ModesService,
-    SchemasService,
-    MetadataService,
-    UpgradeService,
-    PacksService,
     // Providers above are those of wed-demo. What follows is what we add.
     {
       provide: XMLTransformService,
