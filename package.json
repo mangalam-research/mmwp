@@ -54,7 +54,7 @@
     "bootstrap": "^4.4.0",
     "chai": "^4.2.0",
     "codelyzer": "^5.1.2",
-    "dexie": "^2.0.4",
+    "dexie": "^3.2.2",
     "eslint": "^6.7.1",
     "eslint-config-lddubeau-base": "^4.0.2",
     "expect-rejection": "^2.0.0",
